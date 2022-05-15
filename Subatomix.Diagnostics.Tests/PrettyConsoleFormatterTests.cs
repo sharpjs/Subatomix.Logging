@@ -88,6 +88,22 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
+    public void Clock_Local()
+    {
+        using var h = new TestHarness();
+
+        h.Formatter.Clock.Should().BeSameAs(LocalClock.Instance);
+    }
+
+    [Test]
+    public void Clock_Utc()
+    {
+        using var h = new TestHarness(o => o.UseUtcTimestamp = true);
+
+        h.Formatter.Clock.Should().BeSameAs(UtcClock.Instance);
+    }
+
+    [Test]
     [TestCase(LogLevel.None,        "[??:??:??] .....       : Message.")]
     [TestCase(LogLevel.Trace,       "[??:??:??] ..... trace : Message.")]
     [TestCase(LogLevel.Debug,       "[??:??:??] ..... debug : Message.")]
@@ -171,7 +187,7 @@ public class PrettyConsoleFormatterTests
         ));
     }
 
-    private static string Write(
+    private string Write(
         LogLevel   logLevel  = LogLevel.Information,
         bool       colors    = false,
         string?    message   = "Message.",
@@ -182,6 +198,8 @@ public class PrettyConsoleFormatterTests
             : LoggerColorBehavior.Disabled;
 
         using var h = new TestHarness(o => o.ColorBehavior = behavior);
+
+        h.Formatter.Clock = TestClock;
 
         // Cover both ways in which entry.Formatter can yield a null message
         var subformatter = (message, exception) is (null, null)
@@ -230,6 +248,12 @@ public class PrettyConsoleFormatterTests
 
         return sb.ToString();
     }
+
+
+    private readonly TestClock TestClock = new()
+    {
+        Now = DateTime.UtcNow.Date + new TimeSpan(1, 23, 45)
+    };
 
     private class TestHarness : TestHarnessBase
     {

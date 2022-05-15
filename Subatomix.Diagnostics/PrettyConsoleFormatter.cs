@@ -28,8 +28,14 @@ using static LogLevel;
 // Rationale: Configure method sets non-nullable fields to non-null values and is invoked from the constructor.
 
 /// <summary>
-///   A simpler formatter than <see cref="SimpleConsoleFormatter"/>.
+///   A prettier formatter than <see cref="SimpleConsoleFormatter"/>.
 /// </summary>
+/// <remarks>
+///   Configure this formatter via <see cref="PrettyConsoleFormatterOptions"/>.
+///   Note that this formatter ignores the
+///   <see cref="ConsoleFormatterOptions.IncludeScopes"/> and
+///   <see cref="ConsoleFormatterOptions.TimestampFormat"/> properties.
+/// </remarks>
 public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
 {
     // Uses SimpleConsoleFormatter as an example of how to write a ConsoleFormatter.
@@ -88,9 +94,16 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     // To enable tests to simulate console redirection
     internal bool IsConsoleRedirected { get; set; }
 
+    // To enable tests to perform time travel
+    internal IClock Clock { get; set; }
+
     private void Configure(PrettyConsoleFormatterOptions options)
     {
         Options = options;
+
+        Clock = options.UseUtcTimestamp
+            ? UtcClock  .Instance
+            : LocalClock.Instance;
 
         IsColorEnabled = options.ColorBehavior switch
         {
@@ -119,18 +132,16 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
 
         var styler = _stylerSelector(entry.LogLevel);
 
-        WriteTimestamp(writer, styler);
+        WriteTimestamp(writer, styler, Clock.Now);
         WriteTraceId  (writer, styler);
         WriteLogLevel (writer, styler,          entry.LogLevel);
         WriteMessage  (writer, styler, message, entry.Exception);
         WriteEndOfLine(writer, styler);
     }
 
-    private static void WriteTimestamp(TextWriter writer, Styler styler)
+    private static void WriteTimestamp(TextWriter writer, Styler styler, DateTime now)
     {
         styler.UseTimestampStyle(writer);
-
-        var now = DateTime.Now;
 
         writer.Write('['); WriteTimePart(writer, now.Hour);
         writer.Write(':'); WriteTimePart(writer, now.Minute);
