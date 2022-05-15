@@ -15,6 +15,7 @@
 */
 
 using System.Diagnostics;
+using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
@@ -22,9 +23,11 @@ using Subatomix.Testing;
 
 namespace Subatomix.Diagnostics;
 
-using Options = PrettyConsoleFormatterOptions;
+using Options      = PrettyConsoleFormatterOptions;
+using Subformatter = Func<string?, Exception?, string>;
 
 [TestFixture]
+[SetCulture("kl-GL")] // Kalaallisut (Greenland), to verify nonreliance on en-US
 public class PrettyConsoleFormatterTests
 {
     [Test]
@@ -111,124 +114,154 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [SetCulture("kl-GL")] // Kalaallisut (Greenland)
-    [TestCase(LogLevel.None,        "[??:??:??] .....       : message")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] ..... trace : message")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] ..... debug : message")]
-    [TestCase(LogLevel.Information, "[??:??:??] ..... info  : message")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] ..... warn  : message")]
-    [TestCase(LogLevel.Error,       "[??:??:??] .....  ERR  : message")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] .....  RIP  : message")]
-    public void Write_Mono(LogLevel logLevel, string expected)
+    [TestCase(LogLevel.None,        "[??:??:??] .....       : Message.")]
+    [TestCase(LogLevel.Trace,       "[??:??:??] ..... trace : Message.")]
+    [TestCase(LogLevel.Debug,       "[??:??:??] ..... debug : Message.")]
+    [TestCase(LogLevel.Information, "[??:??:??] ..... info  : Message.")]
+    [TestCase(LogLevel.Warning,     "[??:??:??] ..... warn  : Message.")]
+    [TestCase(LogLevel.Error,       "[??:??:??] .....  ERR  : Message.")]
+    [TestCase(LogLevel.Critical,    "[??:??:??] .....  RIP  : Message.")]
+    public void Write_Message_Mono(LogLevel logLevel, string expected)
     {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Disabled;
-        });
-
-        var entry = new LogEntry<Void>(
-            logLevel, "category", eventId: 42, state: default, exception: null,
-            (state, exception) => "message"
-        );
-
-        using var writer = new StringWriter();
-
-        h.Formatter.Write(entry, h.CreateScopeProvider(), writer);
-
-        writer.ToString().Should().Match(expected + Environment.NewLine);
+        Write(logLevel).Should().Match(Lines(expected));
     }
 
     [Test]
-    [SetCulture("kl-GL")] // Kalaallisut (Greenland)
-    [TestCase(LogLevel.None,        "[??:??:??] #????       : message")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] #???? trace : message")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] #???? debug : message")]
-    [TestCase(LogLevel.Information, "[??:??:??] #???? info  : message")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] #???? warn  : message")]
-    [TestCase(LogLevel.Error,       "[??:??:??] #????  ERR  : message")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] #????  RIP  : message")]
-    public void Write_Mono_InActivity(LogLevel logLevel, string expected)
+    [TestCase(LogLevel.None,        "[??:??:??] #????       : Message.")]
+    [TestCase(LogLevel.Trace,       "[??:??:??] #???? trace : Message.")]
+    [TestCase(LogLevel.Debug,       "[??:??:??] #???? debug : Message.")]
+    [TestCase(LogLevel.Information, "[??:??:??] #???? info  : Message.")]
+    [TestCase(LogLevel.Warning,     "[??:??:??] #???? warn  : Message.")]
+    [TestCase(LogLevel.Error,       "[??:??:??] #????  ERR  : Message.")]
+    [TestCase(LogLevel.Critical,    "[??:??:??] #????  RIP  : Message.")]
+    public void Write_Message_Mono_InActivity(LogLevel logLevel, string expected)
     {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Disabled;
-        });
+        using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
 
-        var entry = new LogEntry<Void>(
-            logLevel, "category", eventId: 42, state: default, exception: null,
-            (state, exception) => "message"
-        );
-
-        using var writer = new StringWriter();
-
-        using var activity = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
-
-        h.Formatter.Write(entry, h.CreateScopeProvider(), writer);
-
-        writer.ToString().Should().Match(expected + Environment.NewLine);
+        Write(logLevel).Should().Match(Lines(expected));
     }
 
     [Test]
-    [SetCulture("kl-GL")] // Kalaallisut (Greenland)
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243m      : message~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mtrace : message~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mdebug : message~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[39minfo  : message~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[33mwarn  : message~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;41;1m ERR ~[91;49m : message~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;45;1m RIP ~[95;49m : message~[0m")]
-    public void Write_Color(LogLevel logLevel, string expected)
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243m      : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mtrace : Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mdebug : Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[39minfo  : Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[33mwarn  : Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;41;1m ERR ~[91;49m : Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;45;1m RIP ~[95;49m : Message.~[0m")]
+    public void Write_Message_Color(LogLevel logLevel, string expected)
     {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Enabled;
-        });
-
-        var entry = new LogEntry<Void>(
-            logLevel, "category", eventId: 42, state: default, exception: null,
-            (state, exception) => "message"
-        );
-
-        using var writer = new StringWriter();
-
-        h.Formatter.Write(entry, h.CreateScopeProvider(), writer);
-
-        writer.ToString().Replace('\x1B', '~').Should().Match(expected + Environment.NewLine);
+        Write(logLevel, colors: true).Should().Match(Lines(expected));
     }
 
     [Test]
-    [SetCulture("kl-GL")] // Kalaallisut (Greenland)
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243m      : message~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mtrace : message~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mdebug : message~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[39minfo  : message~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[33mwarn  : message~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;41;1m ERR ~[91;49m : message~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;45;1m RIP ~[95;49m : message~[0m")]
-    public void Write_Color_InActivity(LogLevel logLevel, string expected)
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243m      : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mtrace : Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mdebug : Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[39minfo  : Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[33mwarn  : Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;41;1m ERR ~[91;49m : Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;45;1m RIP ~[95;49m : Message.~[0m")]
+    public void Write_Message_Color_InActivity(LogLevel logLevel, string expected)
     {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Enabled;
-        });
+        using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
 
-        var entry = new LogEntry<Void>(
-            logLevel, "category", eventId: 42, state: default, exception: null,
-            (state, exception) => "message"
+        Write(logLevel, colors: true).Should().Match(Lines(expected));
+    }
+
+    [Test]
+    public void Write_Nothing()
+    {
+        Write(message: null).Should().BeEmpty();
+    }
+
+    [Test]
+    public void Write_Exception()
+    {
+        var e = GetThrownException();
+
+        Write(message: null, exception: e).Should().Match(Lines(
+            "[??:??:??] ..... info  : System.ApplicationException: A test error was thrown.",
+            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.GetThrownException()*"
+        ));
+    }
+
+    [Test]
+    public void Write_MessageAndException()
+    {
+        var e = GetThrownException();
+
+        Write(exception: e).Should().Match(Lines(
+            "[??:??:??] ..... info  : Message. System.ApplicationException: A test error was thrown.",
+            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.GetThrownException()*"
+        ));
+    }
+
+    private static string Write(
+        LogLevel   logLevel  = LogLevel.Information,
+        bool       colors    = false,
+        string?    message   = "Message.",
+        Exception? exception = null)
+    {
+        var behavior = colors
+            ? LoggerColorBehavior.Enabled
+            : LoggerColorBehavior.Disabled;
+
+        using var h = new TestHarness(o => o.ColorBehavior = behavior);
+
+        // Cover both ways in which entry.Formatter can yield a null message
+        var subformatter = (message, exception) is (null, null)
+            ? null                                      // case A: .Formatter is null
+            : h.CreateSubformatter(message, exception); // case B: .Formatter might return null
+
+        var entry = new LogEntry<string?>(
+            logLevel, "category", eventId: 42, message, exception, subformatter!
         );
 
         using var writer = new StringWriter();
 
-        using var activity = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
+        h.Formatter.Write(entry, h.Scopes, writer);
 
-        h.Formatter.Write(entry, h.CreateScopeProvider(), writer);
+        return writer.ToString().Replace('\x1B', '~');
+    }
 
-        writer.ToString().Replace('\x1B', '~').Should().Match(expected + Environment.NewLine);
+    private static Exception GetThrownException()
+    {
+        try
+        {
+            throw new ApplicationException("A test error was thrown.");
+        }
+        catch (Exception e)
+        {
+            return e;
+        }
+    }
+
+    private static string Lines(string line)
+    {
+        return line + Environment.NewLine;
+    }
+
+    private static string Lines(params string[] lines)
+    {
+        var length = 0;
+
+        foreach (var line in lines)
+            length += line.Length + Environment.NewLine.Length;
+
+        var sb = new StringBuilder(length);
+
+        foreach (var line in lines)
+            sb.AppendLine(line);
+
+        return sb.ToString();
     }
 
     private class TestHarness : TestHarnessBase
     {
         public TestOptionsMonitor<Options> Options { get; }
+
+        public IExternalScopeProvider Scopes { get; }
 
         public PrettyConsoleFormatter Formatter { get; }
 
@@ -237,18 +270,26 @@ public class PrettyConsoleFormatterTests
             Options = new TestOptionsMonitor<Options>(Mocks);
             configure?.Invoke(Options.CurrentValue);
 
+            Scopes = Mocks.Create<IExternalScopeProvider>().Object;
+
             Formatter = new PrettyConsoleFormatter(Options);
+        }
+
+        public Subformatter CreateSubformatter(string? message, Exception? exception)
+        {
+            var mock = Mocks.Create<Subformatter>();
+
+            mock.Setup(f => f(message, exception))
+                .Returns(message!)
+                .Verifiable();
+
+            return mock.Object;
         }
 
         protected override void Verify()
         {
             ((IDisposable) Formatter).Dispose();
             base.Verify();
-        }
-
-        public IExternalScopeProvider CreateScopeProvider()
-        {
-            return Mocks.Create<IExternalScopeProvider>().Object;
         }
     }
 }
