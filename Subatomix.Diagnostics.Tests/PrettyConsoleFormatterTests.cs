@@ -62,55 +62,29 @@ public class PrettyConsoleFormatterTests
 
         h.Formatter.IsConsoleRedirected = false;
         h.Options.NotifyChanged();
-
         h.Formatter.IsColorEnabled.Should().BeTrue();
 
         h.Formatter.IsConsoleRedirected = true;
         h.Options.NotifyChanged();
-
         h.Formatter.IsColorEnabled.Should().BeFalse();
     }
 
     [Test]
-    public void IsColorEnabled_Enabled()
+    [TestCase(LoggerColorBehavior.Disabled, false)]
+    [TestCase(LoggerColorBehavior.Enabled,  true )]
+    public void IsColorEnabled_Explicit(LoggerColorBehavior behavior, bool expected)
     {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Enabled;
-        });
+        using var h = new TestHarness(o => o.ColorBehavior = behavior);
 
-        h.Formatter.IsColorEnabled.Should().BeTrue();
+        h.Formatter.IsColorEnabled.Should().Be(expected);
 
         h.Formatter.IsConsoleRedirected = false;
         h.Options.NotifyChanged();
-
-        h.Formatter.IsColorEnabled.Should().BeTrue();
-
-        h.Formatter.IsConsoleRedirected = true;
-        h.Options.NotifyChanged();
-
-        h.Formatter.IsColorEnabled.Should().BeTrue();
-    }
-
-    [Test]
-    public void IsColorEnabled_Disabled()
-    {
-        using var h = new TestHarness(options =>
-        {
-            options.ColorBehavior = LoggerColorBehavior.Disabled;
-        });
-
-        h.Formatter.IsColorEnabled.Should().BeFalse();
-
-        h.Formatter.IsConsoleRedirected = false;
-        h.Options.NotifyChanged();
-
-        h.Formatter.IsColorEnabled.Should().BeFalse();
+        h.Formatter.IsColorEnabled.Should().Be(expected);
 
         h.Formatter.IsConsoleRedirected = true;
         h.Options.NotifyChanged();
-
-        h.Formatter.IsColorEnabled.Should().BeFalse();
+        h.Formatter.IsColorEnabled.Should().Be(expected);
     }
 
     [Test]
