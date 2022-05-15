@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Using Include="System.FormattableString" Static="true" />
+    <Using Include="System.ValueTuple" Alias="Void" />
   </ItemGroup>
 
   <!-- Packaging properties -->
