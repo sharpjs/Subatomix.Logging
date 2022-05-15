@@ -62,6 +62,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         if (options is null)
             throw new ArgumentNullException(nameof(options));
 
+        IsConsoleRedirected = ConsoleInfo.IsRedirected;
+
         Configure(options.CurrentValue);
 
         _optionsChangeToken = options.OnChange(Configure);
@@ -83,19 +85,18 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// </summary>
     public bool IsColorEnabled { get; private set; }
 
+    // To enable tests to simulate console redirection
+    internal bool IsConsoleRedirected { get; set; }
+
     private void Configure(PrettyConsoleFormatterOptions options)
     {
-        static bool IsConsoleRedirected()
-            => Console.IsOutputRedirected
-            || Console.IsErrorRedirected;
-
         Options = options;
 
         IsColorEnabled = options.ColorBehavior switch
         {
             LoggerColorBehavior.Disabled => false,
             LoggerColorBehavior.Enabled  => true,
-            _                            => !IsConsoleRedirected()
+            _                            => !IsConsoleRedirected
         };
 
         _stylerSelector = IsColorEnabled
