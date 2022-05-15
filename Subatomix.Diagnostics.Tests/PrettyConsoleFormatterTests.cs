@@ -168,22 +168,22 @@ public class PrettyConsoleFormatterTests
     [Test]
     public void Write_Exception()
     {
-        var e = GetThrownException();
+        var e = CreateThrownException();
 
         Write(message: null, exception: e).Should().Match(Lines(
             "[??:??:??] ..... info  : System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.GetThrownException()*"
+            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }
 
     [Test]
     public void Write_MessageAndException()
     {
-        var e = GetThrownException();
+        var e = CreateThrownException();
 
         Write(exception: e).Should().Match(Lines(
             "[??:??:??] ..... info  : Message. System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.GetThrownException()*"
+            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }
 
@@ -217,18 +217,6 @@ public class PrettyConsoleFormatterTests
         return writer.ToString().Replace('\x1B', '~');
     }
 
-    private static Exception GetThrownException()
-    {
-        try
-        {
-            throw new ApplicationException("A test error was thrown.");
-        }
-        catch (Exception e)
-        {
-            return e;
-        }
-    }
-
     private static string Lines(string line)
     {
         return line + Environment.NewLine;
@@ -249,6 +237,11 @@ public class PrettyConsoleFormatterTests
         return sb.ToString();
     }
 
+    private static Exception CreateThrownException()
+    {
+        try { throw new ApplicationException("A test error was thrown."); }
+        catch (Exception e) { return e; }
+    }
 
     private readonly TestClock TestClock = new()
     {
