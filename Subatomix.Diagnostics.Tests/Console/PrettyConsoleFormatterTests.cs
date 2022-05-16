@@ -19,9 +19,11 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
+using Subatomix.Diagnostics.Internal;
+using Subatomix.Diagnostics.Testing;
 using Subatomix.Testing;
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Console;
 
 using Options      = PrettyConsoleFormatterOptions;
 using Subformatter = Func<string?, Exception?, string>;

@@ -14,14 +14,13 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Diagnostics.CodeAnalysis;
+namespace Subatomix.Diagnostics.Internal;
 
-namespace Subatomix.Diagnostics;
-
-internal static class ConsoleInfo
+internal sealed class LocalClock : IClock
 {
-    [ExcludeFromCodeCoverage]
-    internal static bool IsRedirected
-        => Console.IsOutputRedirected
-        || Console.IsErrorRedirected;
+    private LocalClock() { }
+
+    public static LocalClock Instance { get; } = new LocalClock();
+
+    public DateTime Now => DateTime.Now;
 }

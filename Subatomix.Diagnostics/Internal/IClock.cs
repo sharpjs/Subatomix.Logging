@@ -14,9 +14,9 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Internal;
 
-internal class TestClock : IClock
+internal interface IClock
 {
-    public DateTime Now { get; set; }
+    DateTime Now { get; }
 }

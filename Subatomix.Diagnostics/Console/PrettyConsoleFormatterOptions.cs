@@ -14,13 +14,17 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Diagnostics;
+using Microsoft.Extensions.Logging.Console;
 
-internal sealed class UtcClock : IClock
+namespace Subatomix.Diagnostics.Console;
+
+/// <summary>
+///   Options for <see cref="PrettyConsoleFormatter"/>.
+/// </summary>
+public class PrettyConsoleFormatterOptions : ConsoleFormatterOptions
 {
-    private UtcClock() { }
-
-    public static UtcClock Instance { get; } = new UtcClock();
-
-    public DateTime Now => DateTime.UtcNow;
+    /// <summary>
+    ///  Gets or sets whether to use color in log messages.
+    /// </summary>
+    public LoggerColorBehavior ColorBehavior { get; set; }
 }

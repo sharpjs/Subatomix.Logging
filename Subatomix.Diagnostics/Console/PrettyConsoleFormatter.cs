@@ -19,8 +19,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
+using Subatomix.Diagnostics.Internal;
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Console;
 
 using static LogLevel;
 

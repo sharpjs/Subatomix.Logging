@@ -14,7 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Console;
 
 internal static class Ansi
 {

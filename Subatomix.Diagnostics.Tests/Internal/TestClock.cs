@@ -14,17 +14,9 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging.Console;
+namespace Subatomix.Diagnostics.Internal;
 
-namespace Subatomix.Diagnostics;
-
-/// <summary>
-///   Options for <see cref="PrettyConsoleFormatter"/>.
-/// </summary>
-public class PrettyConsoleFormatterOptions : ConsoleFormatterOptions
+internal class TestClock : IClock
 {
-    /// <summary>
-    ///  Gets or sets whether to use color in log messages.
-    /// </summary>
-    public LoggerColorBehavior ColorBehavior { get; set; }
+    public DateTime Now { get; set; }
 }

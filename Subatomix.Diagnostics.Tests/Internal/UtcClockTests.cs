@@ -14,13 +14,19 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Diagnostics;
+using FluentAssertions.Extensions;
 
-internal sealed class LocalClock : IClock
+namespace Subatomix.Diagnostics.Internal;
+
+[TestFixture]
+internal class UtcClockTests
 {
-    private LocalClock() { }
+    [Test]
+    public void Now()
+    {
+        var now = UtcClock.Instance.Now;
 
-    public static LocalClock Instance { get; } = new LocalClock();
-
-    public DateTime Now => DateTime.Now;
+        now.Should().BeCloseTo(DateTime.UtcNow, precision: 5.Seconds());
+        now.Kind.Should().Be(DateTimeKind.Utc);
+    }
 }

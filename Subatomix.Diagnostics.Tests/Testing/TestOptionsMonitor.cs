@@ -16,7 +16,7 @@
 
 using Microsoft.Extensions.Options;
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Testing;
 
 /// <summary>
 ///   An implementation of <see cref="IOptionsMonitor{TOptions}"/> for testing.
@@ -76,7 +76,7 @@ internal class TestOptionsMonitor<TOptions> : IOptionsMonitor<TOptions>
 
     private void Set(string name, TOptions value)
     {
-         Values[name] = value ?? throw new ArgumentNullException(nameof(value));
+        Values[name] = value ?? throw new ArgumentNullException(nameof(value));
     }
 
     /// <inheritdoc/>

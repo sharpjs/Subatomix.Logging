@@ -14,19 +14,14 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using FluentAssertions.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Subatomix.Diagnostics;
+namespace Subatomix.Diagnostics.Console;
 
-[TestFixture]
-internal class LocalClockTests
+internal static class ConsoleInfo
 {
-    [Test]
-    public void Now()
-    {
-        var now = LocalClock.Instance.Now;
-
-        now     .Should().BeCloseTo(DateTime.Now, precision: 5.Seconds());
-        now.Kind.Should().Be(DateTimeKind.Local);
-    }
+    [ExcludeFromCodeCoverage]
+    internal static bool IsRedirected
+        => System.Console.IsOutputRedirected
+        || System.Console.IsErrorRedirected;
 }

@@ -14,9 +14,19 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Diagnostics;
+using FluentAssertions.Extensions;
 
-internal interface IClock
+namespace Subatomix.Diagnostics.Internal;
+
+[TestFixture]
+internal class LocalClockTests
 {
-    DateTime Now { get; }
+    [Test]
+    public void Now()
+    {
+        var now = LocalClock.Instance.Now;
+
+        now.Should().BeCloseTo(DateTime.Now, precision: 5.Seconds());
+        now.Kind.Should().Be(DateTimeKind.Local);
+    }
 }
