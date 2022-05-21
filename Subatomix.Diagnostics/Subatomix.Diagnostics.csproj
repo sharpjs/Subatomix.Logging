@@ -18,7 +18,7 @@
 
   <PropertyGroup>
     <Description>Helpers for diagnostics and logging</Description>
-    <TargetFrameworks>netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
