@@ -213,7 +213,7 @@ public class OperationScope : IDisposable
 
     private void LogStarting()
     {
-        Logger.Log(LogLevel, 0, Name, exception: null, StartingFormatter);
+        Logger.Log(LogLevel, default, this, exception: null, StartingFormatter);
     }
 
     private void LogCompleted()
@@ -225,17 +225,19 @@ public class OperationScope : IDisposable
         if (failed)
             Logger.Log(ExceptionLogLevel, exception!);
 
-        Logger.Log(LogLevel, 0, (Name, duration, failed), null, CompletedFormatter);
+        Logger.Log(LogLevel, default, this, exception: null, CompletedFormatter);
     }
 
-    private static readonly Func<string, Exception?, string>
+    private static readonly Func<OperationScope, Exception?, string>
         StartingFormatter = FormatStarting;
 
-    private static readonly Func<(string, TimeSpan, bool), Exception?, string>
+    private static readonly Func<OperationScope, Exception?, string>
         CompletedFormatter = FormatCompleted;
 
-    private static string FormatStarting(string name, Exception? exception)
+    private static string FormatStarting(OperationScope scope, Exception? _)
     {
+        var name = scope.Name;
+
 #if NET6_0_OR_GREATER
         // .NET 6.0 introduced performant string interpolation
         return $"{name}: Starting";
@@ -244,12 +246,11 @@ public class OperationScope : IDisposable
 #endif
     }
 
-    private static string FormatCompleted((string, TimeSpan, bool) state, Exception? exception)
+    private static string FormatCompleted(OperationScope scope, Exception? _)
     {
-        var (name, duration, failed) = state;
-
-        var seconds = duration.TotalSeconds;
-        var notice  = failed ? " [EXCEPTION]" : "";
+        var name    = scope.Name;
+        var seconds = scope._stopwatch.Elapsed.TotalSeconds;
+        var notice  = scope.Exception is null ? "" : " [EXCEPTION]";
 
 #if NET6_0_OR_GREATER
         // .NET 6.0 introduced performant string interpolation
