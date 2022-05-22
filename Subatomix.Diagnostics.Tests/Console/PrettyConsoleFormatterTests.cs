@@ -174,7 +174,7 @@ public class PrettyConsoleFormatterTests
 
         Write(message: null, exception: e).Should().Match(Lines(
             "[??:??:??] ..... info  : System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.CreateThrownException()*"
+            "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }
 
@@ -185,7 +185,7 @@ public class PrettyConsoleFormatterTests
 
         Write(exception: e).Should().Match(Lines(
             "[??:??:??] ..... info  : Message. System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.PrettyConsoleFormatterTests.CreateThrownException()*"
+            "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }
 
