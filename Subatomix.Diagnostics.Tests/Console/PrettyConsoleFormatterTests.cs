@@ -168,11 +168,13 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    public void Write_Exception()
+    [TestCase(null)]
+    [TestCase("")]
+    public void Write_Exception(string? message)
     {
         var e = CreateThrownException();
 
-        Write(message: null, exception: e).Should().Match(Lines(
+        Write(message: message, exception: e).Should().Match(Lines(
             "[??:??:??] ..... info  : System.ApplicationException: A test error was thrown.",
             "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));

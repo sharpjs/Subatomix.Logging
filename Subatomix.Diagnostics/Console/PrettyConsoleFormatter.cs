@@ -185,7 +185,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(':');
         writer.Write(' ');
 
-        if (message is not null)
+        if (!string.IsNullOrEmpty(message))
         {
             writer.Write(message);
 
