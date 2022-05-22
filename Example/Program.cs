@@ -16,6 +16,7 @@
 
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Subatomix.Diagnostics;
 using Subatomix.Diagnostics.Console;
 
 Console.WriteLine("Example App v42.1337");
@@ -46,11 +47,28 @@ using var activity = new Activity("Run").Start();
 
 var logger = loggerFactory.CreateLogger("");
 
-logger.LogTrace       ("This is a message.");
-logger.LogDebug       ("This is a message.");
-logger.LogInformation ("This is a message.");
-logger.LogWarning     ("This is a message.");
-logger.LogError       ("This is a message.");
-logger.LogCritical    ("This is a message.");
+using (var s = new OperationScope(logger, name: "Example Program"))
+{
+    logger.LogTrace       ("This is a message.");
+    logger.LogDebug       ("This is a message.");
+    logger.LogInformation ("This is a message.");
+    logger.LogWarning     ("This is a message.");
+    logger.LogError       ("This is a message.");
+    logger.LogCritical    ("This is a message.");
+
+    s.Exception = Thrown();
+}
 
 Console.ReadKey();
+
+static Exception Thrown()
+{
+    try
+    {
+        throw new Exception("An example exception was thrown.");
+    }
+    catch (Exception e)
+    {
+        return e;
+    }
+}
