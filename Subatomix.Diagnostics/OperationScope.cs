@@ -235,28 +235,33 @@ public class OperationScope : IDisposable
         CompletedFormatter = FormatCompleted;
 
     private static string FormatStarting(OperationScope scope, Exception? _)
-    {
-        var name = scope.Name;
+        => scope.GetStartingMessage();
 
+    private static string FormatCompleted(OperationScope scope, Exception? _)
+        => scope.GetCompletedMessage();
+
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private string GetStartingMessage()
+    {
 #if NET6_0_OR_GREATER
         // .NET 6.0 introduced performant string interpolation
-        return $"{name}: Starting";
+        return $"{Name}: Starting";
 #else
-        return name + ": Starting";
+        return Name + ": Starting";
 #endif
     }
 
-    private static string FormatCompleted(OperationScope scope, Exception? _)
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    private string GetCompletedMessage()
     {
-        var name    = scope.Name;
-        var seconds = scope._stopwatch.Elapsed.TotalSeconds;
-        var notice  = scope.Exception is null ? "" : " [EXCEPTION]";
+        var seconds = _stopwatch.Elapsed.TotalSeconds;
+        var notice  = Exception is null ? "" : " [EXCEPTION]";
 
 #if NET6_0_OR_GREATER
         // .NET 6.0 introduced performant string interpolation
-        return $"{name}: Completed [{seconds:N3}s]{notice}";
+        return $"{Name}: Completed [{seconds:N3}s]{notice}";
 #else
-        return string.Format("{0}: Completed [{1:N3}s]{2}", name, seconds, notice);
+        return string.Format("{0}: Completed [{1:N3}s]{2}", Name, seconds, notice);
 #endif
     }
 }
