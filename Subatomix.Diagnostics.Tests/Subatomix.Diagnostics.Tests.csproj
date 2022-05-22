@@ -35,6 +35,7 @@
     <Using Include="FluentAssertions.FluentActions" Static="true" />
     <Using Include="Moq" />
     <Using Include="NUnit.Framework" />
+    <Using Include="Subatomix.Testing.TestGlobals" Static="true" />
   </ItemGroup>
 
 </Project>
