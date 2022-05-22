@@ -190,4 +190,26 @@ public class OperationScopeTests
         logger.Entries[2].Message  .Should().NotContain("[0.000s]");
         logger.Entries[2].Exception.Should().BeNull();
     }
+
+    [Test]
+    public void Stop_Multiple()
+    {
+        var logger = new TestLogger();
+
+        using (var s = new OperationScope(logger))
+        {
+            logger.Entries.Should().HaveCount(1);
+            logger.Scopes .Should().HaveCount(1);
+
+            ((IDisposable) s).Dispose();
+
+            logger.Entries.Should().HaveCount(2);
+            logger.Scopes .Should().HaveCount(0);
+
+            // Second implicit disposal via using is harmless
+        }
+
+        logger.Entries.Should().HaveCount(2);
+        logger.Scopes .Should().HaveCount(0);
+    }
 }
