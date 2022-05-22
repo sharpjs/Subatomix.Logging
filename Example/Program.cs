@@ -49,12 +49,12 @@ var logger = loggerFactory.CreateLogger("");
 
 using (var s = new OperationScope(logger, name: "Example Program"))
 {
-    logger.LogTrace       ("This is a message.");
-    logger.LogDebug       ("This is a message.");
-    logger.LogInformation ("This is a message.");
-    logger.LogWarning     ("This is a message.");
-    logger.LogError       ("This is a message.");
-    logger.LogCritical    ("This is a message.");
+    logger.Trace    ("This is a message."); // LogTrace      
+    logger.Debug    ("This is a message."); // LogDebug      
+    logger.Info     ("This is a message."); // LogInformation
+    logger.Warn     ("This is a message."); // LogWarning    
+    logger.Error    ("This is a message."); // LogError      
+    logger.Critical ("This is a message."); // LogCritical   
 
     s.Exception = Thrown();
 }
