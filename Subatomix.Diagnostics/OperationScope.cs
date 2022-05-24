@@ -67,6 +67,25 @@ public class OperationScope : IDisposable
     public string Name { get; }
 
     /// <summary>
+    ///   Gets whether the operation has completed.
+    /// </summary>
+    /// <remarks>
+    ///   The value of this property is <see langword="false"/> until the
+    ///   operation is disposed.  On disposal, the value transitions to
+    ///   <see langword="true"/>.
+    /// </remarks>
+    public bool IsCompleted { get; private set; }
+
+    /// <summary>
+    ///   Gets the duration of the operation.
+    /// </summary>
+    /// <remarks>
+    ///   The value of this property steadily increases until the operation
+    ///   is disposed.  After disposal, the value remains constant.
+    /// </remarks>
+    public TimeSpan Duration => _stopwatch.Elapsed;
+
+    /// <summary>
     ///   Gets or sets the exception associated with the operation, or
     ///   <see langword="null"/> if no exception is associated with the
     ///   operation.  The default is <see langword="null"/>.
@@ -193,6 +212,7 @@ public class OperationScope : IDisposable
     protected virtual void Start()
     {
         LogStarting();
+
         _stopwatch.Start();
     }
 
@@ -202,10 +222,13 @@ public class OperationScope : IDisposable
     /// </summary>
     protected virtual void Stop()
     {
-        if (!_stopwatch.IsRunning)
+        // Safe to call multiple times
+        _stopwatch.Stop();
+
+        if (IsCompleted)
             return;
 
-        _stopwatch.Stop();
+        IsCompleted = true;
         LogCompleted();
 
         _logScope.Dispose();

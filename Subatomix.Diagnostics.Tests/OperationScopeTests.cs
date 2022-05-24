@@ -117,6 +117,48 @@ public class OperationScopeTests
     }
 
     [Test]
+    public void IsCompleted_Get_NotCompleted()
+    {
+        using var s = new OperationScope(NullLogger.Instance, LogLevel.Debug, "a");
+
+        s.IsCompleted.Should().BeFalse();
+    }
+
+    [Test]
+    public void IsCompleted_Get_Completed()
+    {
+        using var s = new OperationScope(NullLogger.Instance, LogLevel.Debug, "a");
+
+        ((IDisposable) s).Dispose();
+
+        s.IsCompleted.Should().BeTrue();
+    }
+
+    [Test]
+    public async Task Duration_Get_NotCompleted()
+    {
+        using var s = new OperationScope(NullLogger.Instance, LogLevel.Debug, "a");
+
+        var previousDuration = s.Duration;
+        await Task.Delay(10.Milliseconds());
+
+        s.Duration.Should().BeGreaterThan(previousDuration);
+    }
+
+    [Test]
+    public async Task Duration_Get_Completed()
+    {
+        using var s = new OperationScope(NullLogger.Instance, LogLevel.Debug, "a");
+
+        ((IDisposable) s).Dispose();
+
+        var previousDuration = s.Duration;
+        await Task.Delay(10.Milliseconds());
+
+        s.Duration.Should().Be(previousDuration);
+    }
+
+    [Test]
     public void LogScope()
     {
         var logger = new TestLogger();
