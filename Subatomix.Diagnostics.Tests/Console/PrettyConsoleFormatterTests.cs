@@ -106,26 +106,26 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "[??:??:??] .....       : Message.")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] ..... trace : Message.")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] ..... debug : Message.")]
-    [TestCase(LogLevel.Information, "[??:??:??] ..... info  : Message.")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] ..... warn  : Message.")]
-    [TestCase(LogLevel.Error,       "[??:??:??] .....  ERR  : Message.")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] .....  RIP  : Message.")]
+    [TestCase(LogLevel.None,        "[??:??:??] .....     : Message.")]
+    [TestCase(LogLevel.Trace,       "[??:??:??] ..... trce: Message.")]
+    [TestCase(LogLevel.Debug,       "[??:??:??] ..... dbug: Message.")]
+    [TestCase(LogLevel.Information, "[??:??:??] ..... info: Message.")]
+    [TestCase(LogLevel.Warning,     "[??:??:??] ..... warn: Message.")]
+    [TestCase(LogLevel.Error,       "[??:??:??] ..... FAIL: Message.")]
+    [TestCase(LogLevel.Critical,    "[??:??:??] ..... CRIT: Message.")]
     public void Write_Message_Mono(LogLevel logLevel, string expected)
     {
         Write(logLevel).Should().Match(Lines(expected));
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "[??:??:??] #????       : Message.")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] #???? trace : Message.")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] #???? debug : Message.")]
-    [TestCase(LogLevel.Information, "[??:??:??] #???? info  : Message.")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] #???? warn  : Message.")]
-    [TestCase(LogLevel.Error,       "[??:??:??] #????  ERR  : Message.")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] #????  RIP  : Message.")]
+    [TestCase(LogLevel.None,        "[??:??:??] #????     : Message.")]
+    [TestCase(LogLevel.Trace,       "[??:??:??] #???? trce: Message.")]
+    [TestCase(LogLevel.Debug,       "[??:??:??] #???? dbug: Message.")]
+    [TestCase(LogLevel.Information, "[??:??:??] #???? info: Message.")]
+    [TestCase(LogLevel.Warning,     "[??:??:??] #???? warn: Message.")]
+    [TestCase(LogLevel.Error,       "[??:??:??] #???? FAIL: Message.")]
+    [TestCase(LogLevel.Critical,    "[??:??:??] #???? CRIT: Message.")]
     public void Write_Message_Mono_InActivity(LogLevel logLevel, string expected)
     {
         using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
@@ -134,26 +134,26 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243m      : Message.~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mtrace : Message.~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mdebug : Message.~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[39minfo  : Message.~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[33mwarn  : Message.~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;41;1m ERR ~[91;49m : Message.~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;45;1m RIP ~[95;49m : Message.~[0m")]
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243m    : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[39minfo: Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[33mwarn: Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
     public void Write_Message_Color(LogLevel logLevel, string expected)
     {
         Write(logLevel, colors: true).Should().Match(Lines(expected));
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243m      : Message.~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mtrace : Message.~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mdebug : Message.~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[39minfo  : Message.~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[33mwarn  : Message.~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;41;1m ERR ~[91;49m : Message.~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;45;1m RIP ~[95;49m : Message.~[0m")]
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243m    : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[39minfo: Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[33mwarn: Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
     public void Write_Message_Color_InActivity(LogLevel logLevel, string expected)
     {
         using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
@@ -175,7 +175,7 @@ public class PrettyConsoleFormatterTests
         var e = CreateThrownException();
 
         Write(message: message, exception: e).Should().Match(Lines(
-            "[??:??:??] ..... info  : System.ApplicationException: A test error was thrown.",
+            "[??:??:??] ..... info: System.ApplicationException: A test error was thrown.",
             "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }
@@ -186,7 +186,7 @@ public class PrettyConsoleFormatterTests
         var e = CreateThrownException();
 
         Write(exception: e).Should().Match(Lines(
-            "[??:??:??] ..... info  : Message. System.ApplicationException: A test error was thrown.",
+            "[??:??:??] ..... info: Message. System.ApplicationException: A test error was thrown.",
             "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
         ));
     }

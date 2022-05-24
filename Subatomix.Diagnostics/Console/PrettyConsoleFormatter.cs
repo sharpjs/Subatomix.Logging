@@ -181,9 +181,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     {
         styler.UseMessageStyle(writer);
 
-        writer.Write(' ');
-        writer.Write(':');
-        writer.Write(' ');
+        writer.Write(": ");
+    }
 
         if (!string.IsNullOrEmpty(message))
         {
@@ -236,13 +235,13 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     {
         return logLevel switch
         {
-            Trace       => "trace",
-            Debug       => "debug",
-            Information => "info ",
-            Warning     => "warn ",
-            Error       => " ERR ",
-            Critical    => " RIP ",
-            _           => "     ",
+            Trace       => "trce",
+            Debug       => "dbug",
+            Information => "info",
+            Warning     => "warn",
+            Error       => "FAIL",
+            Critical    => "CRIT",
+            _           => "    ",
         };
     }
 
