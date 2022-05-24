@@ -14,7 +14,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor.
+// Rationale: Configure method sets non-nullable fields to non-null values and is invoked from the constructor.
+
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
@@ -25,8 +29,8 @@ namespace Subatomix.Diagnostics.Console;
 
 using static LogLevel;
 
-#pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor.
-// Rationale: Configure method sets non-nullable fields to non-null values and is invoked from the constructor.
+using StringMessageFormatter = Func<TextWriter, string,              bool>;
+using CustomMessageFormatter = Func<TextWriter, IConsoleFormattable, bool>;
 
 /// <summary>
 ///   A prettier formatter than <see cref="SimpleConsoleFormatter"/>.
@@ -47,8 +51,21 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// </summary>
     public new const string Name = "pretty";
 
+    // Subformatters for string messages
+    private static readonly StringMessageFormatter
+        EmptyMessageFormatter  = WriteEmpty,
+        StringMessageFormatter = WriteString;
+
+    // Subformatters for IConsoleFormattable messages
+    private static readonly CustomMessageFormatter
+        CustomMessageFormatterMono  = WriteCustomMono,
+        CustomMessageFormatterColor = WriteCustomColor;
+
     // Delegate that decides which styler to use
     private Func<LogLevel, Styler> _stylerSelector;
+
+    // Active subformatter for IConsoleFormattable messages
+    private CustomMessageFormatter _customMessageFormatter;
 
     // Opaque token representing subscription to options change notifications
     private readonly IDisposable _optionsChangeToken;
@@ -116,6 +133,10 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         _stylerSelector = IsColorEnabled
             ? GetColorStyler
             : GetMonoStyler;
+
+        _customMessageFormatter = IsColorEnabled
+            ? CustomMessageFormatterColor
+            : CustomMessageFormatterMono;
     }
 
     /// <inheritdoc/>>
@@ -127,16 +148,44 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         // Example:
         // [23:59:59] #4c9b info: This is the message.
 
-        var message = entry.Formatter?.Invoke(entry.State, entry.Exception);
-        if ((message, entry.Exception) is (null, null))
-            return;
+        if (entry.State is IConsoleFormattable custom)
+        {
+            Write(entry, writer, custom, _customMessageFormatter);
+        }
+        else if (TryGetMessage(entry, out var message))
+        {
+            Write(entry, writer, message, StringMessageFormatter);
+        }
+        else if (entry.Exception is not null)
+        {
+            Write(entry, writer, null!, EmptyMessageFormatter);
+        }
+    }
 
+    private static bool TryGetMessage<TState>(
+        in LogEntry<TState> entry,
+        [MaybeNullWhen(false)] out string message)
+    {
+        message = entry.Formatter?.Invoke(entry.State, entry.Exception);
+        return !string.IsNullOrEmpty(message);
+    }
+
+    private void Write<TState, TMessage>(
+        in LogEntry<TState>              entry,
+        TextWriter                       writer,
+        TMessage                         message,
+        Func<TextWriter, TMessage, bool> messageFormatter)
+    {
         var styler = _stylerSelector(entry.LogLevel);
 
         WriteTimestamp(writer, styler, Clock.Now);
         WriteTraceId  (writer, styler);
-        WriteLogLevel (writer, styler,          entry.LogLevel);
-        WriteMessage  (writer, styler, message, entry.Exception);
+        WriteLogLevel (writer, styler, entry.LogLevel);
+        WriteSeparator(writer, styler);
+
+        var wroteMessage = messageFormatter(writer, message);
+
+        WriteException(writer, styler, entry.Exception, wroteMessage);
         WriteEndOfLine(writer, styler);
     }
 
@@ -177,23 +226,46 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(Format(logLevel)); 
     }
 
-    private static void WriteMessage(TextWriter writer, Styler styler, string? message, Exception? exception)
+    private static void WriteSeparator(TextWriter writer, Styler styler)
     {
         styler.UseMessageStyle(writer);
 
         writer.Write(": ");
     }
 
-        if (!string.IsNullOrEmpty(message))
-        {
-            writer.Write(message);
+    private static bool WriteEmpty(TextWriter writer, string message)
+    {
+        return false;
+    }
 
-            if (exception is not null)
-                writer.Write(' ');
-        }
+    private static bool WriteString(TextWriter writer, string message)
+    {
+        writer.Write(message);
+        return true;
+    }
 
-        if (exception is not null)
-            writer.Write(exception.ToString());
+    private static bool WriteCustomMono(TextWriter writer, IConsoleFormattable message)
+    {
+        return message.Write(writer, color: false);
+    }
+
+    private static bool WriteCustomColor(TextWriter writer, IConsoleFormattable message)
+    {
+        return message.Write(writer, color: true);
+    }
+
+    private static void WriteException(TextWriter writer, Styler styler,
+        Exception? exception, bool wroteMessage)
+    {
+        if (exception is null)
+            return;
+
+        styler.UseMessageStyle(writer);
+
+        if (wroteMessage)
+            writer.Write(' ');
+
+        writer.Write(exception.ToString());
     }
 
     private static void WriteEndOfLine(TextWriter writer, Styler styler)
