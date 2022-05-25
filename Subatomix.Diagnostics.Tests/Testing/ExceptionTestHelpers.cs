@@ -53,7 +53,7 @@ internal static class ExceptionTestHelpers
     {
         try
         {
-            throw new InvalidOperationException(message);
+            throw new ApplicationException(message);
         }
         catch (Exception e)
         {
@@ -74,7 +74,7 @@ internal static class ExceptionTestHelpers
     {
         try
         {
-            throw new InvalidOperationException(message, innerException);
+            throw new ApplicationException(message, innerException);
         }
         catch (Exception e)
         {

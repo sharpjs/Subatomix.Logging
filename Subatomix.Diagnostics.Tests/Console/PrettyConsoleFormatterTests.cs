@@ -15,6 +15,7 @@
 */
 
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -25,13 +26,15 @@ using Subatomix.Testing;
 
 namespace Subatomix.Diagnostics.Console;
 
-using Options      = PrettyConsoleFormatterOptions;
-using Subformatter = Func<string?, Exception?, string>;
+using Color = LoggerColorBehavior;
 
 [TestFixture]
 [SetCulture("kl-GL")] // Kalaallisut (Greenland), to verify nonreliance on en-US
 public class PrettyConsoleFormatterTests
 {
+    private const string
+        UseNullSubformatter = nameof(UseNullSubformatter);
+
     [Test]
     public void Construct_NullOptions()
     {
@@ -45,7 +48,7 @@ public class PrettyConsoleFormatterTests
         using var h = new TestHarness();
 
         var optionsA = h.Options.CurrentValue;
-        var optionsB = new Options();
+        var optionsB = new PrettyConsoleFormatterOptions();
 
         h.Formatter.Options.Should().BeSameAs(optionsA);
 
@@ -72,9 +75,9 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(LoggerColorBehavior.Disabled, false)]
-    [TestCase(LoggerColorBehavior.Enabled,  true )]
-    public void IsColorEnabled_Explicit(LoggerColorBehavior behavior, bool expected)
+    [TestCase(Color.Disabled, false)]
+    [TestCase(Color.Enabled,  true )]
+    public void IsColorEnabled_Explicit(Color behavior, bool expected)
     {
         using var h = new TestHarness(o => o.ColorBehavior = behavior);
 
@@ -106,26 +109,35 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "[??:??:??] .....     : Message.")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] ..... trce: Message.")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] ..... dbug: Message.")]
-    [TestCase(LogLevel.Information, "[??:??:??] ..... info: Message.")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] ..... warn: Message.")]
-    [TestCase(LogLevel.Error,       "[??:??:??] ..... FAIL: Message.")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] ..... CRIT: Message.")]
-    public void Write_Message_Mono(LogLevel logLevel, string expected)
+    [TestCase(UseNullSubformatter)]
+    [TestCase(null)]
+    [TestCase("")]
+    public void Write_Message_None(string? message)
     {
-        Write(logLevel).Should().Match(Lines(expected));
+        Write(message: message).Should().BeEmpty();
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "[??:??:??] #????     : Message.")]
-    [TestCase(LogLevel.Trace,       "[??:??:??] #???? trce: Message.")]
-    [TestCase(LogLevel.Debug,       "[??:??:??] #???? dbug: Message.")]
-    [TestCase(LogLevel.Information, "[??:??:??] #???? info: Message.")]
-    [TestCase(LogLevel.Warning,     "[??:??:??] #???? warn: Message.")]
-    [TestCase(LogLevel.Error,       "[??:??:??] #???? FAIL: Message.")]
-    [TestCase(LogLevel.Critical,    "[??:??:??] #???? CRIT: Message.")]
+    [TestCase(LogLevel.None,        "[01:23:45] .....     : Message.")]
+    [TestCase(LogLevel.Trace,       "[01:23:45] ..... trce: Message.")]
+    [TestCase(LogLevel.Debug,       "[01:23:45] ..... dbug: Message.")]
+    [TestCase(LogLevel.Information, "[01:23:45] ..... info: Message.")]
+    [TestCase(LogLevel.Warning,     "[01:23:45] ..... warn: Message.")]
+    [TestCase(LogLevel.Error,       "[01:23:45] ..... FAIL: Message.")]
+    [TestCase(LogLevel.Critical,    "[01:23:45] ..... CRIT: Message.")]
+    public void Write_Message_Mono(LogLevel logLevel, string expected)
+    {
+        Write(logLevel).Should().Be(Lines(expected));
+    }
+
+    [Test]
+    [TestCase(LogLevel.None,        "[01:23:45] #????     : Message.")]
+    [TestCase(LogLevel.Trace,       "[01:23:45] #???? trce: Message.")]
+    [TestCase(LogLevel.Debug,       "[01:23:45] #???? dbug: Message.")]
+    [TestCase(LogLevel.Information, "[01:23:45] #???? info: Message.")]
+    [TestCase(LogLevel.Warning,     "[01:23:45] #???? warn: Message.")]
+    [TestCase(LogLevel.Error,       "[01:23:45] #???? FAIL: Message.")]
+    [TestCase(LogLevel.Critical,    "[01:23:45] #???? CRIT: Message.")]
     public void Write_Message_Mono_InActivity(LogLevel logLevel, string expected)
     {
         using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
@@ -134,91 +146,109 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243m    : Message.~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Message.~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Message.~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[39minfo: Message.~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[33mwarn: Message.~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
     public void Write_Message_Color(LogLevel logLevel, string expected)
     {
-        Write(logLevel, colors: true).Should().Match(Lines(expected));
+        Write(logLevel, color: true).Should().Be(Lines(expected));
     }
 
     [Test]
-    [TestCase(LogLevel.None,        "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243m    : Message.~[0m")]
-    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: Message.~[0m")]
-    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[??:??:??] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: Message.~[0m")]
-    [TestCase(LogLevel.Information, "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[39minfo: Message.~[0m")]
-    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[33mwarn: Message.~[0m")]
-    [TestCase(LogLevel.Error,       "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
-    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[??:??:??] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : Message.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: Message.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: Message.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: Message.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: Message.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
     public void Write_Message_Color_InActivity(LogLevel logLevel, string expected)
     {
         using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
 
-        Write(logLevel, colors: true).Should().Match(Lines(expected));
+        Write(logLevel, color: true).Should().Match(Lines(expected));
     }
 
     [Test]
-    public void Write_Nothing()
-    {
-        Write(message: null).Should().BeEmpty();
-    }
-
-    [Test]
+    [TestCase(UseNullSubformatter)]
     [TestCase(null)]
     [TestCase("")]
     public void Write_Exception(string? message)
     {
-        var e = CreateThrownException();
+        var e = ExceptionTestHelpers.Thrown();
 
         Write(message: message, exception: e).Should().Match(Lines(
-            "[??:??:??] ..... info: System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
+            "[01:23:45] ..... info: System.ApplicationException: A test exception was thrown.",
+            "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"
         ));
     }
 
     [Test]
     public void Write_MessageAndException()
     {
-        var e = CreateThrownException();
+        var e = ExceptionTestHelpers.Thrown();
 
         Write(exception: e).Should().Match(Lines(
-            "[??:??:??] ..... info: Message. System.ApplicationException: A test error was thrown.",
-            "   at Subatomix.Diagnostics.Console.PrettyConsoleFormatterTests.CreateThrownException()*"
+            "[01:23:45] ..... info: Message. System.ApplicationException: A test exception was thrown.",
+            "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"
         ));
+    }
+
+    [Test]
+    [TestCase(LogLevel.None,        "[01:23:45] .....     : Formattable.")]
+    [TestCase(LogLevel.Trace,       "[01:23:45] ..... trce: Formattable.")]
+    [TestCase(LogLevel.Debug,       "[01:23:45] ..... dbug: Formattable.")]
+    [TestCase(LogLevel.Information, "[01:23:45] ..... info: Formattable.")]
+    [TestCase(LogLevel.Warning,     "[01:23:45] ..... warn: Formattable.")]
+    [TestCase(LogLevel.Error,       "[01:23:45] ..... FAIL: Formattable.")]
+    [TestCase(LogLevel.Critical,    "[01:23:45] ..... CRIT: Formattable.")]
+    public void Write_Formattable_Mono(LogLevel logLevel, string expected)
+    {
+        WriteFormattable(logLevel).Should().Be(Lines(expected));
+    }
+
+    [Test]
+    [TestCase(LogLevel.None,        "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : Formattable.~[0m")]
+    [TestCase(LogLevel.Trace,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Formattable.~[0m")]
+    [TestCase(LogLevel.Debug,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Formattable.~[0m")]
+    [TestCase(LogLevel.Information, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: Formattable.~[0m")]
+    [TestCase(LogLevel.Warning,     "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: Formattable.~[0m")]
+    [TestCase(LogLevel.Error,       "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Formattable.~[0m")]
+    [TestCase(LogLevel.Critical,    "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Formattable.~[0m")]
+    public void Write_Formattable_Color(LogLevel logLevel, string expected)
+    {
+        WriteFormattable(logLevel, color: true).Should().Be(Lines(expected));
     }
 
     private string Write(
         LogLevel   logLevel  = LogLevel.Information,
-        bool       colors    = false,
+        bool       color     = false,
         string?    message   = "Message.",
         Exception? exception = null)
     {
-        var behavior = colors
-            ? LoggerColorBehavior.Enabled
-            : LoggerColorBehavior.Disabled;
+        using var h = new TestHarness(color).AtConstantTime();
 
-        using var h = new TestHarness(o => o.ColorBehavior = behavior);
+        var entry = h.CreateEntry(logLevel, message, exception);
 
-        h.Formatter.Clock = TestClock;
+        return h.Write(entry);
+    }
 
-        // Cover both ways in which entry.Formatter can yield a null message
-        var subformatter = (message, exception) is (null, null)
-            ? null                                      // case A: .Formatter is null
-            : h.CreateSubformatter(message, exception); // case B: .Formatter might return null
+    private string WriteFormattable(
+        LogLevel   logLevel  = LogLevel.Information,
+        bool       color     = false,
+        string     content   = "Formattable.",
+        Exception? exception = null)
+    {
+        using var h = new TestHarness(color).AtConstantTime();
 
-        var entry = new LogEntry<string?>(
-            logLevel, "category", eventId: 42, message, exception, subformatter!
-        );
+        var state = h.CreateFormattable(content, color);
+        var entry = h.CreateEntry(logLevel, state, exception);
 
-        using var writer = new StringWriter();
-
-        h.Formatter.Write(entry, h.Scopes, writer);
-
-        return writer.ToString().Replace('\x1B', '~');
+        return h.AtConstantTime().Write(entry);
     }
 
     private static string Lines(string line)
@@ -241,28 +271,21 @@ public class PrettyConsoleFormatterTests
         return sb.ToString();
     }
 
-    private static Exception CreateThrownException()
-    {
-        try { throw new ApplicationException("A test error was thrown."); }
-        catch (Exception e) { return e; }
-    }
-
-    private readonly TestClock TestClock = new()
-    {
-        Now = DateTime.UtcNow.Date + new TimeSpan(1, 23, 45)
-    };
-
     private class TestHarness : TestHarnessBase
     {
-        public TestOptionsMonitor<Options> Options { get; }
+        public TestOptionsMonitor<PrettyConsoleFormatterOptions> Options { get; }
 
         public IExternalScopeProvider Scopes { get; }
 
         public PrettyConsoleFormatter Formatter { get; }
 
-        public TestHarness(Action<Options>? configure = null)
+        public TestHarness(bool colors)
+            : this(o => o.ColorBehavior = colors ? Color.Enabled : Color.Disabled)
+        { }
+
+        public TestHarness(Action<PrettyConsoleFormatterOptions>? configure = null)
         {
-            Options = new TestOptionsMonitor<Options>(Mocks);
+            Options = new(Mocks);
             configure?.Invoke(Options.CurrentValue);
 
             Scopes = Mocks.Create<IExternalScopeProvider>().Object;
@@ -270,15 +293,83 @@ public class PrettyConsoleFormatterTests
             Formatter = new PrettyConsoleFormatter(Options);
         }
 
-        public Subformatter CreateSubformatter(string? message, Exception? exception)
+        public TestHarness AtConstantTime()
         {
-            var mock = Mocks.Create<Subformatter>();
+            Formatter.Clock = new TestClock { Now = new(2022, 5, 24, 1, 23, 45, 678) };
+            return this;
+        }
 
-            mock.Setup(f => f(message, exception))
-                .Returns(message!)
+        public LogEntry<string?> CreateEntry(
+            LogLevel logLevel, string? message, Exception? exception)
+        {
+            var category  = Random.GetString(); // to prove it is not used
+            var eventId   = Random.Next();      // to prove it is not used
+            var formatter = CreateSubformatter(message, exception);
+
+            return new(logLevel, category, eventId, message, exception, formatter!);
+        }
+
+        public LogEntry<object> CreateEntry(
+            LogLevel logLevel, IConsoleFormattable custom, Exception? exception)
+        {
+            var state     = (object) custom;
+            var category  = Random.GetString(); // to prove it is not used
+            var eventId   = Random.Next();      // to prove it is not used
+
+            return new(logLevel, category, eventId, state, exception, ThrowingFormatter);
+        }
+
+        public Func<string?, Exception?, string>?
+            CreateSubformatter(string? message, Exception? exception)
+        {
+            if (message == UseNullSubformatter)
+                return null;
+
+            return (s, e) =>
+            {
+                s.Should().Be(message);
+                e.Should().Be(exception);
+                return message!; // Need to test null return, even if type does not allow it
+            };
+        }
+
+        [DoesNotReturn]
+        private static string ThrowingFormatter(object state, Exception? exception)
+        {
+            throw new AssertionException("This test should not invoke the entry's formatter.");
+        }
+
+        public IConsoleFormattable CreateFormattable(string content, bool expectedColor = false)
+        {
+            var formattable = Mocks.Create<IConsoleFormattable>();
+
+            void Write(TextWriter writer, bool color)
+            {
+                color.Should().Be(expectedColor);
+                writer.Write(content);
+            }
+
+            var result = !string.IsNullOrEmpty(content);
+
+            formattable
+                .Setup(o => o.Write(
+                    It.IsNotNull<TextWriter>(),
+                    It.IsAny<bool>()
+                ))
+                .Callback(Write)
+                .Returns(result)
                 .Verifiable();
 
-            return mock.Object;
+            return formattable.Object;
+        }
+
+        public string Write<TState>(in LogEntry<TState> entry)
+        {
+            using var writer = new StringWriter();
+
+            Formatter.Write(entry, Scopes, writer);
+
+            return writer.ToString().Replace('\x1B', '~');
         }
 
         protected override void Verify()

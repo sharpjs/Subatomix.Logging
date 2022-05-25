@@ -29,8 +29,8 @@ namespace Subatomix.Diagnostics.Console;
 
 using static LogLevel;
 
-using StringMessageFormatter = Func<TextWriter, string,              bool>;
-using CustomMessageFormatter = Func<TextWriter, IConsoleFormattable, bool>;
+using MessageWriter     = Func<TextWriter, string,              bool>;
+using FormattableWriter = Func<TextWriter, IConsoleFormattable, bool>;
 
 /// <summary>
 ///   A prettier formatter than <see cref="SimpleConsoleFormatter"/>.
@@ -51,21 +51,21 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// </summary>
     public new const string Name = "pretty";
 
-    // Subformatters for string messages
-    private static readonly StringMessageFormatter
-        EmptyMessageFormatter  = WriteEmpty,
-        StringMessageFormatter = WriteString;
+    // Writers for string messages
+    private static readonly MessageWriter
+        EmptyMessageWriter  = WriteEmpty,
+        StringMessageWriter = WriteString;
 
-    // Subformatters for IConsoleFormattable messages
-    private static readonly CustomMessageFormatter
-        CustomMessageFormatterMono  = WriteCustomMono,
-        CustomMessageFormatterColor = WriteCustomColor;
+    // Writers for IConsoleFormattable objects
+    private static readonly FormattableWriter
+        FormattableWriterMono  = WriteFormattableMono,
+        FormattableWriterColor = WriteFormattableColor;
 
     // Delegate that decides which styler to use
     private Func<LogLevel, Styler> _stylerSelector;
 
-    // Active subformatter for IConsoleFormattable messages
-    private CustomMessageFormatter _customMessageFormatter;
+    // Active writer for IConsoleFormattable objects
+    private FormattableWriter _formattableWriter;
 
     // Opaque token representing subscription to options change notifications
     private readonly IDisposable _optionsChangeToken;
@@ -134,9 +134,9 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
             ? GetColorStyler
             : GetMonoStyler;
 
-        _customMessageFormatter = IsColorEnabled
-            ? CustomMessageFormatterColor
-            : CustomMessageFormatterMono;
+        _formattableWriter = IsColorEnabled
+            ? FormattableWriterColor
+            : FormattableWriterMono;
     }
 
     /// <inheritdoc/>>
@@ -148,17 +148,17 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         // Example:
         // [23:59:59] #4c9b info: This is the message.
 
-        if (entry.State is IConsoleFormattable custom)
+        if (entry.State is IConsoleFormattable formattable)
         {
-            Write(entry, writer, custom, _customMessageFormatter);
+            Write(entry, writer, formattable, _formattableWriter);
         }
         else if (TryGetMessage(entry, out var message))
         {
-            Write(entry, writer, message, StringMessageFormatter);
+            Write(entry, writer, message, StringMessageWriter);
         }
         else if (entry.Exception is not null)
         {
-            Write(entry, writer, null!, EmptyMessageFormatter);
+            Write(entry, writer, null!, EmptyMessageWriter);
         }
     }
 
@@ -174,7 +174,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         in LogEntry<TState>              entry,
         TextWriter                       writer,
         TMessage                         message,
-        Func<TextWriter, TMessage, bool> messageFormatter)
+        Func<TextWriter, TMessage, bool> messageWriter)
     {
         var styler = _stylerSelector(entry.LogLevel);
 
@@ -183,7 +183,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         WriteLogLevel (writer, styler, entry.LogLevel);
         WriteSeparator(writer, styler);
 
-        var wroteMessage = messageFormatter(writer, message);
+        var wroteMessage = messageWriter(writer, message);
 
         WriteException(writer, styler, entry.Exception, wroteMessage);
         WriteEndOfLine(writer, styler);
@@ -244,12 +244,12 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         return true;
     }
 
-    private static bool WriteCustomMono(TextWriter writer, IConsoleFormattable message)
+    private static bool WriteFormattableMono(TextWriter writer, IConsoleFormattable message)
     {
         return message.Write(writer, color: false);
     }
 
-    private static bool WriteCustomColor(TextWriter writer, IConsoleFormattable message)
+    private static bool WriteFormattableColor(TextWriter writer, IConsoleFormattable message)
     {
         return message.Write(writer, color: true);
     }
