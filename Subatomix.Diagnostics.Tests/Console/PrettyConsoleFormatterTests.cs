@@ -261,7 +261,7 @@ public class PrettyConsoleFormatterTests
 
         result.Should().Match(Lines(expected));
         result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
-        //result.Should().NotContain(@"#0000");
+        result.Should().NotContain(@"#0000");
     }
 
     [Test]
@@ -315,7 +315,7 @@ public class PrettyConsoleFormatterTests
 
         result.Should().Match(Lines(expected));
         result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
-        //result.Should().NotContain(@"#0000");
+        result.Should().NotContain(@"#0000");
     }
 
     public static TestCaseData Case(

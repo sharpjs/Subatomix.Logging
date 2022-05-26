@@ -204,19 +204,43 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     {
         styler.UseTraceIdStyle(writer);
 
-        if (Activity.Current is { } activity)
-        {
-            var (byte0, byte1) = GetShortTraceId(activity);
+        var activity = Activity.Current;
 
-            writer.Write('#');
-            WriteHex(writer, byte0);
-            WriteHex(writer, byte1);
-            writer.Write(' ');
-        }
-        else
+        if (activity is { IdFormat: ActivityIdFormat.W3C })
         {
-            writer.Write("..... ");
+            WriteTraceId(writer, activity.TraceId.ToHexString());
         }
+        else if (activity is { IdFormat: ActivityIdFormat.Hierarchical })
+        {
+            WriteTraceId(writer, activity.RootId ?? "0000");
+        }
+        else // (activity is null || activity.IdFormat is unrecognized)
+        {
+            WriteTraceIdEmpty(writer);
+        }
+    }
+
+    private static void WriteTraceId(TextWriter writer, string id)
+    {
+        Span<char> chars = stackalloc char[4];
+
+        GetShortId(id, chars);
+
+        writer.Write('#');
+#if NET6_0_OR_GREATER
+        writer.Write(chars);
+#else
+        writer.Write(chars[0]);
+        writer.Write(chars[1]);
+        writer.Write(chars[2]);
+        writer.Write(chars[3]);
+#endif
+        writer.Write(' ');
+    }
+
+    private static void WriteTraceIdEmpty(TextWriter writer)
+    {
+        writer.Write("..... ");
     }
 
     private static void WriteLogLevel(TextWriter writer, Styler styler, LogLevel logLevel)
@@ -283,24 +307,22 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(value);
     }
 
-    private static void WriteHex(TextWriter writer, byte value)
+    private static void GetShortId(string? id, Span<char> chars)
     {
-        WriteHexDigit(writer, value >> 4);
-        WriteHexDigit(writer, value     );
-    }
+        var index = 0;
 
-    private static void WriteHexDigit(TextWriter writer, int value)
-    {
-        writer.Write(HexDigits[value & 0xF]);
-    }
+        foreach (char c in id ?? "")
+        {
+            if (index >= chars.Length)
+                break;
 
-    private static (byte, byte) GetShortTraceId(Activity activity)
-    {
-        Span<byte> id = stackalloc byte[16];
+            if (!char.IsLetterOrDigit(c))
+                continue;
 
-        activity.TraceId.CopyTo(id);
+            chars[index++] = c;
+        }
 
-        return (id[14], id[15]);
+        chars.Slice(index).Fill('.');
     }
 
     private static string Format(LogLevel logLevel)
@@ -335,12 +357,4 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
             _           => Styler.Verbose,
         };
     }
-
-    private static readonly char[] HexDigits =
-    {
-        '0', '1', '2', '3',
-        '4', '5', '6', '7',
-        '8', '9', 'a', 'b',
-        'c', 'd', 'e', 'f'
-    };
 }
