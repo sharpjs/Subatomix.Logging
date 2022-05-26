@@ -53,8 +53,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
 
     // Writers for string messages
     private static readonly MessageWriter
-        EmptyMessageWriter  = WriteEmpty,
-        StringMessageWriter = WriteString;
+        EmptyMessageWriter  = WriteEmptyMessage,
+        StringMessageWriter = WriteStringMessage;
 
     // Writers for IConsoleFormattable objects
     private static readonly FormattableWriter
@@ -233,12 +233,12 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(": ");
     }
 
-    private static bool WriteEmpty(TextWriter writer, string message)
+    private static bool WriteEmptyMessage(TextWriter writer, string message)
     {
         return false;
     }
 
-    private static bool WriteString(TextWriter writer, string message)
+    private static bool WriteStringMessage(TextWriter writer, string message)
     {
         writer.Write(message);
         return true;
