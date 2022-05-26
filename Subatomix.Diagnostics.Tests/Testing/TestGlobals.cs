@@ -14,6 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using System.Text;
 using NUnit.Framework.Internal;
 
 namespace Subatomix.Testing;
@@ -28,4 +29,37 @@ internal static class TestGlobals
     ///   <see cref="TestContext"/>.
     /// </summary>
     public static Randomizer Any => TestContext.CurrentContext.Random;
+
+    /// <summary>
+    ///   Appends <see cref="Environment.NewLine"/> to the specified string.
+    /// </summary>
+    /// <param name="line">
+    ///   The string to which to append <see cref="Environment.NewLine"/>.
+    /// </param>
+    public static string Lines(string line)
+    {
+        return line + Environment.NewLine;
+    }
+
+    /// <summary>
+    ///   Concatenates the specified strings, appending
+    ///   <see cref="Environment.NewLine"/> to each.
+    /// </summary>
+    /// <param name="lines">
+    ///   The strings to concatenate.
+    /// </param>
+    public static string Lines(params string[] lines)
+    {
+        var length = 0;
+
+        foreach (var line in lines)
+            length += line.Length + Environment.NewLine.Length;
+
+        var sb = new StringBuilder(length);
+
+        foreach (var line in lines)
+            sb.AppendLine(line);
+
+        return sb.ToString();
+    }
 }

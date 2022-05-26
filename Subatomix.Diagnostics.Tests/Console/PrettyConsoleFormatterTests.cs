@@ -16,7 +16,6 @@
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
@@ -26,8 +25,9 @@ using Subatomix.Testing;
 
 namespace Subatomix.Diagnostics.Console;
 
-using Color = LoggerColorBehavior;
+using static ExceptionTestHelpers;
 using static LogLevel;
+using Color = LoggerColorBehavior;
 
 [TestFixture]
 [SetCulture("kl-GL")] // Kalaallisut (Greenland), to verify nonreliance on en-US
@@ -109,182 +109,159 @@ public class PrettyConsoleFormatterTests
         h.Formatter.Clock.Should().BeSameAs(UtcClock.Instance);
     }
 
-    [Test]
-    //
-    [TestCase(None,        false, "Message.",          false, "[01:23:45] .....     : Message.")]
-    [TestCase(Trace,       false, "Message.",          false, "[01:23:45] ..... trce: Message.")]
-    [TestCase(Debug,       false, "Message.",          false, "[01:23:45] ..... dbug: Message.")]
-    [TestCase(Information, false, "Message.",          false, "[01:23:45] ..... info: Message.")]
-    [TestCase(Warning,     false, "Message.",          false, "[01:23:45] ..... warn: Message.")]
-    [TestCase(Error,       false, "Message.",          false, "[01:23:45] ..... FAIL: Message.")]
-    [TestCase(Critical,    false, "Message.",          false, "[01:23:45] ..... CRIT: Message.")]
-    //
-    [TestCase(None,        false, "Message.",          true,  "[01:23:45] .....     : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, "Message.",          true,  "[01:23:45] ..... trce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, "Message.",          true,  "[01:23:45] ..... dbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, "Message.",          true,  "[01:23:45] ..... info: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, "Message.",          true,  "[01:23:45] ..... warn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, "Message.",          true,  "[01:23:45] ..... FAIL: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, "Message.",          true,  "[01:23:45] ..... CRIT: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, "",                  true,  "[01:23:45] .....     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, "",                  true,  "[01:23:45] ..... trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, "",                  true,  "[01:23:45] ..... dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, "",                  true,  "[01:23:45] ..... info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, "",                  true,  "[01:23:45] ..... warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, "",                  true,  "[01:23:45] ..... FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, "",                  true,  "[01:23:45] ..... CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, null,                true,  "[01:23:45] .....     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, null,                true,  "[01:23:45] ..... trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, null,                true,  "[01:23:45] ..... dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, null,                true,  "[01:23:45] ..... info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, null,                true,  "[01:23:45] ..... warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, null,                true,  "[01:23:45] ..... FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, null,                true,  "[01:23:45] ..... CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, UseNullSubformatter, true,  "[01:23:45] .....     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, UseNullSubformatter, true,  "[01:23:45] ..... trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, UseNullSubformatter, true,  "[01:23:45] ..... dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, UseNullSubformatter, true,  "[01:23:45] ..... info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, UseNullSubformatter, true,  "[01:23:45] ..... warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, UseNullSubformatter, true,  "[01:23:45] ..... FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, UseNullSubformatter, true,  "[01:23:45] ..... CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : Message.~[0m")]
-    [TestCase(Trace,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Message.~[0m")]
-    [TestCase(Debug,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Message.~[0m")]
-    [TestCase(Information, true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: Message.~[0m")]
-    [TestCase(Warning,     true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: Message.~[0m")]
-    [TestCase(Error,       true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
-    [TestCase(Critical,    true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
-    //
-    [TestCase(None,        true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Message.~[91;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Message.~[95;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //
-    [TestCase(None,        true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //                            
-    [TestCase(None,        true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //                            
-    [TestCase(None,        true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    public void Write_Message(LogLevel logLevel, bool color, string? message, bool thrown, params string[] expected)
+    public static IEnumerable<TestCaseData> WriteTestCases_Normal => new[]
     {
-        var exception = thrown ? ExceptionTestHelpers.Thrown() : null;
+        // Mono
 
-        Write(logLevel, color, message, exception).Should().Match(Lines(expected));
+        // Message only
+        Case(None,        false, "Message.",          false, "[01:23:45] ?????     : Message."),
+        Case(Trace,       false, "Message.",          false, "[01:23:45] ????? trce: Message."),
+        Case(Debug,       false, "Message.",          false, "[01:23:45] ????? dbug: Message."),
+        Case(Information, false, "Message.",          false, "[01:23:45] ????? info: Message."),
+        Case(Warning,     false, "Message.",          false, "[01:23:45] ????? warn: Message."),
+        Case(Error,       false, "Message.",          false, "[01:23:45] ????? FAIL: Message."),
+        Case(Critical,    false, "Message.",          false, "[01:23:45] ????? CRIT: Message."),
+
+        // Message and exception
+        Case(None,        false, "Message.",          true,  "[01:23:45] ?????     : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Trace,       false, "Message.",          true,  "[01:23:45] ????? trce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Debug,       false, "Message.",          true,  "[01:23:45] ????? dbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Information, false, "Message.",          true,  "[01:23:45] ????? info: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Warning,     false, "Message.",          true,  "[01:23:45] ????? warn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Error,       false, "Message.",          true,  "[01:23:45] ????? FAIL: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Critical,    false, "Message.",          true,  "[01:23:45] ????? CRIT: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+
+        // Exception only
+        Case(None,        false, "",                  true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Trace,       false, "",                  true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Debug,       false, "",                  true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Information, false, "",                  true,  "[01:23:45] ????? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Warning,     false, "",                  true,  "[01:23:45] ????? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Error,       false, "",                  true,  "[01:23:45] ????? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Critical,    false, "",                  true,  "[01:23:45] ????? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+
+        // Color
+
+        // Message only
+        Case(None,        true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : Message.~[0m"),
+        Case(Trace,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: Message.~[0m"),
+        Case(Debug,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: Message.~[0m"),
+        Case(Information, true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[39minfo: Message.~[0m"),
+        Case(Warning,     true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[33mwarn: Message.~[0m"),
+        Case(Error,       true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;41;1mFAIL~[91;49m: Message.~[0m"),
+        Case(Critical,    true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: Message.~[0m"),
+
+        // Message and exception
+        Case(None,        true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Trace,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Debug,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Information, true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[39minfo: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Warning,     true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[33mwarn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Error,       true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;41;1mFAIL~[91;49m: Message.~[91;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Critical,    true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: Message.~[95;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+
+        // Exception only
+        Case(None,        true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Trace,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Debug,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Information, true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Warning,     true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Error,       true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Critical,    true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+    };
+
+    public static IEnumerable<TestCaseData> WriteTestCases_NullStateOrFormatter => new[]
+    {
+        // Mono
+
+        // Exception only (entry.State is null)
+        Case(None,        false, null,                true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Trace,       false, null,                true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Debug,       false, null,                true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Information, false, null,                true,  "[01:23:45] ????? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Warning,     false, null,                true,  "[01:23:45] ????? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Error,       false, null,                true,  "[01:23:45] ????? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Critical,    false, null,                true,  "[01:23:45] ????? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+
+        // Exception only (entry.Formatter is null)
+        Case(None,        false, UseNullSubformatter, true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Trace,       false, UseNullSubformatter, true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Debug,       false, UseNullSubformatter, true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Information, false, UseNullSubformatter, true,  "[01:23:45] ????? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Warning,     false, UseNullSubformatter, true,  "[01:23:45] ????? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Error,       false, UseNullSubformatter, true,  "[01:23:45] ????? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+        Case(Critical,    false, UseNullSubformatter, true,  "[01:23:45] ????? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
+
+        // Color
+                            
+        // Exception only (entry.State is null)
+        Case(None,        true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Trace,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Debug,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Information, true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Warning,     true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Error,       true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Critical,    true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+                            
+        // Exception only (entry.Formatter is null)
+        Case(None,        true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Trace,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Debug,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Information, true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Warning,     true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Error,       true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+        Case(Critical,    true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
+    };
+
+    public static IEnumerable<TestCaseData> WriteMessageTestCases
+        => Enumerable.Concat(
+            WriteTestCases_Normal,
+            WriteTestCases_NullStateOrFormatter
+        );
+
+    [Test]
+    [TestCaseSource(nameof(WriteMessageTestCases))]
+    public void Write_Message_NotInActivity(
+        LogLevel logLevel, bool color, string? message, bool exceptional,
+        params string[] expected)
+    {
+        var result = Write(logLevel, color, message, exceptional);
+
+        result.Should().Match(Lines(expected));
     }
 
     [Test]
-    //
-    [TestCase(None,        false, "Message.",          false, "[01:23:45] #????     : Message.")]
-    [TestCase(Trace,       false, "Message.",          false, "[01:23:45] #???? trce: Message.")]
-    [TestCase(Debug,       false, "Message.",          false, "[01:23:45] #???? dbug: Message.")]
-    [TestCase(Information, false, "Message.",          false, "[01:23:45] #???? info: Message.")]
-    [TestCase(Warning,     false, "Message.",          false, "[01:23:45] #???? warn: Message.")]
-    [TestCase(Error,       false, "Message.",          false, "[01:23:45] #???? FAIL: Message.")]
-    [TestCase(Critical,    false, "Message.",          false, "[01:23:45] #???? CRIT: Message.")]
-    //
-    [TestCase(None,        false, "Message.",          true,  "[01:23:45] #????     : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, "Message.",          true,  "[01:23:45] #???? trce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, "Message.",          true,  "[01:23:45] #???? dbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, "Message.",          true,  "[01:23:45] #???? info: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, "Message.",          true,  "[01:23:45] #???? warn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, "Message.",          true,  "[01:23:45] #???? FAIL: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, "Message.",          true,  "[01:23:45] #???? CRIT: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, "",                  true,  "[01:23:45] #????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, "",                  true,  "[01:23:45] #???? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, "",                  true,  "[01:23:45] #???? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, "",                  true,  "[01:23:45] #???? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, "",                  true,  "[01:23:45] #???? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, "",                  true,  "[01:23:45] #???? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, "",                  true,  "[01:23:45] #???? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, null,                true,  "[01:23:45] #????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, null,                true,  "[01:23:45] #???? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, null,                true,  "[01:23:45] #???? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, null,                true,  "[01:23:45] #???? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, null,                true,  "[01:23:45] #???? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, null,                true,  "[01:23:45] #???? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, null,                true,  "[01:23:45] #???? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        false, UseNullSubformatter, true,  "[01:23:45] #????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Trace,       false, UseNullSubformatter, true,  "[01:23:45] #???? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Debug,       false, UseNullSubformatter, true,  "[01:23:45] #???? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Information, false, UseNullSubformatter, true,  "[01:23:45] #???? info: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Warning,     false, UseNullSubformatter, true,  "[01:23:45] #???? warn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Error,       false, UseNullSubformatter, true,  "[01:23:45] #???? FAIL: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    [TestCase(Critical,    false, UseNullSubformatter, true,  "[01:23:45] #???? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*")]
-    //
-    [TestCase(None,        true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : Message.~[0m")]
-    [TestCase(Trace,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: Message.~[0m")]
-    [TestCase(Debug,       true,  "Message.",          false, "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: Message.~[0m")]
-    [TestCase(Information, true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: Message.~[0m")]
-    [TestCase(Warning,     true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: Message.~[0m")]
-    [TestCase(Error,       true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: Message.~[0m")]
-    [TestCase(Critical,    true,  "Message.",          false, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: Message.~[0m")]
-    //
-    [TestCase(None,        true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  "Message.",          true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: Message.~[91;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  "Message.",          true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: Message.~[95;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //
-    [TestCase(None,        true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  "",                  true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  "",                  true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //                            
-    [TestCase(None,        true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  null,                true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  null,                true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    //                            
-    [TestCase(None,        true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Trace,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Debug,       true,  UseNullSubformatter, true,  "~[90;38;5;239m[01:23:45] ~[34;38;5;23m#???? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Information, true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[39minfo: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Warning,     true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[33mwarn: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Error,       true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;41;1mFAIL~[91;49m: ~[91;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    [TestCase(Critical,    true,  UseNullSubformatter, true,  "~[37;38;5;242m[01:23:45] ~[36;38;5;31m#???? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m")]
-    public void Write_Message_InActivity_W3C(LogLevel logLevel, bool color, string? message, bool thrown, params string[] expected)
+    [TestCaseSource(nameof(WriteMessageTestCases))]
+    public void Write_Message_InActivity_W3C(
+        LogLevel logLevel, bool color, string? message, bool exceptional,
+        params string[] expected)
     {
-        using var _ = new Activity("Test").SetIdFormat(ActivityIdFormat.W3C).Start();
+        using var _ = new Activity("Test")
+            .SetIdFormat(ActivityIdFormat.W3C)
+            .Start();
 
-        var exception = thrown ? ExceptionTestHelpers.Thrown() : null;
+        var result = Write(logLevel, color, message, exceptional);
 
-        Write(logLevel, color, message, exception).Should().Match(Lines(expected));
+        result.Should().Match(Lines(expected));
+        result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
+        result.Should().NotContain(@"#0000");
+    }
+
+    [Test]
+    [TestCaseSource(nameof(WriteMessageTestCases))]
+    public void Write_Message_InActivity_Hierarchical(
+        LogLevel logLevel, bool color, string? message, bool exceptional,
+        params string[] expected)
+    {
+        using var _ = new Activity("Test")
+            .SetIdFormat(ActivityIdFormat.Hierarchical)
+            .Start();
+
+        var result = Write(logLevel, color, message, exceptional);
+
+        result.Should().Match(Lines(expected));
+        result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
+        //result.Should().NotContain(@"#0000");
     }
 
     [Test]
@@ -297,76 +274,87 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    [TestCase(None,        "[01:23:45] .....     : Formattable.")]
-    [TestCase(Trace,       "[01:23:45] ..... trce: Formattable.")]
-    [TestCase(Debug,       "[01:23:45] ..... dbug: Formattable.")]
-    [TestCase(Information, "[01:23:45] ..... info: Formattable.")]
-    [TestCase(Warning,     "[01:23:45] ..... warn: Formattable.")]
-    [TestCase(Error,       "[01:23:45] ..... FAIL: Formattable.")]
-    [TestCase(Critical,    "[01:23:45] ..... CRIT: Formattable.")]
-    public void Write_Formattable_Mono(LogLevel logLevel, string expected)
+    [TestCaseSource(nameof(WriteTestCases_Normal))]
+    public void Write_Formattable_NotInActivity(
+        LogLevel logLevel, bool color, string message, bool exceptional,
+        params string[] expected)
     {
-        WriteFormattable(logLevel).Should().Be(Lines(expected));
+        var result = WriteFormattable(logLevel, color, message, exceptional);
+
+        result.Should().Match(Lines(expected));
     }
 
     [Test]
-    [TestCase(None,        "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243m    : Formattable.~[0m")]
-    [TestCase(Trace,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mtrce: Formattable.~[0m")]
-    [TestCase(Debug,       "~[90;38;5;239m[01:23:45] ~[34;38;5;23m..... ~[90;38;5;243mdbug: Formattable.~[0m")]
-    [TestCase(Information, "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[39minfo: Formattable.~[0m")]
-    [TestCase(Warning,     "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[33mwarn: Formattable.~[0m")]
-    [TestCase(Error,       "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;41;1mFAIL~[91;49m: Formattable.~[0m")]
-    [TestCase(Critical,    "~[37;38;5;242m[01:23:45] ~[36;38;5;31m..... ~[97;45;1mCRIT~[95;49m: Formattable.~[0m")]
-    public void Write_Formattable_Color(LogLevel logLevel, string expected)
+    [TestCaseSource(nameof(WriteTestCases_Normal))]
+    public void Write_Formattable_InActivity_W3C(
+        LogLevel logLevel, bool color, string message, bool exceptional,
+        params string[] expected)
     {
-        WriteFormattable(logLevel, color: true).Should().Be(Lines(expected));
+        using var _ = new Activity("Test")
+            .SetIdFormat(ActivityIdFormat.W3C)
+            .Start();
+
+        var result = WriteFormattable(logLevel, color, message, exceptional);
+
+        result.Should().Match(Lines(expected));
+        result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
+        result.Should().NotContain(@"#0000");
     }
 
-    private string Write(
-        LogLevel   logLevel  = Information,
-        bool       color     = false,
-        string?    message   = "Message.",
-        Exception? exception = null)
+    [Test]
+    [TestCaseSource(nameof(WriteTestCases_Normal))]
+    public void Write_Formattable_InActivity_Hierarchical(
+        LogLevel logLevel, bool color, string message, bool exceptional,
+        params string[] expected)
+    {
+        using var _ = new Activity("Test")
+            .SetIdFormat(ActivityIdFormat.Hierarchical)
+            .Start();
+
+        var result = WriteFormattable(logLevel, color, message, exceptional);
+
+        result.Should().Match(Lines(expected));
+        result.Should().MatchRegex(@"[ m]#[0-9a-z]{4} ");
+        //result.Should().NotContain(@"#0000");
+    }
+
+    public static TestCaseData Case(
+        LogLevel        logLevel,
+        bool            color,
+        string?         content,
+        bool            exceptional,
+        params string[] expected)
+    {
+        return new(logLevel, color, content, exceptional, expected);
+    }
+
+    private static string Write(
+        LogLevel logLevel    = Information,
+        bool     color       = false,
+        string?  message     = "Message.",
+        bool     exceptional = false)
     {
         using var h = new TestHarness(color).AtConstantTime();
 
-        var entry = h.CreateEntry(logLevel, message, exception);
+        var exception = exceptional ? Thrown() : null;
+        var entry     = h.CreateEntry(logLevel, message, exception);
 
         return h.Write(entry);
     }
 
-    private string WriteFormattable(
-        LogLevel   logLevel  = Information,
-        bool       color     = false,
-        string     content   = "Formattable.",
-        Exception? exception = null)
+    private static string WriteFormattable(
+        LogLevel logLevel    = Information,
+        bool     color       = false,
+        string   content     = "Formattable.",
+        bool     exceptional = false)
     {
         using var h = new TestHarness(color).AtConstantTime();
 
-        var state = h.CreateFormattable(content, color);
-        var entry = h.CreateEntry(logLevel, state, exception);
+        var state     = h.CreateFormattable(content, color);
+        var exception = exceptional ? Thrown() : null;
+        var entry     = h.CreateEntry(logLevel, state, exception);
 
         return h.Write(entry);
-    }
-
-    private static string Lines(string line)
-    {
-        return line + Environment.NewLine;
-    }
-
-    private static string Lines(params string[] lines)
-    {
-        var length = 0;
-
-        foreach (var line in lines)
-            length += line.Length + Environment.NewLine.Length;
-
-        var sb = new StringBuilder(length);
-
-        foreach (var line in lines)
-            sb.AppendLine(line);
-
-        return sb.ToString();
     }
 
     private class TestHarness : TestHarnessBase
@@ -417,7 +405,7 @@ public class PrettyConsoleFormatterTests
             return new(logLevel, category, eventId, state, exception, ThrowingFormatter);
         }
 
-        public Func<string?, Exception?, string>?
+        private static Func<string?, Exception?, string>?
             CreateSubformatter(string? message, Exception? exception)
         {
             if (message == UseNullSubformatter)
