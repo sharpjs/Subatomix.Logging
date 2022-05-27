@@ -162,14 +162,6 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         }
     }
 
-    private static bool TryGetMessage<TState>(
-        in LogEntry<TState> entry,
-        [MaybeNullWhen(false)] out string message)
-    {
-        message = entry.Formatter?.Invoke(entry.State, entry.Exception);
-        return !string.IsNullOrEmpty(message);
-    }
-
     private void Write<TState, TMessage>(
         in LogEntry<TState>              entry,
         TextWriter                       writer,
@@ -202,29 +194,18 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
 
     private static void WriteTraceId(TextWriter writer, Styler styler)
     {
-        styler.UseTraceIdStyle(writer);
-
-        var activity = Activity.Current;
-
-        if (activity is { IdFormat: ActivityIdFormat.W3C })
-        {
-            WriteTraceId(writer, activity.TraceId.ToHexString());
-        }
-        else if (activity is { IdFormat: ActivityIdFormat.Hierarchical })
-        {
-            WriteTraceId(writer, activity.RootId ?? "0000");
-        }
-        else // (activity is null || activity.IdFormat is unrecognized)
-        {
-            WriteTraceIdEmpty(writer);
-        }
+        if (Activity.Current is { } activity)
+            WriteTraceId(writer, styler, activity);
+        else
+            WriteTraceIdEmpty(writer, styler);
     }
 
-    private static void WriteTraceId(TextWriter writer, string id)
+    private static void WriteTraceId(TextWriter writer, Styler styler, Activity activity)
     {
         Span<char> chars = stackalloc char[4];
+        GetShortId(activity, chars);
 
-        GetShortId(id, chars);
+        styler.UseTraceIdStyle(writer);
 
         writer.Write('#');
 #if NET6_0_OR_GREATER
@@ -238,8 +219,11 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(' ');
     }
 
-    private static void WriteTraceIdEmpty(TextWriter writer)
+    private static void WriteTraceIdEmpty(TextWriter writer, Styler styler)
     {
+        // TODO: Use a grayed-out style here
+        styler.UseTraceIdStyle(writer);
+
         writer.Write("..... ");
     }
 
@@ -307,11 +291,23 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(value);
     }
 
-    private static void GetShortId(string? id, Span<char> chars)
+    private static bool TryGetMessage<TState>(
+        in LogEntry<TState> entry,
+        [MaybeNullWhen(false)] out string message)
     {
+        message = entry.Formatter?.Invoke(entry.State, entry.Exception);
+        return !string.IsNullOrEmpty(message);
+    }
+
+    private static void GetShortId(Activity activity, Span<char> chars)
+    {
+        var id = activity.IdFormat == ActivityIdFormat.W3C
+            ? activity.TraceId.ToHexString()
+            : activity.RootId ?? "";
+
         var index = 0;
 
-        foreach (char c in id ?? "")
+        foreach (char c in id)
         {
             if (index >= chars.Length)
                 break;
