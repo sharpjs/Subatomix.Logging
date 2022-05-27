@@ -203,7 +203,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     private static void WriteTraceId(TextWriter writer, Styler styler, Activity activity)
     {
         Span<char> chars = stackalloc char[4];
-        GetShortId(activity, chars);
+        activity.GetRootOperationId(chars);
 
         styler.UseTraceIdStyle(writer);
 
@@ -297,28 +297,6 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     {
         message = entry.Formatter?.Invoke(entry.State, entry.Exception);
         return !string.IsNullOrEmpty(message);
-    }
-
-    private static void GetShortId(Activity activity, Span<char> chars)
-    {
-        var id = activity.IdFormat == ActivityIdFormat.W3C
-            ? activity.TraceId.ToHexString()
-            : activity.RootId ?? "";
-
-        var index = 0;
-
-        foreach (char c in id)
-        {
-            if (index >= chars.Length)
-                break;
-
-            if (!char.IsLetterOrDigit(c))
-                continue;
-
-            chars[index++] = c;
-        }
-
-        chars.Slice(index).Fill('.');
     }
 
     private static string Format(LogLevel logLevel)
