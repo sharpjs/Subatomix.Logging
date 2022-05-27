@@ -29,6 +29,13 @@ public class ActivityExtensionsTests
     }
 
     [Test]
+    public void GetRootOperationId_Null()
+    {
+        Invoking(() => default(Activity)!.GetRootOperationId())
+            .Should().Throw<ArgumentNullException>().WithParameterName("activity");
+    }
+
+    [Test]
     public void GetRootOperationId_W3C_Started()
     {
         using var activity = new Activity("a")
