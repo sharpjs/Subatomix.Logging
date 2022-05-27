@@ -292,11 +292,12 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     }
 
     private static bool TryGetMessage<TState>(
-        in LogEntry<TState> entry,
+        in LogEntry<TState>               entry,
         [MaybeNullWhen(false)] out string message)
     {
-        message = entry.Formatter?.Invoke(entry.State, entry.Exception);
-        return !string.IsNullOrEmpty(message);
+        return !string.IsNullOrEmpty(
+            message = entry.Formatter?.Invoke(entry.State, entry.Exception)
+        );
     }
 
     private static string Format(LogLevel logLevel)
