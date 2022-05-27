@@ -8,21 +8,9 @@ internal static class ActivityExtensions
 {
     internal static void GetRootOperationId(this Activity activity, Span<char> chars)
     {
-        var id    = activity.GetRootOperationId();
-        var index = 0;
-
-        foreach (char c in id)
-        {
-            if (index >= chars.Length)
-                break;
-
-            if (!char.IsLetterOrDigit(c))
-                continue;
-
-            chars[index++] = c;
-        }
-
-        chars.Slice(index).Fill('.');
+        activity
+            .GetRootOperationId()
+            .FillLettersAndDigits(chars);
     }
 
     internal static string GetRootOperationId(this Activity activity)
