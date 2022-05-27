@@ -41,3 +41,7 @@ indent_size = 2
 [*.cs]
 csharp_space_after_cast = true
 dotnet_sort_system_directives_first = true
+dotnet_style_prefer_conditional_expression_over_return = true:silent
+
+# Not supported in all target platforms:
+csharp_style_prefer_range_operator = true:silent
