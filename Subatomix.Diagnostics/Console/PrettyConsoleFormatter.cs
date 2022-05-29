@@ -48,8 +48,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// </summary>
     public new const string Name = "pretty";
 
-    // Delegate that decides which styler to use
-    private Func<LogLevel, Styler> _stylerSelector;
+    // Delegate that decides which styles to use
+    private Func<LogLevel, Styles> _theme;
 
     // Opaque token representing subscription to options change notifications
     private readonly IDisposable _optionsChangeToken;
@@ -114,9 +114,9 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
             _                            => !IsConsoleRedirected
         };
 
-        _stylerSelector = IsColorEnabled
-            ? GetColorStyler
-            : GetMonoStyler;
+        _theme = IsColorEnabled
+            ? Styles.GetColorStyles
+            : Styles.GetMonoStyles;
     }
 
     /// <inheritdoc/>>
@@ -148,27 +148,22 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         TMessage            message)
         where TMessage : IConsoleFormattable
     {
-        var styler = _stylerSelector(entry.LogLevel);
+        var styles = _theme(entry.LogLevel);
 
-        WriteTimestamp(writer, styler, Clock.Now);
-        WriteTraceId  (writer, styler);
-        WriteLogLevel (writer, styler, entry.LogLevel);
-        WriteSeparator(writer, styler);
+        WriteTimestamp(writer, styles, Clock.Now);
+        WriteTraceId  (writer, styles);
+        WriteLogLevel (writer, styles, entry.LogLevel);
+        WriteSeparator(writer, styles);
 
-        // TODO
-        var console = IsColorEnabled
-            ? new ConsoleContext(Ansi.Begin + Ansi.Reset + Ansi.End)
-            : default;
+        var wroteMessage = message.Write(writer, styles.MessageContext);
 
-        var wroteMessage = message.Write(writer, console);
-
-        WriteException(writer, styler, entry.Exception, wroteMessage);
-        WriteEndOfLine(writer, styler);
+        WriteException(writer, styles, entry.Exception, wroteMessage);
+        WriteEndOfLine(writer, styles);
     }
 
-    private static void WriteTimestamp(TextWriter writer, Styler styler, DateTime now)
+    private static void WriteTimestamp(TextWriter writer, Styles styles, DateTime now)
     {
-        styler.UseTimestampStyle(writer);
+        styles.UseTimestampStyle(writer);
 
         writer.Write('['); WriteTimePart(writer, now.Hour);
         writer.Write(':'); WriteTimePart(writer, now.Minute);
@@ -177,20 +172,20 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(' '); 
     }
 
-    private static void WriteTraceId(TextWriter writer, Styler styler)
+    private static void WriteTraceId(TextWriter writer, Styles styles)
     {
         if (Activity.Current is { } activity)
-            WriteTraceId(writer, styler, activity);
+            WriteTraceId(writer, styles, activity);
         else
-            WriteTraceIdEmpty(writer, styler);
+            WriteTraceIdEmpty(writer, styles);
     }
 
-    private static void WriteTraceId(TextWriter writer, Styler styler, Activity activity)
+    private static void WriteTraceId(TextWriter writer, Styles styles, Activity activity)
     {
         Span<char> chars = stackalloc char[4];
         activity.GetRootOperationId(chars);
 
-        styler.UseTraceIdStyle(writer);
+        styles.UseTraceIdStyle(writer);
 
         writer.Write('#');
 #if NET6_0_OR_GREATER
@@ -204,35 +199,35 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(' ');
     }
 
-    private static void WriteTraceIdEmpty(TextWriter writer, Styler styler)
+    private static void WriteTraceIdEmpty(TextWriter writer, Styles styles)
     {
         // TODO: Use a grayed-out style here
-        styler.UseTraceIdStyle(writer);
+        styles.UseTraceIdStyle(writer);
 
         writer.Write("..... ");
     }
 
-    private static void WriteLogLevel(TextWriter writer, Styler styler, LogLevel logLevel)
+    private static void WriteLogLevel(TextWriter writer, Styles styles, LogLevel logLevel)
     {
-        styler.UseLogLevelStyle(writer);
+        styles.UseLogLevelStyle(writer);
 
         writer.Write(Format(logLevel)); 
     }
 
-    private static void WriteSeparator(TextWriter writer, Styler styler)
+    private static void WriteSeparator(TextWriter writer, Styles styles)
     {
-        styler.UseMessageStyle(writer);
+        styles.UseMessageStyle(writer);
 
         writer.Write(": ");
     }
 
-    private static void WriteException(TextWriter writer, Styler styler,
+    private static void WriteException(TextWriter writer, Styles styles,
         Exception? exception, bool wroteMessage)
     {
         if (exception is null)
             return;
 
-        styler.UseMessageStyle(writer);
+        styles.UseMessageStyle(writer);
 
         if (wroteMessage)
             writer.Write(' ');
@@ -240,9 +235,9 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         writer.Write(exception.ToString());
     }
 
-    private static void WriteEndOfLine(TextWriter writer, Styler styler)
+    private static void WriteEndOfLine(TextWriter writer, Styles styles)
     {
-        styler.Reset(writer);
+        styles.ResetStyle(writer);
 
         writer.WriteLine();
     }
@@ -275,25 +270,6 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
             Error       => "FAIL",
             Critical    => "CRIT",
             _           => "    ",
-        };
-    }
-
-    private static Styler GetMonoStyler(LogLevel level)
-    {
-        return Styler.Null;
-    }
-
-    private static Styler GetColorStyler(LogLevel level)
-    {
-        return level switch
-        {
-            Trace       => Styler.Verbose,
-            Debug       => Styler.Verbose,
-            Information => Styler.Information,
-            Warning     => Styler.Warning,
-            Error       => Styler.Error,
-            Critical    => Styler.Critical,
-            _           => Styler.Verbose,
         };
     }
 }
