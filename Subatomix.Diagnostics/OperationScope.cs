@@ -241,12 +241,8 @@ public class OperationScope : IDisposable
 
     private void LogCompleted()
     {
-        var duration  = _stopwatch.Elapsed;
-        var exception = Exception;
-        var failed    = exception is not null;
-
-        if (failed)
-            Logger.Log(ExceptionLogLevel, exception!);
+        if (Exception is { } exception)
+            Logger.Log(ExceptionLogLevel, exception);
 
         Logger.Log(LogLevel, default, this, exception: null, CompletedFormatter);
     }
