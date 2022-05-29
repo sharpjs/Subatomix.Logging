@@ -37,7 +37,7 @@ internal readonly struct StringConsoleFormattable : IConsoleFormattable
     }
 
     /// <inheritdoc/>
-    public bool Write(TextWriter writer, bool color)
+    public bool Write(TextWriter writer, ConsoleContext console)
     {
         if (string.IsNullOrEmpty(_content))
             return false;

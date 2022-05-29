@@ -155,7 +155,12 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         WriteLogLevel (writer, styler, entry.LogLevel);
         WriteSeparator(writer, styler);
 
-        var wroteMessage = message.Write(writer, IsColorEnabled);
+        // TODO
+        var console = IsColorEnabled
+            ? new ConsoleContext(Ansi.Begin + Ansi.Reset + Ansi.End)
+            : default;
+
+        var wroteMessage = message.Write(writer, console);
 
         WriteException(writer, styler, entry.Exception, wroteMessage);
         WriteEndOfLine(writer, styler);

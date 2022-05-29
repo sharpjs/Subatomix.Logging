@@ -425,13 +425,13 @@ public class PrettyConsoleFormatterTests
             throw new AssertionException("This test should not invoke the entry's formatter.");
         }
 
-        public IConsoleFormattable CreateFormattable(string content, bool expectedColor = false)
+        public IConsoleFormattable CreateFormattable(string content, bool color = false)
         {
             var formattable = Mocks.Create<IConsoleFormattable>();
 
-            void Write(TextWriter writer, bool color)
+            void Write(TextWriter writer, ConsoleContext console)
             {
-                color.Should().Be(expectedColor);
+                console.IsColorEnabled.Should().Be(color);
                 writer.Write(content);
             }
 
@@ -440,7 +440,7 @@ public class PrettyConsoleFormatterTests
             formattable
                 .Setup(o => o.Write(
                     It.IsNotNull<TextWriter>(),
-                    It.IsAny<bool>()
+                    It.IsAny<ConsoleContext>()
                 ))
                 .Callback(Write)
                 .Returns(result)

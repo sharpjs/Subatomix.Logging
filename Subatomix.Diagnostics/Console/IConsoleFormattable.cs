@@ -27,12 +27,13 @@ public interface IConsoleFormattable
     /// <param name="writer">
     ///   The writer to which to write the formatted output.
     /// </param>
-    /// <param name="color">
-    ///   Whether to use ANSI escape sequences to effect color and other display machable.
+    /// <param name="console">
+    ///   Contextual information, including whether to use ANSI escape code
+    ///   sequences to control the color and style of output.
     /// </param>
     /// <returns>
     ///   <see langword="true"/> if one or more characters were written;
     ///   <see langword="false"/> otherwise.
     /// </returns>
-    bool Write(TextWriter writer, bool color);
+    bool Write(TextWriter writer, ConsoleContext console);
 }
