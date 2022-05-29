@@ -48,8 +48,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// </summary>
     public new const string Name = "pretty";
 
-    // Delegate that decides which styles to use
-    private Func<LogLevel, Styles> _theme;
+    // Active theme
+    private IPrettyConsoleFormatterTheme _theme;
 
     // Opaque token representing subscription to options change notifications
     private readonly IDisposable _optionsChangeToken;
@@ -115,8 +115,8 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         };
 
         _theme = IsColorEnabled
-            ? Styles.GetColorStyles
-            : Styles.GetMonoStyles;
+            ? new PrettyConsoleFormatterColorTheme()
+            : new PrettyConsoleFormatterMonoTheme();
     }
 
     /// <inheritdoc/>>
@@ -148,7 +148,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
         TMessage            message)
         where TMessage : IConsoleFormattable
     {
-        var styles = _theme(entry.LogLevel);
+        var styles = _theme.GetStyles(entry.LogLevel);
 
         WriteTimestamp(writer, styles, Clock.Now);
         WriteTraceId  (writer, styles);
