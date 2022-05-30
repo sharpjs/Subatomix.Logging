@@ -241,6 +241,7 @@ public class PrettyConsoleFormatterTests
 
     [Test]
     [TestCaseSource(nameof(WriteTestCases_All))]
+    [Retry(3)] // Because TraceId #0000 has a small chance of being legitimate.
     public void Write_Message_InActivity_W3C(
         LogLevel logLevel, bool color, string? message, bool exceptional,
         params string[] expected)
@@ -258,6 +259,7 @@ public class PrettyConsoleFormatterTests
 
     [Test]
     [TestCaseSource(nameof(WriteTestCases_All))]
+    [Retry(3)] // Because TraceId #0000 has a small chance of being legitimate.
     public void Write_Message_InActivity_Hierarchical(
         LogLevel logLevel, bool color, string? message, bool exceptional,
         params string[] expected)
@@ -286,6 +288,7 @@ public class PrettyConsoleFormatterTests
 
     [Test]
     [TestCaseSource(nameof(WriteTestCases_Normal))]
+    [Retry(3)] // Because TraceId #0000 has a small chance of being legitimate.
     public void Write_Formattable_InActivity_W3C(
         LogLevel logLevel, bool color, string message, bool exceptional,
         params string[] expected)
@@ -303,6 +306,7 @@ public class PrettyConsoleFormatterTests
 
     [Test]
     [TestCaseSource(nameof(WriteTestCases_Normal))]
+    [Retry(3)] // Because TraceId #0000 has a small chance of being legitimate.
     public void Write_Formattable_InActivity_Hierarchical(
         LogLevel logLevel, bool color, string message, bool exceptional,
         params string[] expected)
