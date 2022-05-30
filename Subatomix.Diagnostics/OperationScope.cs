@@ -31,10 +31,9 @@ using LogLevel = LogLevel;
 /// </summary>
 /// <remarks>
 ///   <para>
-///     On construction, a scope logs a start message containing the name of
-///     the operation.  On disposal, a scope logs a completion message
-///     containing the name of the operation and the duration that elapsed
-///     between construction and disposal.
+///     On construction, a scope of this type logs a start message containing
+///     the name of the operation.  On disposal, a scope logs a completion
+///     message containing the name and duration of the operation.
 ///   </para>
 ///   <para>
 ///     Code using this type can arrange for exception logging by setting the
