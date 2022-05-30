@@ -97,4 +97,70 @@ public class ActivityExtensionsTests
         activity.Invoking(a => a.GetRootOperationId())
             .Should().Throw<InvalidOperationException>();
     }
+
+    [Test]
+    public void GetRootOperationGuid_Null()
+    {
+        Invoking(() => default(Activity)!.GetRootOperationGuid())
+            .Should().Throw<ArgumentNullException>().WithParameterName("activity");
+    }
+
+    [Test]
+    public void GetRootOperationGuid_W3C_Started()
+    {
+        using var activity = new Activity("a")
+            .SetIdFormat(W3C)
+            .Start();
+
+        // Root operation GUID for W3C format
+        var expected = Guid.ParseExact(activity.TraceId.ToHexString(), "N");
+
+        activity.GetRootOperationGuid().Should().Be(expected).And.NotBeEmpty();
+    }
+
+    [Test]
+    public void GetRootOperationGuid_W3C_NotStarted()
+    {
+        using var activity = new Activity("a")
+            .SetIdFormat(W3C);
+
+        activity
+            .Invoking(a => a.GetRootOperationGuid())
+            .Should().Throw<InvalidOperationException>();
+    }
+
+    [Test]
+    public void GetRootOperationGuid_Hierarchical_Started()
+    {
+        using var activity = new Activity("a")
+            .SetIdFormat(Hierarchical)
+            .Start();
+
+        // Root operation GUID for hierarchical format
+        var expected = ActivityExtensions.SynthesizeGuid(activity.RootId!);
+
+        activity.GetRootOperationGuid().Should().Be(expected).And.NotBeEmpty();
+    }
+
+    [Test]
+    public void GetRootOperationGuid_Hierarchical_NotStarted()
+    {
+        using var activity = new Activity("a")
+            .SetIdFormat(Hierarchical);
+
+        activity.Invoking(a => a.GetRootOperationGuid())
+            .Should().Throw<InvalidOperationException>();
+    }
+
+    [Test]
+    [TestCase("",            "62b35a7d-1e8a-44d9-8570-cfbde123804e")]
+    [TestCase("a",           "3159ad3f-8f45-486c-83b8-e7def0110412")]
+    [TestCase("abcd",        "a62b35a8-91e8-404d-84f7-dc1b3e021ca4")]
+    [TestCase("abcdefghijk", "d14c566c-9b23-4258-a8b9-377c04c87823")]
+    public void SynthesizeGuid(string source, string guid)
+    {
+        var expected = Guid.ParseExact(guid, "D");
+
+        ActivityExtensions.SynthesizeGuid(source).Should().Be(expected);
+    }
 }
