@@ -201,7 +201,9 @@ public class OperationScope : IDisposable
     /// </remarks>
     void IDisposable.Dispose()
     {
-        Stop();
+        if (!IsCompleted)
+            Stop();
+
         GC.SuppressFinalize(this);
     }
 
@@ -221,11 +223,7 @@ public class OperationScope : IDisposable
     /// </summary>
     protected virtual void Stop()
     {
-        // Safe to call multiple times
         _stopwatch.Stop();
-
-        if (IsCompleted)
-            return;
 
         IsCompleted = true;
         LogCompleted();
