@@ -15,7 +15,6 @@
 */
 
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
 
@@ -145,13 +144,7 @@ public class CorrelationScope : OperationScope
 
     private void StopActivity()
     {
-        if (Activity.Status != ActivityStatusCode.Unset)
-            NoOp(); // already set
-        else if (Exception is { } exception)
-            Activity.SetStatus(ActivityStatusCode.Error, exception.Message);
-        else
-            Activity.SetStatus(ActivityStatusCode.Ok);
-
+        Activity.SetStatusIfUnset(Exception);
         Activity.Stop();
     }
 
@@ -176,8 +169,4 @@ public class CorrelationScope : OperationScope
         if (stack.Count == 0)
             manager.ActivityId = Guid.Empty;
     }
-
-    [Conditional("NEVER")]
-    [ExcludeFromCodeCoverage]
-    private static void NoOp() { }
 }

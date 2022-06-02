@@ -22,6 +22,21 @@ using static ActivityIdFormat;
 
 internal static class ActivityExtensions
 {
+    internal static void SetStatusIfUnset(this Activity activity, Exception? exception)
+    {
+        if (activity is null)
+            throw new ArgumentNullException(nameof(activity));
+
+        if (activity.Status != ActivityStatusCode.Unset)
+            return;
+
+        var (code, description) = exception is not null
+            ? (ActivityStatusCode.Error, exception.Message)
+            : (ActivityStatusCode.Ok,    null);
+
+        activity.SetStatus(code, description);
+    }
+
     internal static void GetRootOperationId(this Activity activity, Span<char> chars)
     {
         activity
