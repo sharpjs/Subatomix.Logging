@@ -15,20 +15,3 @@
 */
 
 [assembly: Parallelizable(ParallelScope.All)]
-
-#if NET6_0
-namespace Subatomix.Diagnostics;
-
-using System.Diagnostics;
-
-[SetUpFixture]
-public static class TestSuite
-{
-    [OneTimeSetUp]
-    public static void SetUp()
-    {
-        // Workaround for https://github.com/dotnet/runtime/issues/50480
-        _ = Trace.CorrelationManager;
-    }
-}
-#endif
