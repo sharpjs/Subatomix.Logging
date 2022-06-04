@@ -124,8 +124,8 @@ public class CorrelationScope : OperationScope
     /// <inheritdoc/>
     protected override void Start()
     {
-        StartActivity();
-        StartCorrelationManagerOperation();
+        Activity.Start();
+
         base.Start();
     }
 
@@ -133,40 +133,8 @@ public class CorrelationScope : OperationScope
     protected override void Stop()
     {
         base.Stop();
-        StopCorrelationManagerOperation();
-        StopActivity();
-    }
 
-    private void StartActivity()
-    {
-        Activity.Start();
-    }
-
-    private void StopActivity()
-    {
         Activity.SetStatusIfUnset(Exception);
         Activity.Stop();
-    }
-
-    private void StartCorrelationManagerOperation()
-    {
-        var manager = Trace.CorrelationManager;
-        var stack   = manager.LogicalOperationStack;
-
-        if (stack.Count == 0)
-            manager.ActivityId = Activity.GetRootOperationGuid();
-
-        stack.Push(Activity.Id!);
-    }
-
-    private static void StopCorrelationManagerOperation()
-    {
-        var manager = Trace.CorrelationManager;
-        var stack   = manager.LogicalOperationStack;
-
-        stack.Pop();
-
-        if (stack.Count == 0)
-            manager.ActivityId = Guid.Empty;
     }
 }

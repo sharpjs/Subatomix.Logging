@@ -81,10 +81,6 @@ public class CorrelationScopeTests
         // Composite
         a.Id            .Should().Be        ($"00-{a.TraceId}-{a.SpanId}-00");
 
-        var activityId = Guid.ParseExact(a.TraceId.ToHexString(), "N");
-        LegacyActivityId    .Should().Be(activityId);
-        LegacyOperationStack.Should().Equal(new[] { a.Id });
-
         using (new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
             var b = Activity.Current!;
@@ -102,20 +98,13 @@ public class CorrelationScopeTests
             b.ParentId      .Should().Be        (a.Id);
             // Composite
             b.Id            .Should().Be        ($"00-{a.TraceId}-{b.SpanId}-00");
-
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
         }
 
-        Activity.Current    .Should().BeSameAs(a);
-        LegacyActivityId    .Should().Be(activityId);
-        LegacyOperationStack.Should().Equal(new[] { a.Id });
+        Activity.Current.Should().BeSameAs(a);
 
         ((IDisposable) s).Dispose();
 
-        Activity.Current    .Should().BeNull();
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        Activity.Current.Should().BeNull();
     }
 
     [Test]
@@ -141,10 +130,6 @@ public class CorrelationScopeTests
         // Composite
         a.Id            .Should().Be            ($"|{a.RootId}.");
 
-        LegacyActivityId    .Should().NotBeEmpty();
-        LegacyOperationStack.Should().Equal(new[] { a.Id });
-        var activityId = LegacyActivityId;
-
         using (new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
             var b = Activity.Current!;
@@ -161,20 +146,13 @@ public class CorrelationScopeTests
             b.ParentId      .Should().Be        (a.Id);
             // Composite
             b.Id            .Should().Be        ($"|{a.RootId}.1.");
-
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
         }
 
-        Activity.Current    .Should().BeSameAs(a);
-        LegacyActivityId    .Should().Be(activityId);
-        LegacyOperationStack.Should().Equal(new[] { a.Id });
+        Activity.Current.Should().BeSameAs(a);
 
         ((IDisposable) s).Dispose();
 
-        Activity.Current    .Should().BeNull();
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        Activity.Current.Should().BeNull();
     }
 
     [Test]
