@@ -325,9 +325,6 @@ public class OperationScope : IConsoleFormattable, IDisposable
             writer.Write(StatusStyle);
 
         writer.Write(status);
-
-        if (console.IsColorEnabled)
-            writer.Write(console.DefaultCode);
     }
 
     private void WriteElapsedTime(TextWriter writer, ConsoleContext console)
