@@ -71,9 +71,11 @@ public class CorrelationManagerActivityListener : IDisposable
     {
         _listener = new()
         {
-            ActivityStarted = OnActivityStarted,
-            ActivityStopped = OnActivityStopped,
-            ShouldListenTo  = ShouldFlow,
+            ActivityStarted     = OnActivityStarted,
+            ActivityStopped     = OnActivityStopped,
+            ShouldListenTo      = ShouldFlow,
+            Sample              = Sample,
+            SampleUsingParentId = SampleUsingParentId,
         };
     }
 
@@ -155,6 +157,16 @@ public class CorrelationManagerActivityListener : IDisposable
 
         if (stack.Count == 0)
             manager.ActivityId = Guid.Empty;
+    }
+
+    private static ActivitySamplingResult Sample(ref ActivityCreationOptions<ActivityContext> options)
+    {
+        return ActivitySamplingResult.PropagationData;
+    }
+
+    private static ActivitySamplingResult SampleUsingParentId(ref ActivityCreationOptions<string> options)
+    {
+        return ActivitySamplingResult.PropagationData;
     }
 
     /// <summary>

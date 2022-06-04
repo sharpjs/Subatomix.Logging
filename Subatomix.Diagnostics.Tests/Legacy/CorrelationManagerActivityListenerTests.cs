@@ -83,4 +83,77 @@ internal class CorrelationManagerActivityListenerTests
         LegacyActivityId    .Should().BeEmpty();
         LegacyOperationStack.Should().BeEmpty();
     }
+
+    [Test]
+    [TestCaseSource(nameof(ActivityIdFormats))]
+    public void StartAndStopActivity_Ignored(ActivityIdFormat format)
+    {
+        using var _        = new ActivityTestScope(format);
+        using var listener = new TestListener();
+        listener.Register();
+
+        using var a = new Activity("ignore").Start();
+
+        LegacyActivityId    .Should().BeEmpty();
+        LegacyOperationStack.Should().BeEmpty();
+    }
+
+    [Test]
+    [TestCaseSource(nameof(ActivityIdFormats))]
+    public void StartAndStopActivity_ViaSource_Ignored(ActivityIdFormat format)
+    {
+        using var _        = new ActivityTestScope(format);
+        using var source   = new ActivitySource("ignore");
+        using var listener = new TestListener();
+        listener.Register();
+
+        source.CreateActivity("a", default)
+            .Should().BeNull(because: "the listener should ignore this source");
+    }
+
+    [Test]
+    [TestCaseSource(nameof(ActivityIdFormats))]
+    public void StartAndStopActivity_ViaSource_NotIgnored(ActivityIdFormat format)
+    {
+        using var _        = new ActivityTestScope(format);
+        using var source   = new ActivitySource("foo");
+        using var listener = new TestListener();
+        listener.Register();
+
+        using (var a = source.StartActivity("a")!)
+        {
+            LegacyActivityId    .Should().NotBeEmpty();
+            LegacyOperationStack.Should().Equal(new[] { a.Id });
+            var activityId = LegacyActivityId;
+
+            // This form is required to exercise SampleUsingParentId
+            //                                       vvvvvvvvvvvvvv
+            using (var b = source.StartActivity("b", default, a.Id!)!)
+            {
+                LegacyActivityId    .Should().Be(activityId);
+                LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
+            }
+
+            LegacyActivityId    .Should().Be(activityId);
+            LegacyOperationStack.Should().Equal(new[] { a.Id });
+        }
+
+        LegacyActivityId    .Should().BeEmpty();
+        LegacyOperationStack.Should().BeEmpty();
+    }
+
+    public static IEnumerable<ActivityIdFormat> ActivityIdFormats => new[]
+    {
+        ActivityIdFormat.W3C,
+        ActivityIdFormat.Hierarchical,
+    };
+
+    private class TestListener : CorrelationManagerActivityListener
+    {
+        protected override bool ShouldFlow(ActivitySource source)
+            => source.Name != "ignore";
+
+        protected override bool ShouldFlow(Activity activity)
+            => activity.OperationName != "ignore";
+    }
 }
