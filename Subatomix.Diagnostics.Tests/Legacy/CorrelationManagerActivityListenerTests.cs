@@ -19,8 +19,6 @@ using Subatomix.Diagnostics.Testing;
 
 namespace Subatomix.Diagnostics.Legacy;
 
-using static ActivityTestScope;
-
 [TestFixture]
 [NonParallelizable] // becuase it depends on static state
 internal class CorrelationManagerActivityListenerTests
@@ -30,29 +28,24 @@ internal class CorrelationManagerActivityListenerTests
     {
         using var _        = new ActivityTestScope(ActivityIdFormat.W3C);
         using var listener = new CorrelationManagerActivityListener();
-        Guid activityId;
 
         listener.Register();
 
+        AssertCorrelationManagerEmpty();
+
         using (var a = new Activity("a").Start())
         {
-            activityId = Guid.ParseExact(a.TraceId.ToHexString(), "N");
+            var activityId = Guid.ParseExact(a.TraceId.ToHexString(), "N");
 
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
+            AssertCorrelationManager(activityId, a.Id);
 
             using (var b = new Activity("b").Start())
-            {
-                LegacyActivityId    .Should().Be(activityId);
-                LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
-            }
+                AssertCorrelationManager(activityId, b.Id, a.Id);
 
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
+            AssertCorrelationManager(activityId, a.Id);
         }
 
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        AssertCorrelationManagerEmpty();
     }
 
     [Test]
@@ -60,28 +53,22 @@ internal class CorrelationManagerActivityListenerTests
     {
         using var _        = new ActivityTestScope(ActivityIdFormat.Hierarchical);
         using var listener = new CorrelationManagerActivityListener();
-        Guid activityId;
 
         listener.Register();
 
+        AssertCorrelationManagerEmpty();
+
         using (var a = new Activity("a").Start())
         {
-            LegacyActivityId    .Should().NotBeEmpty();
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
-            activityId = LegacyActivityId;
+            AssertCorrelationManager(out var activityId, a.Id);
 
             using (var b = new Activity("b").Start())
-            {
-                LegacyActivityId    .Should().Be(activityId);
-                LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
-            }
+                AssertCorrelationManager(activityId, b.Id, a.Id);
 
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
+            AssertCorrelationManager(activityId, a.Id);
         }
 
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        AssertCorrelationManagerEmpty();
     }
 
     [Test]
@@ -94,8 +81,7 @@ internal class CorrelationManagerActivityListenerTests
 
         using var a = new Activity("ignore").Start();
 
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        AssertCorrelationManagerEmpty();
     }
 
     [Test]
@@ -120,26 +106,21 @@ internal class CorrelationManagerActivityListenerTests
         using var listener = new TestListener();
         listener.Register();
 
+        AssertCorrelationManagerEmpty();
+
         using (var a = source.StartActivity("a")!)
         {
-            LegacyActivityId    .Should().NotBeEmpty();
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
-            var activityId = LegacyActivityId;
+            AssertCorrelationManager(out var activityId, a.Id);
 
             // This form is required to exercise SampleUsingParentId
             //                                       vvvvvvvvvvvvvv
             using (var b = source.StartActivity("b", default, a.Id!)!)
-            {
-                LegacyActivityId    .Should().Be(activityId);
-                LegacyOperationStack.Should().Equal(new[] { b.Id, a.Id });
-            }
+                AssertCorrelationManager(activityId, b.Id, a.Id);
 
-            LegacyActivityId    .Should().Be(activityId);
-            LegacyOperationStack.Should().Equal(new[] { a.Id });
+            AssertCorrelationManager(activityId, a.Id);
         }
 
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        AssertCorrelationManagerEmpty();
     }
 
     public static IEnumerable<ActivityIdFormat> ActivityIdFormats => new[]
@@ -147,6 +128,31 @@ internal class CorrelationManagerActivityListenerTests
         ActivityIdFormat.W3C,
         ActivityIdFormat.Hierarchical,
     };
+
+    private static Guid LegacyActivityId
+        => Trace.CorrelationManager.ActivityId;
+
+    private static IEnumerable<object?> LegacyOperationStack
+        => Trace.CorrelationManager.LogicalOperationStack.Cast<object?>();
+
+    private static void AssertCorrelationManagerEmpty()
+    {
+        LegacyActivityId    .Should().BeEmpty();
+        LegacyOperationStack.Should().BeEmpty();
+    }
+
+    private static void AssertCorrelationManager(out Guid activityId, params object?[] stack)
+    {
+        LegacyActivityId    .Should().NotBeEmpty();
+        LegacyOperationStack.Should().Equal(stack);
+        activityId = LegacyActivityId;
+    }
+
+    private static void AssertCorrelationManager(Guid activityId, params object?[] stack)
+    {
+        LegacyActivityId    .Should().Be(activityId);
+        LegacyOperationStack.Should().Equal(stack);
+    }
 
     private class TestListener : CorrelationManagerActivityListener
     {

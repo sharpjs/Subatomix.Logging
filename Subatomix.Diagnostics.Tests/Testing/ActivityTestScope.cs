@@ -48,14 +48,6 @@ internal class ActivityTestScope : IDisposable
 
     public static void ShouldNotHaveCurrentActivity()
     {
-        Activity.Current    .Should().BeNull();
-        LegacyActivityId    .Should().BeEmpty();
-        LegacyOperationStack.Should().BeEmpty();
+        Activity.Current.Should().BeNull();
     }
-
-    public static Guid LegacyActivityId
-        => Trace.CorrelationManager.ActivityId;
-
-    public static IEnumerable<object?> LegacyOperationStack
-        => Trace.CorrelationManager.LogicalOperationStack.Cast<object?>();
 }
