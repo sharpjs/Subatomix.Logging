@@ -21,7 +21,6 @@ using Subatomix.Diagnostics.Testing;
 
 namespace Subatomix.Diagnostics;
 
-using static ActivityTestScope;
 using static ExceptionTestHelpers;
 
 [TestFixture]
