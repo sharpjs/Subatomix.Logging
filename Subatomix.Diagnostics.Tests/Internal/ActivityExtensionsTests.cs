@@ -15,14 +15,80 @@
 */
 
 using System.Diagnostics;
+using Subatomix.Diagnostics.Testing;
 
 namespace Subatomix.Diagnostics;
 
 using static ActivityIdFormat;
+using static ExceptionTestHelpers;
 
 [TestFixture]
 public class ActivityExtensionsTests
 {
+    [Test]
+    public void SetStatusIfUnset_Null()
+    {
+        Invoking(() => default(Activity)!.SetStatusIfUnset(new()))
+            .Should().Throw<ArgumentNullException>().WithParameterName("activity");
+    }
+
+    [Test]
+    public void SetStatusIfUnset_UnsetOk()
+    {
+        using var activity = new Activity("a");
+
+        activity.SetStatusIfUnset(null);
+
+        activity.Status           .Should().Be(ActivityStatusCode.Ok);
+        activity.StatusDescription.Should().BeNull();
+    }
+
+    [Test]
+    public void SetStatusIfUnset_UnsetError()
+    {
+        using var activity = new Activity("a");
+
+        activity.SetStatusIfUnset(Thrown());
+
+        activity.Status           .Should().Be(ActivityStatusCode.Error);
+        activity.StatusDescription.Should().Be("A test exception was thrown.");
+    }
+
+    [Test]
+    public void SetStatusIfUnset_AlreadySetError()
+    {
+        using var activity = new Activity("a");
+
+        activity.SetStatus(ActivityStatusCode.Error, "Uh-oh.");
+        activity.SetStatusIfUnset(null); // no effect
+
+        activity.Status           .Should().Be(ActivityStatusCode.Error);
+        activity.StatusDescription.Should().Be("Uh-oh.");
+    }
+
+    [Test]
+    public void SetStatusIfUnset_AlreadySetOk()
+    {
+        using var activity = new Activity("a");
+
+        activity.SetStatus(ActivityStatusCode.Ok);
+        activity.SetStatusIfUnset(Thrown()); // no effect
+
+        activity.Status           .Should().Be(ActivityStatusCode.Ok);
+        activity.StatusDescription.Should().BeNull();
+    }
+
+    [Test]
+    public void GetRootOperationId_IntoSpan_Null()
+    {
+        Invoking(() =>
+        {
+            Span<char> chars = stackalloc char[4];
+            default(Activity)!.GetRootOperationId(chars);
+        })
+        .Should().Throw<ArgumentNullException>().WithParameterName("activity");
+    }
+
     [Test]
     [TestCase(W3C)]
     [TestCase(Hierarchical)]
