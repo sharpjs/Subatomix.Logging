@@ -17,6 +17,7 @@
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
+using Subatomix.Diagnostics.Console;
 
 namespace Subatomix.Diagnostics;
 
@@ -44,7 +45,7 @@ using LogLevel = LogLevel;
 ///     completion message.
 ///   </para>
 /// </remarks>
-public class OperationScope : IDisposable
+public class OperationScope : IConsoleFormattable, IDisposable
 {
     /// <summary>
     ///   Gets the logger for operation-related messages.
@@ -279,5 +280,89 @@ public class OperationScope : IDisposable
 #else
         return string.Format("{0}: Completed [{1:N3}s]{2}", Name, seconds, notice);
 #endif
+    }
+
+    /// <inheritdoc/>
+    bool IConsoleFormattable.Write(TextWriter writer, ConsoleContext console)
+    {
+        return !IsCompleted
+            ? WriteStartingMessage (writer, console)
+            : WriteCompletedMessage(writer, console);
+    }
+
+    private bool WriteStartingMessage(TextWriter writer, ConsoleContext console)
+    {
+        WriteNameAndStatus(writer, console, status: "Starting");
+        return true;
+    }
+
+    private bool WriteCompletedMessage(TextWriter writer, ConsoleContext console)
+    {
+        WriteNameAndStatus  (writer, console, "Completed");
+        WriteElapsedTime    (writer, console);
+        WriteExceptionNotice(writer, console);
+        return true;
+    }
+
+    private void WriteNameAndStatus(TextWriter writer, ConsoleContext console, string status)
+    {
+        const string NameStyle
+            = Ansi.Begin + Ansi.Bold
+            + Ansi.End;
+
+        const string StatusStyle
+            = Ansi.Begin + Ansi.ForeBrightCyan
+            + Ansi.And   + Ansi.Normal
+            + Ansi.End;
+
+        if (console.IsColorEnabled)
+            writer.Write(NameStyle);
+
+        writer.Write(Name);
+        writer.Write(": ");
+
+        if (console.IsColorEnabled)
+            writer.Write(StatusStyle);
+
+        writer.Write(status);
+
+        if (console.IsColorEnabled)
+            writer.Write(console.DefaultCode);
+    }
+
+    private void WriteElapsedTime(TextWriter writer, ConsoleContext console)
+    {
+        const string TimeStyle
+            = Ansi.Begin + Ansi.ForeWhite
+            + Ansi.And   + Ansi.Fore256 + "248"
+            + Ansi.End;
+
+        var seconds = _stopwatch.Elapsed.TotalSeconds;
+
+        if (console.IsColorEnabled)
+            writer.Write(TimeStyle);
+
+#if NET6_0_OR_GREATER
+        // .NET 6.0 introduced performant string interpolation
+        writer.Write($" [{seconds:N3}s]");
+#else
+        writer.Write(" [{0:N3}s]", seconds);
+#endif
+    }
+
+    private void WriteExceptionNotice(TextWriter writer, ConsoleContext console)
+    {
+        const string NoticeStyle
+            = Ansi.Begin + Ansi.Bold
+            + Ansi.And   + Ansi.ForeYellow
+            + Ansi.End;
+
+        if (Exception is { } exception)
+        {
+            if (console.IsColorEnabled)
+                writer.Write(NoticeStyle);
+
+            writer.Write(" [EXCEPTION]");
+        }
     }
 }
