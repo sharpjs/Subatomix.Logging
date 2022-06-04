@@ -24,12 +24,12 @@ namespace Subatomix.Diagnostics;
 using static ExceptionTestHelpers;
 
 [TestFixture]
-public class CorrelationScopeTests
+public class ActivityScopeTests
 {
     [Test]
     public void Construct_NullLogger()
     {
-        Invoking(() => new OperationScope(null!, default, "a"))
+        Invoking(() => new ActivityScope(null!, default, "a"))
             .Should().Throw<ArgumentNullException>()
             .WithParameterName("logger");
     }
@@ -37,7 +37,7 @@ public class CorrelationScopeTests
     [Test]
     public void Construct_NullName()
     {
-        Invoking(() => new OperationScope(NullLogger.Instance, default, null!))
+        Invoking(() => new ActivityScope(NullLogger.Instance, default, null!))
             .Should().Throw<ArgumentNullException>()
             .WithParameterName("name");
     }
@@ -45,7 +45,7 @@ public class CorrelationScopeTests
     [Test]
     public void Construct_EmptyName()
     {
-        Invoking(() => new OperationScope(NullLogger.Instance, default, ""))
+        Invoking(() => new ActivityScope(NullLogger.Instance, default, ""))
             .Should().ThrowExactly<ArgumentException>()
             .WithParameterName("name");
     }
@@ -53,7 +53,7 @@ public class CorrelationScopeTests
     [Test]
     public void Activity_Get()
     {
-        using var s = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
         s.Activity.Should().BeSameAs(Activity.Current);
     }
@@ -63,7 +63,7 @@ public class CorrelationScopeTests
     public void CreateAndDispose_W3C()
     {
         using var _ = new ActivityTestScope(ActivityIdFormat.W3C);
-        using var s = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
         var a = Activity.Current!;
         a               .Should().NotBeNull ();
@@ -80,7 +80,7 @@ public class CorrelationScopeTests
         // Composite
         a.Id            .Should().Be        ($"00-{a.TraceId}-{a.SpanId}-00");
 
-        using (new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "b"))
+        using (new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
             var b = Activity.Current!;
             b               .Should().NotBeNull ();
@@ -101,7 +101,7 @@ public class CorrelationScopeTests
 
         Activity.Current.Should().BeSameAs(a);
 
-        ((IDisposable) s).Dispose();
+        ((IDisposable) s).Dispose(); // To test multiple disposals
 
         Activity.Current.Should().BeNull();
     }
@@ -111,7 +111,7 @@ public class CorrelationScopeTests
     public void CreateAndDispose_Hierarchical()
     {
         using var _ = new ActivityTestScope(ActivityIdFormat.Hierarchical);
-        using var s = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
         var a = Activity.Current!;
         a               .Should().NotBeNull     ();
@@ -129,7 +129,7 @@ public class CorrelationScopeTests
         // Composite
         a.Id            .Should().Be            ($"|{a.RootId}.");
 
-        using (new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "b"))
+        using (new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
             var b = Activity.Current!;
             b               .Should().NotBeNull ();
@@ -149,7 +149,7 @@ public class CorrelationScopeTests
 
         Activity.Current.Should().BeSameAs(a);
 
-        ((IDisposable) s).Dispose();
+        ((IDisposable) s).Dispose(); // To test multiple disposals
 
         Activity.Current.Should().BeNull();
     }
@@ -159,7 +159,7 @@ public class CorrelationScopeTests
     {
         Activity activity;
 
-        using (var scope = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a"))
+        using (var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a"))
         {
             activity = scope.Activity;
         }
@@ -173,7 +173,7 @@ public class CorrelationScopeTests
     {
         Activity activity;
 
-        using (var scope = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a"))
+        using (var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a"))
         {
             activity = scope.Activity;
             scope.Exception = Thrown();
@@ -188,7 +188,7 @@ public class CorrelationScopeTests
     {
         Activity activity;
 
-        using (var scope = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a"))
+        using (var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a"))
         {
             activity = scope.Activity;
 
@@ -205,7 +205,7 @@ public class CorrelationScopeTests
     {
         Activity activity;
 
-        using (var scope = new CorrelationScope(NullLogger.Instance, LogLevel.Debug, "a"))
+        using (var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a"))
         {
             activity = scope.Activity;
             scope.Exception = Thrown();

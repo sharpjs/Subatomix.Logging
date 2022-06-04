@@ -23,43 +23,37 @@ namespace Subatomix.Diagnostics;
 using SD = System.Diagnostics;
 
 /// <summary>
-///   A scope representing a correlated logical operation, intended for use
-///   with the <see cref="ILogger"/>, <see cref="SD.Activity"/>, and legacy
-///   <see cref="Trace.CorrelationManager"/> APIs.
+///   A scope representing a logical operation with an associated
+///   <see cref="SD.Activity"/>.  This type is intended for use with the
+///   <see cref="ILogger"/> API.
 /// </summary>
 /// <remarks>
 ///   <para>
-///     On construction, a scope of this type logs a start message containing
-///     the name of the operation.  On disposal, the scope logs a completion
-///     message containing the name and duration of the operation.
+///     On construction, a scope of this type starts a new named
+///     <see cref="SD.Activity"/> and logs a start message containing the name
+///     of the activity.  On disposal, the scope stops the activity and logs a
+///     completion message containing the name and duration of the activity.
 ///   </para>
 ///   <para>
-///     Code using this type can arrange for exception logging by setting the
+///     Code using this type can arrange for exception reporting by setting the
 ///     <see cref="Exception"/> propery, typically in a <see langword="catch"/>
 ///     block.  On disposal, if a scope's <see cref="Exception"/> propery is
 ///     not <see langword="null"/>, the scope logs the exception immediately
 ///     before the completion message and adds an exception indicator to the
-///     completion message.
-///   </para>
-///   <para>
-///     Scopes of this type participate in logical operation correlation.  On
-///     construction, a scope starts a new named <see cref="SD.Activity"/> and
-///     a corresponding <see cref="Trace.CorrelationManager"/> operation.  On
-///     disposal, the scope stops the activity and operation.  Before stopping
-///     the activity, the scope sets the <see cref="Activity.Status"/> property
-///     if it is unset:
+///     completion message.  The scope also sets the activity's status if it is
+///     unset:
 ///     if <see cref="Exception"/> is <see langword="null"/>, the scope sets
-///         <see cref="Activity.Status"/> to <see cref="ActivityStatusCode.Ok"/> and
-///         <see cref="Activity.StatusDescription"/> to <see langword="null"/>;
+///       <see cref="Activity.Status"/> to <see cref="ActivityStatusCode.Ok"/> and
+///       <see cref="Activity.StatusDescription"/> to <see langword="null"/>;
 ///     othwerise, the scope sets
-///         <see cref="Activity.Status"/> to <see cref="ActivityStatusCode.Error"/> and 
-///         <see cref="Activity.StatusDescription"/> to the exception message.
+///       <see cref="Activity.Status"/> to <see cref="ActivityStatusCode.Error"/> and 
+///       <see cref="Activity.StatusDescription"/> to the exception message.
 ///   </para>
 /// </remarks>
-public class CorrelationScope : OperationScope
+public class ActivityScope : OperationScope
 {
     /// <summary>
-    ///   Initializes and starts a new <see cref="CorrelationScope"/> instance.
+    ///   Initializes and starts a new <see cref="ActivityScope"/> instance.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -71,7 +65,7 @@ public class CorrelationScope : OperationScope
     ///   The name of the operation.  If omitted, the default is the name of
     ///   the calling member.
     /// </param>
-    public CorrelationScope(
+    public ActivityScope(
         ILogger                   logger,
         LogLevel                  logLevel = LogLevel.Information,
         [CallerMemberName] string name     = null!)
@@ -79,7 +73,7 @@ public class CorrelationScope : OperationScope
     { }
 
     /// <summary>
-    ///   Initializes a new <see cref="CorrelationScope"/> instance.
+    ///   Initializes a new <see cref="ActivityScope"/> instance.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -108,7 +102,7 @@ public class CorrelationScope : OperationScope
     /// <exception cref="ArgumentException">
     ///   <paramref name="name"/> is empty.
     /// </exception>
-    protected CorrelationScope(ILogger logger, LogLevel logLevel, string name, bool start)
+    protected ActivityScope(ILogger logger, LogLevel logLevel, string name, bool start)
         : base(logger, logLevel, name, start: false)
     {
         Activity = new(name);
@@ -117,7 +111,7 @@ public class CorrelationScope : OperationScope
     }
 
     /// <summary>
-    ///   Gets the activity object that represents the operation.
+    ///   Gets the activity object associated with the operation.
     /// </summary>
     public Activity Activity { get; }
 

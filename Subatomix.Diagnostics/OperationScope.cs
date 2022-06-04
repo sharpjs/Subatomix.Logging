@@ -26,8 +26,8 @@ using LogLevel = LogLevel;
 #endif
 
 /// <summary>
-///   A scope representing a logical operation, intended for use with the
-///   <see cref="ILogger"/> API.
+///   A scope representing a logical operation.  This type is intended for use
+///   with the <see cref="ILogger"/> API.
 /// </summary>
 /// <remarks>
 ///   <para>
