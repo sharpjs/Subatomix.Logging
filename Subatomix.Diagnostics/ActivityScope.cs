@@ -52,6 +52,9 @@ using SD = System.Diagnostics;
 /// </remarks>
 public class ActivityScope : OperationScope
 {
+    private static readonly DiagnosticListener
+        DiagnosticSource = new("Subatomix.Diagnostics.ActivityScope");
+
     /// <summary>
     ///   Initializes and starts a new <see cref="ActivityScope"/> instance.
     /// </summary>
@@ -118,7 +121,7 @@ public class ActivityScope : OperationScope
     /// <inheritdoc/>
     protected override void Start()
     {
-        Activity.Start();
+        DiagnosticSource.StartActivity(Activity, null);
 
         base.Start();
     }
@@ -129,6 +132,7 @@ public class ActivityScope : OperationScope
         base.Stop();
 
         Activity.SetStatusIfUnset(Exception);
-        Activity.Stop();
+
+        DiagnosticSource.StopActivity(Activity, null);
     }
 }
