@@ -53,55 +53,58 @@ public class ActivityScopeTests
     [Test]
     public void Activity_Get()
     {
-        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
-        s.Activity.Should().BeSameAs(Activity.Current);
+        scope.Activity.Should().BeSameAs(Activity.Current);
     }
 
     [Test]
     [NonParallelizable] // becuase it depends on static state
     public void CreateAndDispose_W3C()
     {
-        using var _ = new ActivityTestScope(ActivityIdFormat.W3C);
-        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var _      = new ActivityTestScope(ActivityIdFormat.W3C);
+        using var scope0 = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
-        var a = Activity.Current!;
-        a               .Should().NotBeNull ();
-        a.OperationName .Should().Be        ("a");
-        a.Parent        .Should().BeNull    ();
-        a.IdFormat      .Should().Be        (ActivityIdFormat.W3C);
+        var root = Activity.Current!;
+        root               .Should().NotBeNull ();
+        root               .Should().BeSameAs  (scope0.Activity);
+        root.OperationName .Should().Be        ("a");
+        root.Parent        .Should().BeNull    ();
+        root.IdFormat      .Should().Be        (ActivityIdFormat.W3C);
         // W3C
-        a.TraceId       .Should().NotBe     (default(ActivityTraceId));
-        a.ParentSpanId  .Should().Be        (default(ActivitySpanId));
-        a.SpanId        .Should().NotBe     (default(ActivitySpanId));
+        root.TraceId       .Should().NotBe     (default(ActivityTraceId));
+        root.ParentSpanId  .Should().Be        (default(ActivitySpanId));
+        root.SpanId        .Should().NotBe     (default(ActivitySpanId));
         // Hierarchical
-        a.RootId        .Should().Be        (a.TraceId.ToHexString());
-        a.ParentId      .Should().BeNull    ();
+        root.RootId        .Should().Be        (root.TraceId.ToHexString());
+        root.ParentId      .Should().BeNull    ();
         // Composite
-        a.Id            .Should().Be        ($"00-{a.TraceId}-{a.SpanId}-00");
+        root.Id            .Should().Be        ($"00-{root.TraceId}-{root.SpanId}-00");
 
-        using (new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
+        using (var scope1 = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
-            var b = Activity.Current!;
-            b               .Should().NotBeNull ();
-            b.OperationName .Should().Be        ("b");
-            b.Parent        .Should().BeSameAs  (a);
-            b.IdFormat      .Should().Be        (ActivityIdFormat.W3C);
+            var child = Activity.Current!;
+            child               .Should().NotBeNull   ();
+            child               .Should().BeSameAs    (scope1.Activity);
+            child               .Should().NotBeSameAs (root);
+            child.OperationName .Should().Be          ("b");
+            child.Parent        .Should().BeSameAs    (root);
+            child.IdFormat      .Should().Be          (ActivityIdFormat.W3C);
             // W3C
-            b.TraceId       .Should().Be        (a.TraceId);
-            b.ParentSpanId  .Should().Be        (a.SpanId);
-            b.SpanId        .Should().NotBe     (a.SpanId);
-            b.SpanId        .Should().NotBe     (default(ActivitySpanId));
+            child.TraceId       .Should().Be          (root.TraceId);
+            child.ParentSpanId  .Should().Be          (root.SpanId);
+            child.SpanId        .Should().NotBe       (root.SpanId);
+            child.SpanId        .Should().NotBe       (default(ActivitySpanId));
             // Hierarchical
-            b.RootId        .Should().Be        (a.TraceId.ToHexString());
-            b.ParentId      .Should().Be        (a.Id);
+            child.RootId        .Should().Be          (root.TraceId.ToHexString());
+            child.ParentId      .Should().Be          (root.Id);
             // Composite
-            b.Id            .Should().Be        ($"00-{a.TraceId}-{b.SpanId}-00");
+            child.Id            .Should().Be          ($"00-{root.TraceId}-{child.SpanId}-00");
         }
 
-        Activity.Current.Should().BeSameAs(a);
+        Activity.Current.Should().BeSameAs(root);
 
-        ((IDisposable) s).Dispose(); // To test multiple disposals
+        ((IDisposable) scope0).Dispose(); // To test multiple disposals
 
         Activity.Current.Should().BeNull();
     }
@@ -110,46 +113,49 @@ public class ActivityScopeTests
     [NonParallelizable] // becuase it depends on static state
     public void CreateAndDispose_Hierarchical()
     {
-        using var _ = new ActivityTestScope(ActivityIdFormat.Hierarchical);
-        using var s = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
+        using var _      = new ActivityTestScope(ActivityIdFormat.Hierarchical);
+        using var scope0 = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a");
 
-        var a = Activity.Current!;
-        a               .Should().NotBeNull     ();
-        a.OperationName .Should().Be            ("a");
-        a.Parent        .Should().BeNull        ();
-        a.IdFormat      .Should().Be            (ActivityIdFormat.Hierarchical);
+        var root = Activity.Current!;
+        root               .Should().NotBeNull     ();
+        root               .Should().BeSameAs      (scope0.Activity);
+        root.OperationName .Should().Be            ("a");
+        root.Parent        .Should().BeNull        ();
+        root.IdFormat      .Should().Be            (ActivityIdFormat.Hierarchical);
         // W3C
-        a.TraceId       .Should().Be            (default(ActivityTraceId));
-        a.ParentSpanId  .Should().Be            (default(ActivitySpanId));
-        a.SpanId        .Should().Be            (default(ActivitySpanId));
+        root.TraceId       .Should().Be            (default(ActivityTraceId));
+        root.ParentSpanId  .Should().Be            (default(ActivitySpanId));
+        root.SpanId        .Should().Be            (default(ActivitySpanId));
         // Hierarchical
-        a.RootId        .Should().MatchRegex    (@"^[0-9a-f]{1,8}-[0-9a-f]{1,16}$");
-        a.RootId        .Should().NotMatchRegex (@"^0{1,8}-0{1,16}$");
-        a.ParentId      .Should().BeNull        ();
+        root.RootId        .Should().MatchRegex    (@"^[0-9a-f]{1,8}-[0-9a-f]{1,16}$");
+        root.RootId        .Should().NotMatchRegex (@"^0{1,8}-0{1,16}$");
+        root.ParentId      .Should().BeNull        ();
         // Composite
-        a.Id            .Should().Be            ($"|{a.RootId}.");
+        root.Id            .Should().Be            ($"|{root.RootId}.");
 
-        using (new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
+        using (var scope1 = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "b"))
         {
-            var b = Activity.Current!;
-            b               .Should().NotBeNull ();
-            b.OperationName .Should().Be        ("b");
-            b.Parent        .Should().BeSameAs  (a);
-            b.IdFormat      .Should().Be        (ActivityIdFormat.Hierarchical);
+            var child = Activity.Current!;
+            child               .Should().NotBeNull   ();
+            child               .Should().BeSameAs    (scope1.Activity);
+            child               .Should().NotBeSameAs (root);
+            child.OperationName .Should().Be          ("b");
+            child.Parent        .Should().BeSameAs    (root);
+            child.IdFormat      .Should().Be          (ActivityIdFormat.Hierarchical);
             // W3C
-            b.TraceId       .Should().Be        (default(ActivityTraceId));
-            b.ParentSpanId  .Should().Be        (default(ActivitySpanId));
-            b.SpanId        .Should().Be        (default(ActivitySpanId));
+            child.TraceId       .Should().Be          (default(ActivityTraceId));
+            child.ParentSpanId  .Should().Be          (default(ActivitySpanId));
+            child.SpanId        .Should().Be          (default(ActivitySpanId));
             // Hierarchical
-            b.RootId        .Should().Be        (a.RootId);
-            b.ParentId      .Should().Be        (a.Id);
+            child.RootId        .Should().Be          (root.RootId);
+            child.ParentId      .Should().Be          (root.Id);
             // Composite
-            b.Id            .Should().Be        ($"|{a.RootId}.1.");
+            child.Id            .Should().Be          ($"|{root.RootId}.1.");
         }
 
-        Activity.Current.Should().BeSameAs(a);
+        Activity.Current.Should().BeSameAs(root);
 
-        ((IDisposable) s).Dispose(); // To test multiple disposals
+        ((IDisposable) scope0).Dispose(); // To test multiple disposals
 
         Activity.Current.Should().BeNull();
     }
