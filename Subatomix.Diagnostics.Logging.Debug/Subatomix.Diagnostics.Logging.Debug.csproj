@@ -17,26 +17,13 @@
   -->
 
   <PropertyGroup>
-    <Description>Tests for Subatomix.Diagnostics</Description>
-    <TargetFrameworks>net48;net6.0</TargetFrameworks>
-    <RootNamespace>Subatomix.Diagnostics</RootNamespace>
+    <Description>Logger provider for Microsoft.Extensions.Logging that logs messages to an attached debugger</Description>
+    <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Subatomix.Diagnostics.Logging.Debug\Subatomix.Diagnostics.Logging.Debug.csproj" />
-    <ProjectReference Include="..\Subatomix.Diagnostics\Subatomix.Diagnostics.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Subatomix.Testing" Version="2.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="FluentAssertions" />
-    <Using Include="FluentAssertions.FluentActions" Static="true" />
-    <Using Include="Moq" />
-    <Using Include="NUnit.Framework" />
-    <Using Include="Subatomix.Testing.TestGlobals" Static="true" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
   </ItemGroup>
 
 </Project>

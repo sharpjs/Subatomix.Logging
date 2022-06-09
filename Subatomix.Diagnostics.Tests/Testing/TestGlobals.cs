@@ -16,6 +16,7 @@
 
 using System.Text;
 using NUnit.Framework.Internal;
+using MEL = Microsoft.Extensions.Logging;
 
 namespace Subatomix.Testing;
 
@@ -29,6 +30,19 @@ internal static class TestGlobals
     ///   <see cref="TestContext"/>.
     /// </summary>
     public static Randomizer Any => TestContext.CurrentContext.Random;
+
+    /// <summary>
+    ///   Gets a random <see cref="MEL.LogLevel"/> except
+    ///   <see cref="MEL.LogLevel.None"/>.
+    /// </summary>
+    /// <param name="any">
+    ///   A NUnit <see cref="Randomizer"/>.
+    /// </param>
+    public static MEL.LogLevel LogLevelExceptNone(this Randomizer any)
+        => (MEL.LogLevel) any.Next(
+            minValue: (int) MEL.LogLevel.Trace, // inclusive
+            maxValue: (int) MEL.LogLevel.None   // exclusive
+        );
 
     /// <summary>
     ///   Appends <see cref="Environment.NewLine"/> to the specified string.
