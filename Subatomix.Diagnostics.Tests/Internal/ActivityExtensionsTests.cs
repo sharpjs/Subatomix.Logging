@@ -26,6 +26,56 @@ using static ExceptionTestHelpers;
 public class ActivityExtensionsTests
 {
     [Test]
+    public void SetTelemetryTags_Null()
+    {
+        Invoking(() => default(Activity)!.SetTelemetryTags())
+            .Should().Throw<ArgumentNullException>().WithParameterName("activity");
+    }
+
+    [Test]
+    public void SetTelemetryTags_StatusError()
+    {
+        var activity = new Activity("Foo");
+
+        activity.SetStatus(ActivityStatusCode.Error, "some message");
+
+        activity.SetTelemetryTags();
+
+        activity.GetTagItem("peer.service") .Should().Be("InProc");
+        activity.GetTagItem("peer.hostname").Should().Be("internal");
+        activity.GetTagItem("db.statement") .Should().Be("Activity: Foo");
+        activity.GetTagItem("error")        .Should().Be("true");
+    }
+
+    [Test]
+    public void SetTelemetryTags_StatusOk()
+    {
+        var activity = new Activity("Foo");
+
+        activity.SetStatus(ActivityStatusCode.Ok);
+
+        activity.SetTelemetryTags();
+
+        activity.GetTagItem("peer.service") .Should().Be("InProc");
+        activity.GetTagItem("peer.hostname").Should().Be("internal");
+        activity.GetTagItem("db.statement") .Should().Be("Activity: Foo");
+        activity.GetTagItem("error")        .Should().Be("false");
+    }
+
+    [Test]
+    public void SetTelemetryTags_StatusUnset()
+    {
+        var activity = new Activity("Foo");
+
+        activity.SetTelemetryTags();
+
+        activity.GetTagItem("peer.service") .Should().Be("InProc");
+        activity.GetTagItem("peer.hostname").Should().Be("internal");
+        activity.GetTagItem("db.statement") .Should().Be("Activity: Foo");
+        activity.GetTagItem("error")        .Should().Be("false");
+    }
+
+    [Test]
     public void SetStatusIfUnset_Null()
     {
         Invoking(() => default(Activity)!.SetStatusIfUnset(new()))

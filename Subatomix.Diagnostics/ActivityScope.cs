@@ -132,6 +132,7 @@ public class ActivityScope : OperationScope
         base.Stop();
 
         Activity.SetStatusIfUnset(Exception);
+        Activity.SetTelemetryTags();
 
         DiagnosticSource.StopActivity(Activity, null);
     }

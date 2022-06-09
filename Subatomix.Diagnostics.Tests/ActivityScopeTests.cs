@@ -155,6 +155,21 @@ public class ActivityScopeTests
     }
 
     [Test]
+    public void Dispose_ActivityTags()
+    {
+        Activity activity;
+
+        using (var scope = new ActivityScope(NullLogger.Instance, LogLevel.Debug, "a"))
+        {
+            activity = scope.Activity;
+        }
+
+        activity.GetTagItem("peer.service") .Should().Be("InProc");
+        activity.GetTagItem("peer.hostname").Should().Be("internal");
+        activity.GetTagItem("db.statement") .Should().Be("Activity: a");
+    }
+
+    [Test]
     public void Dispose_ActivityStatus_ImplicitOk()
     {
         Activity activity;
@@ -164,8 +179,9 @@ public class ActivityScopeTests
             activity = scope.Activity;
         }
 
-        activity.Status           .Should().Be(ActivityStatusCode.Ok);
-        activity.StatusDescription.Should().BeNull();
+        activity.Status             .Should().Be(ActivityStatusCode.Ok);
+        activity.StatusDescription  .Should().BeNull();
+        activity.GetTagItem("error").Should().Be("false");
     }
 
     [Test]
@@ -179,8 +195,9 @@ public class ActivityScopeTests
             scope.Exception = Thrown();
         }
 
-        activity.Status           .Should().Be(ActivityStatusCode.Error);
-        activity.StatusDescription.Should().Be("A test exception was thrown.");
+        activity.Status             .Should().Be(ActivityStatusCode.Error);
+        activity.StatusDescription  .Should().Be("A test exception was thrown.");
+        activity.GetTagItem("error").Should().Be("true");
     }
 
     [Test]
@@ -196,8 +213,9 @@ public class ActivityScopeTests
             activity.SetStatus(ActivityStatusCode.Error, "Uh-oh.");
         }
 
-        activity.Status           .Should().Be(ActivityStatusCode.Error);
-        activity.StatusDescription.Should().Be("Uh-oh.");
+        activity.Status             .Should().Be(ActivityStatusCode.Error);
+        activity.StatusDescription  .Should().Be("Uh-oh.");
+        activity.GetTagItem("error").Should().Be("true");
     }
 
     [Test]
@@ -214,7 +232,8 @@ public class ActivityScopeTests
             activity.SetStatus(ActivityStatusCode.Ok, null);
         }
 
-        activity.Status           .Should().Be(ActivityStatusCode.Ok);
-        activity.StatusDescription.Should().BeNull();
+        activity.Status             .Should().Be(ActivityStatusCode.Ok);
+        activity.StatusDescription  .Should().BeNull();
+        activity.GetTagItem("error").Should().Be("false");
     }
 }

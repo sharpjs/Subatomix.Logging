@@ -37,6 +37,92 @@ internal static class ActivityExtensions
         activity.SetStatus(code, description);
     }
 
+    internal static void SetTelemetryTags(this Activity activity)
+    {
+        if (activity is null)
+            throw new ArgumentNullException(nameof(activity));
+
+        // Set tags for consumption by the DependencyTrackingTelemetryModule of
+        // Application Insights (AI).  The module, properly configured, will
+        // report each Activity as a DependencyTelemetry item.
+        //
+        // Sources:
+        // - https://github.com/microsoft/ApplicationInsights-dotnet/blob/2.20.0/WEB/Src/DependencyCollector/DependencyCollector/TelemetryDiagnosticSourceListener.cs
+        // - https://github.com/opentracing/specification/blob/master/semantic_conventions.md
+        //
+        // Correspondence of telemetry properties to activity tags:
+        // - telemetry.Type       = Tags["peer.service"]  ?? Tags["component"]     ?? diagnosticSource.Name
+        // - telemetry.Target     = Tags["peer.hostname"] ?? Tags["http.url"].Host ?? Tags["peer.address"]
+        // - telemetry.Name       = activity.OperationName
+        // - telemetry.Data       = Tags["db.statement"]  ?? Tags["http.url"]
+        // - telemetry.Success    = !bool.Parse(Tags["error"])
+        // - telemetry.ResultCode = Tags["http.status_code"]
+
+        // Set telemetry.Type indirectly via tag.
+        //
+        // Evidence (but not documentation) suggests that AI recognizes the
+        // dependency type 'InProc' as an internal operation.  Specifically:
+        //
+        // - https://github.com/microsoft/ApplicationInsights-dotnet/blob/2.20.0/WEB/Src/DependencyCollector/DependencyCollector/Implementation/RemoteDependencyConstants.cs
+        //   https://github.com/microsoft/ApplicationInsights-dotnet/blob/2.20.0/WEB/Src/DependencyCollector/DependencyCollector/Implementation/AzureSdk/AzureSdkDiagnosticsEventHandler.cs
+        //   AI SDK RemoteDependencyConstants defines an InProc constant.  The
+        //   class AzureSdkDiagnosticsEventHandler has a comment mentioning the
+        //   value's use for an "internal operation".
+        //
+        // - https://github.com/microsoft/ApplicationInsights-dotnet/pull/1300#issuecomment-553998634
+        //   "Internal spans ... should be dependency telemetry with kind
+        //   InProc".
+        //
+        // - https://github.com/microsoft/ApplicationInsights-dotnet/issues/1199#issuecomment-525109854
+        //   "RemoteDependency with Type 'InProc' is exactly what you need to
+        //   do - UX will treat it accordingly. Unfortunately, there is no
+        //   public doc on this yet."
+        //
+        // - https://github.com/Azure/azure-sdk-for-net/pull/23541
+        //   "InProc type should be used for all the in-process spans".
+        // 
+        // - https://docs.rs/opentelemetry-application-insights/0.20.0/opentelemetry_application_insights/
+        //   "for INTERNAL Spans the Dependency Type is always 'InProc'".
+        //
+        // - https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/monitor/azure-monitor-opentelemetry-exporter/src/main/java/com/azure/monitor/opentelemetry/exporter/AzureMonitorTraceExporter.java
+        //   Java package azure-monitor-opentelemetry-exporter has file
+        //   AzureMonitorTraceExporter.java that uses 'InProc' as the type for
+        //   internal operations.  The file also contains a comment stating
+        //   that AI's App Map feature knows to ignore InProc dependencies.
+        // 
+        activity.SetTag("peer.service", "InProc");
+
+        // Set telemetry.Target indirectly via tag.
+        //
+        // Experiments show that the AI portal UI uses this value in various
+        // ways:
+        //
+        // - Transaction search: displays the Target value as the item content.
+        //
+        // - End-to-end transaction details, view all telemetry: displays the
+        //   the Name value, but with the Target value removed if Target is a
+        //   prefix of Name.
+        //
+        // - End-to-end transaction details, item properties pane: displays the
+        //   Target value as the 'Base name' property.
+        //
+        activity.SetTag("peer.hostname", "internal");
+
+        // Set telemetry.Data indirectly via tag.
+        //
+        // Experiments show that the AI portal UI displays this value in a
+        // monospace box labeled 'Command' beneath the item properties.
+        //
+        activity.SetTag("db.statement", $"Activity: {activity.OperationName}");
+
+        // Set telemetry.Success indirectly via tag.
+        //
+        // Experiments show that in the AI portal UI, this value controls the
+        // the 'Call status' item property and the color of the timeline item.
+        //
+        activity.SetTag("error", activity.Status == ActivityStatusCode.Error ? "true" : "false");
+    }
+
     internal static void GetRootOperationId(this Activity activity, Span<char> chars)
     {
         activity
