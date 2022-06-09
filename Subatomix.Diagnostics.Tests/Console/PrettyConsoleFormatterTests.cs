@@ -120,6 +120,7 @@ public class PrettyConsoleFormatterTests
         // Mono
 
         // Message only
+        //   Level        Color  Message             Throw  Expected
         Case(None,        false, "Message.",         false, "[01:23:45] ?????     : Message."),
         Case(Trace,       false, "Message.",         false, "[01:23:45] ????? trce: Message."),
         Case(Debug,       false, "Message.",         false, "[01:23:45] ????? dbug: Message."),
@@ -129,6 +130,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    false, "Message.",         false, "[01:23:45] ????? CRIT: Message."),
 
         // Message and exception
+        //   Level        Color  Message             Throw  Expected
         Case(None,        false, "Message.",         true,  "[01:23:45] ?????     : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Trace,       false, "Message.",         true,  "[01:23:45] ????? trce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Debug,       false, "Message.",         true,  "[01:23:45] ????? dbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
@@ -138,6 +140,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    false, "Message.",         true,  "[01:23:45] ????? CRIT: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
 
         // Exception only
+        //   Level        Color  Message             Throw  Expected
         Case(None,        false, "",                 true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Trace,       false, "",                 true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Debug,       false, "",                 true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
@@ -149,6 +152,7 @@ public class PrettyConsoleFormatterTests
         // Color
 
         // Message only
+        //   Level        Color  Message             Throw  Expected
         Case(None,        true,  "Message.",         false, "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : Message.~[0m"),
         Case(Trace,       true,  "Message.",         false, "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: Message.~[0m"),
         Case(Debug,       true,  "Message.",         false, "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: Message.~[0m"),
@@ -158,6 +162,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    true,  "Message.",         false, "~[0;37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: Message.~[0m"),
 
         // Message and exception
+        //   Level        Color  Message             Throw  Expected
         Case(None,        true,  "Message.",         true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Trace,       true,  "Message.",         true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Debug,       true,  "Message.",         true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: Message. System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
@@ -167,6 +172,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    true,  "Message.",         true,  "~[0;37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: Message.~[95;49m System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
 
         // Exception only
+        //   Level        Color  Message             Throw  Expected
         Case(None,        true,  "",                 true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Trace,       true,  "",                 true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Debug,       true,  "",                 true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
@@ -181,6 +187,7 @@ public class PrettyConsoleFormatterTests
         // Mono
 
         // Exception only (entry.State is null)
+        //   Level        Color  Message             Throw  Expected
         Case(None,        false, null,               true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Trace,       false, null,               true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Debug,       false, null,               true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
@@ -190,6 +197,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    false, null,               true,  "[01:23:45] ????? CRIT: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
 
         // Exception only (entry.Formatter is null)
+        //   Level        Color  Message             Throw  Expected
         Case(None,        false, NullEntryFormatter, true,  "[01:23:45] ?????     : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Trace,       false, NullEntryFormatter, true,  "[01:23:45] ????? trce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
         Case(Debug,       false, NullEntryFormatter, true,  "[01:23:45] ????? dbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*"),
@@ -201,6 +209,7 @@ public class PrettyConsoleFormatterTests
         // Color
                             
         // Exception only (entry.State is null)
+        //   Level        Color  Message             Throw  Expected
         Case(None,        true,  null,               true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Trace,       true,  null,               true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Debug,       true,  null,               true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
@@ -210,6 +219,7 @@ public class PrettyConsoleFormatterTests
         Case(Critical,    true,  null,               true,  "~[0;37;38;5;242m[01:23:45] ~[36;38;5;31m????? ~[97;45;1mCRIT~[95;49m: ~[95;49mSystem.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
                             
         // Exception only (entry.Formatter is null)
+        //   Level        Color  Message             Throw  Expected
         Case(None,        true,  NullEntryFormatter, true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243m    : System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Trace,       true,  NullEntryFormatter, true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mtrce: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
         Case(Debug,       true,  NullEntryFormatter, true,  "~[0;90;38;5;239m[01:23:45] ~[34;38;5;23m????? ~[90;38;5;243mdbug: System.ApplicationException: A test exception was thrown.", "   at Subatomix.Diagnostics.Testing.ExceptionTestHelpers.Thrown(String message)*~[0m"),
