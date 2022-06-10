@@ -1,6 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <!--
+/*
     Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,16 +12,22 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  -->
+*/
 
-  <PropertyGroup>
-    <Description>Example app for Subatomix.Diagnostics</Description>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+using Subatomix.Logging.Debugger;
 
-  <ItemGroup>
-    <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
-  </ItemGroup>
+namespace Subatomix.Logging.Testing;
 
-</Project>
+internal class TestDebugger : IDebugger
+{
+    private readonly List<(int Level, string Category, string Message)>
+        _entries = new();
+
+    public IReadOnlyList<(int Level, string Category, string Message)>
+        Entries => _entries;
+
+    public bool IsAttached { get; set; }
+
+    public void Log(int level, string category, string message)
+        => _entries.Add((level, category, message));
+}

@@ -1,4 +1,4 @@
-# Subatomix.Diagnostics
+# Subatomix.Logging
 
 Short description of the project.
 
@@ -7,9 +7,9 @@ Short description of the project.
 WIP
 
 <!--
-[![Build](https://github.com/sharpjs/Subatomix.Diagnostics/workflows/Build/badge.svg)](https://github.com/sharpjs/Subatomix.Diagnostics/actions)
-[![NuGet](https://img.shields.io/nuget/v/Subatomix.Diagnostics.svg)](https://www.nuget.org/packages/Subatomix.Diagnostics)
-[![NuGet](https://img.shields.io/nuget/dt/Subatomix.Diagnostics.svg)](https://www.nuget.org/packages/Subatomix.Diagnostics)
+[![Build](https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg)](https://github.com/sharpjs/Subatomix.Logging/actions)
+[![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging)
+[![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging)
 -->
 
 ## Installation
@@ -17,7 +17,7 @@ WIP
 WIP
 
 <!--
-Install [this NuGet Package](https://www.nuget.org/packages/Subatomix.Diagnostics) in your project.
+Install [this NuGet Package](https://www.nuget.org/packages/Subatomix.Logging) in your project.
 -->
 
 ## Usage

@@ -1,6 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <!--
+/*
     Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,16 +12,24 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  -->
+*/
 
-  <PropertyGroup>
-    <Description>Example app for Subatomix.Diagnostics</Description>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+namespace Subatomix.Logging;
 
-  <ItemGroup>
-    <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
-  </ItemGroup>
+[TestFixture]
+internal class StringExtensionsTests
+{
+    [Test]
+    [TestCase(0, ""     )]
+    [TestCase(3, "0aA"  )]
+    [TestCase(4, "0aAb" )]
+    [TestCase(5, "0aAb.")]
+    public void FillLettersAndDigits(int n, string expected)
+    {
+        Span<char> chars = stackalloc char[n];
 
-</Project>
+        "|0|a|A|b|".FillLettersAndDigits(chars);
+
+        chars.ToString().Should().Be(expected);
+    }
+}

@@ -1,6 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <!--
+/*
     Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,16 +12,30 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  -->
+*/
 
-  <PropertyGroup>
-    <Description>Example app for Subatomix.Diagnostics</Description>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+namespace Subatomix.Logging;
 
-  <ItemGroup>
-    <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
-  </ItemGroup>
+internal static class StringExtensions
+{
+    internal static void FillLettersAndDigits(this string s, Span<char> chars)
+    {
+        var index = 0;
 
-</Project>
+        if (index >= chars.Length)
+            return;
+
+        foreach (char c in s)
+        {
+            if (!char.IsLetterOrDigit(c))
+                continue;
+
+            chars[index++] = c;
+
+            if (index >= chars.Length)
+                return;
+        }
+
+        chars.Slice(index).Fill('.');
+    }
+}

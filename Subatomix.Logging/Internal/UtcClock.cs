@@ -1,6 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <!--
+/*
     Copyright 2022 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
@@ -14,16 +12,22 @@
     WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
     ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-  -->
+*/
 
-  <PropertyGroup>
-    <Description>Example app for Subatomix.Diagnostics</Description>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net6.0</TargetFramework>
-  </PropertyGroup>
+namespace Subatomix.Logging.Internal;
 
-  <ItemGroup>
-    <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
-  </ItemGroup>
+/// <summary>
+///   Provides the current UTC date and time.
+/// </summary>
+internal sealed class UtcClock : IClock
+{
+    private UtcClock() { }
 
-</Project>
+    /// <summary>
+    ///   Gets the singleton instance of <see cref="UtcClock"/>.
+    /// </summary>
+    public static UtcClock Instance { get; } = new UtcClock();
+
+    /// <inheritdoc/>
+    public DateTime Now => DateTime.UtcNow;
+}

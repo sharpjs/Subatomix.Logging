@@ -16,8 +16,8 @@
 
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
-using Subatomix.Diagnostics;
-using Subatomix.Diagnostics.Console;
+using Subatomix.Logging;
+using Subatomix.Logging.Console;
 
 Console.WriteLine("Example App v42.1337");
 
