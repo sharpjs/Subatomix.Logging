@@ -18,6 +18,7 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Subatomix.Logging;
 using Subatomix.Logging.Console;
+using Subatomix.Logging.Debugger;
 
 Console.WriteLine("Example App v42.1337");
 
@@ -41,6 +42,8 @@ var loggerFactory = LoggerFactory.Create(builder =>
     {
         console.FormatterName = "pretty";
     });
+
+    builder.AddDebugger();
 });
 
 using var activity = new Activity("Run").Start();
