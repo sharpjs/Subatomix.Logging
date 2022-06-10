@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Logger provider for Microsoft.Extensions.Logging that logs messages to an attached debugger</Description>
+    <Description>Logger for Microsoft.Extensions.Logging that logs messages to an attached debugger</Description>
     <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>

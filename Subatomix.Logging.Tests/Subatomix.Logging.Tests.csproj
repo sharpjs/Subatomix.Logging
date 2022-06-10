@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Tests for Subatomix.Logging</Description>
+    <Description>Tests for Subatomix Logging Libraries</Description>
     <TargetFrameworks>net48;net6.0</TargetFrameworks>
     <RootNamespace>Subatomix.Logging</RootNamespace>
   </PropertyGroup>
