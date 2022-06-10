@@ -17,7 +17,7 @@
   -->
 
   <PropertyGroup>
-    <Description>Example app for Subatomix.Diagnostics</Description>
+    <Description>Example app for Subatomix.Logging</Description>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
