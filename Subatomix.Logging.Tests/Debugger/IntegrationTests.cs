@@ -15,6 +15,7 @@
 */
 
 using Microsoft.Extensions.Logging;
+using SD = System.Diagnostics;
 
 namespace Subatomix.Logging.Debugger;
 
@@ -38,6 +39,6 @@ public class IntegrationTests
                 "Debug Output window"
             );
 
-        System.Diagnostics.Debugger.Break();
+        SD.Debugger.Break();
     }
 }

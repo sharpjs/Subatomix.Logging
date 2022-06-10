@@ -15,6 +15,7 @@
 */
 
 using Microsoft.Extensions.Logging;
+using SLD = Subatomix.Logging.Debugger;
 
 namespace Subatomix.Logging.Debugger;
 
@@ -45,7 +46,7 @@ public class DebuggerLogger : ILogger
         Name = name
             ?? throw new ArgumentNullException(nameof(name));
 
-        Debugger = Logging.Debugger.Debugger.Instance;
+        Debugger = SLD.Debugger.Instance;
     }
 
     /// <summary>
