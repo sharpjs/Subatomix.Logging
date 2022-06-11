@@ -32,7 +32,7 @@
     <Copyright>© $([System.DateTime]::UtcNow.Year) $(Authors)</Copyright>
     <PackageLicenseExpression>ISC</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/sharpjs/Subatomix.Logging</PackageProjectUrl>
-    <PackageTags>Diagnostics Activity ILogger</PackageTags>
+    <PackageTags>log logging logger ILogger console debug debugger formatter color pretty activity operation</PackageTags>
     <PackageReleaseNotes>$(PackageProjectUrl)/blob/main/CHANGES.md</PackageReleaseNotes>
     <PackageIcon>icon.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
