@@ -45,6 +45,9 @@
     <ImplicitUsings>true</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+  </PropertyGroup>
   <ItemGroup>
     <Using Include="System.FormattableString" Static="true" />
     <Using Include="System.ValueTuple" Alias="Void" />
