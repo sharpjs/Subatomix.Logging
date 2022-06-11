@@ -198,13 +198,13 @@ public class DebuggerLoggerTests
     [Test]
     // Message
     //        Level        Message    Throw  Expected
-    [TestCase(Trace,       "message", false, "trac: message")]
-    [TestCase(Debug,       "message", false, "dbug: message")]
-    [TestCase(Information, "message", false, "info: message")]
-    [TestCase(Warning,     "message", false, "warn: message")]
-    [TestCase(Error,       "message", false, "FAIL: message")]
-    [TestCase(Critical,    "message", false, "CRIT: message")]
-    [TestCase(-42,         "message", false, "????: message")]
+    [TestCase(Trace,       "message", false, "• trac: message")]
+    [TestCase(Debug,       "message", false, "• dbug: message")]
+    [TestCase(Information, "message", false, "• info: message")]
+    [TestCase(Warning,     "message", false, "• warn: message")]
+    [TestCase(Error,       "message", false, "• FAIL: message")]
+    [TestCase(Critical,    "message", false, "• CRIT: message")]
+    [TestCase(-42,         "message", false, "• ????: message")]
     // Empty message
     //        Level        Message    Throw  Expected
     [TestCase(Trace,       "",        false  )]
@@ -234,41 +234,41 @@ public class DebuggerLoggerTests
     [TestCase(-42,         "NEF",     false  )]
     // Message and exception
     //        Level        Message    Throw  Expected
-    [TestCase(Trace,       "message", true,  "trac: message", "trac: exception")]
-    [TestCase(Debug,       "message", true,  "dbug: message", "dbug: exception")]
-    [TestCase(Information, "message", true,  "info: message", "info: exception")]
-    [TestCase(Warning,     "message", true,  "warn: message", "warn: exception")]
-    [TestCase(Error,       "message", true,  "FAIL: message", "FAIL: exception")]
-    [TestCase(Critical,    "message", true,  "CRIT: message", "CRIT: exception")]
-    [TestCase(-42,         "message", true,  "????: message", "????: exception")]
+    [TestCase(Trace,       "message", true,  "• trac: message", "• trac: exception")]
+    [TestCase(Debug,       "message", true,  "• dbug: message", "• dbug: exception")]
+    [TestCase(Information, "message", true,  "• info: message", "• info: exception")]
+    [TestCase(Warning,     "message", true,  "• warn: message", "• warn: exception")]
+    [TestCase(Error,       "message", true,  "• FAIL: message", "• FAIL: exception")]
+    [TestCase(Critical,    "message", true,  "• CRIT: message", "• CRIT: exception")]
+    [TestCase(-42,         "message", true,  "• ????: message", "• ????: exception")]
     // Empty message and exception
     //        Level        Message    Throw  Expected
     //        Level        Message    Throw  Expected
-    [TestCase(Trace,       "",        true,  "trac: exception")]
-    [TestCase(Debug,       "",        true,  "dbug: exception")]
-    [TestCase(Information, "",        true,  "info: exception")]
-    [TestCase(Warning,     "",        true,  "warn: exception")]
-    [TestCase(Error,       "",        true,  "FAIL: exception")]
-    [TestCase(Critical,    "",        true,  "CRIT: exception")]
-    [TestCase(-42,         "",        true,  "????: exception")]
+    [TestCase(Trace,       "",        true,  "• trac: exception")]
+    [TestCase(Debug,       "",        true,  "• dbug: exception")]
+    [TestCase(Information, "",        true,  "• info: exception")]
+    [TestCase(Warning,     "",        true,  "• warn: exception")]
+    [TestCase(Error,       "",        true,  "• FAIL: exception")]
+    [TestCase(Critical,    "",        true,  "• CRIT: exception")]
+    [TestCase(-42,         "",        true,  "• ????: exception")]
     // Null message and exception
     //        Level        Message    Throw  Expected
-    [TestCase(Trace,       null,      true,  "trac: exception")]
-    [TestCase(Debug,       null,      true,  "dbug: exception")]
-    [TestCase(Information, null,      true,  "info: exception")]
-    [TestCase(Warning,     null,      true,  "warn: exception")]
-    [TestCase(Error,       null,      true,  "FAIL: exception")]
-    [TestCase(Critical,    null,      true,  "CRIT: exception")]
-    [TestCase(-42,         null,      true,  "????: exception")]
+    [TestCase(Trace,       null,      true,  "• trac: exception")]
+    [TestCase(Debug,       null,      true,  "• dbug: exception")]
+    [TestCase(Information, null,      true,  "• info: exception")]
+    [TestCase(Warning,     null,      true,  "• warn: exception")]
+    [TestCase(Error,       null,      true,  "• FAIL: exception")]
+    [TestCase(Critical,    null,      true,  "• CRIT: exception")]
+    [TestCase(-42,         null,      true,  "• ????: exception")]
     // Null entry formatter and exception
     //        Level        Message    Throw  Expected
-    [TestCase(Trace,       "NEF",     true,  "trac: exception")]
-    [TestCase(Debug,       "NEF",     true,  "dbug: exception")]
-    [TestCase(Information, "NEF",     true,  "info: exception")]
-    [TestCase(Warning,     "NEF",     true,  "warn: exception")]
-    [TestCase(Error,       "NEF",     true,  "FAIL: exception")]
-    [TestCase(Critical,    "NEF",     true,  "CRIT: exception")]
-    [TestCase(-42,         "NEF",     true,  "????: exception")]
+    [TestCase(Trace,       "NEF",     true,  "• trac: exception")]
+    [TestCase(Debug,       "NEF",     true,  "• dbug: exception")]
+    [TestCase(Information, "NEF",     true,  "• info: exception")]
+    [TestCase(Warning,     "NEF",     true,  "• warn: exception")]
+    [TestCase(Error,       "NEF",     true,  "• FAIL: exception")]
+    [TestCase(Critical,    "NEF",     true,  "• CRIT: exception")]
+    [TestCase(-42,         "NEF",     true,  "• ????: exception")]
     public void Log_DebuggerAttached(
         LogLevel        logLevel,
         string?         message,

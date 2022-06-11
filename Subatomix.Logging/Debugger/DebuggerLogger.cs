@@ -107,13 +107,13 @@ public class DebuggerLogger : ILogger
     {
         return logLevel switch
         {
-            LogLevel.Trace       => "trac: ",
-            LogLevel.Debug       => "dbug: ",
-            LogLevel.Information => "info: ",
-            LogLevel.Warning     => "warn: ",
-            LogLevel.Error       => "FAIL: ",
-            LogLevel.Critical    => "CRIT: ",
-            _                    => "????: "
+            LogLevel.Trace       => "• trac: ",
+            LogLevel.Debug       => "• dbug: ",
+            LogLevel.Information => "• info: ",
+            LogLevel.Warning     => "• warn: ",
+            LogLevel.Error       => "• FAIL: ",
+            LogLevel.Critical    => "• CRIT: ",
+            _                    => "• ????: "
         };
     }
 }
