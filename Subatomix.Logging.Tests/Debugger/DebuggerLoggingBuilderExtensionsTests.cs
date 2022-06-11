@@ -23,26 +23,21 @@ namespace Subatomix.Logging.Debugger;
 public class DebuggerLoggingBuilderExtensionsTests
 {
     [Test]
-    public void AddDebug_NullBuilder()
+    public void AddDebugger_NullBuilder()
     {
         Invoking(() => default(ILoggingBuilder)!.AddDebugger())
             .Should().Throw<ArgumentNullException>().WithParameterName("builder");
     }
 
     [Test]
-    public void AddDebug_Normal()
+    public void AddDebugger_Normal()
     {
-        var services = new ServiceCollection();
+        var logger = new ServiceCollection()
+            .AddLogging(l => l.AddDebugger())
+            .BuildServiceProvider()
+            .GetRequiredService<ILoggerProvider>()
+            .CreateLogger("");
 
-        var builder = Mock.Of<ILoggingBuilder>(
-            b => b.Services == services,
-            MockBehavior.Strict
-        );
-
-        builder.AddDebugger().Should().BeSameAs(builder);
-
-        services                      .Should().HaveCount(1);
-        services[0].ServiceType       .Should().Be(typeof(ILoggerProvider));
-        services[0].ImplementationType.Should().Be(typeof(DebuggerLoggerProvider));
+        logger.Should().BeOfType<DebuggerLogger>();
     }
 }

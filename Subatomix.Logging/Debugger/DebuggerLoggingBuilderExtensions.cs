@@ -26,12 +26,12 @@ namespace Subatomix.Logging.Debugger;
 public static class DebuggerLoggingBuilderExtensions
 {
     /// <summary>
-    ///   Adds a debug logger named 'Debugger' to the factory.  The logger
-    ///   sends messages to an attached debugger.  In Visual Studio, logged
-    ///   messages will appear in the debug output window.
+    ///   Adds a debugger logger to the factory.  The logger sends messages to
+    ///   an attached debugger.  In Visual Studio, logged messages will appear
+    ///   in the debug output window.
     /// </summary>
     /// <param name="builder">
-    ///   The builder to use.
+    ///   The logging builder to use.
     /// </param>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="builder"/> is <see langword="null"/>.
