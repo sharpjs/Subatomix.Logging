@@ -20,6 +20,7 @@
     <Description>Example app for Subatomix.Logging</Description>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>
