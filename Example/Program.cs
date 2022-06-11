@@ -39,11 +39,9 @@ var loggerFactory = LoggerFactory.Create(builder =>
 #endif
 });
 
-using var activity = new Activity("Run").Start();
-
 var logger = loggerFactory.CreateLogger("");
 
-using (var s = new OperationScope(logger, name: "Example Program"))
+using (var scope = logger.BeginActivity("Example Program"))
 {
     logger.Trace    ("This is a message."); // LogTrace      
     logger.Debug    ("This is a message."); // LogDebug      
@@ -52,19 +50,14 @@ using (var s = new OperationScope(logger, name: "Example Program"))
     logger.Error    ("This is a message."); // LogError      
     logger.Critical ("This is a message."); // LogCritical   
 
-    s.Exception = Thrown();
-}
-
-Console.ReadKey();
-
-static Exception Thrown()
-{
     try
     {
         throw new Exception("An example exception was thrown.");
     }
     catch (Exception e)
     {
-        return e;
+        scope.Exception = e;
     }
 }
+
+Console.ReadKey();
