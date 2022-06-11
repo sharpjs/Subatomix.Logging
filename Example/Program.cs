@@ -26,8 +26,10 @@ Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
 var loggerFactory = LoggerFactory.Create(builder =>
 {
-    builder.SetMinimumLevel(LogLevel.Trace);
-
+    builder
+        .SetMinimumLevel(LogLevel.Trace)
+        .AddPrettyConsole()
+        .AddDebugger();
 #if IS_THIS_NEEDED
     builder.Configure(options =>
     {
@@ -35,15 +37,6 @@ var loggerFactory = LoggerFactory.Create(builder =>
             = ActivityTrackingOptions.TraceId;
     });
 #endif
-
-    builder.AddConsoleFormatter<PrettyConsoleFormatter, PrettyConsoleFormatterOptions>();
-
-    builder.AddConsole(console =>
-    {
-        console.FormatterName = "pretty";
-    });
-
-    builder.AddDebugger();
 });
 
 using var activity = new Activity("Run").Start();
