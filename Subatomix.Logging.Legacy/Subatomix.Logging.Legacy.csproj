@@ -17,22 +17,13 @@
   -->
 
   <PropertyGroup>
-    <Description>Tests for Subatomix Logging Libraries</Description>
-    <TargetFrameworks>net48;net6.0</TargetFrameworks>
-    <RootNamespace>Subatomix.Logging</RootNamespace>
+    <Description>Additions to Microsoft.Extensions.Logging for integration with legacy TraceSource logging</Description>
+    <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
-    <ProjectReference Include="..\Subatomix.Logging.Legacy\Subatomix.Logging.Legacy.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Subatomix.Testing" Version="2.2.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Using Include="Subatomix.Testing.TestGlobals" Static="true" />
   </ItemGroup>
 
 </Project>

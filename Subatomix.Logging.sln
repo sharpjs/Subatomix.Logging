@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Example", "Example\Example.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subatomix.Logging", "Subatomix.Logging\Subatomix.Logging.csproj", "{D40008AD-B31B-4184-AE5A-148FF368AF66}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subatomix.Logging.Legacy", "Subatomix.Logging.Legacy\Subatomix.Logging.Legacy.csproj", "{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subatomix.Logging.Tests", "Subatomix.Logging.Tests\Subatomix.Logging.Tests.csproj", "{D7B77415-6A43-4081-A12B-29A0A6928D28}"
 EndProject
 Global
@@ -27,6 +29,10 @@ Global
 		{D40008AD-B31B-4184-AE5A-148FF368AF66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D40008AD-B31B-4184-AE5A-148FF368AF66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D40008AD-B31B-4184-AE5A-148FF368AF66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
