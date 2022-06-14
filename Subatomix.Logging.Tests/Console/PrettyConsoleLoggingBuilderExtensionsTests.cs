@@ -72,7 +72,7 @@ internal class PrettyConsoleLoggingBuilderExtensionsTests
     [Test]
     public void AddPrettyConsole_CustomOptions_Normal()
     {
-        void Configure(PrettyConsoleFormatterOptions options)
+        static void Configure(PrettyConsoleFormatterOptions options)
             => options.ColorBehavior = LoggerColorBehavior.Disabled;
 
         var logger = new ServiceCollection()
@@ -103,7 +103,7 @@ internal class PrettyConsoleLoggingBuilderExtensionsTests
     [Test]
     public void AddPrettyConsoleFormatter_CustomOptions_Normal()
     {
-        void Configure(PrettyConsoleFormatterOptions options)
+        static void Configure(PrettyConsoleFormatterOptions options)
             => options.ColorBehavior = LoggerColorBehavior.Disabled;
 
         var formatter = new ServiceCollection()
@@ -115,7 +115,7 @@ internal class PrettyConsoleLoggingBuilderExtensionsTests
             .Which.Options.ColorBehavior.Should().Be(LoggerColorBehavior.Disabled);
     }
 
-    private void ShouldBeConsoleLogger(
+    private static void ShouldBeConsoleLogger(
         ILogger                  logger,
         out ConsoleLoggerOptions options,
         out ConsoleFormatter     formatter)
@@ -129,7 +129,7 @@ internal class PrettyConsoleLoggingBuilderExtensionsTests
         formatter = ShouldHaveProperty<ConsoleFormatter    >(logger, "Formatter");
     }
 
-    private T ShouldHaveProperty<T>(object obj, string name)
+    private static T ShouldHaveProperty<T>(object obj, string name)
     {
         return obj
             .GetType()
