@@ -16,7 +16,6 @@
 
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Text;
 using Microsoft.Extensions.Logging;
@@ -25,6 +24,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 namespace Subatomix.Logging.Legacy;
 
 using static MethodImplOptions;
+using F = Formatters;
 
 /// <summary>
 ///   A trace listener that forwards trace events to <see cref="ILogger"/>
@@ -87,7 +87,7 @@ public class LoggingTraceListener : TraceListener
         var logger = GetLogger(source);
         var level  = type.ToLogLevel();
 
-        logger.Log(level, id, message, null, MessageFormatter);
+        logger.Log(level, id, message, null, F.Message);
     }
 
     /// <inheritdoc/>
@@ -107,7 +107,7 @@ public class LoggingTraceListener : TraceListener
         var logger = GetLogger(source);
         var level  = type.ToLogLevel();
 
-        logger.Log(level, id, (template, args), null, TemplateFormatter);
+        logger.Log(level, id, (template, args), null, F.Template);
     }
 
     /// <inheritdoc/>
@@ -141,9 +141,9 @@ public class LoggingTraceListener : TraceListener
         var level  = type.ToLogLevel();
 
         if (obj is Exception exception)
-            logger.Log(level, id, default, exception, EmptyFormatter);
+            logger.Log(level, id, default, exception, F.Empty);
         else
-            logger.Log(level, id, obj, null, DataFormatter);
+            logger.Log(level, id, obj, null, F.Data);
     }
 
     /// <inheritdoc/>
@@ -163,9 +163,9 @@ public class LoggingTraceListener : TraceListener
         var level  = type.ToLogLevel();
 
         if (objs is { Length: 1 } && objs[0] is Exception exception)
-            logger.Log(level, id, default, exception, EmptyFormatter);
+            logger.Log(level, id, default, exception, F.Empty);
         else
-            logger.Log(level, id, objs, null, DataArrayFormatter);
+            logger.Log(level, id, objs, null, F.DataArray);
     }
 
     /// <inheritdoc/>
@@ -173,7 +173,7 @@ public class LoggingTraceListener : TraceListener
     {
         Flush();
 
-        GetLogger().Log(LogLevel.Error, 0, message, null, MessageFormatter);
+        GetLogger().Log(LogLevel.Error, 0, message, null, F.Message);
     }
 
     /// <inheritdoc/>
@@ -181,7 +181,7 @@ public class LoggingTraceListener : TraceListener
     {
         Flush();
 
-        GetLogger().Log(LogLevel.Error, 0, (message, detailMessage), null, MessageAndDetailFormatter);
+        GetLogger().Log(LogLevel.Error, 0, (message, detailMessage), null, F.MessageAndDetail);
     }
 
     /// <inheritdoc/>
@@ -219,7 +219,7 @@ public class LoggingTraceListener : TraceListener
         if (GetBufferedText() is not { } text)
             return;
 
-        GetLogger().Log(LogLevel.Debug, 0, text, null, MessageFormatter);
+        GetLogger().Log(LogLevel.Debug, 0, text, null, F.Message);
     }
 
     /// <inheritdoc/>
@@ -346,87 +346,5 @@ public class LoggingTraceListener : TraceListener
     {
         return Filter is null
             || Filter.ShouldTrace(e, source, type, id, message, args, obj, objs);
-    }
-
-    private readonly Func<Void, Exception?, string>
-        EmptyFormatter = Format;
-
-    private readonly Func<string?, Exception?, string>
-        MessageFormatter = Format;
-
-    private readonly Func<(string?, string?), Exception?, string>
-        MessageAndDetailFormatter = Format;
-
-    private readonly Func<(string?, object?[]?), Exception?, string>
-        TemplateFormatter = Format;
-
-    private readonly Func<object?, Exception?, string>
-        DataFormatter = Format;
-
-    private readonly Func<object?[]?, Exception?, string>
-        DataArrayFormatter = Format;
-
-    private static string Format(Void state, Exception? _)
-    {
-        return string.Empty;
-    }
-
-    private static string Format(string? state, Exception? _)
-    {
-        return state ?? string.Empty;
-    }
-
-    private static string Format((string?, string?) state, Exception? _)
-    {
-        var (message, detailedMessage) = state;
-
-        if (string.IsNullOrEmpty(message))
-            return detailedMessage ?? string.Empty;
-
-        if (string.IsNullOrEmpty(detailedMessage))
-            return message!;
-
-        return string.Concat(message!, " ", detailedMessage!);
-    }
-
-    private static string Format((string?, object?[]?) state, Exception? _)
-    {
-        var (template, args) = state;
-
-        return string.Format(
-            CultureInfo.InvariantCulture,
-            template ?? string.Empty,
-            args     ?? Array.Empty<object>()
-        );
-    }
-
-    private static string Format(object? state, Exception? _)
-    {
-        return state?.ToString() ?? string.Empty;
-    }
-
-    private static string Format(object?[]? state, Exception? _)
-    {
-        // Cannot use string.Join due to an unfortunate behavior quirk in it:
-        // if array[0] is null, it returns an empty string instead of joining.
-
-        switch (state)
-        {
-            case null or { Length: 0 }:
-                return string.Empty;
-
-            case { Length: 1 }:
-                return Format(state[0], _);
-
-            default:
-                var s = new StringBuilder();
-
-                s.Append(state[0]);
-
-                for (int i = 1; i < state.Length; i++)
-                    s.Append(", ").Append(state[i]);
-
-                return s.ToString();
-        }
     }
 }
