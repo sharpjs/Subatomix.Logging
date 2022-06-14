@@ -68,7 +68,15 @@ public class LoggingTraceListener : TraceListener
         TraceEventType   type,
         int              id)
     {
-        TraceEvent(context, source, type, id, "Message ID: {0}", id);
+        if (!ShouldTrace(context, source, type, id))
+            return;
+
+        Flush();
+
+        var logger = GetLogger(source);
+        var level  = type.ToLogLevel();
+
+        logger.Log(level, id, id, null, F.MessageId);
     }
 
     /// <inheritdoc/>
@@ -118,10 +126,14 @@ public class LoggingTraceListener : TraceListener
         string?          message,
         Guid             relatedActivityId)
     {
-        TraceEvent(
-            context, source, TraceEventType.Transfer, id,
-            "{0} {{related:{1}}}", message, relatedActivityId
-        );
+        if (!ShouldTrace(context, source, TraceEventType.Transfer, id, message))
+            return;
+
+        Flush();
+
+        var logger = GetLogger(source);
+
+        logger.Log(LogLevel.Information, id, (message, relatedActivityId), null, F.Transfer);
     }
 
     /// <inheritdoc/>

@@ -24,6 +24,9 @@ internal static class Formatters
     public static Func<Void, Exception?, string>
         Empty { get; } = Format;
 
+    public static Func<int, Exception?, string>
+        MessageId { get; } = Format;
+
     public static Func<string?, Exception?, string>
         Message { get; } = Format;
 
@@ -32,6 +35,9 @@ internal static class Formatters
 
     public static Func<(string?, object?[]?), Exception?, string>
         Template { get; } = Format;
+
+    public static Func<(string?, Guid), Exception?, string>
+        Transfer { get; } = Format;
 
     public static Func<object?, Exception?, string>
         Data { get; } = Format;
@@ -42,6 +48,21 @@ internal static class Formatters
     private static string Format(Void state, Exception? _)
     {
         return string.Empty;
+    }
+
+    private static string Format(int state, Exception? _)
+    {
+#if NET6_0_OR_GREATER
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"Message ID: {state}"
+        );
+#else
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "Message ID: {0}", state
+        );
+#endif
     }
 
     private static string Format(string? state, Exception? _)
@@ -71,6 +92,23 @@ internal static class Formatters
             template ?? string.Empty,
             args     ?? Array.Empty<object>()
         );
+    }
+
+    private static string Format((string?, Guid) state, Exception? _)
+    {
+        var (message, activityId) = state;
+
+#if NET6_0_OR_GREATER
+        return string.Create(
+            CultureInfo.InvariantCulture,
+            $"{message} {{related:{activityId}}}"
+        );
+#else
+        return string.Format(
+            CultureInfo.InvariantCulture,
+            "{0} {{related:{1}}}", message, activityId
+        );
+#endif
     }
 
     private static string Format(object? state, Exception? _)
