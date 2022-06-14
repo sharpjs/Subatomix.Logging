@@ -85,7 +85,7 @@ public class LoggingTraceListener : TraceListener
         Flush();
 
         var logger = GetLogger(source);
-        var level  = ToLogLevel(type);
+        var level  = type.ToLogLevel();
 
         logger.Log(level, id, message, null, MessageFormatter);
     }
@@ -105,7 +105,7 @@ public class LoggingTraceListener : TraceListener
         Flush();
 
         var logger = GetLogger(source);
-        var level  = ToLogLevel(type);
+        var level  = type.ToLogLevel();
 
         logger.Log(level, id, (template, args), null, TemplateFormatter);
     }
@@ -138,7 +138,7 @@ public class LoggingTraceListener : TraceListener
         Flush();
 
         var logger = GetLogger(source);
-        var level  = ToLogLevel(type);
+        var level  = type.ToLogLevel();
 
         if (obj is Exception exception)
             logger.Log(level, id, default, exception, EmptyFormatter);
@@ -160,7 +160,7 @@ public class LoggingTraceListener : TraceListener
         Flush();
 
         var logger = GetLogger(source);
-        var level  = ToLogLevel(type);
+        var level  = type.ToLogLevel();
 
         if (objs is { Length: 1 } && objs[0] is Exception exception)
             logger.Log(level, id, default, exception, EmptyFormatter);
@@ -346,19 +346,6 @@ public class LoggingTraceListener : TraceListener
     {
         return Filter is null
             || Filter.ShouldTrace(e, source, type, id, message, args, obj, objs);
-    }
-
-    private static LogLevel ToLogLevel(TraceEventType type)
-    {
-        return type switch
-        {
-            TraceEventType.Critical    => LogLevel.Critical,
-            TraceEventType.Error       => LogLevel.Error,
-            TraceEventType.Warning     => LogLevel.Warning,
-            TraceEventType.Information => LogLevel.Information,
-            TraceEventType.Verbose     => LogLevel.Debug,
-            _                          => LogLevel.Information
-        };
     }
 
     private readonly Func<Void, Exception?, string>
