@@ -43,5 +43,8 @@ public class DebuggerLoggerProvider : ILoggerProvider, ISupportExternalScope
     }
 
     /// <inheritdoc/>
-    void IDisposable.Dispose() { }
+    void IDisposable.Dispose()
+    {
+        GC.SuppressFinalize(this);
+    }
 }
