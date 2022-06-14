@@ -16,7 +16,6 @@
 
 using Microsoft.Extensions.Logging;
 using Subatomix.Logging.Testing;
-using Subatomix.Testing;
 
 namespace Subatomix.Logging.Debugger;
 

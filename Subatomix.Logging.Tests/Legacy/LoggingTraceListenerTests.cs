@@ -24,7 +24,6 @@ using System.Text;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Subatomix.Logging.Testing;
-using Subatomix.Testing;
 
 namespace Subatomix.Logging.Legacy;
 

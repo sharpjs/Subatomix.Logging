@@ -21,7 +21,6 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
 using Subatomix.Logging.Internal;
 using Subatomix.Logging.Testing;
-using Subatomix.Testing;
 
 namespace Subatomix.Logging.Console;
 
