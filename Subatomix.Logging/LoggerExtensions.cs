@@ -427,7 +427,7 @@ public static class LoggerExtensions
         this ILogger              logger,
         LogLevel                  logLevel,
         [CallerMemberName] string name = null!)
-        => new OperationScope(logger, logLevel, name);
+        => new(logger, logLevel, name);
 
     /// <summary>
     ///   Begins a logical operation scope that automatically logs start,
@@ -481,7 +481,7 @@ public static class LoggerExtensions
         this ILogger              logger,
         LogLevel                  logLevel,
         [CallerMemberName] string name = null!)
-        => new ActivityScope(logger, logLevel, name);
+        => new(logger, logLevel, name);
 
     #endregion
     #region Formatting
