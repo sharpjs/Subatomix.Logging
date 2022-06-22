@@ -41,7 +41,7 @@ var loggerFactory = LoggerFactory.Create(builder =>
 
 var logger = loggerFactory.CreateLogger("");
 
-using (var scope = logger.BeginActivity("Example Program"))
+using (var scope = logger.Activity("Example Program").Begin())
 {
     logger.Trace    ("This is a message."); // LogTrace      
     logger.Debug    ("This is a message."); // LogDebug      

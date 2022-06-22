@@ -157,7 +157,7 @@ public partial class LoggerExtensionsTests
         var logger = new TestLogger();
 
         // Relying on [CallerMemberName] for name
-        using var scope = logger.BeginOperation();
+        using var scope = logger.Operation().Begin();
 
         scope         .Should().NotBeNull();
         scope.Name    .Should().Be(nameof(BeginOperation_Name));
@@ -171,7 +171,7 @@ public partial class LoggerExtensionsTests
         var logger = new TestLogger();
 
         // Relying on [CallerMemberName] for name
-        using var scope = logger.BeginOperation(Debug);
+        using var scope = logger.Operation(Debug).Begin();
 
         scope         .Should().NotBeNull();
         scope.Name    .Should().Be(nameof(BeginOperation_LevelAndName));
@@ -185,7 +185,7 @@ public partial class LoggerExtensionsTests
         var logger = new TestLogger();
 
         // Relying on [CallerMemberName] for name
-        using var scope = logger.BeginActivity();
+        using var scope = logger.Activity().Begin();
 
         scope         .Should().NotBeNull();
         scope.Name    .Should().Be(nameof(BeginActivity_Name));
@@ -199,7 +199,7 @@ public partial class LoggerExtensionsTests
         var logger = new TestLogger();
 
         // Relying on [CallerMemberName] for name
-        using var scope = logger.BeginActivity(Debug);
+        using var scope = logger.Activity(Debug).Begin();
 
         scope         .Should().NotBeNull();
         scope.Name    .Should().Be(nameof(BeginActivity_LevelAndName));

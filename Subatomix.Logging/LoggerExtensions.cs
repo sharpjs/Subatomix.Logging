@@ -380,8 +380,8 @@ public static class LoggerExtensions
     #region Scopes
 
     /// <summary>
-    ///   Begins a logical operation scope that automatically logs start,
-    ///   completion, and (optional) exception messages.
+    ///   Prepares to create a logical operation scope that automatically logs
+    ///   start, completion, and (optional) exception messages.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -391,22 +391,23 @@ public static class LoggerExtensions
     ///   the calling member.
     /// </param>
     /// <returns>
-    ///   A scope representing the logical operation.
-    ///   See <see cref="OperationScope"/> for details.
+    ///   An object that exposes methods to begin or to perform an operation in
+    ///   an <see cref="OperationScope"/> with the specified
+    ///   <paramref name="logger"/> and <paramref name="name"/>.
     /// </returns>
     /// <remarks>
     ///   This overload uses the <see cref="LogLevel.Information"/> severity
     ///   level for start and completion messages.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static OperationScope BeginOperation(
+    public static OperationScopeInitiator Operation(
         this ILogger              logger,
         [CallerMemberName] string name = null!)
-        => logger.BeginOperation(LogLevel.Information, name);
+        => logger.Operation(LogLevel.Information, name);
 
     /// <summary>
-    ///   Begins a logical operation scope that automatically logs start,
-    ///   completion, and (optional) exception messages.
+    ///   Prepares to create a logical operation scope that automatically logs
+    ///   start, completion, and (optional) exception messages.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -419,20 +420,23 @@ public static class LoggerExtensions
     ///   the calling member.
     /// </param>
     /// <returns>
-    ///   A scope representing the logical operation.
-    ///   See <see cref="OperationScope"/> for details.
+    ///   An object that exposes methods to begin or to perform an operation in
+    ///   an <see cref="OperationScope"/> with the specified
+    ///   <paramref name="logger"/>, <paramref name="logLevel"/>, and
+    ///   <paramref name="name"/>.
     /// </returns>
     [MethodImpl(AggressiveInlining)]
-    public static OperationScope BeginOperation(
+    public static OperationScopeInitiator Operation(
         this ILogger              logger,
         LogLevel                  logLevel,
         [CallerMemberName] string name = null!)
         => new(logger, logLevel, name);
 
     /// <summary>
-    ///   Begins a logical operation scope that automatically logs start,
-    ///   completion, and (optional) exception messages and automatically
-    ///   starts and stops a named <see cref="System.Diagnostics.Activity"/>.
+    ///   Prepares to create a logical operation scope that automatically logs
+    ///   start, completion, and (optional) exception messages and
+    ///   automatically starts and stops a named
+    ///   <see cref="System.Diagnostics.Activity"/>.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -442,24 +446,25 @@ public static class LoggerExtensions
     ///   the calling member.
     /// </param>
     /// <returns>
-    ///   A scope representing the logical operation.
-    ///   See <see cref="ActivityScope"/> and <see cref="OperationScope"/> for
-    ///   details.
+    ///   An object that exposes methods to begin or to perform an operation in
+    ///   an <see cref="ActivityScope"/> with the specified
+    ///   <paramref name="logger"/> and <paramref name="name"/>.
     /// </returns>
     /// <remarks>
     ///   This overload uses the <see cref="LogLevel.Information"/> severity
     ///   level for start and completion messages.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static ActivityScope BeginActivity(
+    public static ActivityScopeInitiator Activity(
         this ILogger              logger,
         [CallerMemberName] string name = null!)
-        => logger.BeginActivity(LogLevel.Information, name);
+        => logger.Activity(LogLevel.Information, name);
 
     /// <summary>
-    ///   Begins a logical operation scope that automatically logs start,
-    ///   completion, and (optional) exception messages and automatically
-    ///   starts and stops a named <see cref="System.Diagnostics.Activity"/>.
+    ///   Prepares to create a logical operation scope that automatically logs
+    ///   start, completion, and (optional) exception messages and
+    ///   automatically starts and stops a named
+    ///   <see cref="System.Diagnostics.Activity"/>.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -472,12 +477,13 @@ public static class LoggerExtensions
     ///   the calling member.
     /// </param>
     /// <returns>
-    ///   A scope representing the logical operation.
-    ///   See <see cref="ActivityScope"/> and <see cref="OperationScope"/> for
-    ///   details.
+    ///   An object that exposes methods to begin or to perform an operation in
+    ///   an <see cref="ActivityScope"/> with the specified
+    ///   <paramref name="logger"/>, <paramref name="logLevel"/>, and
+    ///   <paramref name="name"/>.
     /// </returns>
     [MethodImpl(AggressiveInlining)]
-    public static ActivityScope BeginActivity(
+    public static ActivityScopeInitiator Activity(
         this ILogger              logger,
         LogLevel                  logLevel,
         [CallerMemberName] string name = null!)
