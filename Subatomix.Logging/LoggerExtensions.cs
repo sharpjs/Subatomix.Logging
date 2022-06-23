@@ -16,8 +16,6 @@
 
 namespace Subatomix.Logging;
 
-using static MethodImplOptions;
-
 using Base = MEL.LoggerExtensions;
 
 /// <summary>
@@ -39,7 +37,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogTrace(ILogger, Exception?, string?, object?[])">LogTrace</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogTrace(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Trace, exception);
 
@@ -57,7 +55,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogDebug(ILogger, Exception?, string?, object?[])">LogDebug</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogDebug(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Debug, exception);
 
@@ -75,7 +73,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogInformation(ILogger, Exception?, string?, object?[])">LogInformation</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogInformation(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Information, exception);
 
@@ -93,7 +91,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogWarning(ILogger, Exception?, string?, object?[])">LogWarning</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogWarning(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Warning, exception);
 
@@ -111,7 +109,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogError(ILogger, Exception?, string?, object?[])">LogError</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogError(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Error, exception);
 
@@ -129,7 +127,7 @@ public static class LoggerExtensions
     ///   This method is a more concise synonym for
     ///   <see cref="Base.LogCritical(ILogger, Exception?, string?, object?[])">LogCritical</see>.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void LogCritical(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Critical, exception);
 
@@ -145,7 +143,7 @@ public static class LoggerExtensions
     /// <param name="exception">
     ///   The exception to log.
     /// </param>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void Log(this ILogger logger, LogLevel level, Exception exception)
         => logger.Log(level, 0, default, exception, EmptyFormatter);
 
@@ -169,7 +167,7 @@ public static class LoggerExtensions
     ///   This overload uses the <see cref="MEL.LogLevel.Information"/>
     ///   severity level for start and completion messages.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static OperationScopeInitiator Operation(
         this ILogger              logger,
         [CallerMemberName] string name = null!)
@@ -195,7 +193,7 @@ public static class LoggerExtensions
     ///   <paramref name="logger"/>, <paramref name="logLevel"/>, and
     ///   <paramref name="name"/>.
     /// </returns>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static OperationScopeInitiator Operation(
         this ILogger              logger,
         LogLevel                  logLevel,
@@ -224,7 +222,7 @@ public static class LoggerExtensions
     ///   This overload uses the <see cref="MEL.LogLevel.Information"/>
     ///   severity level for start and completion messages.
     /// </remarks>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ActivityScopeInitiator Activity(
         this ILogger              logger,
         [CallerMemberName] string name = null!)
@@ -252,7 +250,7 @@ public static class LoggerExtensions
     ///   <paramref name="logger"/>, <paramref name="logLevel"/>, and
     ///   <paramref name="name"/>.
     /// </returns>
-    [MethodImpl(AggressiveInlining)]
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static ActivityScopeInitiator Activity(
         this ILogger              logger,
         LogLevel                  logLevel,
