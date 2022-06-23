@@ -21,22 +21,13 @@ Console.WriteLine("Example App v42.1337");
 
 Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
-var loggerFactory = LoggerFactory.Create(builder =>
-{
-    builder
+var logger = LoggerFactory
+    .Create(b => b
         .SetMinimumLevel(LogLevel.Trace)
         .AddPrettyConsole()
-        .AddDebugger();
-#if IS_THIS_NEEDED
-    builder.Configure(options =>
-    {
-        options.ActivityTrackingOptions
-            = ActivityTrackingOptions.TraceId;
-    });
-#endif
-});
-
-var logger = loggerFactory.CreateLogger("");
+        .AddDebugger()
+    )
+    .CreateLogger("");
 
 using (var scope = logger.Activity("Example Program").Begin())
 {
