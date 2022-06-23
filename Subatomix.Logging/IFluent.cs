@@ -27,7 +27,7 @@ public interface IFluent
 {
     /// <inheritdoc cref="Object.Equals(object)" />
     [EditorBrowsable(EditorBrowsableState.Never)]
-    bool Equals(object other);
+    bool Equals(object? other);
 
     /// <inheritdoc cref="Object.GetHashCode" />
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -39,5 +39,5 @@ public interface IFluent
 
     /// <inheritdoc cref="Object.ToString" />
     [EditorBrowsable(EditorBrowsableState.Never)]
-    string ToString();
+    string? ToString();
 }
