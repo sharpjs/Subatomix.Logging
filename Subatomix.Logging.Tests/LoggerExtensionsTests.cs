@@ -152,7 +152,7 @@ public partial class LoggerExtensionsTests
     }
 
     [Test]
-    public void BeginOperation_Name()
+    public void Operation_Name()
     {
         var logger = new TestLogger();
 
@@ -160,13 +160,13 @@ public partial class LoggerExtensionsTests
         using var scope = logger.Operation().Begin();
 
         scope         .Should().NotBeNull();
-        scope.Name    .Should().Be(nameof(BeginOperation_Name));
+        scope.Name    .Should().Be(nameof(Operation_Name));
         scope.Logger  .Should().BeSameAs(logger);
         scope.LogLevel.Should().Be(Information);
     }
 
     [Test]
-    public void BeginOperation_LevelAndName()
+    public void Operation_LevelAndName()
     {
         var logger = new TestLogger();
 
@@ -174,13 +174,13 @@ public partial class LoggerExtensionsTests
         using var scope = logger.Operation(Debug).Begin();
 
         scope         .Should().NotBeNull();
-        scope.Name    .Should().Be(nameof(BeginOperation_LevelAndName));
+        scope.Name    .Should().Be(nameof(Operation_LevelAndName));
         scope.Logger  .Should().BeSameAs(logger);
         scope.LogLevel.Should().Be(Debug);
     }
 
     [Test]
-    public void BeginActivity_Name()
+    public void Activity_Name()
     {
         var logger = new TestLogger();
 
@@ -188,13 +188,13 @@ public partial class LoggerExtensionsTests
         using var scope = logger.Activity().Begin();
 
         scope         .Should().NotBeNull();
-        scope.Name    .Should().Be(nameof(BeginActivity_Name));
+        scope.Name    .Should().Be(nameof(Activity_Name));
         scope.Logger  .Should().BeSameAs(logger);
         scope.LogLevel.Should().Be(Information);
     }
 
     [Test]
-    public void BeginActivity_LevelAndName()
+    public void Activity_LevelAndName()
     {
         var logger = new TestLogger();
 
@@ -202,7 +202,7 @@ public partial class LoggerExtensionsTests
         using var scope = logger.Activity(Debug).Begin();
 
         scope         .Should().NotBeNull();
-        scope.Name    .Should().Be(nameof(BeginActivity_LevelAndName));
+        scope.Name    .Should().Be(nameof(Activity_LevelAndName));
         scope.Logger  .Should().BeSameAs(logger);
         scope.LogLevel.Should().Be(Debug);
     }
