@@ -203,8 +203,7 @@ public static class LoggerExtensions
     /// <summary>
     ///   Prepares to create a logical operation scope that automatically logs
     ///   start, completion, and (optional) exception messages and
-    ///   automatically starts and stops a named
-    ///   <see cref="System.Diagnostics.Activity"/>.
+    ///   automatically starts and stops a named <see cref="SD.Activity"/>.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
@@ -231,8 +230,7 @@ public static class LoggerExtensions
     /// <summary>
     ///   Prepares to create a logical operation scope that automatically logs
     ///   start, completion, and (optional) exception messages and
-    ///   automatically starts and stops a named
-    ///   <see cref="System.Diagnostics.Activity"/>.
+    ///   automatically starts and stops a named <see cref="SD.Activity"/>.
     /// </summary>
     /// <param name="logger">
     ///   The logger for operation-related messages.
