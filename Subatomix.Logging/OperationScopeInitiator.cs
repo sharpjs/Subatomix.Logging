@@ -1,12 +1,36 @@
+/*
+    Copyright 2022 Jeffrey Sharp
+
+    Permission to use, copy, modify, and distribute this software for any
+    purpose with or without fee is hereby granted, provided that the above
+    copyright notice and this permission notice appear in all copies.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+*/
+
 using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Logging;
+using MEL = Microsoft.Extensions.Logging;
 
 namespace Subatomix.Logging;
 
 /// <summary>
-///   Begins or performs operations in an <see cref="OperationScope"/>.
+///   Begins or performs operations in an <see cref="OperationScope"/> with a
+///   specific <see cref="ILogger"/>, <see cref="MEL.LogLevel"/>, and operation
+///   name.
 /// </summary>
-public readonly struct OperationScopeInitiator
+/// <remarks>
+///   This type is part of a fluent API.  Obtain instances of this type via
+///   <see cref="LoggerExtensions.Operation(ILogger, string)"/> or
+///   <see cref="LoggerExtensions.Operation(ILogger, MEL.LogLevel, string)"/>.
+/// </remarks>
+public readonly struct OperationScopeInitiator : IFluent
 {
     private readonly ILogger  _logger;
     private readonly LogLevel _logLevel;
@@ -27,6 +51,13 @@ public readonly struct OperationScopeInitiator
     ///   A new <see cref="OperationScope"/>.  The caller is responsible for
     ///   disposing the scope.
     /// </returns>
+    /// <exception cref="ArgumentNullException">
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
+    /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public OperationScope Begin()
     {
@@ -47,6 +78,12 @@ public readonly struct OperationScopeInitiator
     /// </param>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Do(Action action)
@@ -82,6 +119,12 @@ public readonly struct OperationScopeInitiator
     /// </param>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Do<T>(T arg, Action<T> action)
@@ -117,6 +160,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public TResult Do<TResult>(Func<TResult> action)
@@ -158,6 +207,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public TResult Do<T, TResult>(T arg, Func<T, TResult> action)
@@ -190,6 +245,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async Task DoAsync(Func<Task> action)
@@ -228,6 +289,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async Task DoAsync<T>(T arg, Func<T, Task> action)
@@ -265,6 +332,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async Task<TResult> DoAsync<TResult>(Func<Task<TResult>> action)
@@ -308,6 +381,12 @@ public readonly struct OperationScopeInitiator
     /// </returns>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <br/>—or—<br/>
+    ///   Attempted to create a scope with a <see langword="null"/> logger or
+    ///   operation name.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   Attempted to create a scope with an empty operation name.
     /// </exception>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public async Task<TResult> DoAsync<T, TResult>(T arg, Func<T, Task<TResult>> action)
