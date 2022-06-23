@@ -18,11 +18,6 @@ using Subatomix.Logging.Console;
 
 namespace Subatomix.Logging;
 
-#if NETFRAMEWORK
-// Prevent CS1574: XML comment has cref attribute '...' that could not be resolved
-using LogLevel = LogLevel;
-#endif
-
 /// <summary>
 ///   A scope representing a logical operation.  This type is intended for use
 ///   with the <see cref="ILogger"/> API.
@@ -97,7 +92,7 @@ public class OperationScope : IConsoleFormattable, IDisposable
     /// <summary>
     ///   Gets or sets the severity level used to report the exception, if any,
     ///   associated with the operation. The default is
-    ///   <see cref="LogLevel.Error"/>.
+    ///   <see cref="MEL.LogLevel.Error"/>.
     /// </summary>
     public LogLevel ExceptionLogLevel { get; set; } = LogLevel.Error;
 
