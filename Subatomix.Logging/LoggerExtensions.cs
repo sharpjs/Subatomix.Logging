@@ -14,21 +14,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using LE = Microsoft.Extensions.Logging.LoggerExtensions;
-
 namespace Subatomix.Logging;
 
 using static MethodImplOptions;
 
-#if NETFRAMEWORK
-// Prevent CS1574: XML comment has cref attribute '...' that could not be resolved
-using LogLevel = LogLevel;
-#endif
-
-#if NET6_0_OR_GREATER
-// This warning is for downstream code and is not applicable to extension methods on ILogger
-#pragma warning disable CA2254 // The logging message template should not vary between calls...
-#endif
+using LE = MEL.LoggerExtensions;
 
 /// <summary>
 ///   Extension methods for <see cref="ILogger"/>.
@@ -36,7 +26,7 @@ using LogLevel = LogLevel;
 public static class LoggerExtensions
 {
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Trace"/>
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Trace"/>
     ///   (very verbose) level.
     /// </summary>
     /// <param name="logger">
@@ -54,7 +44,7 @@ public static class LoggerExtensions
         => logger.Log(LogLevel.Trace, exception);
 
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Debug"/>
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Debug"/>
     ///   (verbose) level.
     /// </summary>
     /// <param name="logger">
@@ -72,7 +62,7 @@ public static class LoggerExtensions
         => logger.Log(LogLevel.Debug, exception);
 
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Information"/>
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Information"/>
     ///   level.
     /// </summary>
     /// <param name="logger">
@@ -90,7 +80,8 @@ public static class LoggerExtensions
         => logger.Log(LogLevel.Information, exception);
 
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Warning"/> level.
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Warning"/>
+    ///   level.
     /// </summary>
     /// <param name="logger">
     ///   The logger to use.
@@ -107,7 +98,8 @@ public static class LoggerExtensions
         => logger.Log(LogLevel.Warning, exception);
 
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Error"/> level.
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Error"/>
+    ///   level.
     /// </summary>
     /// <param name="logger">
     ///   The logger to use.
@@ -124,7 +116,7 @@ public static class LoggerExtensions
         => logger.Log(LogLevel.Error, exception);
 
     /// <summary>
-    ///   Logs the specified exception at <see cref="LogLevel.Critical"/>
+    ///   Logs the specified exception at <see cref="MEL.LogLevel.Critical"/>
     ///   (fatal) level.
     /// </summary>
     /// <param name="logger">
@@ -174,8 +166,8 @@ public static class LoggerExtensions
     ///   <paramref name="logger"/> and <paramref name="name"/>.
     /// </returns>
     /// <remarks>
-    ///   This overload uses the <see cref="LogLevel.Information"/> severity
-    ///   level for start and completion messages.
+    ///   This overload uses the <see cref="MEL.LogLevel.Information"/>
+    ///   severity level for start and completion messages.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static OperationScopeInitiator Operation(
@@ -229,8 +221,8 @@ public static class LoggerExtensions
     ///   <paramref name="logger"/> and <paramref name="name"/>.
     /// </returns>
     /// <remarks>
-    ///   This overload uses the <see cref="LogLevel.Information"/> severity
-    ///   level for start and completion messages.
+    ///   This overload uses the <see cref="MEL.LogLevel.Information"/>
+    ///   severity level for start and completion messages.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static ActivityScopeInitiator Activity(
