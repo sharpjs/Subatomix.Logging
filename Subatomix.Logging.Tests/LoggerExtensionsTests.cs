@@ -25,127 +25,67 @@ using static LogLevel;
 public partial class LoggerExtensionsTests
 {
     [Test]
-    public void Trace_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Trace("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Trace, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Trace_Exception()
+    public void LogTrace_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Trace(exception);
+        logger.LogTrace(exception);
 
         logger.Entries.Should().Equal((Trace, "", exception));
     }
 
     [Test]
-    public void Debug_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Debug("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Debug, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Debug_Exception()
+    public void LogDebug_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Debug(exception);
+        logger.LogDebug(exception);
 
         logger.Entries.Should().Equal((Debug, "", exception));
     }
 
     [Test]
-    public void Info_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Info("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Information, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Info_Exception()
+    public void LogInformation_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Info(exception);
+        logger.LogInformation(exception);
 
         logger.Entries.Should().Equal((Information, "", exception));
     }
 
     [Test]
-    public void Warn_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Warn("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Warning, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Warn_Exception()
+    public void LogWarning_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Warn(exception);
+        logger.LogWarning(exception);
 
         logger.Entries.Should().Equal((Warning, "", exception));
     }
 
     [Test]
-    public void Error_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Error("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Error, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Error_Exception()
+    public void LogError_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Error(exception);
+        logger.LogError(exception);
 
         logger.Entries.Should().Equal((Error, "", exception));
     }
 
     [Test]
-    public void Critical_StringAndArgs()
-    {
-        var logger = new TestLogger();
-
-        logger.Critical("a{foo}{bar}", "b", "c");
-
-        logger.Entries.Should().Equal((Critical, "abc", null as Exception));
-    }
-
-    [Test]
-    public void Critical_Exception()
+    public void LogCritical_Exception()
     {
         var logger    = new TestLogger();
         var exception = Thrown("a");
 
-        logger.Critical(exception);
+        logger.LogCritical(exception);
 
         logger.Entries.Should().Equal((Critical, "", exception));
     }

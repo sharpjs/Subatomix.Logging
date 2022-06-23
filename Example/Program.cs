@@ -31,12 +31,12 @@ var logger = LoggerFactory
 
 using (var scope = logger.Activity("Example Program").Begin())
 {
-    logger.Trace    ("This is a message."); // LogTrace      
-    logger.Debug    ("This is a message."); // LogDebug      
-    logger.Info     ("This is a message."); // LogInformation
-    logger.Warn     ("This is a message."); // LogWarning    
-    logger.Error    ("This is a message."); // LogError      
-    logger.Critical ("This is a message."); // LogCritical   
+    logger.LogTrace       ("This is a message.");
+    logger.LogDebug       ("This is a message.");
+    logger.LogInformation ("This is a message.");
+    logger.LogWarning     ("This is a message.");
+    logger.LogError       ("This is a message.");
+    logger.LogCritical    ("This is a message.");
 
     try
     {

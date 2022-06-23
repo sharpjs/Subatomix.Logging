@@ -35,41 +35,6 @@ using LogLevel = LogLevel;
 /// </summary>
 public static class LoggerExtensions
 {
-    #region Trace
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Trace"/>
-    ///   (very verbose) level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogTrace(ILogger, string?, object?[])">LogTrace</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Trace(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Trace, message, args);
-
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Trace"/>
     ///   (very verbose) level.
@@ -85,44 +50,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogTrace(ILogger, Exception?, string?, object?[])">LogTrace</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Trace(this ILogger logger, Exception exception)
+    public static void LogTrace(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Trace, exception);
-
-    #endregion
-    #region Debug
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Debug"/>
-    ///   (verbose) level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogDebug(ILogger, string?, object?[])">LogDebug</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Debug(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Debug, message, args);
 
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Debug"/>
@@ -139,44 +68,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogDebug(ILogger, Exception?, string?, object?[])">LogDebug</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Debug(this ILogger logger, Exception exception)
+    public static void LogDebug(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Debug, exception);
-
-    #endregion
-    #region Info
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Information"/>
-    ///   level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogInformation(ILogger, string?, object?[])">LogInformation</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Info(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Information, message, args);
 
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Information"/>
@@ -193,43 +86,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogInformation(ILogger, Exception?, string?, object?[])">LogInformation</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Info(this ILogger logger, Exception exception)
+    public static void LogInformation(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Information, exception);
-
-    #endregion
-    #region Warn
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Warning"/> level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogWarning(ILogger, string?, object?[])">LogWarning</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Warn(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Warning, message, args);
 
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Warning"/> level.
@@ -245,43 +103,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogWarning(ILogger, Exception?, string?, object?[])">LogWarning</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Warn(this ILogger logger, Exception exception)
+    public static void LogWarning(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Warning, exception);
-
-    #endregion
-    #region Error
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Error"/> level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogError(ILogger, string?, object?[])">LogError</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Error(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Error, message, args);
 
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Error"/> level.
@@ -297,44 +120,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogError(ILogger, Exception?, string?, object?[])">LogError</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Error(this ILogger logger, Exception exception)
+    public static void LogError(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Error, exception);
-
-    #endregion
-    #region Critical
-
-    /// <summary>
-    ///   Logs the specified message at <see cref="LogLevel.Critical"/>
-    ///   (fatal) level.
-    /// </summary>
-    /// <param name="logger">
-    ///   The logger to use.
-    /// </param>
-    /// <param name="message">
-    ///   The template for the message to log.  Can contain placeholders.
-    /// </param>
-    /// <param name="args">
-    ///   An array of values to substitute into the placeholders of
-    ///   <paramref name="message"/>, one element per placeholder.
-    ///   The order of placeholders, not their names, determines the order of
-    ///   substitutions.
-    /// </param>
-    /// <remarks>
-    ///   <para>
-    ///     This method is a more concise synonym for
-    ///     <see cref="LE.LogCritical(ILogger, string?, object?[])">LogCritical</see>.
-    ///   </para>
-    ///   <para>
-    ///     Use <strong>names</strong> for the placeholders, not numbers.
-    ///     For example: <c>"User {user} logged in from {address}."</c>
-    ///   </para>
-    ///   <para>
-    ///     <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#log-message-template">More information</a>
-    ///   </para>
-    /// </remarks>
-    [MethodImpl(AggressiveInlining)]
-    public static void Critical(this ILogger logger, string message, params object[] args)
-        => logger.Log(LogLevel.Critical, message, args);
 
     /// <summary>
     ///   Logs the specified exception at <see cref="LogLevel.Critical"/>
@@ -351,11 +138,8 @@ public static class LoggerExtensions
     ///   <see cref="LE.LogCritical(ILogger, Exception?, string?, object?[])">LogCritical</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
-    public static void Critical(this ILogger logger, Exception exception)
+    public static void LogCritical(this ILogger logger, Exception exception)
         => logger.Log(LogLevel.Critical, exception);
-
-    #endregion
-    #region Log
 
     /// <summary>
     ///   Logs the specified exception.
@@ -372,9 +156,6 @@ public static class LoggerExtensions
     [MethodImpl(AggressiveInlining)]
     public static void Log(this ILogger logger, LogLevel level, Exception exception)
         => logger.Log(level, 0, default, exception, EmptyFormatter);
-
-    #endregion
-    #region Scopes
 
     /// <summary>
     ///   Prepares to create a logical operation scope that automatically logs
@@ -486,14 +267,9 @@ public static class LoggerExtensions
         [CallerMemberName] string name = null!)
         => new(logger, logLevel, name);
 
-    #endregion
-    #region Formatting
-
     private static readonly Func<Void, Exception?, string>
         EmptyFormatter = FormatEmpty;
 
     internal static string FormatEmpty(Void state, Exception? exception)
         => string.Empty;
-
-    #endregion
 }
