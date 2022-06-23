@@ -14,10 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Logging;
-using MEL = Microsoft.Extensions.Logging;
-
 namespace Subatomix.Logging;
 
 /// <summary>

@@ -14,8 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Diagnostics.CodeAnalysis;
-
 namespace Subatomix.Logging.Console;
 
 /// <summary>

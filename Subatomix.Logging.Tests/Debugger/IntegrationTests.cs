@@ -14,9 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging;
-using SD = System.Diagnostics;
-
 namespace Subatomix.Logging.Debugger;
 
 [TestFixture, Explicit("To be run interactively for ad-hoc testing.")]

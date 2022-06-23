@@ -18,8 +18,6 @@
 #pragma warning disable CA1816 // Change ... to call GC.SuppressFinalize(object). This will prevent derived types that introduce a finalizer from needing to re-implement 'IDisposable' to call it.
 #endif
 
-using Microsoft.Extensions.Logging;
-
 namespace Subatomix.Logging.Testing;
 
 /// <summary>

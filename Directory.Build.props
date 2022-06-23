@@ -49,8 +49,15 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
   <ItemGroup>
-    <Using Include="System.FormattableString" Static="true" />
-    <Using Include="System.ValueTuple" Alias="Void" />
+    <Using Include="System.Diagnostics"           />
+    <Using Include="System.Diagnostics"           Alias="SD" />
+    <Using Include="System.FormattableString"     Static="true" />
+    <Using Include="System.Runtime.CompilerServices"/>
+    <Using Include="System.ValueTuple"            Alias="Void" />
+    <Using Include="Microsoft.Extensions.Logging" />
+    <Using Include="Microsoft.Extensions.Logging" Alias="MEL" />
+    <Using Include="Subatomix.Logging"            />
+    <Using Include="Subatomix.Logging"            Alias="SL" />
   </ItemGroup>
 
   <!-- Packaging properties -->

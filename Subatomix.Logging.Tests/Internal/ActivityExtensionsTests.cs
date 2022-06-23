@@ -14,7 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Diagnostics;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging;

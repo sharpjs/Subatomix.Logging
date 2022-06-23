@@ -14,7 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging.Debugger;

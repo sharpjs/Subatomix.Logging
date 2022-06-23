@@ -14,7 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging;
 using SLD = Subatomix.Logging.Debugger;
 
 namespace Subatomix.Logging.Debugger;

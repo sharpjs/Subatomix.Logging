@@ -17,9 +17,7 @@
 #pragma warning disable CS8618 // Non-nullable field must contain a non-null value when exiting constructor.
 // Rationale: Configure method sets non-nullable fields to non-null values and is invoked from the constructor.
 
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;

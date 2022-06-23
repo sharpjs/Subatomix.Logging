@@ -14,8 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Diagnostics;
-
 namespace Subatomix.Logging.Testing;
 
 internal class ActivityTestScope : IDisposable

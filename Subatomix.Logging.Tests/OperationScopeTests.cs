@@ -15,7 +15,6 @@
 */
 
 using FluentAssertions.Extensions;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Subatomix.Logging.Console;
 using Subatomix.Logging.Testing;

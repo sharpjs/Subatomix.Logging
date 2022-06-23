@@ -14,9 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Diagnostics;
-using Microsoft.Extensions.Logging;
-
 namespace Subatomix.Logging.Legacy;
 
 internal static class TraceEventTypeExtensions

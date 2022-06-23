@@ -14,7 +14,6 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging;
 using NUnit.Framework.Internal;
 
 namespace Subatomix.Logging.Debugger;

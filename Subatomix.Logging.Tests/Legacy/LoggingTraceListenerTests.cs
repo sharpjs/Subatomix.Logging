@@ -19,9 +19,7 @@
 // Rationale: new[] { } used for readability below.
 #endif
 
-using System.Diagnostics;
 using System.Text;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Subatomix.Logging.Testing;
 

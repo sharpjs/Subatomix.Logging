@@ -16,7 +16,6 @@
 
 using System.Text;
 using NUnit.Framework.Internal;
-using MEL = Microsoft.Extensions.Logging;
 
 namespace Subatomix.Testing;
 
