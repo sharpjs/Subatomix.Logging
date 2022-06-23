@@ -18,7 +18,7 @@ namespace Subatomix.Logging;
 
 using static MethodImplOptions;
 
-using LE = MEL.LoggerExtensions;
+using Base = MEL.LoggerExtensions;
 
 /// <summary>
 ///   Extension methods for <see cref="ILogger"/>.
@@ -37,7 +37,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogTrace(ILogger, Exception?, string?, object?[])">LogTrace</see>.
+    ///   <see cref="Base.LogTrace(ILogger, Exception?, string?, object?[])">LogTrace</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogTrace(this ILogger logger, Exception exception)
@@ -55,7 +55,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogDebug(ILogger, Exception?, string?, object?[])">LogDebug</see>.
+    ///   <see cref="Base.LogDebug(ILogger, Exception?, string?, object?[])">LogDebug</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogDebug(this ILogger logger, Exception exception)
@@ -73,7 +73,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogInformation(ILogger, Exception?, string?, object?[])">LogInformation</see>.
+    ///   <see cref="Base.LogInformation(ILogger, Exception?, string?, object?[])">LogInformation</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogInformation(this ILogger logger, Exception exception)
@@ -91,7 +91,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogWarning(ILogger, Exception?, string?, object?[])">LogWarning</see>.
+    ///   <see cref="Base.LogWarning(ILogger, Exception?, string?, object?[])">LogWarning</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogWarning(this ILogger logger, Exception exception)
@@ -109,7 +109,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogError(ILogger, Exception?, string?, object?[])">LogError</see>.
+    ///   <see cref="Base.LogError(ILogger, Exception?, string?, object?[])">LogError</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogError(this ILogger logger, Exception exception)
@@ -127,7 +127,7 @@ public static class LoggerExtensions
     /// </param>
     /// <remarks>
     ///   This method is a more concise synonym for
-    ///   <see cref="LE.LogCritical(ILogger, Exception?, string?, object?[])">LogCritical</see>.
+    ///   <see cref="Base.LogCritical(ILogger, Exception?, string?, object?[])">LogCritical</see>.
     /// </remarks>
     [MethodImpl(AggressiveInlining)]
     public static void LogCritical(this ILogger logger, Exception exception)
