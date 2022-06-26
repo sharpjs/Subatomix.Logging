@@ -29,6 +29,11 @@ internal class TestLogger : ILogger
     private readonly List<(LogLevel, string, Exception?)>
         _entries = new();
 
+    // TODO: Replace Entries with this
+    /// List of entries written using the logger
+    private readonly List<(LogLevel, EventId, string, Exception?)>
+        _entries2 = new();
+
     /// Stack of scopes issued by the logger
     private readonly Stack<Scope>
         _scopes = new();
@@ -44,6 +49,19 @@ internal class TestLogger : ILogger
     /// </remarks>
     public IReadOnlyList<(LogLevel LogLevel, string Message, Exception? Exception)>
         Entries => _entries;
+
+    // TODO: Replace Entries with this
+    /// <summary>
+    ///   Gets the collection of entries written via the logger.
+    /// </summary>
+    /// <remarks>
+    ///   ℹ <strong>Note:</strong>
+    ///   This collection contains all entries written via the logger,
+    ///   regardless of the minimum severity level set by the
+    ///   <see cref="MinimumLevel"/> property.
+    /// </remarks>
+    public IReadOnlyList<(LogLevel LogLevel, EventId Id, string Message, Exception? Exception)>
+        Entries2 => _entries2;
 
     /// <summary>
     ///   Gets the stack of logical operation scopes issued by the logger.
@@ -78,7 +96,10 @@ internal class TestLogger : ILogger
         TState                           state,
         Exception?                       exception,
         Func<TState, Exception?, string> formatter)
-        => _entries.Add((logLevel, formatter(state, exception), exception));
+    {
+        _entries .Add((logLevel,          formatter(state, exception), exception));
+        _entries2.Add((logLevel, eventId, formatter(state, exception), exception));
+    }
 
     /// <summary>
     ///   A logical operation scope created by <see cref="BeginScope"/>.

@@ -26,7 +26,7 @@ using F = Formatters;
 ///   Convenience methods for logging.
 /// </summary>
 /// <remarks>
-///   This type is a partial compatibility shim to assist migration from the
+///   This type is a compatibility shim to assist migration from the
 ///   Sharp.Diagnostics.Logging package. New code should use
 ///   <see cref="ILogger"/>.
 /// </remarks>
@@ -34,12 +34,20 @@ public static class Log
 {
     #region Logger, Flush, Close
 
+    private static ILogger _logger = NullLogger.Instance;
+
     /// <summary>
     ///   Gets or sets the <see cref="ILogger"/> instance to which the static
     ///   methods of this class foward invocations.
     /// </summary>
-    public static ILogger Logger { get; set; }
-        = NullLogger.Instance;
+    /// <exception cref="ArgumentNullException">
+    ///   Attempted to set the value of the property to <see langword="null"/>
+    /// </exception>
+    public static ILogger Logger
+    {
+        get => _logger;
+        set => _logger = value ?? throw new ArgumentNullException(nameof(value));
+    }
 
     /// <summary>
     ///   Does nothing.
@@ -703,77 +711,112 @@ public static class Log
     /// <summary>
     ///   Starts a logical operation, writing a start entry to the log.
     /// </summary>
-    /// <param name="name">The name of the operation.</param>
+    /// <param name="name">
+    ///   The name of the operation.  If omitted, the default is the name of
+    ///   the calling member, if supported by the compiler.
+    /// </param>
     /// <returns>
     ///   A <see cref="TraceOperation"/> representing the logical operation.
     ///   When disposed, the object writes stop and error entries to the log.
     /// </returns>
+    /// <exception cref="ArgumentNullException">
+    ///   <paramref name="name"/> is <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   <paramref name="name"/> is empty.
+    /// </exception>
     public static TraceOperation Operation([CallerMemberName] string name = null!)
-    {
-        return new TraceOperation(name);
-    }
+        => new(name);
 
     /// <summary>
-    ///   Runs a logical operation, writing start, stop, and error entries to the log.
+    ///   Runs a logical operation, writing start, stop, and error entries to
+    ///   the log.
     /// </summary>
-    /// <param name="name">The name of the operation.</param>
-    /// <param name="action">The operation.</param>
+    /// <param name="name">
+    ///   The name of the operation.
+    /// </param>
+    /// <param name="action">
+    ///   The operation.
+    /// </param>
     /// <exception cref="ArgumentNullException">
-    ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <paramref name="name"/> and/or <paramref name="action"/> is
+    ///   <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   <paramref name="name"/> is empty.
     /// </exception>
     [DebuggerStepThrough]
     public static void Do(string name, Action action)
-    {
-        Logger.Activity(name).Do(action);
-    }
+        => Logger.Activity(name).Do(action);
 
     /// <summary>
-    ///   Runs a logical operation, writing start, stop, and error entries to the log.
+    ///   Runs a logical operation, writing start, stop, and error entries to
+    ///   the log.
     /// </summary>
-    /// <param name="name">The name of the operation.</param>
-    /// <param name="action">The operation.</param>
+    /// <param name="name">
+    ///   The name of the operation.
+    /// </param>
+    /// <param name="action">
+    ///   The operation.
+    /// </param>
     /// <exception cref="ArgumentNullException">
-    ///   <paramref name="action"/> is <see langword="null"/>.
+    ///   <paramref name="name"/> and/or <paramref name="action"/> is
+    ///   <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   <paramref name="name"/> is empty.
     /// </exception>
     [DebuggerStepThrough]
     public static Task DoAsync(string name, Func<Task> action)
-    {
-        return Logger.Activity(name).DoAsync(action);
-    }
+        => Logger.Activity(name).DoAsync(action);
 
     /// <summary>
-    ///   Runs a logical operation, writing start, stop, and error entries to the log.
+    ///   Runs a logical operation, writing start, stop, and error entries to
+    ///   the log.
     /// </summary>
-    /// <param name="name">The name of the operation.</param>
-    /// <param name="action">The operation.</param>
-    /// <returns>
-    ///   The value returned by <paramref name="action"/>.
-    /// </returns>
+    /// <param name="name">
+    ///   The name of the operation.
+    /// </param>
+    /// <param name="action">
+    ///   The operation.
+    /// </param>
+    /// <exception cref="ArgumentNullException">
+    ///   <paramref name="name"/> and/or <paramref name="action"/> is
+    ///   <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   <paramref name="name"/> is empty.
+    /// </exception>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
     [DebuggerStepThrough]
     public static T Do<T>(string name, Func<T> action)
-    {
-        return Logger.Activity(name).Do(action);
-    }
+        => Logger.Activity(name).Do(action);
 
     /// <summary>
-    ///   Runs a logical operation, writing start, stop, and error entries to the log.
+    ///   Runs a logical operation, writing start, stop, and error entries to
+    ///   the log.
     /// </summary>
-    /// <param name="name">The name of the operation.</param>
-    /// <param name="action">The operation.</param>
-    /// <returns>
-    ///   The value returned by <paramref name="action"/>.
-    /// </returns>
+    /// <param name="name">
+    ///   The name of the operation.
+    /// </param>
+    /// <param name="action">
+    ///   The operation.
+    /// </param>
+    /// <exception cref="ArgumentNullException">
+    ///   <paramref name="name"/> and/or <paramref name="action"/> is
+    ///   <see langword="null"/>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///   <paramref name="name"/> is empty.
+    /// </exception>
     /// <exception cref="ArgumentNullException">
     ///   <paramref name="action"/> is <see langword="null"/>.
     /// </exception>
     [DebuggerStepThrough]
     public static Task<T> DoAsync<T>(string name, Func<Task<T>> action)
-    {
-        return Logger.Activity(name).DoAsync(action);
-    }
+        => Logger.Activity(name).DoAsync(action);
 
     /// <summary>
     ///   Writes an entry to the log, reporting a new identifier for the
@@ -838,7 +881,7 @@ public static class Log
     /// <param name="id">A numeric identifier for the entry.</param>
     [Conditional("TRACE")]
     public static void Event(TraceEventType eventType, int id)
-        => Logger.Log(eventType.ToLogLevel(), id, default, null, F.Empty);
+        => Logger.Log(eventType.ToLogLevel(), id, id, null, F.MessageId);
 
     /// <summary>
     ///   Writes an entry to the log.
@@ -903,7 +946,7 @@ public static class Log
     /// <param name="eventType">The type of event to write.</param>
     /// <param name="data">The object data to include in the event.</param>
     [Conditional("TRACE")]
-    public static void Data(TraceEventType eventType, object data)
+    public static void Data(TraceEventType eventType, object? data)
         => Logger.Log(eventType.ToLogLevel(), 0, data, null, F.Data);
 
     /// <summary>
@@ -913,7 +956,7 @@ public static class Log
     /// <param name="id">A numeric identifier for the event.</param>
     /// <param name="data">The object data to include in the event.</param>
     [Conditional("TRACE")]
-    public static void Data(TraceEventType eventType, int id, object data)
+    public static void Data(TraceEventType eventType, int id, object? data)
         => Logger.Log(eventType.ToLogLevel(), id, data, null, F.Data);
 
     /// <summary>
@@ -922,7 +965,7 @@ public static class Log
     /// <param name="eventType">The type of entry to write.</param>
     /// <param name="data">The object data to include in the entry.</param>
     [Conditional("TRACE")]
-    public static void Data(TraceEventType eventType, params object?[] data)
+    public static void Data(TraceEventType eventType, params object?[]? data)
         => Logger.Log(eventType.ToLogLevel(), 0, data, null, F.DataArray);
 
     /// <summary>
@@ -932,7 +975,7 @@ public static class Log
     /// <param name="id">A numeric identifier for the entry.</param>
     /// <param name="data">The object data to include in the entry.</param>
     [Conditional("TRACE")]
-    public static void Data(TraceEventType eventType, int id, params object?[] data)
+    public static void Data(TraceEventType eventType, int id, params object?[]? data)
         => Logger.Log(eventType.ToLogLevel(), id, data, null, F.DataArray);
 
     #endregion
@@ -945,7 +988,8 @@ public static class Log
     [ThreadStatic]
     private static int
         _inEvent;                   // !0 => thread is in first-chance exception handler
-        // NOTE: int instead of bool; Interlocked.CompareExchange does not support bool
+
+    // NOTE: int instead of bool; Interlocked.CompareExchange does not support bool
 
     /// <summary>
     ///   Enables or disables logging of <strong>ALL</strong> thrown exceptions
@@ -992,14 +1036,14 @@ public static class Log
             if (value)
             {
                 domain.UnhandledException += AppDomain_UnhandledException;
-                domain.DomainUnload       += AppDomain_DomainUnload;
-                domain.ProcessExit        += AppDomain_ProcessExit;
+                domain.DomainUnload += AppDomain_DomainUnload;
+                domain.ProcessExit += AppDomain_ProcessExit;
             }
             else
             {
                 domain.UnhandledException -= AppDomain_UnhandledException;
-                domain.DomainUnload       -= AppDomain_DomainUnload;
-                domain.ProcessExit        -= AppDomain_ProcessExit;
+                domain.DomainUnload -= AppDomain_DomainUnload;
+                domain.ProcessExit -= AppDomain_ProcessExit;
             }
 
             _closeOnExit = value;
@@ -1031,13 +1075,7 @@ public static class Log
 
         try
         {
-            Verbose(
-                "An exception was thrown of type {0}: {1}",
-                exception.GetType().FullName,
-                exception.ToString()
-            );
-
-            Verbose(exception);
+            Logger.LogDebug(exception, "An exception was thrown.");
         }
         catch
         {
@@ -1062,6 +1100,7 @@ public static class Log
         // exception, except for a few special cases which go unnoticed:
         //
         // - ThreadAbortException when the thread's Abort method is invoked
+        //     (not in .NET Core/5+)
         // - AppDomainUnloadedException when the thread's application domain
         //     is being unloaded
         // - CLR internal exceptions
@@ -1072,24 +1111,28 @@ public static class Log
 
         try
         {
-            var type      = exceptionObject.GetType().FullName;
+            var type = exceptionObject.GetType().FullName;
             var exception = exceptionObject as Exception;
 
             if (e.IsTerminating)
             {
-                Critical("Terminating due to an unhandled exception of type {0}.", type);
+                Logger.LogCritical(
+                    "Terminating due to an unhandled exception of type {exceptionType}.",
+                    type
+                );
 
                 if (exception != null)
-                    Critical(exception);
-
-                Close();
+                    Logger.LogCritical(exception);
             }
             else
             {
-                Error("Unhandled exception of type {0}.  Execution will continue.", type);
+                Logger.LogError(
+                    "Unhandled exception of type {exceptionType}. Execution will continue.",
+                    type
+                );
 
                 if (exception != null)
-                    Error(exception);
+                    Logger.LogError(exception);
             }
         }
         catch
@@ -1105,18 +1148,21 @@ public static class Log
     {
         // Raised in a non-default application domain when its Unload method
         // is invoked.  NEVER raised in the default application domain.
+        // Unsupported on .NET Core/5+.
 
-        Information("The AppDomain is unloading.");
-        Close();
+        var name = sender is AppDomain a ? a.FriendlyName : "unknown";
+
+        Logger.LogInformation("The AppDomain '{appDomainName}' is unloading.", name);
     }
 
     private static void AppDomain_ProcessExit(object? sender, EventArgs e)
     {
-        // Raised in every application domain when the hosting process is
-        // exiting normally.
+        // Raised in every application domain (that registers an event handler)
+        // when the hosting process is exiting normally.
 
-        Information("The AppDomain's parent process is exiting.");
-        Close();
+        var name = sender is AppDomain a ? a.FriendlyName : "unknown";
+
+        Logger.LogInformation("The parent process of AppDomain '{appDomainName}' is exiting.", name);
     }
 
     internal static void SimulateFirstChanceException(FirstChanceExceptionEventArgs e)
@@ -1129,14 +1175,14 @@ public static class Log
         AppDomain_UnhandledException(AppDomain.CurrentDomain, e);
     }
 
-    internal static void SimulateDomainUnload()
+    internal static void SimulateDomainUnload(object domain)
     {
-        AppDomain_DomainUnload(AppDomain.CurrentDomain, EventArgs.Empty);
+        AppDomain_DomainUnload(domain, EventArgs.Empty);
     }
 
-    internal static void SimulateProcessExit()
+    internal static void SimulateProcessExit(object domain)
     {
-        AppDomain_ProcessExit(AppDomain.CurrentDomain, EventArgs.Empty);
+        AppDomain_ProcessExit(domain, EventArgs.Empty);
     }
 
     #endregion
