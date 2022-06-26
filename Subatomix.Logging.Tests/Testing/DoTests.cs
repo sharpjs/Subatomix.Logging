@@ -27,7 +27,7 @@ public abstract class DoTests : DoTestsBase
         => Invoking(() => Do(logger, name, arg: new(), action, result: new()));
 
     [Test]
-    public void Do_Op_NullName()
+    public void Do_NullName()
     {
         var logger = new TestLogger();
 
@@ -41,7 +41,7 @@ public abstract class DoTests : DoTestsBase
     }
 
     [Test]
-    public void Do_Op_EmptyName()
+    public void Do_EmptyName()
     {
         var logger = new TestLogger();
 
@@ -55,7 +55,7 @@ public abstract class DoTests : DoTestsBase
     }
 
     [Test]
-    public void Do_Op_NullAction()
+    public void Do_NullAction()
     {
         var logger   = new TestLogger();
         var arg      = new Arg();
@@ -70,7 +70,7 @@ public abstract class DoTests : DoTestsBase
     }
 
     [Test]
-    public void Do_Op_Normal()
+    public void Do_Normal()
     {
         var logger   = new TestLogger();
         var arg      = new Arg();
@@ -96,7 +96,7 @@ public abstract class DoTests : DoTestsBase
     }
 
     [Test]
-    public void Do_Op_Exception()
+    public void Do_Exception()
     {
         var logger = new TestLogger();
 

@@ -27,7 +27,7 @@ public abstract class DoAsyncTests : DoTestsBase
         => Awaiting(() => DoAsync(logger, name, arg: new(), action, result: new()));
 
     [Test]
-    public async Task DoAsync_Op_NullName()
+    public async Task DoAsync_NullName()
     {
         var logger = new TestLogger();
 
@@ -41,7 +41,7 @@ public abstract class DoAsyncTests : DoTestsBase
     }
 
     [Test]
-    public async Task DoAsync_Op_EmptyName()
+    public async Task DoAsync_EmptyName()
     {
         var logger = new TestLogger();
 
@@ -55,7 +55,7 @@ public abstract class DoAsyncTests : DoTestsBase
     }
 
     [Test]
-    public async Task DoAsync_Op_NullAction()
+    public async Task DoAsync_NullAction()
     {
         var logger   = new TestLogger();
         var arg      = new Arg();
@@ -70,7 +70,7 @@ public abstract class DoAsyncTests : DoTestsBase
     }
 
     [Test]
-    public async Task DoAsync_Op_Normal()
+    public async Task DoAsync_Normal()
     {
         var logger   = new TestLogger();
         var arg      = new Arg();
@@ -98,7 +98,7 @@ public abstract class DoAsyncTests : DoTestsBase
     }
 
     [Test]
-    public async Task DoAsync_Op_Exception()
+    public async Task DoAsync_Exception()
     {
         var logger = new TestLogger();
 
