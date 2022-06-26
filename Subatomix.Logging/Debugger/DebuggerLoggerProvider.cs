@@ -19,7 +19,7 @@ namespace Subatomix.Logging.Debugger;
 /// <summary>
 ///   A provider of <see cref="DebuggerLogger"/> instances.
 /// </summary>
-[ProviderAlias("Debug")]
+[ProviderAlias("Debugger")]
 public class DebuggerLoggerProvider : ILoggerProvider, ISupportExternalScope
 {
     /// <summary>
