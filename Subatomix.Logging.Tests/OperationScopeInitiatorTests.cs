@@ -23,8 +23,6 @@ using static LogLevel;
 [TestFixture]
 public class OperationScopeInitiatorTests
 {
-    #region Begin
-
     [Test]
     public void Begin()
     {
@@ -43,446 +41,104 @@ public class OperationScopeInitiatorTests
         scope.Name       .Should().BeSameAs(name);
     }
 
-    #endregion
-    #region Do
-    #region Do_Op
-
-    [Test]
-    public void Do_Op_NullAction()
+    [TestFixture]
+    public class DoOpTests : DoTests
     {
-        var op = default(Action);
+        internal override DoAssertions Assertions
+            => DoAssertions.Instance;
 
-        new TestLogger()
-            .Invoking(l => l.Operation("a").Do(op!))
-            .Should().Throw<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public void Do_Op_Normal()
-    {
-        var logger = new TestLogger();
-
-        void Op()
+        protected private override Result Do(
+            ILogger logger, string name, Arg arg, Action action, Result result)
         {
-            AssertDoStarted(logger, "a");
+            logger.Operation(name).Do(action);
+            return result;
         }
-
-        logger.Operation("a").Do(Op);
-
-        AssertDoCompleted(logger, "a");
     }
 
-    [Test]
-    public void Do_Op_Exception()
+    [TestFixture]
+    public class DoOpWithArgTests : DoTests
     {
-        var logger = new TestLogger();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static void Op()
-            => throw new Exception();
-
-        logger
-            .Invoking(l => l.Operation("a").Do(Op))
-            .Should().Throw<Exception>()
-            .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // Do_Op
-    #region Do_OpWithArg
-
-    [Test]
-    public void Do_OpWithArg_NullAction()
-    {
-        var arg = new Arg();
-        var op  = default(Action<Arg>);
-
-        new TestLogger()
-            .Invoking(l => l.Operation("a").Do(arg, op!))
-            .Should().Throw<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public void Do_OpWithArg_Normal()
-    {
-        var logger = new TestLogger();
-        var arg    = new Arg();
-
-        void Op(Arg a)
+        protected private override Result Do(
+            ILogger logger, string name, Arg arg, Action action, Result result)
         {
-            a.Should().BeSameAs(arg);
-
-            AssertDoStarted(logger, "a");
+            logger.Operation(name).Do(arg, action.Expecting(arg));
+            return result;
         }
-
-        logger.Operation("a").Do(arg, Op);
-
-        AssertDoCompleted(logger, "a");
     }
 
-    [Test]
-    public void Do_OpWithArg_Exception()
+    [TestFixture]
+    public class DoOpWithResultTests : DoTests
     {
-        var logger = new TestLogger();
-        var arg    = new Arg();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static void Op(Arg a)
-            => throw new Exception();
-
-        logger
-            .Invoking(l => l.Operation("a").Do(arg, Op))
-            .Should().Throw<Exception>()
-            .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // Do_OpWithArg
-    #region Do_OpWithResult
-
-    [Test]
-    public void Do_OpWithResult_NullAction()
-    {
-        var op = default(Func<Result>);
-
-        new TestLogger()
-            .Invoking(l => l.Operation("a").Do(op!))
-            .Should().Throw<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public void Do_OpWithResult_Normal()
-    {
-        var logger   = new TestLogger();
-        var expected = new Result();
-
-        Result Op()
+        protected private override Result Do(
+            ILogger logger, string name, Arg arg, Action action, Result result)
         {
-            AssertDoStarted(logger, "a");
-
-            return expected;
+            return logger.Operation(name).Do(action.Returning(result));
         }
-
-        var result = logger.Operation("a").Do(Op);
-
-        AssertDoCompleted(logger, "a");
-
-        result.Should().BeSameAs(expected);
     }
 
-    [Test]
-    public void Do_OpWithResult_Exception()
+    [TestFixture]
+    public class DoOpWithArgAndResultTests : DoTests
     {
-        var logger = new TestLogger();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static Result Op()
-            => throw new Exception();
-
-        logger
-            .Invoking(l => l.Operation("a").Do(Op))
-            .Should().Throw<Exception>()
-            .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // Do_OpWithResult
-    #region Do_OpWithArgAndResult
-
-    [Test]
-    public void Do_OpWithArgAndResult_NullAction()
-    {
-        var arg = new Arg();
-        var op  = default(Func<Arg, Result>);
-
-        new TestLogger()
-            .Invoking(l => l.Operation("a").Do(arg, op!))
-            .Should().Throw<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public void Do_OpWithArgAndResult_Normal()
-    {
-        var logger   = new TestLogger();
-        var arg      = new Arg();
-        var expected = new Result();
-
-        Result Op(Arg a)
+        protected private override Result Do(
+            ILogger logger, string name, Arg arg, Action action, Result result)
         {
-            a.Should().BeSameAs(arg);
-
-            AssertDoStarted(logger, "a");
-
-            return expected;
+            return logger.Operation(name).Do(arg, action.Expecting(arg).Returning(result));
         }
-
-        var result = logger.Operation("a").Do(arg, Op);
-
-        AssertDoCompleted(logger, "a");
-
-        result.Should().BeSameAs(expected);
     }
 
-    [Test]
-    public void Do_OpWithArgAndResult_Exception()
+    [TestFixture]
+    public class DoAsyncOpTests : DoAsyncTests
     {
-        var logger = new TestLogger();
-        var arg    = new Arg();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static Result Op(Arg a)
-            => throw new Exception();
-
-        logger
-            .Invoking(l => l.Operation("a").Do(arg, Op))
-            .Should().Throw<Exception>()
-            .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // Do_OpWithArgAndResult
-    #endregion // Do
-    #region DoAsync
-    #region DoAsync_Op
-
-    [Test]
-    public async Task DoAsync_Op_NullAction()
-    {
-        var op = default(Func<Task>);
-
-        await new TestLogger()
-            .Awaiting(l => l.Operation("a").DoAsync(op!))
-            .Should().ThrowAsync<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public async Task DoAsync_Op_Normal()
-    {
-        var logger = new TestLogger();
-
-        Task Op()
+        private protected override async Task<Result> DoAsync(
+            ILogger logger, string name, Arg arg, Func<Task> action, Result result)
         {
-            AssertDoStarted(logger, "a");
-
-            return Task.CompletedTask;
+            await logger.Operation(name).DoAsync(action);
+            return result;
         }
-
-        await logger.Operation("a").DoAsync(Op);
-
-        AssertDoCompleted(logger, "a");
     }
 
-    [Test]
-    public async Task DoAsync_Op_Exception()
+    [TestFixture]
+    public class DoAsyncOpWithArgTests : DoAsyncTests
     {
-        var logger = new TestLogger();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static Task Op()
-            => throw new Exception();
-
-        (await logger
-            .Awaiting(l => l.Operation("a").DoAsync(Op))
-            .Should().ThrowAsync<Exception>()
-        )   .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // DoAsync_Op
-    #region DoAsync_OpWithArg
-
-    [Test]
-    public async Task DoAsync_OpWithArg_NullAction()
-    {
-        var arg = new Arg();
-        var op  = default(Func<Arg, Task>);
-
-        await new TestLogger()
-            .Awaiting(l => l.Operation("a").DoAsync(arg, op!))
-            .Should().ThrowAsync<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public async Task DoAsync_OpWithArg_Normal()
-    {
-        var logger = new TestLogger();
-        var arg    = new Arg();
-
-        Task Op(Arg a)
+        private protected override async Task<Result> DoAsync(
+            ILogger logger, string name, Arg arg, Func<Task> action, Result result)
         {
-            a.Should().BeSameAs(arg);
-
-            AssertDoStarted(logger, "a");
-
-            return Task.CompletedTask;
+            await logger.Operation(name).DoAsync(arg, action.Expecting(arg));
+            return result;
         }
-
-        await logger.Operation("a").DoAsync(arg, Op);
-
-        AssertDoCompleted(logger, "a");
     }
 
-    [Test]
-    public async Task DoAsync_OpWithArg_Exception()
+    [TestFixture]
+    public class DoAsyncOpWithResultTests : DoAsyncTests
     {
-        var logger = new TestLogger();
-        var arg    = new Arg();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static Task Op(Arg a)
-            => throw new Exception();
-
-        (await logger
-            .Awaiting(l => l.Operation("a").DoAsync(arg, Op))
-            .Should().ThrowAsync<Exception>()
-        )   .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // DoAsync_OpWithArg
-    #region DoAsync_OpWithResult
-
-    [Test]
-    public async Task DoAsync_OpWithResult_NullAction()
-    {
-        var op = default(Func<Task<Result>>);
-
-        await new TestLogger()
-            .Awaiting(l => l.Operation("a").DoAsync(op!))
-            .Should().ThrowAsync<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public async Task DoAsync_OpWithResult_Normal()
-    {
-        var logger   = new TestLogger();
-        var expected = new Result();
-
-        Task<Result> Op()
+        private protected override async Task<Result> DoAsync(
+            ILogger logger, string name, Arg arg, Func<Task> action, Result result)
         {
-            AssertDoStarted(logger, "a");
-
-            return Task.FromResult(expected);
+            return await logger.Operation(name).DoAsync(action.Returning(result));
         }
-
-        var result = await logger.Operation("a").DoAsync(Op);
-
-        AssertDoCompleted(logger, "a");
-
-        result.Should().BeSameAs(expected);
     }
 
-    [Test]
-    public async Task DoAsync_OpWithResult_Exception()
+    [TestFixture]
+    public class DoAsyncOpWithArgAndResultTests : DoAsyncTests
     {
-        var logger = new TestLogger();
+        internal override DoAssertions Assertions => DoAssertions.Instance;
 
-        static Task<Result> Op()
-            => throw new Exception();
-
-        (await logger
-            .Awaiting(l => l.Operation("a").DoAsync(Op))
-            .Should().ThrowAsync<Exception>()
-        )   .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // DoAsync_OpWithResult
-    #region DoAsync_OpWithArgAndResult
-
-    [Test]
-    public async Task DoAsync_OpWithArgAndResult_NullAction()
-    {
-        var arg = new Arg();
-        var op  = default(Func<Arg, Task<Result>>);
-
-        await new TestLogger()
-            .Awaiting(l => l.Operation("a").DoAsync(arg, op!))
-            .Should().ThrowAsync<ArgumentNullException>().WithParameterName("action");
-    }
-
-    [Test]
-    public async Task DoAsync_OpWithArgAndResult_Normal()
-    {
-        var logger   = new TestLogger();
-        var arg      = new Arg();
-        var expected = new Result();
-
-        Task<Result> Op(Arg a)
+        private protected override async Task<Result> DoAsync(
+            ILogger logger, string name, Arg arg, Func<Task> action, Result result)
         {
-            a.Should().BeSameAs(arg);
-
-            AssertDoStarted(logger, "a");
-
-            return Task.FromResult(expected);
+            return await logger.Operation(name).DoAsync(arg, action.Expecting(arg).Returning(result));
         }
-
-        var result = await logger.Operation("a").DoAsync(arg, Op);
-
-        AssertDoCompleted(logger, "a");
-
-        result.Should().BeSameAs(expected);
     }
-
-    [Test]
-    public async Task DoAsync_OpWithArgAndResult_Exception()
-    {
-        var logger = new TestLogger();
-        var arg    = new Arg();
-
-        static Task<Result> Op(Arg a)
-            => throw new Exception();
-
-        (await logger
-            .Awaiting(l => l.Operation("a").DoAsync(arg, Op))
-            .Should().ThrowAsync<Exception>()
-        )   .Which.AssignTo(out var exception);
-
-        AssertDoCompleted(logger, "a", exception);
-    }
-
-    #endregion // DoAsync_OpWithArgAndResult
-    #endregion // DoAsync
-
-    private void AssertDoStarted(TestLogger logger, string name)
-    {
-        logger.Entries.Should().HaveCount(1);
-
-        var e0 = logger.Entries[0];
-
-        e0.LogLevel .Should().Be(Information);
-        e0.Message  .Should().Be($"{name}: Starting");
-        e0.Exception.Should().BeNull();
-    }
-
-    private void AssertDoCompleted(TestLogger logger, string name)
-    {
-        logger.Entries.Should().HaveCount(2);
- 
-        var e1 = logger.Entries[1];
-
-        e1.LogLevel .Should().Be(Information);
-        e1.Message  .Should().MatchRegex($@"^{name}: Completed \[\d+\.\d\d\ds\]$");
-        e1.Exception.Should().BeNull();
-    }
-
-    private void AssertDoCompleted(TestLogger logger, string name, Exception exception)
-    {
-        logger.Entries.Should().HaveCount(3);
- 
-        var e1 = logger.Entries[1];
-        var e2 = logger.Entries[2];
-
-        e1.LogLevel .Should().Be(Error);
-        e1.Message  .Should().BeNullOrEmpty();
-        e1.Exception.Should().BeSameAs(exception);
- 
-        e2.LogLevel .Should().Be(Information);
-        e2.Message  .Should().MatchRegex($@"^{name}: Completed \[\d+\.\d\d\ds\] \[EXCEPTION\]$");
-        e2.Exception.Should().BeNull();
-    }
-
-    private sealed class Arg    { }
-    private sealed class Result { }
 }
