@@ -14,6 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using System.Text.RegularExpressions;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging.Debugger;
@@ -295,8 +296,38 @@ public class DebuggerLoggerTests
             .Select(t => t.Replace("exception", exception?.ToString()))
             .Select(t => ((int) logLevel, h.Name, t + Environment.NewLine));
 
-        h.Debugger.Entries.Should().Equal(expectedEntries);
+        ShouldBeEqual(h.Debugger.Entries, expectedEntries);
     }
+
+    private void ShouldBeEqual(
+        IEnumerable<(int, string, string)> actualEntries,
+        IEnumerable<(int, string, string)> expectedEntries)
+    {
+        // BUG: Seeing nondeterministic behavior in Exception.ToString():
+        // invoke .ToString() multiple times against the same exception, get
+        // different line numbers in the stack trace.  To work around, replace
+        // line numbers with 'X'.
+
+        actualEntries   = actualEntries.Select(RemoveLineNumbers);
+        expectedEntries = actualEntries.Select(RemoveLineNumbers);
+
+        actualEntries.Should().Equal(expectedEntries);
+    }
+
+    private (int, string, string) RemoveLineNumbers((int, string, string) entry)
+    {
+        var (level, category, message) = entry;
+        return (level, category, RemoveLineNumbers(message));
+    }
+
+    private string RemoveLineNumbers(string s)
+        => LineNumberRegex.Replace(s, ":line X");
+
+    private readonly Regex LineNumberRegex = new(
+        @":line \d+$",
+        RegexOptions.Multiline |
+        RegexOptions.CultureInvariant
+    );
 
     private class TestHarness : TestHarnessBase
     {
