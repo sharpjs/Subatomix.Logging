@@ -18,13 +18,16 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Subatomix.Logging.Testing;
 
-public abstract class DoTests : DoTestsBase
+public abstract class DoTests
 {
     protected private abstract Result Do(
         ILogger logger, string name, Arg arg, Action action, Result result);
 
     private Func<Result> Doing(ILogger logger, string name, Action action)
         => Invoking(() => Do(logger, name, arg: new(), action, result: new()));
+
+    internal virtual DoAssertions Assertions
+        => ActivityDoAssertions.Instance;
 
     [Test]
     public void Do_NullName()
@@ -37,7 +40,7 @@ public abstract class DoTests : DoTestsBase
         Doing(logger, name: null!, Op)
             .Should().Throw<ArgumentNullException>().WithParameterName("name");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
@@ -51,22 +54,18 @@ public abstract class DoTests : DoTestsBase
         Doing(logger, name: "", Op)
             .Should().Throw<ArgumentException>().WithParameterName("name");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
     public void Do_NullAction()
     {
-        var logger   = new TestLogger();
-        var arg      = new Arg();
-        var expected = new Result();
+        var logger = new TestLogger();
 
-        var op = null as Action;
-
-        Doing(logger, name: "a", op!)
+        Doing(logger, name: "a", null!)
             .Should().Throw<ArgumentNullException>().WithParameterName("action");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
@@ -78,19 +77,14 @@ public abstract class DoTests : DoTestsBase
 
         void Op()
         {
-            AssertDoStarted(logger, "a");
-
-            Activity.Current               .Should().NotBeNull();
-            Activity.Current!.OperationName.Should().Be("a");
+            Assertions.AssertDoStarted(logger, "a");
         }
 
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoNotStarted(logger);
 
         var result = Do(logger, name: "a", arg, Op, expected);
 
-        AssertDoCompleted(logger, "a");
-
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoCompleted(logger, "a");
 
         result.Should().BeSameAs(expected);
     }
@@ -103,14 +97,12 @@ public abstract class DoTests : DoTestsBase
         static void Op()
             => throw new Exception();
 
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoNotStarted(logger);
 
         Doing(logger, name: "a", Op)
             .Should().ThrowExactly<Exception>()
             .Which.AssignTo(out var exception);
 
-        AssertDoCompleted(logger, "a", exception);
-
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoCompleted(logger, "a", exception);
     }
 }

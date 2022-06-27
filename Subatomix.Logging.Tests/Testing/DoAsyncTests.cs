@@ -18,13 +18,16 @@ using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Subatomix.Logging.Testing;
 
-public abstract class DoAsyncTests : DoTestsBase
+public abstract class DoAsyncTests
 {
     protected private abstract Task<Result> DoAsync(
         ILogger logger, string name, Arg arg, Func<Task> action, Result result);
 
     private Func<Task<Result>> DoingAsync(ILogger logger, string name, Func<Task> action)
         => Awaiting(() => DoAsync(logger, name, arg: new(), action, result: new()));
+
+    internal virtual DoAssertions Assertions
+        => ActivityDoAssertions.Instance;
 
     [Test]
     public async Task DoAsync_NullName()
@@ -37,7 +40,7 @@ public abstract class DoAsyncTests : DoTestsBase
         await DoingAsync(logger, name: null!, Op)
             .Should().ThrowAsync<ArgumentNullException>().WithParameterName("name");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
@@ -51,22 +54,18 @@ public abstract class DoAsyncTests : DoTestsBase
         await DoingAsync(logger, name: "", Op)
             .Should().ThrowAsync<ArgumentException>().WithParameterName("name");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
     public async Task DoAsync_NullAction()
     {
-        var logger   = new TestLogger();
-        var arg      = new Arg();
-        var expected = new Result();
+        var logger = new TestLogger();
 
-        var op = null as Func<Task>;
-
-        await DoingAsync(logger, name: "a", op!)
+        await DoingAsync(logger, name: "a", null!)
             .Should().ThrowAsync<ArgumentNullException>().WithParameterName("action");
 
-        logger.Entries2.Should().BeEmpty();
+        Assertions.AssertDoNotStarted(logger);
     }
 
     [Test]
@@ -78,21 +77,15 @@ public abstract class DoAsyncTests : DoTestsBase
 
         Task Op()
         {
-            AssertDoStarted(logger, "a");
-
-            Activity.Current               .Should().NotBeNull();
-            Activity.Current!.OperationName.Should().Be("a");
-
+            Assertions.AssertDoStarted(logger, "a");
             return Task.CompletedTask;
         }
 
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoNotStarted(logger);
 
         var result = await DoAsync(logger, name: "a", arg, Op, expected);
 
-        AssertDoCompleted(logger, "a");
-
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoCompleted(logger, "a");
 
         result.Should().BeSameAs(expected);
     }
@@ -105,14 +98,12 @@ public abstract class DoAsyncTests : DoTestsBase
         static Task Op()
             => throw new Exception();
 
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoNotStarted(logger);
 
         (await DoingAsync(logger, name: "a", Op)
             .Should().ThrowExactlyAsync<Exception>()
         )   .Which.AssignTo(out var exception);
 
-        AssertDoCompleted(logger, "a", exception);
-
-        Activity.Current.Should().BeNull();
+        Assertions.AssertDoCompleted(logger, "a", exception);
     }
 }
