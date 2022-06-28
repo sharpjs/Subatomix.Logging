@@ -14,12 +14,38 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using FluentAssertions.Extensions;
 using Subatomix.Logging.Testing;
 
 namespace Sharp.Diagnostics.Logging;
 
-public static class TraceOperationTests
+[TestFixture]
+[NonParallelizable] // because Log uses a static ILogger
+public class TraceOperationTests
 {
+    [Test]
+    public void StartTime_Get()
+    {
+        using var operation = new TraceOperation();
+
+        operation.StartTime.Should().Be(Activity.Current!.StartTimeUtc);
+    }
+
+    [Test]
+    public void Duration_Get()
+    {
+        using var operation = new TraceOperation();
+
+        Thread.Sleep(10.Milliseconds());
+
+        var duration    = operation.Duration;    // base property
+        var elapsedTime = operation.ElapsedTime; // compatibility synonym
+
+        duration   .Should().BeGreaterThan(TimeSpan.Zero);
+        elapsedTime.Should().BeGreaterThan(TimeSpan.Zero);
+        elapsedTime.Should().BeCloseTo(duration, precision: 1.Milliseconds());
+    }
+
     [TestFixture]
     [NonParallelizable] // because Log uses a static ILogger
     public class DoOpTests : DoTests

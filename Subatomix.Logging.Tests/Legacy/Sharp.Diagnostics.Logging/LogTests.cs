@@ -731,11 +731,6 @@ public class LogTests
     #endregion
     #region Event Handlers
 
-    private static void CauseFirstChanceException(string message)
-    {
-        _ = Thrown(message);
-    }
-
     [Test]
     public void LogAllThrownExceptions()
     {
@@ -743,14 +738,22 @@ public class LogTests
 
         try
         {
+            // Set twice to test no-change path
             Log.LogAllThrownExceptions = true;
             Log.LogAllThrownExceptions.Should().BeTrue();
+            Log.LogAllThrownExceptions = true;
+            Log.LogAllThrownExceptions.Should().BeTrue();
+
             exception = Thrown("*YEP*");
         }
         finally
         {
+            // Set twice to test no-change path
             Log.LogAllThrownExceptions = false;
             Log.LogAllThrownExceptions.Should().BeFalse();
+            Log.LogAllThrownExceptions = false;
+            Log.LogAllThrownExceptions.Should().BeFalse();
+
             _ = Thrown("*NOPE*");
         }
 
@@ -780,10 +783,32 @@ public class LogTests
     [Test]
     public void LogAllThrownExceptions_SecondaryException()
     {
-        // Set up logger to throw a secondary exception
+        // Simulate unhandled secondary exception
         Log.Logger = Mock.Of<ILogger>(MockBehavior.Strict);
 
         Log.SimulateFirstChanceException(new(Thrown()));
+    }
+
+    [Test]
+    public void LogAllThrownExceptions_Reentrant()
+    {
+        var original  = Thrown("Original exception.");
+        var secondary = Thrown("Secondary exception.");
+
+        Log.Logger = Mock.Of<ILogger>(MockBehavior.Strict);
+
+        // Simulate reentrancy due to secondary exception
+        Mock.Get(Log.Logger)
+            .Setup(l => l.Log(
+                Debug, 0, It.IsAny<It.IsAnyType>(),
+                original, It.IsAny<Func<It.IsAnyType, Exception?, string>>()
+            ))
+            .Callback(() => Log.SimulateFirstChanceException(new(secondary)))
+            .Verifiable();
+
+        Log.SimulateFirstChanceException(new(original));
+
+        Mock.Get(Log.Logger).Verify();
     }
 
     [Test]
@@ -793,6 +818,9 @@ public class LogTests
 
         try
         {
+            // Set twice to test no-change path
+            Log.CloseOnExit = true;
+            Log.CloseOnExit.Should().BeTrue();
             Log.CloseOnExit = true;
             Log.CloseOnExit.Should().BeTrue();
 
@@ -800,6 +828,9 @@ public class LogTests
         }
         finally
         {
+            // Set twice to test no-change path
+            Log.CloseOnExit = false;
+            Log.CloseOnExit.Should().BeFalse();
             Log.CloseOnExit = false;
             Log.CloseOnExit.Should().BeFalse();
         }
