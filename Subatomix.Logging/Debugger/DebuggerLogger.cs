@@ -65,7 +65,7 @@ public class DebuggerLogger : ILogger
     public IDisposable BeginScope<TState>(TState state)
     {
         return Provider.ScopeProvider?.Push(state)
-            ?? NullDisposable.Instance;
+            ?? NullScope.Instance;
     }
 
     /// <inheritdoc/>

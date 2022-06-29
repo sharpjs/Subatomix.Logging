@@ -16,18 +16,15 @@
 
 namespace Subatomix.Logging.Debugger;
 
-/// <summary>
-///   An empty object that can be disposed any number of times.
-/// </summary>
-internal sealed class NullDisposable : IDisposable
+[TestFixture]
+public class NullScopeTests
 {
-    /// <summary>
-    ///   The singleton instance of <see cref="NullDisposable"/>.
-    /// </summary>
-    public static IDisposable Instance { get; } = new NullDisposable();
+    [Test]
+    public void Dispose_Multiple()
+    {
+        var disposable = NullScope.Instance;
 
-    private NullDisposable() { }
-
-    /// <inheritdoc/>
-    public void Dispose() { }
+        disposable.Dispose();
+        disposable.Dispose();
+    }
 }

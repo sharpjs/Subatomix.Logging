@@ -85,7 +85,7 @@ public class DebuggerLoggerTests
 
         var name = Any.GetString();
 
-        h.Logger.BeginScope(name).Should().BeSameAs(NullDisposable.Instance);
+        h.Logger.BeginScope(name).Should().BeSameAs(NullScope.Instance);
     }
 
     [Test]
@@ -104,7 +104,7 @@ public class DebuggerLoggerTests
             )
         );
 
-        h.Logger.BeginScope(name).Should().BeSameAs(NullDisposable.Instance);
+        h.Logger.BeginScope(name).Should().BeSameAs(NullScope.Instance);
     }
 
     [Test]
