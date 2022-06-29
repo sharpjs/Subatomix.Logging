@@ -164,7 +164,7 @@ CREATE INDEX IX_MachineId
 
 CREATE TYPE log.EntryRow AS TABLE
 (
-    Date        datetime2(3)        NOT NULL
+    Date        datetime2(4)        NOT NULL
   , Seq         int                 NOT NULL
   , TraceId     varchar(32)             NULL
   , EventId     int                     NULL
