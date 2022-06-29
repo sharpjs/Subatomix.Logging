@@ -124,7 +124,7 @@ CREATE TABLE log.Entry
   , LogId       int                 NOT NULL -- Id of log stream
   , MachineId   int                 NOT NULL -- Id of sending machine
   , ProcessId   int                     NULL -- Id of process within OS
-  , TraceId     binary(16)              NULL -- Id of root logical operation
+  , TraceId     varchar(32)             NULL -- Id of root logical operation
   , EventId     int                     NULL -- Id of event kind (arbitrary)
   , Level       tinyint             NOT NULL -- Severity level
   , Message     varchar(1024)       NOT NULL -- State formatted as string
@@ -166,7 +166,7 @@ CREATE TYPE log.EntryRow AS TABLE
 (
     Date        datetime2(3)        NOT NULL
   , Seq         int                 NOT NULL
-  , TraceId     binary(16)              NULL
+  , TraceId     varchar(32)             NULL
   , EventId     int                     NULL
   , Level       tinyint             NOT NULL
   , Message     varchar(1024)       NOT NULL
