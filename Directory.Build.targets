@@ -32,6 +32,7 @@
   <!-- Visibility -->
   <ItemGroup>
     <InternalsVisibleTo Include="Subatomix.Logging.Legacy"/>
+    <InternalsVisibleTo Include="Subatomix.Logging.Sql"/>
     <InternalsVisibleTo Include="Subatomix.Logging.Tests"/>
     <InternalsVisibleTo Include="DynamicProxyGenAssembly2"/>
     <!-- Required for Moq to mock a class with an internal abstract method. -->
