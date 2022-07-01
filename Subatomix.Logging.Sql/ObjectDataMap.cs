@@ -62,6 +62,10 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
     /// <param name="ordinal">
     ///   The zero-based ordinal of the field.
     /// </param>
+    /// <exception cref="IndexOutOfRangeException">
+    ///   There is no field with the specified <paramref name="ordinal"/> in
+    ///   the map.
+    /// </exception>
     public Field this[int ordinal]
         => _fields[ordinal];
 
@@ -75,7 +79,8 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
     ///   The ordinal of the field with name <paramref name="name"/>.
     /// </returns>
     /// <exception cref="IndexOutOfRangeException">
-    ///   There is no field with name <paramref name="name"/> in the map.
+    ///   There is no field with the specified <paramref name="name"/> in the
+    ///   map.
     /// </exception>
     public int GetOrdinal(string name)
     {
@@ -170,29 +175,77 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         public string DbType { get; }
 
         /// <summary>
-        ///   Gets the CLR data type of the field.
+        ///   Gets the .NET data type of the field.
         /// </summary>
         public abstract Type NetType { get; }
 
+        /// <summary>
+        ///   Gets the value of the field from the specified object.
+        /// </summary>
+        /// <param name="obj">
+        ///   The object from which to get the value of the field.
+        /// </param>
+        /// <returns>
+        ///   The value of the field.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="obj"/> is <see langword="null"/>.
+        /// </exception>
         public object? GetValue(T obj)
-        {
-            return GetValueAsObject(obj);
-        }
+            => GetValueAsObject(obj);
 
+        /// <summary>
+        ///   Gets the value of the field from the specified object.
+        /// </summary>
+        /// <typeparam name="TValue">
+        ///   The expected type of the field.
+        /// </typeparam>
+        /// <param name="obj">
+        ///   The object from which to get the value of the field.
+        /// </param>
+        /// <returns>
+        ///   The value of the field.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="obj"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        ///   The field is not of type <typeparamref name="TValue"/>.
+        /// </exception>
         public TValue GetValueAs<TValue>(T obj)
         {
             return this is Field<TValue> field
                 ? field.GetValue(obj)
-                : (TValue) GetValueAsObject(obj)!;
+                : throw new InvalidCastException();
         }
 
+        /// <summary>
+        ///   Attempts to get the value of the field from the specified object.
+        /// </summary>
+        /// <typeparam name="TValue">
+        ///   The expected type of the field.
+        /// </typeparam>
+        /// <param name="obj">
+        ///   The object from which to get the value of the field.
+        /// </param>
+        /// <param name="value">
+        ///   Receives the value of the field for object <paramref name="obj"/>
+        ///   if the field is of type <typeparamref name="TValue"/>; otherwise,
+        ///   receives the default value of type <typeparamref name="TValue"/>.
+        /// </param>
+        /// <returns>
+        ///   <see langword="true"/> if the field is of type
+        ///     <typeparamref name="TValue"/>;
+        ///   <see langword="false"/> otherwise.
+        /// </returns>
         public bool TryGetValueAs<TValue>(T obj, [MaybeNullWhen(false)] out TValue value)
         {
             return this is Field<TValue> field
-                ? (value = field.GetValue(obj), ok: true ) .ok
-                : (value = default,             ok: false) .ok;
+                ? (value = field.GetValue(obj), ok: true ).ok
+                : (value = default,             ok: false).ok;
         }
 
+        /// <inheritdoc cref="ObjectDataMap{T}.Field.GetValue(T)"/>
         protected abstract object? GetValueAsObject(T obj);
     }
 
@@ -219,6 +272,7 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         public override Type NetType
             => typeof(TValue);
 
+        /// <inheritdoc cref="ObjectDataMap{T}.Field.GetValue(T)"/>
         public new TValue GetValue(T obj)
         {
             if (obj is null)
@@ -227,9 +281,8 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
             return _getter(obj);
         }
 
+        /// <inheritdoc/>
         protected override object? GetValueAsObject(T obj)
-        {
-            return GetValue(obj);
-        }
+            => GetValue(obj);
     }
 }
