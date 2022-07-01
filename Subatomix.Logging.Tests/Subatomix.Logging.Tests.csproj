@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Subatomix.Logging\Subatomix.Logging.csproj" />
     <ProjectReference Include="..\Subatomix.Logging.Legacy\Subatomix.Logging.Legacy.csproj" />
+    <ProjectReference Include="..\Subatomix.Logging.Sql\Subatomix.Logging.Sql.csproj" />
   </ItemGroup>
 
   <ItemGroup>
