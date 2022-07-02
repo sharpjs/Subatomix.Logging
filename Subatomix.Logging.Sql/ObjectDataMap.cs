@@ -15,7 +15,6 @@
 */
 
 using System.Collections;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Subatomix.Logging.Sql;
 
@@ -82,6 +81,9 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
     ///   There is no field with the specified <paramref name="name"/> in the
     ///   map.
     /// </exception>
+    /// <remarks>
+    ///   This method uses case-sensitive ordinal comparison.
+    /// </remarks>
     public int GetOrdinal(string name)
     {
         // For this purpose, linear search is completely acceptable
@@ -129,9 +131,43 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         /// <returns>
         ///   The builder, to permit chaining.
         /// </returns>
-        public Builder Field<TField>(string name, string dbType, Func<T, TField> getter)
+        /// <remarks>
+        ///   This overload is used for reference-type and non-nullable
+        ///   value-type fields.
+        /// </remarks>
+        public Builder Field<TField>(string name, string dbType, Func<T, TField?> getter)
+            where TField : notnull
         {
-            _fields.Add(new Field<TField>(name, dbType, getter));
+            _fields.Add(new GeneralField<TField>(name, dbType, getter));
+            return this;
+        }
+
+        /// <summary>
+        ///   Adds the specified field to the map.
+        /// </summary>
+        /// <typeparam name="TField">
+        ///   The CLR data type of the field.
+        /// </typeparam>
+        /// <param name="name">
+        ///   The name of the field.
+        /// </param>
+        /// <param name="dbType">
+        ///   The SQL data type of the field.
+        /// </param>
+        /// <param name="getter">
+        ///   A delegate that gets the value of the field from an object of
+        ///   type <typeparamref name="T"/>.
+        /// </param>
+        /// <returns>
+        ///   The builder, to permit chaining.
+        /// </returns>
+        /// <remarks>
+        ///   This overload is used for nullable value-type fields.
+        /// </remarks>
+        public Builder Field<TField>(string name, string dbType, Func<T, TField?> getter)
+            where TField : struct
+        {
+            _fields.Add(new NullableValueField<TField>(name, dbType, getter));
             return this;
         }
 
@@ -153,15 +189,10 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
     /// </summary>
     public abstract class Field
     {
-        protected Field(string name, string dbType)
+        private protected Field(string name, string dbType)
         {
-            if (name == null)
-                throw new ArgumentNullException(nameof(name));
-            if (dbType == null)
-                throw new ArgumentNullException(nameof(dbType));
-
-            Name   = name;
-            DbType = dbType;
+            Name   = name   ?? throw new ArgumentNullException(nameof(name));
+            DbType = dbType ?? throw new ArgumentNullException(nameof(dbType));
         }
 
         /// <summary>
@@ -170,96 +201,134 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         public string Name { get; }
 
         /// <summary>
-        ///   Gets the SQL data type name of the field.
+        ///   Gets the database type name of the field.
         /// </summary>
         public string DbType { get; }
 
         /// <summary>
-        ///   Gets the .NET data type of the field.
+        ///   Gets the .NET type of the field.
         /// </summary>
         public abstract Type NetType { get; }
 
         /// <summary>
-        ///   Gets the value of the field from the specified object.
+        ///   Gets whether the field is <see langword="null"/> for the
+        ///   specified object.
         /// </summary>
         /// <param name="obj">
-        ///   The object from which to get the value of the field.
+        ///   The object for which to check if the field is
+        ///   <see langword="null"/>.
         /// </param>
         /// <returns>
-        ///   The value of the field.
+        ///   <see langword="true"/> if the field is <see langword="null"/> for
+        ///   <paramref name="obj"/>; <see langword="false"/> otherwise.
+        /// </returns>
+        public abstract bool IsNull(T obj);
+
+        /// <summary>
+        ///   Gets the value of the field for the specified object.
+        /// </summary>
+        /// <param name="obj">
+        ///   The object for which to get the value of the field.
+        /// </param>
+        /// <returns>
+        ///   The value of the field for <paramref name="obj"/>, or
+        ///   <see cref="DBNull.Value"/> if the field is <see langword="null"/>
+        ///   for <paramref name="obj"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="obj"/> is <see langword="null"/>.
         /// </exception>
         public object? GetValue(T obj)
-            => GetValueAsObject(obj);
+            => GetValueUntyped(obj);
+
+        /// <inheritdoc cref="GetValue(T)"/>
+        protected abstract object GetValueUntyped(T obj);
 
         /// <summary>
-        ///   Gets the value of the field from the specified object.
+        ///   Gets the value of the field for the specified object.
         /// </summary>
         /// <typeparam name="TValue">
-        ///   The expected type of the field.
+        ///   The type of value in the field.
         /// </typeparam>
         /// <param name="obj">
-        ///   The object from which to get the value of the field.
+        ///   The object for which to get the value of the field.
         /// </param>
         /// <returns>
-        ///   The value of the field.
+        ///   The value of the field for <paramref name="obj"/>.
         /// </returns>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="obj"/> is <see langword="null"/>.
         /// </exception>
         /// <exception cref="InvalidCastException">
-        ///   The field is not of type <typeparamref name="TValue"/>.
+        ///   The field is not of type <typeparamref name="TValue"/>, or the
+        ///   value of the field is <see langword="null"/> for
+        ///   <paramref name="obj"/>.
         /// </exception>
         public TValue GetValueAs<TValue>(T obj)
+            where TValue : notnull
         {
             return this is Field<TValue> field
                 ? field.GetValue(obj)
-                : throw new InvalidCastException();
+                : throw OnCannotCastTo(typeof(TValue));
         }
 
-        /// <summary>
-        ///   Attempts to get the value of the field from the specified object.
-        /// </summary>
-        /// <typeparam name="TValue">
-        ///   The expected type of the field.
-        /// </typeparam>
-        /// <param name="obj">
-        ///   The object from which to get the value of the field.
-        /// </param>
-        /// <param name="value">
-        ///   Receives the value of the field for object <paramref name="obj"/>
-        ///   if the field is of type <typeparamref name="TValue"/>; otherwise,
-        ///   receives the default value of type <typeparamref name="TValue"/>.
-        /// </param>
-        /// <returns>
-        ///   <see langword="true"/> if the field is of type
-        ///     <typeparamref name="TValue"/>;
-        ///   <see langword="false"/> otherwise.
-        /// </returns>
-        public bool TryGetValueAs<TValue>(T obj, [MaybeNullWhen(false)] out TValue value)
-        {
-            return this is Field<TValue> field
-                ? (value = field.GetValue(obj), ok: true ).ok
-                : (value = default,             ok: false).ok;
-        }
+        protected InvalidCastException OnCannotCastTo(Type type)
+            => new($"Unable to cast object of type '{NetType}' to type '{type}'.");
 
-        /// <inheritdoc cref="ObjectDataMap{T}.Field.GetValue(T)"/>
-        protected abstract object? GetValueAsObject(T obj);
+        protected static InvalidCastException OnNullValue()
+            => new("Data is null. This method or property cannot be called on null values.");
     }
 
     /// <summary>
-    ///   A field in an <see cref="ObjectDataMap{T}"/>.
+    ///   A field of known type in an <see cref="ObjectDataMap{T}"/>.
     /// </summary>
     /// <typeparam name="TValue">
     ///   The type of value in the field.
     /// </typeparam>
-    public class Field<TValue> : Field
+    public abstract class Field<TValue> : Field
+        where TValue : notnull
     {
-        private readonly Func<T, TValue> _getter;
+        private protected Field(string name, string dbType)
+            : base(name, dbType) { }
 
-        public Field(string name, string dbType, Func<T, TValue> getter)
+        /// <inheritdoc/>
+        public sealed override Type NetType
+            => typeof(TValue);
+
+        /// <summary>
+        ///   Gets the value of the field for the specified object.
+        /// </summary>
+        /// <param name="obj">
+        ///   The object for which to get the value of the field.
+        /// </param>
+        /// <returns>
+        ///   The value of the field for <paramref name="obj"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        ///   <paramref name="obj"/> is <see langword="null"/>.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        ///   The value of the field is <see langword="null"/> for
+        ///   <paramref name="obj"/>.
+        /// </exception>
+        public new abstract TValue GetValue(T obj);
+    }
+
+    /// <summary>
+    ///   A field of reference or non-nullable value type in an
+    ///   <see cref="ObjectDataMap{T}"/>.
+    /// </summary>
+    /// <typeparam name="TValue">
+    ///   The type of value in the field.
+    /// </typeparam>
+    internal sealed class GeneralField<TValue> : Field<TValue>
+        where TValue : notnull
+    {
+        // NOTE: 'TValue?' here is TValue with a nullable-reference annotation
+
+        private readonly Func<T, TValue?> _getter;
+
+        internal GeneralField(string name, string dbType, Func<T, TValue?> getter)
             : base(name, dbType)
         {
             if (getter == null)
@@ -269,20 +338,66 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         }
 
         /// <inheritdoc/>
-        public override Type NetType
-            => typeof(TValue);
+        public override bool IsNull(T obj)
+            => GetValueCore(obj) is null;
+
+        /// <inheritdoc/>
+        protected override object GetValueUntyped(T obj)
+            => GetValueCore(obj) ?? (object) DBNull.Value;
 
         /// <inheritdoc cref="ObjectDataMap{T}.Field.GetValue(T)"/>
-        public new TValue GetValue(T obj)
+        public override TValue GetValue(T obj)
+            => GetValueCore(obj) ?? throw OnNullValue();
+
+        private TValue? GetValueCore(T obj)
         {
             if (obj is null)
                 throw new ArgumentNullException(nameof(obj));
 
             return _getter(obj);
         }
+    }
+
+    /// <summary>
+    ///   A field of nullable value type in an <see cref="ObjectDataMap{T}"/>.
+    /// </summary>
+    /// <typeparam name="TValue">
+    ///   The type of value in the field.
+    /// </typeparam>
+    internal sealed class NullableValueField<TValue> : Field<TValue>
+        where TValue : struct
+    {
+        // NOTE: 'TValue?' here is Nullable<TValue>
+
+        private readonly Func<T, TValue?> _getter;
+
+        internal NullableValueField(string name, string dbType, Func<T, TValue?> getter)
+            : base(name, dbType)
+        {
+            if (getter == null)
+                throw new ArgumentNullException(nameof(getter));
+
+            _getter = getter;
+        }
 
         /// <inheritdoc/>
-        protected override object? GetValueAsObject(T obj)
-            => GetValue(obj);
+        public override bool IsNull(T obj)
+            => GetValueCore(obj) is null;
+
+        /// <inheritdoc/>
+        protected override object GetValueUntyped(T obj)
+            => GetValueCore(obj) ?? (object) DBNull.Value;
+
+        /// <inheritdoc cref="ObjectDataMap{T}.Field.GetValue(T)"/>
+        public override TValue GetValue(T obj)
+            => GetValueCore(obj) ?? throw OnNullValue();
+
+        private TValue? GetValueCore(T obj)
+        {
+            if (obj is null)
+                throw new ArgumentNullException(nameof(obj));
+
+            return _getter(obj);
+        }
     }
 }

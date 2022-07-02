@@ -31,23 +31,48 @@ public class ObjectDataMapTests
     }
 
     [Test]
-    public void Construct_Field_NullName()
+    public void Construct_Field_General_NullName()
     {
-        Invoking(() => new ObjectDataMap<Thing>(m => m.Field(null!, "any", x => 0)))
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field(null!, "any", x => "any")))
             .Should().Throw<ArgumentNullException>();
     }
 
     [Test]
-    public void Construct_Field_NullDbType()
+    public void Construct_Field_General_NullDbType()
     {
-        Invoking(() => new ObjectDataMap<Thing>(m => m.Field("any", null!, x => 0)))
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field("any", null!, x => "any")))
             .Should().Throw<ArgumentNullException>();
     }
 
     [Test]
-    public void Construct_Field_NullGetter()
+    public void Construct_Field_General_NullGetter()
     {
-        Invoking(() => new ObjectDataMap<Thing>(m => m.Field<int>("any", "any", null!)))
+        var nullGetter = null as Func<Thing, string?>;
+
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field("any", "any", nullGetter!)))
+            .Should().Throw<ArgumentNullException>();
+    }
+
+    [Test]
+    public void Construct_Field_NullableValue_NullName()
+    {
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field(null!, "any", x => (int?) 0)))
+            .Should().Throw<ArgumentNullException>();
+    }
+
+    [Test]
+    public void Construct_Field_NullableValue_NullDbType()
+    {
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field("any", null!, x => (int?) 0)))
+            .Should().Throw<ArgumentNullException>();
+    }
+
+    [Test]
+    public void Construct_Field_NullableValue_NullGetter()
+    {
+        var nullGetter = null as Func<Thing, int?>;
+
+        Invoking(() => new ObjectDataMap<Thing>(m => m.Field("any", "any", nullGetter!)))
             .Should().Throw<ArgumentNullException>();
     }
 
@@ -60,9 +85,9 @@ public class ObjectDataMapTests
     [Test]
     public void Item_Get()
     {
-        AssertField<int    >(TestMap[0], "id",     "int"         );
-        AssertField<string?>(TestMap[1], "name",   "varchar(100)");
-        AssertField<int?   >(TestMap[2], "number", "int"         );
+        AssertField<string>(TestMap[0], "name",   "varchar(100)");
+        AssertField<int   >(TestMap[1], "number", "int"         );
+        AssertField<int   >(TestMap[2], "amount", "int"         );
     }
 
     [Test]
@@ -84,9 +109,9 @@ public class ObjectDataMapTests
     [Test]
     public void GetOrdinal()
     {
-        TestMap.GetOrdinal("id"    ).Should().Be(0);
-        TestMap.GetOrdinal("name"  ).Should().Be(1);
-        TestMap.GetOrdinal("number").Should().Be(2);
+        TestMap.GetOrdinal("name"  ).Should().Be(0);
+        TestMap.GetOrdinal("number").Should().Be(1);
+        TestMap.GetOrdinal("amount").Should().Be(2);
     }
 
     [Test]
@@ -110,9 +135,9 @@ public class ObjectDataMapTests
     {
         using var e = TestMap.GetEnumerator();
 
-        e.MoveNext().Should().BeTrue(); AssertField<int    >(e.Current, "id",     "int"         );
-        e.MoveNext().Should().BeTrue(); AssertField<string?>(e.Current, "name",   "varchar(100)");
-        e.MoveNext().Should().BeTrue(); AssertField<int?   >(e.Current, "number", "int"         );
+        e.MoveNext().Should().BeTrue(); AssertField<string>(e.Current, "name",   "varchar(100)");
+        e.MoveNext().Should().BeTrue(); AssertField<int   >(e.Current, "number", "int"         );
+        e.MoveNext().Should().BeTrue(); AssertField<int   >(e.Current, "amount", "int"         );
     }
 
     [Test]
@@ -120,68 +145,100 @@ public class ObjectDataMapTests
     {
         var e = ((IEnumerable) TestMap).GetEnumerator();
 
-        e.MoveNext().Should().BeTrue(); AssertField<int    >(e.Current, "id",     "int"         );
-        e.MoveNext().Should().BeTrue(); AssertField<string?>(e.Current, "name",   "varchar(100)");
-        e.MoveNext().Should().BeTrue(); AssertField<int?   >(e.Current, "number", "int"         );
+        e.MoveNext().Should().BeTrue(); AssertField<string>(e.Current, "name",   "varchar(100)");
+        e.MoveNext().Should().BeTrue(); AssertField<int   >(e.Current, "number", "int"         );
+        e.MoveNext().Should().BeTrue(); AssertField<int   >(e.Current, "amount", "int"         );
     }
 
     [Test]
-    public void GetValue()
+    public void GetValue_ReferenceType_NotNull()
     {
-        TestMap[0].GetValue(new() { Id = 42 }).Should().Be(42);
+        TestMap[0].GetValue(new() { Name = "a" }).Should().Be("a");
+    }
+
+    [Test]
+    public void GetValue_ReferenceType_Null()
+    {
+        TestMap[0].GetValue(new() { Name = null }).Should().Be(DBNull.Value);
+    }
+
+    [Test]
+    public void GetValue_ValueType_NotNullable()
+    {
+        TestMap[1].GetValue(new() { Number = 42 }).Should().Be(42);
+    }
+
+    [Test]
+    public void GetValue_ValueType_NotNull()
+    {
+        TestMap[2].GetValue(new() { Amount = 42 }).Should().Be(42);
+    }
+
+    [Test]
+    public void GetValue_ValueType_Null()
+    {
+        TestMap[2].GetValue(new() { Amount = null }).Should().Be(DBNull.Value);
     }
 
     [Test]
     public void GetValue_NullObject()
     {
-        TestMap[0].Invoking(m => m.GetValue(null!))
+        TestMap[0]
+            .Invoking(m => m.GetValue(null!))
             .Should().Throw<ArgumentNullException>();
     }
 
     [Test]
-    public void GetValueAs_Valid()
+    public void GetValueAs_ReferenceType_NotNull()
     {
-        TestMap[0].GetValueAs<int>(new() { Id = 42 }).Should().Be(42);
+        TestMap[0].GetValueAs<string>(new() { Name = "a" }).Should().Be("a");
     }
 
     [Test]
-    public void GetValueAs_Invalid()
+    public void GetValueAs_ReferenceType_Null()
     {
         TestMap[0]
-            .Invoking(m => m.GetValueAs<string>(new() { Id = 42 }))
-            .Should()
-            .Throw<InvalidCastException>();
+            .Invoking(m => m.GetValueAs<string>(new() { Name = null }))
+            .Should().Throw<InvalidCastException>()
+            .WithMessage("Data is null.*");
+    }
+
+    [Test]
+    public void GetValueAs_ValueType_NonNullable()
+    {
+        TestMap[1].GetValueAs<int>(new() { Number = 42 }).Should().Be(42);
+    }
+
+    [Test]
+    public void GetValueAs_ValueType_NotNull()
+    {
+        TestMap[2].GetValueAs<int>(new() { Amount = 42 }).Should().Be(42);
+    }
+
+    [Test]
+    public void GetValueAs_ValueType_Null()
+    {
+        TestMap[2]
+            .Invoking(m => m.GetValueAs<int>(new() { Amount = null }))
+            .Should().Throw<InvalidCastException>()
+            .WithMessage("Data is null.*");
+    }
+
+    [Test]
+    public void GetValueAs_WrongType()
+    {
+        TestMap[0]
+            .Invoking(m => m.GetValueAs<int>(new()))
+            .Should().Throw<InvalidCastException>()
+            .WithMessage("Unable to cast object of type 'System.String' to type 'System.Int32'.");
     }
 
     [Test]
     public void GetValueAs_NullObject()
     {
-        TestMap[0].Invoking(m => m.GetValueAs<int>(null!))
+        TestMap[0]
+            .Invoking(m => m.GetValueAs<string>(null!))
             .Should().Throw<ArgumentNullException>();
-    }
-
-    [Test]
-    public void TryGetValueAs_Valid()
-    {
-        TestMap[0].TryGetValueAs<int>(new() { Id = 42 }, out var value).Should().BeTrue();
-
-        value.Should().Be(42);
-    }
-
-    [Test]
-    public void TryGetValueAs_Invalid()
-    {
-        TestMap[0].TryGetValueAs<string>(new() { Id = 42 }, out var value).Should().BeFalse();
-
-        value.Should().BeNull();
-    }
-
-    [Test]
-    public void TryGetValueAs_NullObject()
-    {
-        TestMap[0].TryGetValueAs<string>(null!, out var value).Should().BeFalse();
-
-        value.Should().BeNull();
     }
 
     private static void AssertField<T>(object obj, string name, string dbType)
@@ -193,16 +250,16 @@ public class ObjectDataMapTests
         );
     }
 
-    private readonly ObjectDataMap<Thing> TestMap = new(m => m
-        .Field("id",     "int",          x => x.Id)
-        .Field("name",   "varchar(100)", x => x.Name)
-        .Field("number", "int",          x => x.Number)
-    );
-
     internal class Thing
     {
-        public int     Id     { get; set; } // value type
         public string? Name   { get; set; } // reference type
-        public int?    Number { get; set; } // Nullable<T>
+        public int     Number { get; set; } // non-nullable value type
+        public int?    Amount { get; set; } // nullable value type (Nullable<T>)
     }
+
+    private ObjectDataMap<Thing> TestMap { get; } = new(m => m
+        .Field("name",   "varchar(100)", x => x.Name)
+        .Field("number", "int",          x => x.Number)
+        .Field("amount", "int",          x => x.Amount)
+    );
 }

@@ -184,6 +184,7 @@ internal class ObjectDataReader<T> : DbDataReader
         => GetValueAs<DateTime>(ordinal);
 
     private TValue GetValueAs<TValue>(int ordinal)
+        where TValue : notnull
         => _map[ordinal].GetValueAs<TValue>(_rows.Current);
 
     /// <inheritdoc/>
@@ -210,11 +211,9 @@ internal class ObjectDataReader<T> : DbDataReader
         TValue[]? buffer,
         int       bufferOffset,
         int       maxLength)
-        where TValue : struct
+        where TValue : notnull
     {
-        if (!_map[ordinal].TryGetValueAs<TValue[]>(_rows.Current, out var data))
-            return 0;
-
+        var data       = _map[ordinal].GetValueAs<TValue[]>(_rows.Current);
         var dataLength = data.LongLength;
 
         if (buffer is null)
