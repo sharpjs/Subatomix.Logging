@@ -18,8 +18,6 @@ using System.Collections;
 
 namespace Subatomix.Logging.Sql;
 
-using Field = ObjectDataMap<ObjectDataMapTests.Thing>.Field;
-
 [TestFixture]
 public class ObjectDataMapTests
 {
@@ -243,7 +241,7 @@ public class ObjectDataMapTests
 
     private static void AssertField<T>(object obj, string name, string dbType)
     {
-        obj.Should().Match<Field>(f
+        obj.Should().Match<ObjectDataMap<Thing>.Field>(f
             => f.Name    == name
             && f.DbType  == dbType
             && f.NetType == typeof(T)
