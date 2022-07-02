@@ -14,7 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Logging.Debugger;
+namespace Subatomix.Logging.Internal;
 
 /// <summary>
 ///   An empty scope that can be disposed any number of times.

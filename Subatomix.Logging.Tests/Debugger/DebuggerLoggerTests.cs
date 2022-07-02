@@ -15,6 +15,7 @@
 */
 
 using System.Text.RegularExpressions;
+using Subatomix.Logging.Internal;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging.Debugger;

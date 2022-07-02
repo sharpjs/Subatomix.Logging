@@ -16,6 +16,7 @@
 
 namespace Subatomix.Logging.Sql;
 
+using Subatomix.Logging.Internal;
 using static ActivityIdFormat;
 
 /// <summary>

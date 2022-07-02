@@ -14,20 +14,17 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-namespace Subatomix.Logging.Sql;
+namespace Subatomix.Logging.Internal;
 
-/// <summary>
-///   An empty scope that can be disposed any number of times.
-/// </summary>
-internal sealed class NullScope : IDisposable
+[TestFixture]
+public class NullScopeTests
 {
-    /// <summary>
-    ///   The singleton instance of <see cref="NullScope"/>.
-    /// </summary>
-    public static IDisposable Instance { get; } = new NullScope();
+    [Test]
+    public void Dispose_Multiple()
+    {
+        var disposable = NullScope.Instance;
 
-    private NullScope() { }
-
-    /// <inheritdoc/>
-    public void Dispose() { }
+        disposable.Dispose();
+        disposable.Dispose();
+    }
 }
