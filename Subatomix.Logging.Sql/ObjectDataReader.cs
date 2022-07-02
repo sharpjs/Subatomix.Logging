@@ -69,6 +69,10 @@ internal class ObjectDataReader<T> : DbDataReader
         base.Dispose(managed);
     }
 
+    // For testing
+    internal void SimulateUnmanagedDisposal()
+        => Dispose(managed: false);
+
     /// <inheritdoc/>
     public override int FieldCount
         => _map.Count;
@@ -87,7 +91,7 @@ internal class ObjectDataReader<T> : DbDataReader
 
     /// <inheritdoc/>
     public override int RecordsAffected
-        => -1; // Expected value for SELECT queries
+        => -1; // Expected value for SELECT statements
 
     /// <inheritdoc/>
     public override object this[int ordinal]
@@ -126,13 +130,10 @@ internal class ObjectDataReader<T> : DbDataReader
 
     /// <inheritdoc/>
     public override bool IsDBNull(int ordinal)
-        => GetValueAsObject(ordinal) is null;
+        => _map[ordinal].IsNull(_rows.Current);
 
     /// <inheritdoc/>
     public override object GetValue(int ordinal)
-        => GetValueAsObject(ordinal) ?? DBNull.Value;
-
-    private object? GetValueAsObject(int ordinal)
         => _map[ordinal].GetValue(_rows.Current);
 
     /// <inheritdoc/>
