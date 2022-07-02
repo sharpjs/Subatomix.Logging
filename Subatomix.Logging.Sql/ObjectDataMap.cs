@@ -238,7 +238,7 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
         /// <exception cref="ArgumentNullException">
         ///   <paramref name="obj"/> is <see langword="null"/>.
         /// </exception>
-        public object? GetValue(T obj)
+        public object GetValue(T obj)
             => GetValueUntyped(obj);
 
         /// <inheritdoc cref="GetValue(T)"/>
