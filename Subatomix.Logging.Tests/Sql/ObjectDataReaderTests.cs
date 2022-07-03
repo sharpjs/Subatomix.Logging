@@ -131,7 +131,7 @@ public class ObjectDataReaderTests
     [Test]
     public void NextResult()
     {
-        using var reader = MakeReader();
+        using var reader = MakeReader(new Thing());
 
         reader.NextResult().Should().BeFalse();
     }
@@ -144,6 +144,15 @@ public class ObjectDataReaderTests
         reader.Read().Should().BeTrue();
         reader.Read().Should().BeFalse();
         reader.Read().Should().BeFalse();
+    }
+
+    [Test]
+    public void GetName()
+    {
+        using var reader  = MakeReader();
+              var ordinal = reader.GetOrdinal(nameof(Thing.ByteProperty));
+
+        reader.GetName(ordinal).Should().Be(nameof(Thing.ByteProperty));
     }
 
     [Test]

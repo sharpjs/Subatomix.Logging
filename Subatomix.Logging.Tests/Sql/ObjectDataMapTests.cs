@@ -234,8 +234,8 @@ public class ObjectDataMapTests
     [Test]
     public void GetValueAs_NullObject()
     {
-        TestMap[0]
-            .Invoking(m => m.GetValueAs<string>(null!))
+        TestMap[2]
+            .Invoking(m => m.GetValueAs<int>(null!))
             .Should().Throw<ArgumentNullException>();
     }
 
