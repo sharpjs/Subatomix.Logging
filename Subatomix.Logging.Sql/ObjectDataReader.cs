@@ -220,20 +220,24 @@ internal class ObjectDataReader<T> : DbDataReader
         if (buffer is null)
             return dataLength;
 
-        var bufferLength = buffer.Length;
+        if (dataOffset < 0)
+            throw new ArgumentOutOfRangeException(nameof(dataOffset));
+        if (bufferOffset < 0)
+            throw new ArgumentOutOfRangeException(nameof(bufferOffset));
+        if (maxLength < 0)
+            throw new ArgumentOutOfRangeException(nameof(maxLength));
 
-        if ( dataOffset   < 0 || dataOffset   >= dataLength   ||
-             bufferOffset < 0 || bufferOffset >= bufferLength ||
-             maxLength    < 0 )
+        if (dataOffset >= dataLength)
             return 0;
 
-        dataLength   -= dataOffset;
-        bufferLength -= bufferOffset;
+        // Convert dataLength to actual length of read
+        dataLength = Math.Min(dataLength - dataOffset, maxLength);
 
-        var length = Math.Min(maxLength, Math.Min(dataLength, bufferLength));
+        if (buffer.Length - bufferOffset < dataLength)
+            throw new ArgumentException("Insufficient buffer length after offset.", nameof(buffer));
 
-        Array.Copy(data, dataOffset, buffer, bufferOffset, length);
-        return length;
+        Array.Copy(data, dataOffset, buffer, bufferOffset, dataLength);
+        return dataLength;
     }
 
     /// <inheritdoc/>
@@ -252,10 +256,18 @@ internal class ObjectDataReader<T> : DbDataReader
 
     /// <inheritdoc/>
     public override IEnumerator GetEnumerator()
-    {
-        return new DbEnumerator(this);
-    }
+        => new DbEnumerator(this);
 
+    /// <summary>
+    ///   Not supported.
+    /// </summary>
+    /// <exception cref="NotSupportedException">
+    ///   This method is not supported.
+    /// </exception>
+    public override DataTable GetSchemaTable()
+        => throw new NotSupportedException();
+
+#if GETSCHEMATABLE_SUPPORTED
     /// <inheritdoc/>
     public override DataTable GetSchemaTable()
     {
@@ -287,4 +299,5 @@ internal class ObjectDataReader<T> : DbDataReader
 
         return schema;
     }
+#endif
 }
