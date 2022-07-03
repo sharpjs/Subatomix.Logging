@@ -262,7 +262,7 @@ public class ObjectDataReaderTests
         reader.Read();
         reader.Invoking(r => r.GetString(ordinal))
             .Should().Throw<InvalidCastException>()
-            .WithMessage("Data is null.*");
+            .WithMessage("Field value is null.*");
     }
 
     [Test]

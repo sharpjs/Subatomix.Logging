@@ -198,7 +198,7 @@ public class ObjectDataMapTests
         TestMap[0]
             .Invoking(m => m.GetValueAs<string>(new() { Name = null }))
             .Should().Throw<InvalidCastException>()
-            .WithMessage("Data is null.*");
+            .WithMessage("Field value is null.*");
     }
 
     [Test]
@@ -219,7 +219,7 @@ public class ObjectDataMapTests
         TestMap[2]
             .Invoking(m => m.GetValueAs<int>(new() { Amount = null }))
             .Should().Throw<InvalidCastException>()
-            .WithMessage("Data is null.*");
+            .WithMessage("Field value is null.*");
     }
 
     [Test]

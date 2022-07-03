@@ -276,7 +276,7 @@ internal class ObjectDataMap<T> : IReadOnlyList<ObjectDataMap<T>.Field>
             => new($"Unable to cast object of type '{NetType}' to type '{type}'.");
 
         protected static InvalidCastException OnNullValue()
-            => new("Data is null. This method or property cannot be called on null values.");
+            => new("Field value is null. This method or property cannot be called on null values.");
     }
 
     /// <summary>
