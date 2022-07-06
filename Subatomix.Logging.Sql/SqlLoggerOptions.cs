@@ -22,29 +22,22 @@ namespace Subatomix.Logging.Sql;
 public class SqlLoggerOptions
 {
     /// <summary>
-    ///   Gets or sets the application name to report.  The default is the name
-    ///   of the current operating system process.
-    /// </summary>
-    public string ApplicationName { get; set; }
-        = Process.GetCurrentProcess().ProcessName;
-
-    /// <summary>
-    ///   Gets or sets the application environment name to report.  The default
-    ///   is <see langword="null"/>.
-    /// </summary>
-    public string? EnvironmentName { get; set; }
-
-    /// <summary>
-    ///   Gets or sets the application component name to report.  The default
-    ///   is <see langword="null"/>.
-    /// </summary>
-    public string? ComponentName { get; set; }
-
-    /// <summary>
     ///   Gets or sets the database connection string.  The default is
     ///   <see langword="null"/>.
     /// </summary>
     public string? ConnectionString { get; set; }
+
+    /// <summary>
+    ///   Gets or sets the name of the log stream.  The default is the name of
+    ///   the current operating system process.
+    /// </summary>
+    /// <remarks>
+    ///   The log stream name is an application-defined arbitrary value used to
+    ///   differentiate the application's log entries from those of other
+    ///   applications written to the same database.
+    /// </remarks>
+    public string LogName { get; set; }
+        = Process.GetCurrentProcess().ProcessName;
 
     /// <summary>
     ///   Gets or sets the maximum count of log entries that can be pending to

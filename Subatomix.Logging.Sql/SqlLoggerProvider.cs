@@ -17,6 +17,7 @@
 using System.Collections.Concurrent;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
 namespace Subatomix.Logging.Sql;
@@ -27,15 +28,6 @@ namespace Subatomix.Logging.Sql;
 [ProviderAlias("Sql")]
 public class SqlLoggerProvider : ILoggerProvider
 {
-    private const int
-        MaxMessageLength      = 1024,
-        CommandTimeoutSeconds = 3 * 60; // 3 minutes
-
-    private const string
-        WriteCommandName                     = "WriteLog",
-        WriteCommandRowsParameterName        = "@EntryRows",
-        WriteCommandRowsParameterSqlDataType = "dbo.LogEntryRow";
-
     private readonly ConcurrentQueue<LogEntry> _queue;
     private readonly SqlCommand                _command;
     private readonly AutoResetEvent            _flushEvent;
@@ -44,7 +36,8 @@ public class SqlLoggerProvider : ILoggerProvider
 
     // Used by flush thread
     private SqlConnection? _connection;
-    private DateTime       _flushTime;
+    private DateTime       _flushTime;      // time of next flush cycle
+    private DateTime       _retryTime;      // time when resume flushing (or zero)
     private bool           _exiting;
 
     /// <summary>
@@ -62,16 +55,14 @@ public class SqlLoggerProvider : ILoggerProvider
         if (options is null)
             throw new ArgumentNullException(nameof(options));
 
-        Options = options.CurrentValue;
-        Configure();
-
-        _optionsChangeToken = options.OnChange(Configure);
-
-        _queue   = new();
-        _command = CreateFlushCommand();
-
+        _queue       = new();
+        _command     = CreateFlushCommand();
         _flushEvent  = new(initialState: false);
         _flushThread = CreateFlushThread();
+
+        Options = options.CurrentValue;
+
+        _optionsChangeToken = options.OnChange(Configure);
         _flushThread.Start();
     }
 
@@ -82,24 +73,23 @@ public class SqlLoggerProvider : ILoggerProvider
 
     /// <inheritdoc/>
     public ILogger CreateLogger(string categoryName)
-    {
-        return new SqlLogger(this, categoryName);
-    }
-
-    internal void Enqueue(LogEntry entry)
-    {
-        if (entry.Message is { } m)
-            entry.Message = Truncate(m, MaxMessageLength);
-        _queue.Enqueue(entry);
-    }
+        => new SqlLogger(this, categoryName);
 
     /// <summary>
-    ///   Flushes buffered events to the database.
+    ///   Gets or sets the logger to use for diagnostic messages from the
+    ///   logger provider itself.
+    /// </summary>
+    public ILogger Logger { get; set; }
+        = NullLogger.Instance;
+
+    internal void Enqueue(LogEntry entry)
+        => _queue.Enqueue(entry);
+
+    /// <summary>
+    ///   Flushes buffered entries to the database.
     /// </summary>
     public void Flush()
-    {
-        _flushEvent.Set();
-    }
+        => _flushEvent.Set();
 
     /// <inheritdoc/>
     public void Dispose()
@@ -107,6 +97,10 @@ public class SqlLoggerProvider : ILoggerProvider
         Dispose(managed: true);
         GC.SuppressFinalize(this);
     }
+
+    // For testing
+    internal void SimulateUnmanagedDisposal()
+        => Dispose(managed: false);
 
     /// <summary>
     ///   Disposes resources owned by the object.
@@ -133,26 +127,16 @@ public class SqlLoggerProvider : ILoggerProvider
 //#endif
 
         // Dispose managed objects
-        _flushEvent.Dispose();
-        _command.Dispose();
+        _flushEvent        .Dispose();
+        _command           .Dispose();
         _optionsChangeToken.Dispose();
-    }
-
-    private void Configure(SqlLoggerOptions options)
-    {
-        Options = options;
-        Configure();
-    }
-
-    private void Configure()
-    {
     }
 
     private Thread CreateFlushThread()
     {
         return new(FlushThreadMain)
         {
-            Name         = "SqlTraceListener.Flush",
+            Name         = nameof(SqlLoggerProvider) + ".Flush",
             Priority     = ThreadPriority.AboveNormal,
             IsBackground = true, // don't prevent app from exiting
         };
@@ -162,16 +146,14 @@ public class SqlLoggerProvider : ILoggerProvider
     {
         var command = new SqlCommand()
         {
-            CommandType    = CommandType.StoredProcedure,
-            CommandText    = "WriteLog",
-            CommandTimeout = CommandTimeoutSeconds
+            CommandType = CommandType.StoredProcedure,
+            CommandText = "log.Write",
+            // CommandTimeout set later
         };
 
-        var process = Process.GetCurrentProcess();
-
         _command.Parameters
-            .Add("@LogName", SqlDbType.VarChar, 128)
-            .Value = process.ProcessName.Truncate(128);
+            .Add("@LogName", SqlDbType.VarChar, 128);
+            // Value set later
 
         _command.Parameters
             .Add("@MachineName", SqlDbType.VarChar, 255)
@@ -179,13 +161,18 @@ public class SqlLoggerProvider : ILoggerProvider
 
         _command.Parameters
             .Add("@ProcessId", SqlDbType.Int)
-            .Value = process.Id;
+            .Value = Process.GetCurrentProcess().Id;
 
         _command.Parameters
             .Add("@EntryRows", SqlDbType.Structured)
-            .TypeName = "dbo.LogEntryRow";
+            .TypeName = "log.EntryRow";
 
         return command;
+    }
+
+    private void Configure(SqlLoggerOptions options)
+    {
+        Options = options;
     }
 
     private static string Truncate(string s, int length)
@@ -195,7 +182,7 @@ public class SqlLoggerProvider : ILoggerProvider
 
     private void FlushThreadMain()
     {
-        ScheduleAutoflush();
+        ScheduleNextFlush();
 
         for (var retries = 0;;)
         {
@@ -204,65 +191,113 @@ public class SqlLoggerProvider : ILoggerProvider
                 if (_exiting)
                     return;
 
-                WaitBeforeFlush();
-                FlushCore();
+                if (WaitUntilFlush())
+                    // Normal flush
+                    FlushAll();
+                else
+                    // In retry backoff, prune queue instead
+                    Prune();
 
-                retries = 0;
+                ClearRetry(ref retries);
             }
             catch (Exception e)
             {
                 OnException(e);
-                WaitBeforeRetry(retries);
-
-                if (retries < int.MaxValue)
-                    retries++;
+                ScheduleRetry(ref retries);
             }
         }
     }
 
-    private void ScheduleAutoflush()
+    private void ScheduleNextFlush()
     {
-        _flushTime = DateTime.UtcNow + Options.AutoflushWait;
-    }
+        var now = DateTime.UtcNow;
 
-    private void WaitBeforeFlush()
-    {
-        // Compute time remaining until autoflush
-        var duration = _flushTime - DateTime.UtcNow;
+        // Schedule the usual flush
+        _flushTime = now + Options.AutoflushWait;
 
-        // Wait until autoflush time, or until Flush() called
-        if (duration > TimeSpan.Zero)
-            _flushEvent.WaitOne(duration);
-
-        // Compute time of next autoflush
-        ScheduleAutoflush();
-    }
-
-    private void FlushCore()
-    {
-        // Avoid flushing an empty queue
-        var queue = _queue;
-        if (queue.IsEmpty)
+        // If not in retry backoff, flush as scheduled
+        if (_retryTime < now)
             return;
 
-        // Take a snapshot of the pending events at this time
-        var events = queue.ToArray();
+        // If retry scheduled before flush, reschedule flush to coincide
+        if (_flushTime > _retryTime)
+            _flushTime = _retryTime;
 
-        // Prepare queue snapshot for transmission
-        RenumberEvents(events);
-
-        // Ensure good connection to the server
-        var connection = EnsureConnection();
-
-        // Transmit the events to the server
-        FlushCore(events);
-
-        // Remove the events from the queue
-        for (var count = events.Length; count > 0; count--)
-            queue.TryDequeue(out var entry);
+        // NOTE: If flush occurs during retry backoff, the flush becomes a prune
     }
 
-    private SqlConnection EnsureConnection()
+    private bool WaitUntilFlush()
+    {
+        // Compute how long to wait
+        var duration = _flushTime - DateTime.Now;
+
+        // Wait
+        var interrupted
+            =  duration > TimeSpan.Zero
+            && _flushEvent.WaitOne(duration);
+
+        // Decide what to do: flush or prune?
+        var shouldFlush
+            =  interrupted                  // flush if explicit Flush() invoked
+            || _flushTime >= _retryTime;    // flush if not in retry backoff
+
+        ScheduleNextFlush();
+        return shouldFlush;
+    }
+
+    private void ClearRetry(ref int retries)
+    {
+        _retryTime = default;
+        retries    = 0;
+    }
+
+    private void ScheduleRetry(ref int retries)
+    {
+        // Adaptive backoff: nothing for the first retry, then increasing by
+        // regular increments for each successive retry, up to some maximum.
+
+        var backoff = new TimeSpan(Math.Min(
+            Options.RetryWaitIncrement.Ticks * retries,
+            Options.RetryWaitMax.Ticks
+        ));
+
+        Logger.LogWarning("Flush failed; retrying after {delay}.", backoff);
+
+        // Schedule retry
+        _retryTime = DateTime.UtcNow + backoff;
+
+        // If retry scheduled before next flush, reschedule flush to coincide
+        if (_flushTime > _retryTime)
+            _flushTime = _retryTime;
+
+        if (retries < int.MaxValue)
+            retries++;
+    }
+
+    private void FlushAll()
+    {
+        // Avoid flushing an empty queue
+        if (_queue.IsEmpty)
+            return;
+
+        if (TryEnsureConnection())
+            DoBatched(GetSnapshot(), Options.BatchSize, FlushBatch);
+        else
+            Prune();
+    }
+
+    private LogEntry[] GetSnapshot()
+    {
+        var entries = _queue.ToArray();
+
+        var ordinal = 0;
+        foreach (var e in entries)
+            e.Ordinal = ordinal++;
+
+        return entries;
+    }
+
+    private bool TryEnsureConnection()
     {
         var connection       = _connection;
         var connectionString = Options.ConnectionString;
@@ -270,53 +305,83 @@ public class SqlLoggerProvider : ILoggerProvider
         // If connection is open and current, use it
         if (connection is { State: ConnectionState.Open })
             if (connection.ConnectionString == connectionString)
-                return connection;
+                return true;
 
-        // If connection is broken or stale, dispose it
-        if (connection is { })
-            connection.Dispose();
+        // Connection is broken, stale, or null; dispose it
+        connection?.Dispose();
+        _connection = null;
 
-        // Set up a new connection
-        connection          = new(connectionString); //.Logged();
+        // Require connection string
+        if (connectionString is not { Length: > 0 })
+            return false;
+
+        // Set up new connection
+        connection          = new(connectionString);
         _connection         = connection;
         _command.Connection = connection;
 
         connection.Open();
-
-        return connection;
+        return true;
     }
 
-    private void FlushCore(LogEntry[] events)
+    private void FlushBatch(ArraySegment<LogEntry> entries)
     {
-        _command.Parameters[3].Value = new ObjectDataReader<LogEntry>(events, LogEntry.Map);
+        Write  (entries);
+        Dequeue(entries.Count);
+    }
+
+    private void Write(ArraySegment<LogEntry> entries)
+    {
+        _command.Parameters[0].Value = Options.LogName;
+        _command.Parameters[3].Value = new ObjectDataReader<LogEntry>(entries, LogEntry.Map);
+        _command.CommandTimeout      = (int) Options.BatchTimeout.TotalSeconds;
         _command.ExecuteNonQuery();
+    }
+
+    private void Dequeue(int count)
+    {
+        for (; count > 0; count--)
+            _queue.TryDequeue(out _);
     }
 
     private void OnException(Exception e)
     {
-        //TraceSource.TraceError(e);
+        Logger.LogError(e);
     }
 
-    private void WaitBeforeRetry(int retries)
+    private void Prune()
     {
-        // Adaptive delay: nothing for the first retry, then increasing by
-        // regular increments for each successive retry, up to some maximum.
-        // Default: wait 5 minutes longer for each retry, up to 1 hour max.
+        var count = _queue.Count - Options.MaxQueueSize;
 
-        var incrementsMax = Options.RetryWaitMax.Ticks / Options.RetryWaitIncrement.Ticks;
-        var increments    = Math.Min((long) retries, incrementsMax);
-        var duration      = new TimeSpan(increments * Options.RetryWaitIncrement.Ticks);
-
-        //TraceSource.TraceWarning("Flush failed; retrying after {0:c}.", duration);
-
-        Thread.Sleep(duration);
+        for (; count > 0; count--)
+            _queue.TryDequeue(out _);
     }
 
-    private static void RenumberEvents(LogEntry[] events)
+    private static void DoBatched<T>(
+        T[]                     items,
+        int                     batchSize,
+        Action<ArraySegment<T>> action)
     {
-        var ordinal = 0;
-        foreach (var e in events)
-            e.Ordinal = ordinal++;
+        var start     = 0;
+        var remaining = items.Length;
+
+        while (remaining > batchSize)
+        {
+            var batch = new ArraySegment<T>(items, start, batchSize);
+            action(batch);
+
+            // Allow done items to be garbage-collected
+            Array.Clear(items, start, batchSize);
+
+            start     += batchSize;
+            remaining -= batchSize;
+        }
+
+        if (remaining > 0)
+        {
+            var batch = new ArraySegment<T>(items, start, remaining);
+            action(batch);
+        }
     }
 
     #endregion
