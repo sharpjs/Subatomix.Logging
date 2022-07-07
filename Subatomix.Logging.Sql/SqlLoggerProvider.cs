@@ -36,9 +36,9 @@ public class SqlLoggerProvider : ILoggerProvider
 
     // Used by flush thread
     private SqlConnection? _connection;
-    private DateTime       _flushTime;      // time of next flush cycle
-    private DateTime       _retryTime;      // time when resume flushing (or zero)
-    private bool           _exiting;
+    private DateTime       _flushTime;  // time of next flush thread run
+    private DateTime       _retryTime;  // time when retry backoff ends
+    private int            _exiting;    // because Interlocked doesn't do bool
 
     /// <summary>
     ///   Initializes a new <see cref="SqlLoggerProvider"/> instance with the
@@ -111,11 +111,13 @@ public class SqlLoggerProvider : ILoggerProvider
     /// </param>
     protected virtual void Dispose(bool managed)
     {
-        if (!managed || _exiting)
+        if (!managed)
+            return;
+
+        if (Interlocked.Exchange(ref _exiting, -1) != 0)
             return;
 
         // Tell flusher thread to flush and exit
-        _exiting = true;
         _flushEvent.Set();
 
         // Give flusher thread a fair chance to flush
@@ -188,7 +190,7 @@ public class SqlLoggerProvider : ILoggerProvider
         {
             try
             {
-                if (_exiting)
+                if (Volatile.Read(ref _exiting) != 0)
                     return;
 
                 if (WaitUntilFlush())
