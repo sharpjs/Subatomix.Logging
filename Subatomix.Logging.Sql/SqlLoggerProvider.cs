@@ -177,9 +177,6 @@ public class SqlLoggerProvider : ILoggerProvider
         Options = options;
     }
 
-    private static string Truncate(string s, int length)
-        => s.Length <= length ? s : s.Substring(0, length);
-
     #region Flush Thread
 
     private void FlushThreadMain()
