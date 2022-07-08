@@ -48,19 +48,29 @@ public class SqlLoggerProvider : ILoggerProvider
     ///   <paramref name="options"/> is <see langword="null"/>.
     /// </exception>
     public SqlLoggerProvider(IOptionsMonitor<SqlLoggerOptions> options)
+        : this(options, new SqlLogRepository())
+    { }
+
+    // For testing
+    internal SqlLoggerProvider(
+        IOptionsMonitor<SqlLoggerOptions> options,
+        ISqlLogRepository                 repository,
+        bool                              startThread = true)
     {
         if (options is null)
             throw new ArgumentNullException(nameof(options));
 
         _queue       = new();
-        _repository  = new SqlLogRepository();
+        _repository  = repository;
         _flushEvent  = new(initialState: false);
         _flushThread = CreateFlushThread();
 
         Options = options.CurrentValue;
 
         _optionsChangeToken = options.OnChange(Configure);
-        _flushThread.Start();
+
+        if (startThread)
+            _flushThread.Start();
     }
 
     /// <summary>
@@ -152,28 +162,34 @@ public class SqlLoggerProvider : ILoggerProvider
     {
         ScheduleNextFlush();
 
-        for (var retries = 0;;)
+        var retries = 0;
+
+        while (Tick(ref retries)) { }
+    }
+
+    internal bool Tick(ref int retries)
+    {
+        try
         {
-            try
-            {
-                if (Volatile.Read(ref _exiting) != 0)
-                    return;
+            if (Volatile.Read(ref _exiting) != 0)
+                return false;
 
-                if (WaitUntilFlush())
-                    // Normal flush
-                    FlushAll();
-                else
-                    // In retry backoff, prune queue instead
-                    Prune();
+            if (WaitUntilFlush())
+                // Normal flush
+                FlushAll();
+            else
+                // In retry backoff, prune queue instead
+                Prune();
 
-                ClearRetry(ref retries);
-            }
-            catch (Exception e)
-            {
-                OnException(e);
-                ScheduleRetry(ref retries);
-            }
+            ClearRetry(ref retries);
         }
+        catch (Exception e)
+        {
+            OnException(e);
+            ScheduleRetry(ref retries);
+        }
+
+        return true;
     }
 
     private void ScheduleNextFlush()
