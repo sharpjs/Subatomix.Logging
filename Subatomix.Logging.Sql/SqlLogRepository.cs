@@ -15,6 +15,7 @@
 */
 
 using System.Data;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Data.SqlClient;
 
 namespace Subatomix.Logging.Sql;
@@ -23,14 +24,26 @@ internal class SqlLogRepository : ISqlLogRepository
 {
     private SqlConnection? _connection;
 
+    public SqlLogRepository()
+    {
+        MachineName = Environment.MachineName.Truncate(255);
+        ProcessId   = Process.GetCurrentProcess().Id;
+    }
+
+    public string MachineName { get; }
+
+    public int ProcessId { get; }
+
+    public bool IsConnected => IsConnectedCore(_connection);
+
+    [ExcludeFromCodeCoverage] // until automated integration testing
     public bool TryEnsureConnection(string? connectionString)
     {
         var connection = _connection;
 
         // If connection is open and current, use it
-        if (connection is { State: ConnectionState.Open })
-            if (connection.ConnectionString == connectionString)
-                return true;
+        if (IsConnectedCore(connection, connectionString))
+            return true;
 
         // Connection is broken, stale, or null; dispose it
         connection?.Dispose();
@@ -48,6 +61,7 @@ internal class SqlLogRepository : ISqlLogRepository
         return true;
     }
 
+    [ExcludeFromCodeCoverage] // until automated integration testing
     public void Write(string logName, IEnumerable<LogEntry> entries, TimeSpan timeout)
     {
         if (_connection is not { } connection)
@@ -63,17 +77,17 @@ internal class SqlLogRepository : ISqlLogRepository
 
         command.Parameters.Add(new("@LogName", SqlDbType.VarChar, 128)
         {
-            Value = logName
+            Value = logName.Truncate(128)
         });
 
         command.Parameters.Add(new("@MachineName", SqlDbType.VarChar, 255)
         {
-            Value = Environment.MachineName.Truncate(255)
+            Value = MachineName
         });
 
         command.Parameters.Add(new("@ProcessId", SqlDbType.Int)
         {
-            Value = Process.GetCurrentProcess().Id
+            Value = ProcessId
         });
 
         command.Parameters.Add(new("@EntryRows", SqlDbType.Structured)
@@ -85,10 +99,31 @@ internal class SqlLogRepository : ISqlLogRepository
         command.ExecuteNonQuery();
     }
 
+    [ExcludeFromCodeCoverage] // until automated integration testing
+    private static bool IsConnectedCore(
+        [NotNullWhen(true)] SqlConnection? connection)
+    {
+        return connection is { State: ConnectionState.Open };
+    }
+
+    [ExcludeFromCodeCoverage] // until automated integration testing
+    private static bool IsConnectedCore(
+        [NotNullWhen(true)] SqlConnection? connection,
+        string? connectionString)
+    {
+        return IsConnectedCore(connection)
+            && connection.ConnectionString == connectionString;
+    }
+
     public void Dispose()
     {
         Dispose(managed: true);
         GC.SuppressFinalize(this);
+    }
+
+    internal void SimulateUnmanagedDisposal()
+    {
+        Dispose(managed: false);
     }
 
     protected virtual void Dispose(bool managed)
