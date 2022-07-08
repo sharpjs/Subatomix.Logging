@@ -15,8 +15,6 @@
 */
 
 using System.Collections.Concurrent;
-using System.Data;
-using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
 
@@ -29,16 +27,15 @@ namespace Subatomix.Logging.Sql;
 public class SqlLoggerProvider : ILoggerProvider
 {
     private readonly ConcurrentQueue<LogEntry> _queue;
-    private readonly SqlCommand                _command;
     private readonly AutoResetEvent            _flushEvent;
     private readonly Thread                    _flushThread;
+    private readonly ISqlLogRepository         _repository;
     private readonly IDisposable               _optionsChangeToken;
 
     // Used by flush thread
-    private SqlConnection? _connection;
-    private DateTime       _flushTime;  // time of next flush thread run
-    private DateTime       _retryTime;  // time when retry backoff ends
-    private int            _exiting;    // because Interlocked doesn't do bool
+    private DateTime _flushTime;    // time of next flush thread run
+    private DateTime _retryTime;    // time when retry backoff ends
+    private int      _exiting;      // because Interlocked doesn't do bool
 
     /// <summary>
     ///   Initializes a new <see cref="SqlLoggerProvider"/> instance with the
@@ -56,7 +53,7 @@ public class SqlLoggerProvider : ILoggerProvider
             throw new ArgumentNullException(nameof(options));
 
         _queue       = new();
-        _command     = CreateFlushCommand();
+        _repository  = new SqlLogRepository();
         _flushEvent  = new(initialState: false);
         _flushThread = CreateFlushThread();
 
@@ -130,7 +127,7 @@ public class SqlLoggerProvider : ILoggerProvider
 
         // Dispose managed objects
         _flushEvent        .Dispose();
-        _command           .Dispose();
+        _repository        .Dispose();
         _optionsChangeToken.Dispose();
     }
 
@@ -142,34 +139,6 @@ public class SqlLoggerProvider : ILoggerProvider
             Priority     = ThreadPriority.AboveNormal,
             IsBackground = true, // don't prevent app from exiting
         };
-    }
-
-    private SqlCommand CreateFlushCommand()
-    {
-        var command = new SqlCommand()
-        {
-            CommandType = CommandType.StoredProcedure,
-            CommandText = "log.Write",
-            // CommandTimeout set later
-        };
-
-        _command.Parameters
-            .Add("@LogName", SqlDbType.VarChar, 128);
-            // Value set later
-
-        _command.Parameters
-            .Add("@MachineName", SqlDbType.VarChar, 255)
-            .Value = Environment.MachineName.Truncate(255);
-
-        _command.Parameters
-            .Add("@ProcessId", SqlDbType.Int)
-            .Value = Process.GetCurrentProcess().Id;
-
-        _command.Parameters
-            .Add("@EntryRows", SqlDbType.Structured)
-            .TypeName = "log.EntryRow";
-
-        return command;
     }
 
     private void Configure(SqlLoggerOptions options)
@@ -279,7 +248,7 @@ public class SqlLoggerProvider : ILoggerProvider
         if (_queue.IsEmpty)
             return;
 
-        if (TryEnsureConnection())
+        if (_repository.TryEnsureConnection(Options.ConnectionString))
             DoBatched(GetSnapshot(), Options.BatchSize, FlushBatch);
         else
             Prune();
@@ -296,33 +265,6 @@ public class SqlLoggerProvider : ILoggerProvider
         return entries;
     }
 
-    private bool TryEnsureConnection()
-    {
-        var connection       = _connection;
-        var connectionString = Options.ConnectionString;
-
-        // If connection is open and current, use it
-        if (connection is { State: ConnectionState.Open })
-            if (connection.ConnectionString == connectionString)
-                return true;
-
-        // Connection is broken, stale, or null; dispose it
-        connection?.Dispose();
-        _connection = null;
-
-        // Require connection string
-        if (connectionString is not { Length: > 0 })
-            return false;
-
-        // Set up new connection
-        connection          = new(connectionString);
-        _connection         = connection;
-        _command.Connection = connection;
-
-        connection.Open();
-        return true;
-    }
-
     private void FlushBatch(ArraySegment<LogEntry> entries)
     {
         Write  (entries);
@@ -331,10 +273,7 @@ public class SqlLoggerProvider : ILoggerProvider
 
     private void Write(ArraySegment<LogEntry> entries)
     {
-        _command.Parameters[0].Value = Options.LogName;
-        _command.Parameters[3].Value = new ObjectDataReader<LogEntry>(entries, LogEntry.Map);
-        _command.CommandTimeout      = (int) Options.BatchTimeout.TotalSeconds;
-        _command.ExecuteNonQuery();
+        _repository.Write(Options.LogName, entries, Options.BatchTimeout);
     }
 
     private void Dequeue(int count)
