@@ -184,13 +184,14 @@ public class SqlLoggerProvider : ILoggerProvider
                 return false;
 
             if (WaitUntilFlush())
+            {
                 // Normal flush
                 FlushAll();
+                ClearRetry(ref retries);
+            }
             else
                 // In retry backoff, prune queue instead
                 Prune();
-
-            ClearRetry(ref retries);
         }
         catch (Exception e)
         {

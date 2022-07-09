@@ -14,6 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using System.Data;
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Subatomix.Logging.Internal;
@@ -24,6 +25,14 @@ namespace Subatomix.Logging.Sql;
 [TestFixture]
 public class SqlLoggerProviderTests
 {
+    [Test]
+    public void Construct_NullOptions()
+    {
+        Invoking(() => new SqlLoggerProvider(null!))
+            .Should().Throw<ArgumentNullException>()
+            .WithParameterName("options");
+    }
+
     [Test]
     public void Options_Get()
     {
@@ -156,13 +165,195 @@ public class SqlLoggerProviderTests
     {
         using var h = new TestHarness();
 
-        var entry = new LogEntry();
-        h.Provider.Enqueue(entry);
+        var entry = h.Enqueue();
+
+        h.ExpectTryEnsureConnection();
         h.ExpectWrite(entry);
 
         h.Clock.Now = h.Provider.FlushTime;
 
         var result = h.Tick();
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(0);
+    }
+
+    [Test]
+    public void Tick_MultipleBatches()
+    {
+        using var h = new TestHarness(o => o.BatchSize = 2);
+
+        var entry0 = h.Enqueue();
+        var entry1 = h.Enqueue();
+        var entry2 = h.Enqueue();
+
+        h.ExpectTryEnsureConnection();
+        h.ExpectWrite(entry0, entry1);
+        h.ExpectWrite(entry2);
+
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick();
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(0);
+    }
+
+    [Test]
+    public void Tick_Failure_Early()
+    {
+        using var h = new TestHarness();
+
+        var entry = h.Enqueue();
+        h.ExpectTryEnsureConnection_Throw();
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick();
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(1);
+
+        h.Provider.FlushTime.Should().Be(h.Clock.Now);
+        h.Provider.RetryTime.Should().Be(h.Clock.Now);
+    }
+
+    [Test]
+    public void Tick_Failure_Few()
+    {
+        using var h = new TestHarness(o =>
+        {
+            o.AutoflushWait      = 8.Seconds();
+            o.RetryWaitIncrement = 1.Seconds();
+        });
+
+        var entry = h.Enqueue();
+        h.ExpectTryEnsureConnection_Throw();
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick(retryCount: 3);
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(4);
+
+        h.Provider.FlushTime.Should().Be(h.Clock.Now + 3.Seconds());
+        h.Provider.RetryTime.Should().Be(h.Clock.Now + 3.Seconds());
+    }
+
+    [Test]
+    public void Tick_Failure_Many()
+    {
+        using var h = new TestHarness(o =>
+        {
+            o.AutoflushWait      =  8.Seconds();
+            o.RetryWaitIncrement =  1.Seconds();
+            o.RetryWaitMax       = 30.Seconds();
+        });
+
+        var entry = h.Enqueue();
+        h.ExpectTryEnsureConnection_Throw();
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick(retryCount: 20);
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(21);
+
+        h.Provider.FlushTime.Should().Be(h.Clock.Now + h.Options.CurrentValue.AutoflushWait);
+        h.Provider.RetryTime.Should().Be(h.Clock.Now + 20.Seconds());
+    }
+
+    [Test]
+    public void Tick_Failure_Max()
+    {
+        using var h = new TestHarness(o =>
+        {
+            o.AutoflushWait      =  8.Seconds();
+            o.RetryWaitIncrement =  1.Seconds();
+            o.RetryWaitMax       = 30.Seconds();
+        });
+
+        var entry = h.Enqueue();
+        h.ExpectTryEnsureConnection_Throw();
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick(retryCount: int.MaxValue);
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(int.MaxValue);
+
+        h.Provider.FlushTime.Should().Be(h.Clock.Now + h.Options.CurrentValue.AutoflushWait);
+        h.Provider.RetryTime.Should().Be(h.Clock.Now + h.Options.CurrentValue.RetryWaitMax);
+    }
+
+    [Test]
+    public void Tick_Failure_Pruning()
+    {
+        using var h = new TestHarness(o =>
+        {
+            o.AutoflushWait      =  1.0.Seconds();
+            o.RetryWaitIncrement =  1.5.Seconds();
+            o.MaxQueueSize       =  2;
+        });
+
+        var entry0 = h.Enqueue();
+        var entry1 = h.Enqueue();
+        var entry2 = h.Enqueue();
+
+        h.ExpectTryEnsureConnection_Throw();
+
+        h.Clock.Now = h.Provider.FlushTime;
+        var result = h.Tick(retryCount: 1);
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(2);
+
+        // Assert in backoff condition
+        h.Provider.FlushTime.Should().Be(h.BaseDate + 2.0.Seconds());
+        h.Provider.RetryTime.Should().Be(h.BaseDate + 2.5.Seconds());
+
+        // Flush while in backoff becomes a prune instead
+        h.Repository.Reset();
+        h.Repository.Setup(r => r.Dispose()).Verifiable();
+
+        h.Clock.Now = h.Provider.FlushTime;
+        result = h.Tick(retryCount: 2);
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(2);
+
+        // Flush was rescheduled to coincide with end of retry backoff
+        h.Provider.FlushTime.Should().Be(h.BaseDate + 2.5.Seconds());
+        h.Provider.RetryTime.Should().Be(h.BaseDate + 2.5.Seconds());
+
+        h.ExpectTryEnsureConnection();
+        h.ExpectWrite(entry1, entry2); // but not entry0 because it was pruned away
+
+        h.Clock.Now = h.Provider.FlushTime;
+        result = h.Tick(retryCount: 2);
+    }
+
+    [Test]
+    public void Tick_NotConnected()
+    {
+        using var h = new TestHarness(o => o.MaxQueueSize = 2);
+
+        var entry0 = h.Enqueue();
+        var entry1 = h.Enqueue();
+        var entry2 = h.Enqueue();
+
+        h.ExpectTryEnsureConnection(result: false);
+
+        h.Clock.Now = h.Provider.FlushTime;
+        var result = h.Tick();
+
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(0);
+
+        h.ExpectTryEnsureConnection(result: true);
+        h.ExpectWrite(entry1, entry2); // but not entry0 because it was pruned away
+
+        h.Clock.Now = h.Provider.FlushTime;
+        result = h.Tick();
 
         result.ShouldContinue.Should().BeTrue();
         result.RetryCount    .Should().Be(0);
@@ -210,6 +401,19 @@ public class SqlLoggerProviderTests
         h.Provider.SimulateUnmanagedDisposal();
     }
 
+    [Test]
+    public async Task Run()
+    {
+        var mocks   = new MockRepository(MockBehavior.Strict);
+        var options = new TestOptionsMonitor<SqlLoggerOptions>(mocks);
+
+        var o = options.CurrentValue;
+        o.AutoflushWait = 10.Milliseconds();
+
+        using (new SqlLoggerProvider(options))
+            await Task.Delay(100.Milliseconds());
+    }
+
     private class TestHarness : TestHarnessBase
     {
         public SqlLoggerProvider Provider { get; }
@@ -247,16 +451,34 @@ public class SqlLoggerProviderTests
             Provider.ScheduleNextFlush();
         }
 
-        public void ExpectWrite(params LogEntry[] entries)
+        public void ExpectTryEnsureConnection(bool result = true)
         {
             Repository
                 .Setup(r => r.TryEnsureConnection(_connectionString))
-                .Returns(true)
+                .Returns(result)
                 .Verifiable();
+        }
 
+        internal void ExpectTryEnsureConnection_Throw()
+        {
+            Repository
+                .Setup(r => r.TryEnsureConnection(It.IsAny<string>()))
+                .Throws<DataException>()
+                .Verifiable();
+        }
+
+        public void ExpectWrite(params LogEntry[] entries)
+        {
             Repository
                 .Setup(r => r.Write(_logName, ItIs(entries), _batchTimeout))
                 .Verifiable();
+        }
+
+        public LogEntry Enqueue()
+        {
+            var entry = new LogEntry();
+            Provider.Enqueue(entry);
+            return entry;
         }
 
         public TickResult Tick(int retryCount = 0)
