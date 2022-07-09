@@ -136,7 +136,8 @@ public class SqlLoggerProvider : ILoggerProvider
 //         if (!_flushThread.Join(Options.CloseWait))
 //             _flushThread.Abort();
 // #else
-        _flushThread.Join();
+        if (_flushThread.IsAlive)
+            _flushThread.Join();
 //#endif
 
         // Dispose managed objects
