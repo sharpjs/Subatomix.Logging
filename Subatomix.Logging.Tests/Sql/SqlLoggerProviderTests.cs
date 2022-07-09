@@ -122,7 +122,7 @@ public class SqlLoggerProviderTests
 
         var result = h.Tick();
 
-        result.Elapsed.Should().BeGreaterThanOrEqualTo(100.Milliseconds());
+        result.Elapsed.Should().BeGreaterThanOrEqualTo(95.Milliseconds());
     }
 
     [Test]
