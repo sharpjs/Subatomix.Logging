@@ -32,6 +32,10 @@
     <PackageReference Include="Subatomix.Testing" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="IsExternalInit" Version="1.0.3" PrivateAssets="all" />
+  </ItemGroup>
+
   <ItemGroup>
     <Using Include="Subatomix.Testing.TestGlobals" Static="true" />
   </ItemGroup>
