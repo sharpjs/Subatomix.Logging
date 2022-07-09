@@ -41,19 +41,24 @@ public class PrettyConsoleFormatterTests
     }
 
     [Test]
-    public void Options()
+    public void Options_Get()
     {
         using var h = new TestHarness();
 
-        var optionsA = h.Options.CurrentValue;
-        var optionsB = new PrettyConsoleFormatterOptions();
+        h.Formatter.Options.Should().BeSameAs(h.Options.CurrentValue);
+    }
 
-        h.Formatter.Options.Should().BeSameAs(optionsA);
+    [Test]
+    public void Options_Change()
+    {
+        using var h = new TestHarness();
 
-        h.Options.CurrentValue = optionsB;
+        var options = new PrettyConsoleFormatterOptions();
+
+        h.Options.CurrentValue = options;
         h.Options.NotifyChanged();
 
-        h.Formatter.Options.Should().BeSameAs(optionsB);
+        h.Formatter.Options.Should().BeSameAs(options);
     }
 
     [Test]
