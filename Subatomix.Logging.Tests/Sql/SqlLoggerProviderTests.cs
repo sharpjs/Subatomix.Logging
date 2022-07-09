@@ -91,7 +91,7 @@ public class SqlLoggerProviderTests
     }
 
     [Test]
-    public void Run_Initial()
+    public void ScheduleNextFlush_Initial()
     {
         using var h = new TestHarness();
 
@@ -109,27 +109,33 @@ public class SqlLoggerProviderTests
     [Test]
     public void Tick_Normal()
     {
-        var timeout          = Any.Next(1, 300).Seconds();
-        var connectionString = Any.GetString();
-        var entry            = new LogEntry();
+        var entry = new LogEntry();
 
-        using var h = new TestHarness(o =>
-        {
-            o.ConnectionString = connectionString;
-            o.BatchTimeout = timeout;
-        });
+        using var h = new TestHarness();
 
         h.Provider.ScheduleNextFlush();
         h.Provider.Enqueue(entry);
 
-        h.Repository
-            .Setup(r => r.TryEnsureConnection(connectionString))
-            .Returns(true)
-            .Verifiable();
+        h.ExpectWrite(entry);
 
-        h.Repository
-            .Setup(r => r.Write(h.LogName, It.Is<IEnumerable<LogEntry>>(l => l.SequenceEqual(new[] { entry })), timeout))
-            .Verifiable();
+        var wait = h.Options.CurrentValue.AutoflushWait;
+        h.Clock.Now = h.BaseDate + wait - 5.Milliseconds();
+
+        var result = h.Tick(retryCount: 0);
+
+        result.Elapsed       .Should().BeGreaterThanOrEqualTo(5.Milliseconds());
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(0);
+    }
+
+    [Test]
+    public void Tick_Empty()
+    {
+        var entry = new LogEntry();
+
+        using var h = new TestHarness();
+
+        h.Provider.ScheduleNextFlush();
 
         var wait = h.Options.CurrentValue.AutoflushWait;
         h.Clock.Now = h.BaseDate + wait - 5.Milliseconds();
@@ -150,36 +156,18 @@ public class SqlLoggerProviderTests
         h.Provider.Enqueue(new()); // will not be written // TODO: maybe change this
         h.Provider.Dispose();
 
-        var flushTime = h.Provider.FlushTime;
-        var retryTime = h.Provider.RetryTime;
-        var anyCount  = Any.Next();
+        var flushTime     = h.Provider.FlushTime;
+        var retryTime     = h.Provider.RetryTime;
+        var anyRetryCount = Any.Next();
 
-        var result = h.Tick(anyCount);
+        var result = h.Tick(anyRetryCount);
 
         result.Elapsed       .Should().BeCloseTo(TimeSpan.Zero, precision: 1.Milliseconds());
         result.ShouldContinue.Should().BeFalse();
-        result.RetryCount    .Should().Be(anyCount);
+        result.RetryCount    .Should().Be(anyRetryCount);
 
         h.Provider.FlushTime.Should().Be(flushTime);
         h.Provider.RetryTime.Should().Be(retryTime);
-    }
-
-    [Test]
-    public void Tick_Empty()
-    {
-        using var h = new TestHarness(o =>
-        {
-            o.AutoflushWait = 50.Milliseconds();
-        });
-
-        var retries = 0;
-
-        h.Clock.Now = DateTime.UtcNow - 30.Minutes();
-
-        h.Provider.Tick(ref retries).Should().BeTrue(); retries.Should().Be(0);
-
-        h.Provider.Tick(ref retries).Should().BeTrue();
-        retries.Should().Be(0);
     }
 
     [Test]
@@ -214,16 +202,22 @@ public class SqlLoggerProviderTests
 
         public TestOptionsMonitor<SqlLoggerOptions> Options { get; }
 
-        public string LogName { get; } = Any.GetString();
+        private readonly string   _connectionString = Any.GetString();
+        private readonly string   _logName          = Any.GetString();
+        private readonly TimeSpan _batchTimeout     = Any.Next(1, 300).Seconds();
 
         public TestHarness(Action<SqlLoggerOptions>? configure = null)
         {
             BaseDate = DateTime.UtcNow - 10.Minutes();
 
             Options = new(Mocks);
+
             var o = Options.CurrentValue;
-            o.LogName = LogName;
-            configure?.Invoke(Options.CurrentValue);
+            o.ConnectionString = _connectionString;
+            o.LogName          = _logName;
+            o.BatchTimeout     = _batchTimeout;
+
+            configure?.Invoke(o);
 
             Repository = Mocks.Create<ISqlLogRepository>();
             Repository.Setup(r => r.Dispose()).Verifiable();
@@ -233,10 +227,16 @@ public class SqlLoggerProviderTests
             Provider = new(Options, Repository.Object, Clock, startThread: false);
         }
 
-        public void Schedule(TimeSpan flushTime, TimeSpan retryTime)
+        public void ExpectWrite(params LogEntry[] entries)
         {
-            var flushDate = BaseDate + flushTime;
-            var retryDate = BaseDate + retryTime;
+            Repository
+                .Setup(r => r.TryEnsureConnection(_connectionString))
+                .Returns(true)
+                .Verifiable();
+
+            Repository
+                .Setup(r => r.Write(_logName, ItIs(entries), _batchTimeout))
+                .Verifiable();
         }
 
         public TickResult Tick(int retryCount)
@@ -253,6 +253,9 @@ public class SqlLoggerProviderTests
             Provider.Dispose();
             base.Verify();
         }
+
+        private static IEnumerable<LogEntry> ItIs(params LogEntry[] entries)
+            => It.Is<IEnumerable<LogEntry>>(l => l.SequenceEqual(entries));
     }
 
     private record TickResult(
