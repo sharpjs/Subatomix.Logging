@@ -33,6 +33,7 @@ public class SqlLoggerProvider : ILoggerProvider
     private readonly ISqlLogRepository         _repository;
     private readonly IClock                    _clock;
     private readonly IDisposable               _optionsChangeToken;
+    private readonly CancellationTokenSource   _cancellation;
 
     // Used by flush thread
     private DateTime _flushTime;    // time of next flush thread run
@@ -63,11 +64,12 @@ public class SqlLoggerProvider : ILoggerProvider
         if (options is null)
             throw new ArgumentNullException(nameof(options));
 
-        _queue       = new();
-        _repository  = repository;
-        _clock       = clock;
-        _flushEvent  = new(initialState: false);
-        _flushThread = CreateFlushThread();
+        _queue        = new();
+        _repository   = repository;
+        _clock        = clock;
+        _flushEvent   = new(initialState: false);
+        _flushThread  = CreateFlushThread();
+        _cancellation = new();
 
         Options = options.CurrentValue;
 
@@ -132,22 +134,14 @@ public class SqlLoggerProvider : ILoggerProvider
         if (Interlocked.Exchange(ref _exiting, -1) != 0)
             return;
 
-        // Tell flusher thread to flush and exit
-        _flushEvent.Set();
-
-        // Give flusher thread a fair chance to flush
-// #if NETFRAMEWORK
-//         if (!_flushThread.Join(Options.CloseWait))
-//             _flushThread.Abort();
-// #else
-        if (_flushThread.IsAlive)
-            _flushThread.Join();
-//#endif
+        // Give flusher thread a fair chance to flush and exit
+        DestroyFlushThread();
 
         // Dispose managed objects
         _flushEvent        .Dispose();
         _repository        .Dispose();
         _optionsChangeToken.Dispose();
+        _cancellation      .Dispose();
     }
 
     private Thread CreateFlushThread()
@@ -158,6 +152,16 @@ public class SqlLoggerProvider : ILoggerProvider
             Priority     = ThreadPriority.AboveNormal,
             IsBackground = true, // don't prevent app from exiting
         };
+    }
+
+    private void DestroyFlushThread()
+    {
+        if (!_flushThread.IsAlive)
+            return;
+
+        _flushEvent.Set();
+        _cancellation.CancelAfter(Options.ShutdownWait);
+        _flushThread.Join();
     }
 
     private void Configure(SqlLoggerOptions options)
@@ -195,7 +199,7 @@ public class SqlLoggerProvider : ILoggerProvider
         }
         catch (Exception e)
         {
-            OnException(e);
+            Logger.LogError(e);
             ScheduleRetry(ref retries);
         }
 
@@ -274,7 +278,7 @@ public class SqlLoggerProvider : ILoggerProvider
         if (_queue.IsEmpty)
             return;
 
-        if (_repository.TryEnsureConnection(Options.ConnectionString))
+        if (TryEnsureConnection())
             DoBatched(GetSnapshot(), Options.BatchSize, FlushBatch);
         else
             Prune();
@@ -297,28 +301,41 @@ public class SqlLoggerProvider : ILoggerProvider
         Dequeue(entries.Count);
     }
 
-    private void Write(ArraySegment<LogEntry> entries)
-    {
-        _repository.Write(Options.LogName, entries, Options.BatchTimeout);
-    }
-
     private void Dequeue(int count)
     {
         for (; count > 0; count--)
             _queue.TryDequeue(out _);
     }
 
-    private void OnException(Exception e)
-    {
-        Logger.LogError(e);
-    }
-
     private void Prune()
     {
-        var count = _queue.Count - Options.MaxQueueSize;
+        Dequeue(_queue.Count - Options.MaxQueueSize);
+    }
 
-        for (; count > 0; count--)
-            _queue.TryDequeue(out _);
+    private bool TryEnsureConnection()
+    {
+        // Using async method from synchronous code because the async version
+        // accepts a cancellation token.  The usual warnings against this
+        // practice do not apply because the code is isolated to the flusher
+        // thread where there is no SynchronizationContext.
+
+        return _repository
+            .TryEnsureConnectionAsync(Options.ConnectionString, _cancellation.Token)
+            .GetAwaiter()
+            .GetResult();
+    }
+
+    private void Write(ArraySegment<LogEntry> entries)
+    {
+        // Using async method from synchronous code because the async version
+        // accepts a cancellation token.  The usual warnings against this
+        // practice do not apply because the code is isolated to the flusher
+        // thread where there is no SynchronizationContext.
+
+        _repository
+            .WriteAsync(Options.LogName, entries, Options.BatchTimeout, _cancellation.Token)
+            .GetAwaiter()
+            .GetResult();
     }
 
     private static void DoBatched<T>(

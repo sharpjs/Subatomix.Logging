@@ -18,7 +18,15 @@ namespace Subatomix.Logging.Sql;
 
 internal interface ISqlLogRepository : IDisposable
 {
-    bool TryEnsureConnection(string? connectionString);
+    Task<bool> TryEnsureConnectionAsync(
+        string?           connectionString,
+        CancellationToken cancellation
+    );
 
-    void Write(string logName, IEnumerable<LogEntry> entries, TimeSpan timeout);
+    Task WriteAsync(
+        string                logName,
+        IEnumerable<LogEntry> entries,
+        TimeSpan              timeout,
+        CancellationToken     cancellation
+    );
 }

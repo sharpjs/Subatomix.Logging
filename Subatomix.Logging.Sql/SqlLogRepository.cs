@@ -37,7 +37,9 @@ internal class SqlLogRepository : ISqlLogRepository
     public bool IsConnected => IsConnectedCore(_connection);
 
     [ExcludeFromCodeCoverage] // until automated integration testing
-    public bool TryEnsureConnection(string? connectionString)
+    public async Task<bool> TryEnsureConnectionAsync(
+        string?           connectionString,
+        CancellationToken cancellation)
     {
         var connection = _connection;
 
@@ -57,12 +59,16 @@ internal class SqlLogRepository : ISqlLogRepository
         connection  = new(connectionString);
         _connection = connection;
 
-        connection.Open();
+        await connection.OpenAsync(cancellation);
         return true;
     }
 
     [ExcludeFromCodeCoverage] // until automated integration testing
-    public void Write(string logName, IEnumerable<LogEntry> entries, TimeSpan timeout)
+    public async Task WriteAsync(
+        string                logName,
+        IEnumerable<LogEntry> entries,
+        TimeSpan              timeout,
+        CancellationToken     cancellation)
     {
         if (_connection is not { } connection)
             return;
@@ -96,7 +102,7 @@ internal class SqlLogRepository : ISqlLogRepository
             Value    = new ObjectDataReader<LogEntry>(entries, LogEntry.Map)
         });
 
-        command.ExecuteNonQuery();
+        await command.ExecuteNonQueryAsync(cancellation);
     }
 
     [ExcludeFromCodeCoverage] // until automated integration testing
@@ -126,6 +132,7 @@ internal class SqlLogRepository : ISqlLogRepository
         Dispose(managed: false);
     }
 
+    [ExcludeFromCodeCoverage] // until automated integration testing
     protected virtual void Dispose(bool managed)
     {
         if (!managed)

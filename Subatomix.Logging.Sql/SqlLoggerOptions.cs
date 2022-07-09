@@ -104,4 +104,11 @@ public class SqlLoggerOptions
     /// </summary>
     public TimeSpan RetryWaitMax { get; set; }
         = TimeSpan.FromHours(1);
+
+    /// <summary>
+    ///   Gets or sets the maximum duration to wait for log entries to flush to
+    ///   the database during disposal.  The default is 1 minute.
+    /// </summary>
+    public TimeSpan ShutdownWait { get; set; }
+        = TimeSpan.FromMinutes(1);
 }

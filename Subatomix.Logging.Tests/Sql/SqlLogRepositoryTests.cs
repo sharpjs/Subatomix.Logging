@@ -32,11 +32,11 @@ public class SqlLogRepositoryTests
     }
 
     [Test]
-    public void TryEnsureConnection_Null()
+    public async Task TryEnsureConnectionAsync_Null()
     {
         using var repository = new SqlLogRepository();
 
-        repository.TryEnsureConnection(null);
+        await repository.TryEnsureConnectionAsync(null, default);
 
         repository.IsConnected.Should().BeFalse();
     }
@@ -44,21 +44,25 @@ public class SqlLogRepositoryTests
     [Test]
     [Category("Integration")]
     [Explicit("Requires local SQL Server instance.")]
-    public void TryEnsureConnection_Local()
+    public async Task TryEnsureConnectionAsync_Local()
     {
         using var repository = new SqlLogRepository();
 
-        repository.TryEnsureConnection("Server=.;Database=LogTest;Integrated Security=True;Trust Server Certificate=True");
+        await repository.TryEnsureConnectionAsync(
+            // TODO: not this
+            "Server=.;Database=LogTest;Integrated Security=True;Trust Server Certificate=True",
+            default
+        );
 
         repository.IsConnected.Should().BeTrue();
     }
 
     [Test]
-    public void Write_NotConnected()
+    public async Task WriteAsync_NotConnected()
     {
         using var repository = new SqlLogRepository();
 
-        repository.Write("test", Array.Empty<LogEntry>(), 10.Seconds());
+        await repository.WriteAsync("test", Array.Empty<LogEntry>(), 10.Seconds(), default);
     }
 
     [Test]

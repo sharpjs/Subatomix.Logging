@@ -454,23 +454,30 @@ public class SqlLoggerProviderTests
         public void ExpectTryEnsureConnection(bool result = true)
         {
             Repository
-                .Setup(r => r.TryEnsureConnection(_connectionString))
-                .Returns(result)
+                .Setup(r => r.TryEnsureConnectionAsync(
+                    _connectionString, It.IsAny<CancellationToken>()
+                ))
+                .ReturnsAsync(result)
                 .Verifiable();
         }
 
         internal void ExpectTryEnsureConnection_Throw()
         {
             Repository
-                .Setup(r => r.TryEnsureConnection(It.IsAny<string>()))
-                .Throws<DataException>()
+                .Setup(r => r.TryEnsureConnectionAsync(
+                    It.IsAny<string?>(), It.IsAny<CancellationToken>()
+                ))
+                .ThrowsAsync(new DataException())
                 .Verifiable();
         }
 
         public void ExpectWrite(params LogEntry[] entries)
         {
             Repository
-                .Setup(r => r.Write(_logName, ItIs(entries), _batchTimeout))
+                .Setup(r => r.WriteAsync(
+                    _logName, ItIs(entries), _batchTimeout, It.IsAny<CancellationToken>()
+                ))
+                .Returns(Task.CompletedTask)
                 .Verifiable();
         }
 
