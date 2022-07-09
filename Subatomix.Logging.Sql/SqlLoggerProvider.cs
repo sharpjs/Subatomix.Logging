@@ -17,6 +17,7 @@
 using System.Collections.Concurrent;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
+using Subatomix.Logging.Internal;
 
 namespace Subatomix.Logging.Sql;
 
@@ -30,6 +31,7 @@ public class SqlLoggerProvider : ILoggerProvider
     private readonly AutoResetEvent            _flushEvent;
     private readonly Thread                    _flushThread;
     private readonly ISqlLogRepository         _repository;
+    private readonly IClock                    _clock;
     private readonly IDisposable               _optionsChangeToken;
 
     // Used by flush thread
@@ -48,13 +50,14 @@ public class SqlLoggerProvider : ILoggerProvider
     ///   <paramref name="options"/> is <see langword="null"/>.
     /// </exception>
     public SqlLoggerProvider(IOptionsMonitor<SqlLoggerOptions> options)
-        : this(options, new SqlLogRepository())
+        : this(options, new SqlLogRepository(), UtcClock.Instance)
     { }
 
     // For testing
     internal SqlLoggerProvider(
         IOptionsMonitor<SqlLoggerOptions> options,
         ISqlLogRepository                 repository,
+        IClock                            clock,
         bool                              startThread = true)
     {
         if (options is null)
@@ -62,6 +65,7 @@ public class SqlLoggerProvider : ILoggerProvider
 
         _queue       = new();
         _repository  = repository;
+        _clock       = clock;
         _flushEvent  = new(initialState: false);
         _flushThread = CreateFlushThread();
 
@@ -194,7 +198,7 @@ public class SqlLoggerProvider : ILoggerProvider
 
     private void ScheduleNextFlush()
     {
-        var now = DateTime.UtcNow;
+        var now = _clock.Now;
 
         // Schedule the usual flush
         _flushTime = now + Options.AutoflushWait;
@@ -213,7 +217,7 @@ public class SqlLoggerProvider : ILoggerProvider
     private bool WaitUntilFlush()
     {
         // Compute how long to wait
-        var duration = _flushTime - DateTime.Now;
+        var duration = _flushTime - _clock.Now;
 
         // Wait
         var interrupted
@@ -248,7 +252,7 @@ public class SqlLoggerProvider : ILoggerProvider
         Logger.LogWarning("Flush failed; retrying after {delay}.", backoff);
 
         // Schedule retry
-        _retryTime = DateTime.UtcNow + backoff;
+        _retryTime = _clock.Now + backoff;
 
         // If retry scheduled before next flush, reschedule flush to coincide
         if (_flushTime > _retryTime)
