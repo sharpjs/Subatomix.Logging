@@ -91,58 +91,79 @@ public class SqlLoggerProviderTests
     }
 
     [Test]
-    public void ScheduleNextFlush_Initial()
+    public void InitialSchedule()
     {
         using var h = new TestHarness();
 
         var wait = h.Options.CurrentValue.AutoflushWait;
-
-        h.Provider.FlushTime.Should().Be(default);
-        h.Provider.RetryTime.Should().Be(default);
-
-        h.Provider.ScheduleNextFlush();
 
         h.Provider.FlushTime.Should().Be(h.BaseDate + wait);
         h.Provider.RetryTime.Should().Be(default);
     }
 
     [Test]
-    public void Tick_Normal()
+    public void Tick_Wait_None()
     {
-        var entry = new LogEntry();
-
         using var h = new TestHarness();
 
-        h.Provider.ScheduleNextFlush();
-        h.Provider.Enqueue(entry);
+        h.Clock.Now = h.Provider.FlushTime;
 
-        h.ExpectWrite(entry);
+        var result = h.Tick();
 
-        var wait = h.Options.CurrentValue.AutoflushWait;
-        h.Clock.Now = h.BaseDate + wait - 5.Milliseconds();
+        result.Elapsed.Should().BeCloseTo(TimeSpan.Zero, precision: 10.Milliseconds());
+    }
 
-        var result = h.Tick(retryCount: 0);
+    [Test]
+    public void Tick_Wait_Uninterrupted()
+    {
+        using var h = new TestHarness();
 
-        result.Elapsed       .Should().BeGreaterThanOrEqualTo(5.Milliseconds());
-        result.ShouldContinue.Should().BeTrue();
-        result.RetryCount    .Should().Be(0);
+        h.Clock.Now = h.Provider.FlushTime - 100.Milliseconds();
+
+        var result = h.Tick();
+
+        result.Elapsed.Should().BeGreaterThanOrEqualTo(100.Milliseconds());
+    }
+
+    [Test]
+    public void Tick_Wait_Interrupted()
+    {
+        using var h = new TestHarness();
+
+        h.Clock.Now = h.Provider.FlushTime - 100.Milliseconds();
+        h.Provider.Flush(); // interrupts wait
+
+        var result = h.Tick();
+
+        result.Elapsed.Should().BeCloseTo(TimeSpan.Zero, precision: 10.Milliseconds());
     }
 
     [Test]
     public void Tick_Empty()
     {
-        var entry = new LogEntry();
-
         using var h = new TestHarness();
 
-        h.Provider.ScheduleNextFlush();
+        h.Clock.Now = h.Provider.FlushTime;
 
-        var wait = h.Options.CurrentValue.AutoflushWait;
-        h.Clock.Now = h.BaseDate + wait - 5.Milliseconds();
+        var result = h.Tick();
 
-        var result = h.Tick(retryCount: 0);
+        result.ShouldContinue.Should().BeTrue();
+        result.RetryCount    .Should().Be(0);
+    }
 
-        result.Elapsed       .Should().BeGreaterThanOrEqualTo(5.Milliseconds());
+    [Test]
+    public void Tick_Normal()
+    {
+        using var h = new TestHarness();
+
+        var entry = new LogEntry();
+        h.Provider.Enqueue(entry);
+        h.ExpectWrite(entry);
+
+        h.Clock.Now = h.Provider.FlushTime;
+
+        var result = h.Tick();
+
         result.ShouldContinue.Should().BeTrue();
         result.RetryCount    .Should().Be(0);
     }
@@ -152,7 +173,6 @@ public class SqlLoggerProviderTests
     {
         using var h = new TestHarness();
 
-        h.Provider.ScheduleNextFlush();
         h.Provider.Enqueue(new()); // will not be written // TODO: maybe change this
         h.Provider.Dispose();
 
@@ -162,7 +182,6 @@ public class SqlLoggerProviderTests
 
         var result = h.Tick(anyRetryCount);
 
-        result.Elapsed       .Should().BeCloseTo(TimeSpan.Zero, precision: 1.Milliseconds());
         result.ShouldContinue.Should().BeFalse();
         result.RetryCount    .Should().Be(anyRetryCount);
 
@@ -225,6 +244,7 @@ public class SqlLoggerProviderTests
             Clock = new TestClock { Now = BaseDate };
 
             Provider = new(Options, Repository.Object, Clock, startThread: false);
+            Provider.ScheduleNextFlush();
         }
 
         public void ExpectWrite(params LogEntry[] entries)
@@ -239,7 +259,7 @@ public class SqlLoggerProviderTests
                 .Verifiable();
         }
 
-        public TickResult Tick(int retryCount)
+        public TickResult Tick(int retryCount = 0)
         {
             var stopwatch = Stopwatch.StartNew();
             var result    = Provider.Tick(ref retryCount);
