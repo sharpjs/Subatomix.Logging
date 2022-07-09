@@ -82,16 +82,16 @@ public class SqlLoggerProvider : ILoggerProvider
     /// </summary>
     public SqlLoggerOptions Options { get; private set; }
 
-    /// <inheritdoc/>
-    public ILogger CreateLogger(string categoryName)
-        => new SqlLogger(this, categoryName);
-
     /// <summary>
     ///   Gets or sets the logger to use for diagnostic messages from the
     ///   logger provider itself.
     /// </summary>
     public ILogger Logger { get; set; }
         = NullLogger.Instance;
+
+    /// <inheritdoc/>
+    public ILogger CreateLogger(string categoryName)
+        => new SqlLogger(this, categoryName);
 
     internal void Enqueue(LogEntry entry)
         => _queue.Enqueue(entry);
