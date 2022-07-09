@@ -201,24 +201,6 @@ public class SqlLoggerProvider : ILoggerProvider
         return true;
     }
 
-    internal void ScheduleNextFlush()
-    {
-        var now = _clock.Now;
-
-        // Schedule the usual flush
-        _flushTime = now + Options.AutoflushWait;
-
-        // If not in retry backoff, flush as scheduled
-        if (_retryTime < now)
-            return;
-
-        // If retry scheduled before flush, reschedule flush to coincide
-        if (_flushTime > _retryTime)
-            _flushTime = _retryTime;
-
-        // NOTE: If flush occurs during retry backoff, the flush becomes a prune
-    }
-
     private bool WaitUntilFlush()
     {
         // Compute how long to wait
@@ -238,10 +220,22 @@ public class SqlLoggerProvider : ILoggerProvider
         return shouldFlush;
     }
 
-    private void ClearRetry(ref int retries)
+    internal void ScheduleNextFlush()
     {
-        _retryTime = default;
-        retries    = 0;
+        var now = _clock.Now;
+
+        // Schedule the usual flush
+        _flushTime = now + Options.AutoflushWait;
+
+        // If not in retry backoff, flush as scheduled
+        if (_retryTime < now)
+            return;
+
+        // If retry scheduled before flush, reschedule flush to coincide
+        if (_flushTime > _retryTime)
+            _flushTime = _retryTime;
+
+        // NOTE: If flush occurs during retry backoff, the flush becomes a prune
     }
 
     private void ScheduleRetry(ref int retries)
@@ -265,6 +259,12 @@ public class SqlLoggerProvider : ILoggerProvider
 
         if (retries < int.MaxValue)
             retries++;
+    }
+
+    private void ClearRetry(ref int retries)
+    {
+        _retryTime = default;
+        retries    = 0;
     }
 
     private void FlushAll()
