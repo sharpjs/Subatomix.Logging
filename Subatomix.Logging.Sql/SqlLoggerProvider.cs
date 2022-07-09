@@ -89,6 +89,10 @@ public class SqlLoggerProvider : ILoggerProvider
     public ILogger Logger { get; set; }
         = NullLogger.Instance;
 
+    // For testing
+    internal DateTime FlushTime => _flushTime;
+    internal DateTime RetryTime => _retryTime;
+
     /// <inheritdoc/>
     public ILogger CreateLogger(string categoryName)
         => new SqlLogger(this, categoryName);
@@ -197,7 +201,7 @@ public class SqlLoggerProvider : ILoggerProvider
         return true;
     }
 
-    private void ScheduleNextFlush()
+    internal void ScheduleNextFlush()
     {
         var now = _clock.Now;
 
