@@ -19,6 +19,8 @@ using NUnit.Framework.Internal;
 
 namespace Subatomix.Testing;
 
+using static Environment;
+
 /// <summary>
 ///   Convenience items available globally in tests.
 /// </summary>
@@ -31,27 +33,27 @@ internal static class TestGlobals
     public static Randomizer Any => TestContext.CurrentContext.Random;
 
     /// <summary>
-    ///   Gets a random <see cref="MEL.LogLevel"/> except
-    ///   <see cref="MEL.LogLevel.None"/>.
+    ///   Gets a random <see cref="LogLevel"/> except
+    ///   <see cref="LogLevel.None"/>.
     /// </summary>
     /// <param name="any">
     ///   A NUnit <see cref="Randomizer"/>.
     /// </param>
-    public static MEL.LogLevel LogLevelExceptNone(this Randomizer any)
-        => (MEL.LogLevel) any.Next(
-            minValue: (int) MEL.LogLevel.Trace, // inclusive
-            maxValue: (int) MEL.LogLevel.None   // exclusive
+    public static LogLevel LogLevelExceptNone(this Randomizer any)
+        => (LogLevel) any.Next(
+            minValue: (int) LogLevel.Trace, // inclusive
+            maxValue: (int) LogLevel.None   // exclusive
         );
 
     /// <summary>
-    ///   Appends <see cref="Environment.NewLine"/> to the specified string.
+    ///   Appends <see cref="NewLine"/> to the specified string.
     /// </summary>
     /// <param name="line">
-    ///   The string to which to append <see cref="Environment.NewLine"/>.
+    ///   The string to which to append <see cref="NewLine"/>.
     /// </param>
     public static string Lines(string line)
     {
-        return line + Environment.NewLine;
+        return line + NewLine;
     }
 
     /// <summary>
@@ -66,7 +68,7 @@ internal static class TestGlobals
         var length = 0;
 
         foreach (var line in lines)
-            length += line.Length + Environment.NewLine.Length;
+            length += line.Length + NewLine.Length;
 
         var sb = new StringBuilder(length);
 
