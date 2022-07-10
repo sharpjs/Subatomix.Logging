@@ -91,8 +91,8 @@ jobs:
       - name: Prepare Test Database
         shell: pwsh
         run: |
-          sqlcmd -S . -U sa -P $env:MSSQL_SA_PASSWORD -Q "CREATE DATABASE Test;"
-          sqlcmd -S . -U sa -P $env:MSSQL_SA_PASSWORD -d Test -i Subatomix.Logging.Sql/Create.sql
+          sqlcmd -S . -U sa -P $env:MSSQL_SA_PASSWORD -Q "CREATE DATABASE LogTest;"
+          sqlcmd -S . -U sa -P $env:MSSQL_SA_PASSWORD -d LogTest -i Subatomix.Logging.Sql/Create.sql
         env:
           MSSQL_SA_PASSWORD: ${{ secrets.MSSQL_SA_PASSWORD }}
 
