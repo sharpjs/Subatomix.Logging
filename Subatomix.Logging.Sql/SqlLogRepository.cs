@@ -37,6 +37,8 @@ internal class SqlLogRepository : ISqlLogRepository
     // For testing
     internal SqlConnection? Connection { get; private set; }
 
+    private string? _connectionString;
+
     public async Task<bool> TryEnsureConnectionAsync(
         string?           connectionString,
         CancellationToken cancellation)
@@ -50,6 +52,7 @@ internal class SqlLogRepository : ISqlLogRepository
         // Connection is broken, stale, or null; dispose it
         connection?.Dispose();
         Connection = null;
+        _connectionString = null;
 
         // Require connection string
         if (connectionString is not { Length: > 0 })
@@ -58,6 +61,7 @@ internal class SqlLogRepository : ISqlLogRepository
         // Set up new connection
         connection = new(connectionString);
         Connection = connection;
+        _connectionString = connectionString;
 
         await connection.OpenAsync(cancellation);
         return true;
@@ -115,12 +119,12 @@ internal class SqlLogRepository : ISqlLogRepository
         return connection is { State: ConnectionState.Open };
     }
 
-    private static bool IsConnectedCore(
+    private bool IsConnectedCore(
         [NotNullWhen(true)] SqlConnection? connection,
         string? connectionString)
     {
         return IsConnectedCore(connection)
-            && connection.ConnectionString == connectionString;
+            && _connectionString == connectionString;
     }
 
     public void Dispose()
@@ -141,5 +145,6 @@ internal class SqlLogRepository : ISqlLogRepository
 
         Connection?.Dispose();
         Connection = null;
+        _connectionString = null;
     }
 }
