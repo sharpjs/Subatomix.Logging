@@ -31,4 +31,8 @@
     <PackageReference Include="Microsoft.Data.SqlClient" Version="4.1.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Create.sql" Pack="true" PackagePath="" />
+  </ItemGroup>
+
 </Project>
