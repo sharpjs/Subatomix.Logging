@@ -69,6 +69,11 @@ internal class SqlLogRepository : ISqlLogRepository
         TimeSpan              timeout,
         CancellationToken     cancellation)
     {
+        if (logName is null)
+            throw new ArgumentNullException(nameof(logName));
+        if (entries is null)
+            throw new ArgumentNullException(nameof(entries));
+
         if (Connection is not { } connection)
             return;
 

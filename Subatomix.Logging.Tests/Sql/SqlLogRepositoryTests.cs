@@ -32,32 +32,104 @@ public class SqlLogRepositoryTests
         repository.MachineName.Should().Be(Environment.MachineName);
         repository.ProcessId  .Should().Be(Process.GetCurrentProcess().Id);
         repository.IsConnected.Should().BeFalse();
+        repository.Connection .Should().BeNull();
     }
 
     [Test]
-    public async Task TryEnsureConnectionAsync_Null()
+    public async Task TryEnsureConnectionAsync_NullConnectionString()
     {
         using var repository = new SqlLogRepository();
 
         await repository.TryEnsureConnectionAsync(null, default);
 
         repository.IsConnected.Should().BeFalse();
+        repository.Connection .Should().BeNull();
     }
 
     [Test]
     [Category("Integration")]
-    public async Task TryEnsureConnectionAsync_NotNull()
+    public async Task TryEnsureConnectionAsync_Normal()
     {
         using var repository = new SqlLogRepository();
 
         await repository.TryEnsureConnectionAsync(ConnectionString, default);
 
         repository.IsConnected.Should().BeTrue();
+        repository.Connection .Should().NotBeNull();
     }
 
     [Test]
     [Category("Integration")]
-    public async Task Write()
+    public async Task TryEnsureConnectionAsync_SameConnectionString()
+    {
+        using var repository = new SqlLogRepository();
+
+        await repository.TryEnsureConnectionAsync(ConnectionString, default);
+        var connectionA = repository.Connection;
+
+        await repository.TryEnsureConnectionAsync(ConnectionString, default);
+        var connectionB = repository.Connection;
+
+        repository.IsConnected.Should().BeTrue();
+        repository.Connection .Should().NotBeNull();
+
+        connectionA.Should().BeSameAs(connectionB);
+    }
+
+    [Test]
+    [Category("Integration")]
+    public async Task TryEnsureConnectionAsync_DifferentConnectionString()
+    {
+        using var repository = new SqlLogRepository();
+
+        await repository.TryEnsureConnectionAsync(ConnectionString, default);
+        var connectionA = repository.Connection;
+
+        await repository.TryEnsureConnectionAsync(ConnectionString + ";Pooling=False", default);
+        var connectionB = repository.Connection;
+
+        repository.IsConnected.Should().BeTrue();
+        repository.Connection .Should().NotBeNull();
+
+        connectionA.Should().NotBeSameAs(connectionB);
+    }
+
+    [Test]
+    public async Task Write_NullLogName()
+    {
+        using var repository = new SqlLogRepository();
+
+        await repository
+            .Awaiting(r => r.WriteAsync(null!, new LogEntry[0], 10.Seconds(), default))
+            .Should().ThrowAsync<ArgumentNullException>()
+            .WithParameterName("logName");
+    }
+
+    [Test]
+    public async Task Write_NullEntries()
+    {
+        using var repository = new SqlLogRepository();
+
+        await repository
+            .Awaiting(r => r.WriteAsync("any", null!, 10.Seconds(), default))
+            .Should().ThrowAsync<ArgumentNullException>()
+            .WithParameterName("entries");
+    }
+
+    [Test]
+    public async Task Write_NotConnected()
+    {
+        using var repository = new SqlLogRepository();
+
+        var entries = new LogEntry[] { new() { } };
+
+        // does nothing
+        await repository.WriteAsync(Any.GetString(), entries, 10.Seconds(), default);
+    }
+
+    [Test]
+    [Category("Integration")]
+    public async Task Write_Normal()
     {
         using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
         using var repository  = new SqlLogRepository();
