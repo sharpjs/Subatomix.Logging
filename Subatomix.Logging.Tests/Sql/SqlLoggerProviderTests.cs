@@ -364,7 +364,7 @@ public class SqlLoggerProviderTests
     {
         using var h = new TestHarness();
 
-        h.Provider.Enqueue(new()); // will not be written // TODO: maybe change this
+        h.Enqueue(); // will not be written // TODO: maybe change this
         h.Provider.Dispose();
 
         var flushTime     = h.Provider.FlushTime;
@@ -484,7 +484,7 @@ public class SqlLoggerProviderTests
         public LogEntry Enqueue()
         {
             var entry = new LogEntry();
-            Provider.Enqueue(entry);
+            ((ISqlLoggerProvider) Provider).Enqueue(entry);
             return entry;
         }
 

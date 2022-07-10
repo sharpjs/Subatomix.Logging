@@ -25,7 +25,7 @@ namespace Subatomix.Logging.Sql;
 ///   A provider of <see cref="SqlLogger"/> instances.
 /// </summary>
 [ProviderAlias("Sql")]
-public class SqlLoggerProvider : ILoggerProvider
+public class SqlLoggerProvider : ILoggerProvider, ISqlLoggerProvider
 {
     private readonly ConcurrentQueue<LogEntry> _queue;
     private readonly AutoResetEvent            _flushEvent;
@@ -99,7 +99,7 @@ public class SqlLoggerProvider : ILoggerProvider
     public ILogger CreateLogger(string categoryName)
         => new SqlLogger(this, categoryName);
 
-    internal void Enqueue(LogEntry entry)
+    void ISqlLoggerProvider.Enqueue(LogEntry entry)
         => _queue.Enqueue(entry);
 
     /// <summary>

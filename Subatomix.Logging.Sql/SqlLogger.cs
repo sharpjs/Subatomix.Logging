@@ -25,7 +25,7 @@ using static ActivityIdFormat;
 /// </summary>
 public class SqlLogger : ILogger
 {
-    internal SqlLogger(SqlLoggerProvider provider, string name)
+    internal SqlLogger(ISqlLoggerProvider provider, string name)
     {
         Provider = provider ?? throw new ArgumentNullException(nameof(provider));
         Name     = name     ?? throw new ArgumentNullException(nameof(name));
@@ -34,7 +34,7 @@ public class SqlLogger : ILogger
     /// <summary>
     ///   Gets the associated provider.
     /// </summary>
-    public SqlLoggerProvider Provider { get; }
+    internal ISqlLoggerProvider Provider { get; }
 
     /// <summary>
     ///   Gets the category name.
