@@ -1034,11 +1034,27 @@ public class ObjectDataReaderTests
     [Test]
     public void GetSchemaTable()
     {
-        using var reader = MakeReader(new Thing());
+        using var reader = MakeReader();
 
-        reader
-            .Invoking(r => r.GetSchemaTable())
-            .Should().Throw<NotSupportedException>();
+        var schema = reader.GetSchemaTable();
+
+        schema.Rows.Count                 .Should().Be(14);
+
+        schema.Rows[0]["IsKey"]           .Should().Be(DBNull.Value);
+        schema.Rows[0]["ColumnOrdinal"]   .Should().Be(DBNull.Value);
+        schema.Rows[0]["ColumnName"]      .Should().Be(nameof(Thing.StringProperty));
+        schema.Rows[0]["DataType"]        .Should().Be(typeof(string));
+        schema.Rows[0]["ColumnSize"]      .Should().Be(DBNull.Value);
+        schema.Rows[0]["NumericPrecision"].Should().Be(DBNull.Value);
+        schema.Rows[0]["NumericScale"]    .Should().Be(DBNull.Value);
+
+        schema.Rows[1]["IsKey"]           .Should().Be(DBNull.Value);
+        schema.Rows[1]["ColumnOrdinal"]   .Should().Be(DBNull.Value);
+        schema.Rows[1]["ColumnName"]      .Should().Be(nameof(Thing.BooleanProperty));
+        schema.Rows[1]["DataType"]        .Should().Be(typeof(bool));
+        schema.Rows[1]["ColumnSize"]      .Should().Be(DBNull.Value);
+        schema.Rows[1]["NumericPrecision"].Should().Be(DBNull.Value);
+        schema.Rows[1]["NumericScale"]    .Should().Be(DBNull.Value);
     }
 
     private static ObjectDataReader<Thing> MakeReader(params Thing[] things)

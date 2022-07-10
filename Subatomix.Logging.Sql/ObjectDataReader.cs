@@ -258,27 +258,22 @@ internal class ObjectDataReader<T> : DbDataReader
     public override IEnumerator GetEnumerator()
         => new DbEnumerator(this);
 
-    /// <summary>
-    ///   Not supported.
-    /// </summary>
-    /// <exception cref="NotSupportedException">
-    ///   This method is not supported.
-    /// </exception>
-    public override DataTable GetSchemaTable()
-        => throw new NotSupportedException();
-
-#if GETSCHEMATABLE_SUPPORTED
     /// <inheritdoc/>
     public override DataTable GetSchemaTable()
     {
         var schema     = new DataTable();
-        var colIsKey   = schema.Columns.Add("IsKey",            typeof(bool)  );
-        var colOrdinal = schema.Columns.Add("ColumnOrdinal",    typeof(int)   );
-        var colName    = schema.Columns.Add("ColumnName",       typeof(string));
-        var colType    = schema.Columns.Add("DataType",         typeof(Type)  );
-        var colSize    = schema.Columns.Add("ColumnSize",       typeof(long)  );
-        var colPrec    = schema.Columns.Add("NumericPrecision", typeof(byte)  );
-        var colScale   = schema.Columns.Add("NumericScale",     typeof(byte)  );
+        var colIsKey   = schema.Columns.Add("IsKey",            typeof(bool)  ); // required [0]
+        var colOrdinal = schema.Columns.Add("ColumnOrdinal",    typeof(int)   ); // required [0]
+        var colName    = schema.Columns.Add("ColumnName",       typeof(string)); // required [1]
+        var colType    = schema.Columns.Add("DataType",         typeof(Type)  ); // required [1]
+        var colSize    = schema.Columns.Add("ColumnSize",       typeof(long)  ); // required [1] for [var]binary, [n][var]char
+        var colPrec    = schema.Columns.Add("NumericPrecision", typeof(byte)  ); // required [1] for decimal
+        var colScale   = schema.Columns.Add("NumericScale",     typeof(byte)  ); // required [1] for decimal, time, datetime{2|offset}
+
+        // [0]: required by SqlParameter.GetActualFieldsAndProperties
+        //        https://github.com/dotnet/SqlClient/blob/v4.1.0/src/Microsoft.Data.SqlClient/netcore/src/Microsoft/Data/SqlClient/SqlParameter.cs#L1351
+        // [1]: required by MetadataUtilsSmi.SmiMetaDataFromSchemaTableRow
+        //        https://github.com/dotnet/SqlClient/blob/v4.1.0/src/Microsoft.Data.SqlClient/netcore/src/Microsoft/Data/SqlClient/Server/MetadataUtilsSmi.cs#L719
 
         foreach (var field in _map)
         {
@@ -287,17 +282,16 @@ internal class ObjectDataReader<T> : DbDataReader
                 ?? field.NetType;
 
             var row         = schema.NewRow();
-            row[colIsKey]   = false;
-            row[colOrdinal] = DBNull.Value; // Consumer will fill this in
+            row[colIsKey]   = DBNull.Value; // assume not a key column
+            row[colOrdinal] = DBNull.Value; // assume in column order
             row[colName]    = field.Name;
             row[colType]    = type;
-            row[colSize]    = DBNull.Value; // Consumer will fill this in
-            row[colPrec]    = DBNull.Value; // Consumer will fill this in
-            row[colScale]   = DBNull.Value; // Consumer will fill this in
+            row[colSize]    = DBNull.Value; // assume maximum size
+            row[colPrec]    = DBNull.Value; // assume default precision: 18 for decimal
+            row[colScale]   = DBNull.Value; // assume default scale: 0 for decimal, 7 for time
             schema.Rows.Add(row);
         }
 
         return schema;
     }
-#endif
 }
