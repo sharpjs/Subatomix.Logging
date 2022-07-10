@@ -38,8 +38,25 @@ env:
 jobs:
   build:
     name: Build
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     #url: https://github.com/actions/virtual-environments
+
+    services:
+      sql:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        ports:
+          - 1433:1433
+        env:
+          ACCEPT_EULA: true
+          MSSQL_SA_PASSWORD: ${{ secrets.MSSQL_SA_PASSWORD }}
+          MSSQL_COLLATION: Latin1_General_100_CI_AI_SC_UTF8
+          MSSQL_MEMORY_LIMIT_MB: 1024
+        options: >-
+          --health-cmd "/opt/mssql-tools/bin/sqlcmd -S . -U sa -P $MSSQL_SA_PASSWORD -Q 'PRINT HOST_NAME();'"
+          --health-start-period 20s
+          --health-interval 15s
+          --health-timeout 10s
+          --health-retries 2
 
     steps:
       - name: Check Out Code
@@ -69,20 +86,22 @@ jobs:
         run: >
           dotnet build --no-restore -c Release
           -p:TreatWarningsAsErrors=true
-          -p:PackageOutputPath=${{ runner.temp }}\dist
+          -p:PackageOutputPath=${{ runner.temp }}/dist
 
       - name: Test
         run: >
-          dotnet test --no-build -c Release
+          dotnet test --no-build -c Release -f net6.0
           --settings Coverlet.runsettings
-          --results-directory:${{ runner.temp }}\coverage\raw
+          --results-directory:${{ runner.temp }}/coverage/raw
+        env:
+          MSSQL_SA_PASSWORD: ${{ secrets.MSSQL_SA_PASSWORD }}
 
       - name: Prepare Coverage Report
         uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
         #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
-          reports: ${{ runner.temp }}\coverage\raw\**\coverage.opencover.xml
-          targetdir: ${{ runner.temp }}\coverage
+          reports: ${{ runner.temp }}/coverage/raw/**/coverage.opencover.xml
+          targetdir: ${{ runner.temp }}/coverage
           reporttypes: Cobertura;JsonSummary;Html_Dark;Badges
           verbosity: Warning
 
@@ -91,7 +110,7 @@ jobs:
         #url: https://github.com/actions/upload-artifact
         with:
           name: Coverage Report
-          path: ${{ runner.temp }}\coverage
+          path: ${{ runner.temp }}/coverage
           if-no-files-found: error
 
       - name: Save Package
@@ -99,14 +118,14 @@ jobs:
         #url: https://github.com/actions/upload-artifact
         with:
           name: Packages
-          path: ${{ runner.temp }}\dist
+          path: ${{ runner.temp }}/dist
           if-no-files-found: error
 
       - name: Publish Package
         if: startsWith(github.ref, 'refs/tags/release/')
         shell: pwsh
         run: >
-          dotnet nuget push "${{ runner.temp }}\dist\*.nupkg"
+          dotnet nuget push "${{ runner.temp }}/dist/*.nupkg"
           -s https://api.nuget.org/v3/index.json
           -k $env:NUGET_API_KEY
           --skip-duplicate
@@ -122,6 +141,6 @@ jobs:
           prerelease: ${{ contains('-', steps.stamp.outputs.version) }}
           draft: true
           bodyFile: CHANGES.md
-          artifacts: ${{ runner.temp }}\dist\*nupkg
+          artifacts: ${{ runner.temp }}/dist/*nupkg
           artifactErrorsFailBuild: true
           token: ${{ secrets.GITHUB_TOKEN }}
