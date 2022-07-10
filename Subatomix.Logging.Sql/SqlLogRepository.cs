@@ -37,7 +37,6 @@ internal class SqlLogRepository : ISqlLogRepository
     // For testing
     internal SqlConnection? Connection { get; private set; }
 
-    [ExcludeFromCodeCoverage] // until automated integration testing
     public async Task<bool> TryEnsureConnectionAsync(
         string?           connectionString,
         CancellationToken cancellation)
@@ -64,7 +63,6 @@ internal class SqlLogRepository : ISqlLogRepository
         return true;
     }
 
-    [ExcludeFromCodeCoverage] // until automated integration testing
     public async Task WriteAsync(
         string                logName,
         IEnumerable<LogEntry> entries,
@@ -106,14 +104,12 @@ internal class SqlLogRepository : ISqlLogRepository
         await command.ExecuteNonQueryAsync(cancellation);
     }
 
-    [ExcludeFromCodeCoverage] // until automated integration testing
     private static bool IsConnectedCore(
         [NotNullWhen(true)] SqlConnection? connection)
     {
         return connection is { State: ConnectionState.Open };
     }
 
-    [ExcludeFromCodeCoverage] // until automated integration testing
     private static bool IsConnectedCore(
         [NotNullWhen(true)] SqlConnection? connection,
         string? connectionString)
@@ -133,7 +129,6 @@ internal class SqlLogRepository : ISqlLogRepository
         Dispose(managed: false);
     }
 
-    [ExcludeFromCodeCoverage] // until automated integration testing
     protected virtual void Dispose(bool managed)
     {
         if (!managed)
