@@ -22,8 +22,6 @@ namespace Subatomix.Logging.Sql;
 
 internal class SqlLogRepository : ISqlLogRepository
 {
-    private SqlConnection? _connection;
-
     public SqlLogRepository()
     {
         MachineName = Environment.MachineName.Truncate(255);
@@ -34,14 +32,17 @@ internal class SqlLogRepository : ISqlLogRepository
 
     public int ProcessId { get; }
 
-    public bool IsConnected => IsConnectedCore(_connection);
+    public bool IsConnected => IsConnectedCore(Connection);
+
+    // For testing
+    internal SqlConnection? Connection { get; private set; }
 
     [ExcludeFromCodeCoverage] // until automated integration testing
     public async Task<bool> TryEnsureConnectionAsync(
         string?           connectionString,
         CancellationToken cancellation)
     {
-        var connection = _connection;
+        var connection = Connection;
 
         // If connection is open and current, use it
         if (IsConnectedCore(connection, connectionString))
@@ -49,15 +50,15 @@ internal class SqlLogRepository : ISqlLogRepository
 
         // Connection is broken, stale, or null; dispose it
         connection?.Dispose();
-        _connection = null;
+        Connection = null;
 
         // Require connection string
         if (connectionString is not { Length: > 0 })
             return false;
 
         // Set up new connection
-        connection  = new(connectionString);
-        _connection = connection;
+        connection = new(connectionString);
+        Connection = connection;
 
         await connection.OpenAsync(cancellation);
         return true;
@@ -70,7 +71,7 @@ internal class SqlLogRepository : ISqlLogRepository
         TimeSpan              timeout,
         CancellationToken     cancellation)
     {
-        if (_connection is not { } connection)
+        if (Connection is not { } connection)
             return;
 
         using var command = new SqlCommand()
@@ -138,7 +139,7 @@ internal class SqlLogRepository : ISqlLogRepository
         if (!managed)
             return;
 
-        _connection?.Dispose();
-        _connection = null;
+        Connection?.Dispose();
+        Connection = null;
     }
 }

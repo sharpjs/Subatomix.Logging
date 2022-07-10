@@ -15,6 +15,7 @@
 */
 
 using System.Text;
+using Microsoft.Data.SqlClient;
 using NUnit.Framework.Internal;
 
 namespace Subatomix.Testing;
@@ -76,5 +77,33 @@ internal static class TestGlobals
             sb.AppendLine(line);
 
         return sb.ToString();
+    }
+
+    /// <summary>
+    ///   Gets the connection string to use for database tests.
+    /// </summary>
+    public static string ConnectionString { get; } = GetConnectionString();
+
+    private static string GetConnectionString()
+    {
+        var builder = new SqlConnectionStringBuilder
+        {
+            DataSource             = ".",
+            InitialCatalog         = "LogTest",
+            TrustServerCertificate = true,
+            ApplicationName        = typeof(TestGlobals).Assembly.GetName().Name
+        };
+
+        if (GetEnvironmentVariable("MSSQL_SA_PASSWORD") is { Length: > 0 } password)
+        {
+            builder.UserID   = "sa";
+            builder.Password = password;
+        }
+        else
+        {
+            builder.IntegratedSecurity = true;
+        }
+
+        return builder.ConnectionString;
     }
 }

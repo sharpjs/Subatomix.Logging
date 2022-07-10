@@ -14,7 +14,10 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using System.Data;
+using System.Transactions;
 using FluentAssertions.Extensions;
+using Microsoft.Data.SqlClient;
 
 namespace Subatomix.Logging.Sql;
 
@@ -43,18 +46,99 @@ public class SqlLogRepositoryTests
 
     [Test]
     [Category("Integration")]
-    [Explicit("Requires local SQL Server instance.")]
-    public async Task TryEnsureConnectionAsync_Local()
+    public async Task TryEnsureConnectionAsync_NotNull()
     {
         using var repository = new SqlLogRepository();
 
-        await repository.TryEnsureConnectionAsync(
-            // TODO: not this
-            "Server=.;Database=LogTest;Integrated Security=True;Trust Server Certificate=True",
-            default
-        );
+        await repository.TryEnsureConnectionAsync(ConnectionString, default);
 
         repository.IsConnected.Should().BeTrue();
+    }
+
+    [Test]
+    [Category("Integration")]
+    public async Task Write()
+    {
+        using var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled);
+        using var repository  = new SqlLogRepository();
+
+        await repository.TryEnsureConnectionAsync(ConnectionString, default);
+
+        repository.IsConnected.Should().BeTrue();
+
+        var now         = DateTime.UtcNow;
+        var machineName = Environment.MachineName;
+        var processId   = Process.GetCurrentProcess().Id;
+        var logName     = Any.GetString( 128 + 1);
+
+        var entries = new LogEntry[]
+        {
+            new()
+            {
+                Date     = now,
+                Ordinal  = 0,
+                TraceId  = null,
+                EventId  = null,
+                Level    = LogLevel.Trace,
+                Message  = "",
+                Category = "",
+            },
+            new()
+            {
+                Date     = now,
+                Ordinal  = 1,
+                TraceId  = Any.GetString(  32 + 1),
+                EventId  = Any.Next(),
+                Level    = LogLevel.Critical,
+                Message  = Any.GetString(1024 + 1),
+                Category = Any.GetString( 128 + 1),
+            },
+        };
+
+        await repository.WriteAsync(logName, entries, timeout: 10.Seconds(), default);
+
+        const string SqlTemplate
+            = "SELECT Entry.*, MachineName = Machine.Name"             + "{0}"
+            + "FROM log.Entry"                                         + "{0}"
+            + "INNER JOIN log.Log     ON Log    .Id = Entry.LogId"     + "{0}"
+            + "INNER JOIN log.Machine ON Machine.Id = Entry.MachineId" + "{0}"
+            + "WHERE Log.Name = '{1}';"                                + "{0}"
+            ;
+
+        var sql = string.Format(
+            SqlTemplate,
+            Environment.NewLine,
+            logName.Substring(0, 128).Replace("'", "''")
+        );
+
+        using var command = new SqlCommand(sql, repository.Connection!);
+        using var reader  = await command.ExecuteReaderAsync(CommandBehavior.SingleResult);
+
+        (await reader.ReadAsync()).Should().BeTrue();
+
+        reader["Date"]       .Should().BeOfType<DateTime>().Which
+                             .Should().BeCloseTo(now, precision: 100.Microseconds());
+        reader["MachineName"].Should().Be(machineName);
+        reader["ProcessId"]  .Should().Be(processId);
+        reader["TraceId"]    .Should().Be(DBNull.Value);
+        reader["EventId"]    .Should().Be(DBNull.Value);
+        reader["Level"]      .Should().Be(0);
+        reader["Message"]    .Should().Be("");
+        reader["Category"]   .Should().Be("");
+
+        (await reader.ReadAsync()).Should().BeTrue();
+
+        reader["Date"]       .Should().BeOfType<DateTime>().Which
+                             .Should().BeCloseTo(now, precision: 100.Microseconds());
+        reader["MachineName"].Should().Be(machineName);
+        reader["ProcessId"]  .Should().Be(processId);
+        reader["TraceId"]    .Should().Be(entries[1].TraceId!.Substring(0,   32));
+        reader["EventId"]    .Should().Be(entries[1].EventId);
+        reader["Level"]      .Should().Be(5);
+        reader["Message"]    .Should().Be(entries[1].Message .Substring(0, 1024));
+        reader["Category"]   .Should().Be(entries[1].Category.Substring(0,  128));
+
+        (await reader.ReadAsync()).Should().BeFalse();
     }
 
     [Test]
