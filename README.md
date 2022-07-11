@@ -1,24 +1,30 @@
 # Subatomix.Logging
 
-Short description of the project.
+Additions to [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging).
+
+<!--
+TODO: More
+
+- [**Subatomix.Logging.Legacy**](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
+  - `LoggingTraceListener` – A trace listener plugin for the legacy
+    [`TraceSource`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource)
+    API.  This listener forwards trace events to
+    [`ILogger`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger)
+    loggers.
+-->
 
 ## Status
 
-WIP
-
-<!--
 [![Build](https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg)](https://github.com/sharpjs/Subatomix.Logging/actions)
-[![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging)
-[![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging)
--->
 
-## Installation
+- Nearing release.
+- 100% coverage by automated tests.
 
-WIP
-
-<!--
-Install [this NuGet Package](https://www.nuget.org/packages/Subatomix.Logging) in your project.
--->
+Package | Status
+--------|-------
+[Subatomix.Logging](https://www.nuget.org/packages/Subatomix.Logging)               | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.svg)](https://www.nuget.org/packages/Subatomix.Logging)
+[Subatomix.Logging.Legacy](https://www.nuget.org/packages/Subatomix.Logging.Legacy) | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
+[Subatomix.Logging.Sql](https://www.nuget.org/packages/Subatomix.Logging.Sql)       | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql)
 
 ## Usage
 
