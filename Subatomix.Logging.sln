@@ -15,6 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subatomix.Logging.Sql", "Su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subatomix.Logging.Tests", "Subatomix.Logging.Tests\Subatomix.Logging.Tests.csproj", "{D7B77415-6A43-4081-A12B-29A0A6928D28}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "doc", "doc\doc.csproj", "{B0F379E5-BD59-4D0D-8412-67E5B95A774F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A41844E9-1BD4-44FC-9CB6-E585A83B7FC0} = {A41844E9-1BD4-44FC-9CB6-E585A83B7FC0}
+		{D40008AD-B31B-4184-AE5A-148FF368AF66} = {D40008AD-B31B-4184-AE5A-148FF368AF66}
+		{FFD597B5-7A41-4BED-83FC-9C5B68B378D1} = {FFD597B5-7A41-4BED-83FC-9C5B68B378D1}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +50,9 @@ Global
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7B77415-6A43-4081-A12B-29A0A6928D28}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0F379E5-BD59-4D0D-8412-67E5B95A774F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0F379E5-BD59-4D0D-8412-67E5B95A774F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0F379E5-BD59-4D0D-8412-67E5B95A774F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

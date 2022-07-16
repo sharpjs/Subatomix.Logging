@@ -12,31 +12,14 @@
 # ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 # OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-# Build products
-obj/
-bin/
-/dist/
-/doc/api/
-/coverage/
-/Stamp.props
+- name: Changes
+  href: ../CHANGES.md
 
-# Visual Studio
-.vs/
-*.user
+- name: Subatomix.Logging
+  href: api/Subatomix.Logging/
 
-# Temporary files
-*.log
-*.old
-*.tmp
+- name: Subatomix.Logging.Legacy
+  href: api/Subatomix.Logging.Legacy/
 
-# Git
-*.orig
-*.patch
-*.rej
-
-# Windows junk
-Thumbs.db
-Desktop.ini
-
-# macOS junk
-.DS_Store
+- name: Subatomix.Logging.Sql
+  href: api/Subatomix.Logging.Sql/

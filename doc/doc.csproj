@@ -17,6 +17,11 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
   -->
 
+  <!--
+    Documentation project
+    See: https://github.com/dotnet/docfx/blob/v2.59.3/src/nuspec/docfx.console/build/docfx.console.targets
+  -->
+
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <EnableDefaultItems>false</EnableDefaultItems>
@@ -25,17 +30,18 @@
     <IsPublishable>false</IsPublishable>
     <IsPackable>false</IsPackable>
     <DefaultItemExcludesInProjectFolder>
-      Example\**;
-      Subatomix.*\**;
-      coverage\**;
-      dist\**;
-      doc\**;
+      api\**;
       $(DefaultItemExcludesInProjectFolder)
     </DefaultItemExcludesInProjectFolder>
+    <LogFile>obj\docfx.log</LogFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="**"    Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(MSBuildThisFile)" />
+    <PackageReference Include="docfx.console" Version="2.59.3" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="**" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(MSBuildThisFile)" />
     <None Include=".*\**" Exclude=".git\**;.vs\**" />
   </ItemGroup>
 
