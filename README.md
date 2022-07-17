@@ -4,25 +4,56 @@ outputFileName: index.html
 
 # Subatomix.Logging
 
-Additions to [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging).
+Additions to [Microsoft.Extensions.Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging)
+in three NuGet packages:
 
-<!--
-TODO: More
-
+- [**Subatomix.Logging**](https://www.nuget.org/packages/Subatomix.Logging)
+  - [`PrettyConsoleFormatter`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.Console.html)
+    – A terse, colorful formatter for Microsoft's
+      [console logger](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#console).
+  - [`DebuggerLogger`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.Debugger.html)
+    – A logger that sends messages to an attached debugger. In Visual Studio,
+      logged messages will appear in the debug output window.
+  - [`OperationScope`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.OperationScope.html)
+    – A scope representing a logical operation.  Automatically logs the start,
+      end, duration, and (optionally) the exception thrown from an operation.
+  - [`ActivityScope`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html)
+    – An operation scope that also starts and stops an
+      [`Activity`](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs).
+      The activity carries tags understood by
+      [Application Insights](https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview),
+      which can present the activity as a dependency telemetry item.
 - [**Subatomix.Logging.Legacy**](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
-  - `LoggingTraceListener` – A trace listener plugin for the legacy
-    [`TraceSource`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource)
-    API.  This listener forwards trace events to
-    [`ILogger`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger)
-    loggers.
--->
+  - [`LoggingTraceListener`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html)
+    – A trace listener plugin for the legacy
+      [`TraceSource`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource)
+      API.  This listener forwards trace events to
+      [`ILogger`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger)
+      loggers.
+  - [`CorrelationManagerActivityListener`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html)
+    – A listener that flows
+      [`Activity`](https://docs.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs)
+      start and stop events to the legacy
+      [`CorrelationManager`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.correlationmanager)
+      facility.
+  - [Types to assist migration](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html)
+    from the [Sharp.Diagnostics.Logging](https://github.com/sharpjs/Sharp.Diagnostics.Logging)
+    package.
+- [**Subatomix.Logging.Sql**](https://www.nuget.org/packages/Subatomix.Logging.Sql)
+  - [`SqlLogger`](https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html)
+    – A logger that writes to a table in SQL Server or Azure SQL Database.
 
 ## Status
 
 [![Build](https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg)](https://github.com/sharpjs/Subatomix.Logging/actions)
 
-- Nearing release.
-- 100% coverage by automated tests.
+- **New-ish:**     Nearing release.  Based on code used privately in production for years.
+- **Tested:**      100% coverage by automated tests.
+- **Documented:**  IntelliSense on everything, plus [external documentation](https://sharpjs.github.io/Subatomix.Logging/).
+
+## Installation
+
+NuGet packages are available.
 
 Package | Status
 --------|-------
@@ -30,9 +61,30 @@ Package | Status
 [Subatomix.Logging.Legacy](https://www.nuget.org/packages/Subatomix.Logging.Legacy) | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
 [Subatomix.Logging.Sql](https://www.nuget.org/packages/Subatomix.Logging.Sql)       | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql)
 
-## Usage
+## Documentation
 
-WIP
+- IntelliSense on everything.
+- Web documentat.
+- Basically no tutorial content at the moment.
+
+## Building From Source
+
+Requirements:
+- Visual Studio 2022 or later (if using Visual Studio).
+- Appropriate .NET SDKs — see the target framework(s) specified in each `.csproj` file.
+  - Download [.NET SDKs](https://dotnet.microsoft.com/download/dotnet)
+  - Download [.NET Framework Developer Packs](https://dotnet.microsoft.com/download/dotnet-framework)
+
+```powershell
+# The default: build and run tests
+.\Make.ps1 [-Test] [-Configuration <String>]
+
+# Just build; don't run tests
+.\Make.ps1 -Build [-Configuration <String>]
+
+# Build and run tests w/coverage
+.\Make.ps1 -Coverage [-Configuration <String>]
+```
 
 <!--
   Copyright 2022 Jeffrey Sharp
