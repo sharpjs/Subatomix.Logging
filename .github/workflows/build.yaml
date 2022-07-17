@@ -152,3 +152,9 @@ jobs:
           artifacts: ${{ runner.temp }}/dist/*nupkg
           artifactErrorsFailBuild: true
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish Documentation
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/doc
