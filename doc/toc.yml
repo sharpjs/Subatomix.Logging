@@ -15,11 +15,6 @@
 - name: Changes
   href: ../CHANGES.md
 
-- name: Subatomix.Logging
-  href: api/Subatomix.Logging/
-
-- name: Subatomix.Logging.Legacy
-  href: api/Subatomix.Logging.Legacy/
-
-- name: Subatomix.Logging.Sql
-  href: api/Subatomix.Logging.Sql/
+- name: API Reference
+  href: api/
+  homepage: api/index.md

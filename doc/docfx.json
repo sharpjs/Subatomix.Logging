@@ -18,7 +18,7 @@
     {
       "src": [
         {
-          "files": ["Subatomix.Logging/bin/Release/net6.0/Subatomix.Logging.dll"],
+          "files": [ "Subatomix.Logging/bin/Release/net6.0/Subatomix.Logging.dll" ],
           "src": ".."
         }
       ],
@@ -27,7 +27,7 @@
     {
       "src": [
         {
-          "files": ["Subatomix.Logging.Legacy/bin/Release/net6.0/Subatomix.Logging.Legacy.dll"],
+          "files": [ "Subatomix.Logging.Legacy/bin/Release/net6.0/Subatomix.Logging.Legacy.dll" ],
           "src": ".."
         }
       ],
@@ -36,7 +36,7 @@
     {
       "src": [
         {
-          "files": ["Subatomix.Logging.Sql/bin/Release/net6.0/Subatomix.Logging.Sql.dll"],
+          "files": [ "Subatomix.Logging.Sql/bin/Release/net6.0/Subatomix.Logging.Sql.dll" ],
           "src": ".."
         }
       ],
@@ -47,17 +47,31 @@
     "content": [
       {
         "files": [
-          "api/**.yml",
-          "api/**/ index.md", "toc.yml", "*.md" ] }, {
-  "files": [
-    "CHANGES.md",
-    "README.md"
-  ],
-  "src": ".."
-} ], "resource": [
-  {
-    "files": [
-      "images/**"
-    ]
+          "**.yml",
+          "**.md"
+        ]
+      },
+      {
+        "files": [
+          "CHANGES.md",
+          "README.md"
+        ],
+        "src": ".."
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "dest": "../dist/doc",
+    "template": [ "statictoc" ],
+    "markdownEngineName": "markdig",
+    "noLangKeyword": false,
+    "keepFileLink": false,
+    "cleanupCacheHistory": false,
+    "disableGitFeatures": false
   }
-], "dest": "../dist/doc", "template": [ "statictoc" ], "markdownEngineName": "markdig", "noLangKeyword": false, "keepFileLink": false, "cleanupCacheHistory": false, "disableGitFeatures": false } }
+}

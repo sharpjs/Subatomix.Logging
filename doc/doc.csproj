@@ -30,7 +30,7 @@
     <IsPublishable>false</IsPublishable>
     <IsPackable>false</IsPackable>
     <DefaultItemExcludesInProjectFolder>
-      api\**;
+      api\*\**;
       $(DefaultItemExcludesInProjectFolder)
     </DefaultItemExcludesInProjectFolder>
     <LogFile>obj\docfx.log</LogFile>
