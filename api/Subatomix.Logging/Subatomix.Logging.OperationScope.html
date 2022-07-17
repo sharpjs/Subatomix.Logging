@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class OperationScope
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class OperationScope
+   ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../changes.html" title="Changes">Changes</a>
+                      </li>
+                      <li>
+                          <a href="../../api/index.md" title="API Reference">API Reference</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Subatomix.Logging.html" title="Subatomix.Logging" class="">Subatomix.Logging</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Subatomix.Logging.ActivityScope.html" title="ActivityScope" class="">ActivityScope</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.ActivityScopeInitiator.html" title="ActivityScopeInitiator" class="">ActivityScopeInitiator</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.IFluent.html" title="IFluent" class="">IFluent</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.LoggerExtensions.html" title="LoggerExtensions" class="">LoggerExtensions</a>
+                          </li>
+                          <li class="active">
+                            <a href="Subatomix.Logging.OperationScope.html" title="OperationScope" class="active">OperationScope</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.OperationScopeInitiator.html" title="OperationScopeInitiator" class="">OperationScopeInitiator</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Subatomix.Logging.Console.html" title="Subatomix.Logging.Console" class="">Subatomix.Logging.Console</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Subatomix.Logging.Console.ConsoleContext.html" title="ConsoleContext" class="">ConsoleContext</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Console.IConsoleFormattable.html" title="IConsoleFormattable" class="">IConsoleFormattable</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Console.PrettyConsoleFormatter.html" title="PrettyConsoleFormatter" class="">PrettyConsoleFormatter</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html" title="PrettyConsoleFormatterOptions" class="">PrettyConsoleFormatterOptions</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html" title="PrettyConsoleLoggingBuilderExtensions" class="">PrettyConsoleLoggingBuilderExtensions</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Subatomix.Logging.Debugger.html" title="Subatomix.Logging.Debugger" class="">Subatomix.Logging.Debugger</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Subatomix.Logging.Debugger.DebuggerLogger.html" title="DebuggerLogger" class="">DebuggerLogger</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Debugger.DebuggerLoggerProvider.html" title="DebuggerLoggerProvider" class="">DebuggerLoggerProvider</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html" title="DebuggerLoggingBuilderExtensions" class="">DebuggerLoggingBuilderExtensions</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.OperationScope">
+  
+  
+  <h1 id="Subatomix_Logging_OperationScope" data-uid="Subatomix.Logging.OperationScope" class="text-break">Class OperationScope
+  </h1>
+  <div class="markdown level0 summary"><p>A scope representing a logical operation.  This type is intended for use
+with the <span class="xref">Microsoft.Extensions.Logging.ILogger</span> API.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">OperationScope</span></div>
+      <div class="level2"><a class="xref" href="Subatomix.Logging.ActivityScope.html">ActivityScope</a></div>
+  </div>
+  <div class="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="Subatomix.Logging.Console.IConsoleFormattable.html">IConsoleFormattable</a></div>
+    <div><span class="xref">System.IDisposable</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.html">Subatomix.Logging</a></h6>
+  <h6><strong>Assembly</strong>: Subatomix.Logging.dll</h6>
+  <h5 id="Subatomix_Logging_OperationScope_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class OperationScope : Object, IConsoleFormattable</code></pre>
+  </div>
+  <h5 id="Subatomix_Logging_OperationScope_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>
+  On construction, a scope of this type logs a start message containing
+  the name of the operation.  On disposal, a scope logs a completion
+  message containing the name and duration of the operation.
+</p>
+<p>
+  Code using this type can arrange for exception logging by setting the
+<a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Exception">Exception</a> propery, typically in a <span class="xref">langword_csharp_catch</span>
+block.  On disposal, if a scope&apos;s <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Exception">Exception</a> propery is
+not <span class="xref">null</span>, the scope logs the exception immediately
+before the completion message and adds an exception indicator to the
+completion message.
+</p>
+</div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Subatomix_Logging_OperationScope__ctor_" data-uid="Subatomix.Logging.OperationScope.#ctor*"></a>
+  <h4 id="Subatomix_Logging_OperationScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_" data-uid="Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)">OperationScope(ILogger, LogLevel, String)</h4>
+  <div class="markdown level1 summary"><p>Initializes and starts a new <a class="xref" href="Subatomix.Logging.OperationScope.html">OperationScope</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public OperationScope(ILogger logger, LogLevel logLevel, string name = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger for operation-related messages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>The severity level for operation start and completion messages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.  If omitted, the default is the name of
+the calling member.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_OperationScope__ctor_" data-uid="Subatomix.Logging.OperationScope.#ctor*"></a>
+  <h4 id="Subatomix_Logging_OperationScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_System_Boolean_" data-uid="Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)">OperationScope(ILogger, LogLevel, String, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Subatomix.Logging.OperationScope.html">OperationScope</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected OperationScope(ILogger logger, LogLevel logLevel, string name, bool start)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td><span class="parametername">logger</span></td>
+        <td><p>The logger for operation-related messages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>The severity level for operation start and completion messages.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">start</span></td>
+        <td><p>
+  Whether to invoke <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start">Start()</a>.
+</p>
+<p>
+  A constructor of a derived type can pass <span class="xref">false</span> to
+  permit further initialization before the logical operation starts.
+  The derived type constructor must then invoke <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start">Start()</a>
+  before returning.
+</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">logger</code> and/or <code data-dev-comment-type="paramref" class="paramref">name</code> is
+<span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Subatomix_Logging_OperationScope_Duration_" data-uid="Subatomix.Logging.OperationScope.Duration*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Duration" data-uid="Subatomix.Logging.OperationScope.Duration">Duration</h4>
+  <div class="markdown level1 summary"><p>Gets the duration of the operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan Duration { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.TimeSpan</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_OperationScope_Duration_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The value of this property steadily increases until the operation
+is disposed.  After disposal, the value remains constant.</p>
+</div>
+  <a id="Subatomix_Logging_OperationScope_Exception_" data-uid="Subatomix.Logging.OperationScope.Exception*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Exception" data-uid="Subatomix.Logging.OperationScope.Exception">Exception</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the exception associated with the operation, or
+<span class="xref">null</span> if no exception is associated with the
+operation.  The default is <span class="xref">null</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Exception Exception { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_OperationScope_Exception_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>On disposal, if this property is not <span class="xref">null</span>, the
+scope logs the exception immediately before the completion message
+and adds an exception indicator to the completion message.</p>
+</div>
+  <a id="Subatomix_Logging_OperationScope_ExceptionLogLevel_" data-uid="Subatomix.Logging.OperationScope.ExceptionLogLevel*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_ExceptionLogLevel" data-uid="Subatomix.Logging.OperationScope.ExceptionLogLevel">ExceptionLogLevel</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the severity level used to report the exception, if any,
+associated with the operation. The default is
+<span class="xref">Microsoft.Extensions.Logging.LogLevel.Error</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LogLevel ExceptionLogLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_OperationScope_IsCompleted_" data-uid="Subatomix.Logging.OperationScope.IsCompleted*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_IsCompleted" data-uid="Subatomix.Logging.OperationScope.IsCompleted">IsCompleted</h4>
+  <div class="markdown level1 summary"><p>Gets whether the operation has completed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsCompleted { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_OperationScope_IsCompleted_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>The value of this property is <span class="xref">false</span> until the
+operation is disposed.  On disposal, the value transitions to
+<span class="xref">true</span>.</p>
+</div>
+  <a id="Subatomix_Logging_OperationScope_Logger_" data-uid="Subatomix.Logging.OperationScope.Logger*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Logger" data-uid="Subatomix.Logging.OperationScope.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>Gets the logger for operation-related messages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ILogger Logger { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_OperationScope_LogLevel_" data-uid="Subatomix.Logging.OperationScope.LogLevel*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_LogLevel" data-uid="Subatomix.Logging.OperationScope.LogLevel">LogLevel</h4>
+  <div class="markdown level1 summary"><p>Gets the severity level for operation start and completion messages.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected LogLevel LogLevel { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_OperationScope_LogLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Use the <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_ExceptionLogLevel">ExceptionLogLevel</a> to set the severity level
+used to report the exception, if any, associated with the operation.</p>
+</div>
+  <a id="Subatomix_Logging_OperationScope_Name_" data-uid="Subatomix.Logging.OperationScope.Name*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Name" data-uid="Subatomix.Logging.OperationScope.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets the name of the operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Subatomix_Logging_OperationScope_Start_" data-uid="Subatomix.Logging.OperationScope.Start*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Start" data-uid="Subatomix.Logging.OperationScope.Start">Start()</h4>
+  <div class="markdown level1 summary"><p>Starts the logical operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Start()</code></pre>
+  </div>
+  <a id="Subatomix_Logging_OperationScope_Stop_" data-uid="Subatomix.Logging.OperationScope.Stop*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Stop" data-uid="Subatomix.Logging.OperationScope.Stop">Stop()</h4>
+  <div class="markdown level1 summary"><p>Stops the logical operation and disposes managed resources owned by
+the scope.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Stop()</code></pre>
+  </div>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
+  <a id="Subatomix_Logging_OperationScope_Subatomix_Logging_Console_IConsoleFormattable_Write_" data-uid="Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write*"></a>
+  <h4 id="Subatomix_Logging_OperationScope_Subatomix_Logging_Console_IConsoleFormattable_Write_System_IO_TextWriter_Subatomix_Logging_Console_ConsoleContext_" data-uid="Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write(System.IO.TextWriter,Subatomix.Logging.Console.ConsoleContext)">IConsoleFormattable.Write(TextWriter, ConsoleContext)</h4>
+  <div class="markdown level1 summary"><p>Formats the object for console output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">bool IConsoleFormattable.Write(TextWriter writer, ConsoleContext console)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.TextWriter</span></td>
+        <td><span class="parametername">writer</span></td>
+        <td><p>The writer to which to write the formatted output.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Subatomix.Logging.Console.ConsoleContext.html">ConsoleContext</a></td>
+        <td><span class="parametername">console</span></td>
+        <td><p>Contextual information, including whether to use ANSI escape code
+sequences to control the color and style of output.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if one or more characters were written;
+<span class="xref">false</span> otherwise.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="Subatomix.Logging.Console.IConsoleFormattable.html">IConsoleFormattable</a>
+  </div>
+  <div>
+      <span class="xref">System.IDisposable</span>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © 2022 Jeffrey Sharp
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

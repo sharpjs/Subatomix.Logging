@@ -1,0 +1,3331 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Log
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Log
+   ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../changes.html" title="Changes">Changes</a>
+                      </li>
+                      <li>
+                          <a href="../../api/index.md" title="API Reference">API Reference</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Sharp.Diagnostics.Logging.html" title="Sharp.Diagnostics.Logging" class="">Sharp.Diagnostics.Logging</a>
+                        
+                        <ul class="nav level2">
+                          <li class="active">
+                            <a href="Sharp.Diagnostics.Logging.Log.html" title="Log" class="active">Log</a>
+                          </li>
+                          <li class="">
+                            <a href="Sharp.Diagnostics.Logging.TraceOperation.html" title="TraceOperation" class="">TraceOperation</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Subatomix.Logging.Legacy.html" title="Subatomix.Logging.Legacy" class="">Subatomix.Logging.Legacy</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html" title="CorrelationManagerActivityListener" class="">CorrelationManagerActivityListener</a>
+                          </li>
+                          <li class="">
+                            <a href="Subatomix.Logging.Legacy.LoggingTraceListener.html" title="LoggingTraceListener" class="">LoggingTraceListener</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Sharp.Diagnostics.Logging.Log">
+  
+  
+  <h1 id="Sharp_Diagnostics_Logging_Log" data-uid="Sharp.Diagnostics.Logging.Log" class="text-break">Class Log
+  </h1>
+  <div class="markdown level0 summary"><p>Convenience methods for logging.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Log</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Sharp.Diagnostics.Logging.html">Sharp.Diagnostics.Logging</a></h6>
+  <h6><strong>Assembly</strong>: Subatomix.Logging.Legacy.dll</h6>
+  <h5 id="Sharp_Diagnostics_Logging_Log_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Log : Object</code></pre>
+  </div>
+  <h5 id="Sharp_Diagnostics_Logging_Log_remarks"><strong>Remarks</strong></h5>
+  <div class="markdown level0 remarks"><p>This type is a compatibility shim to assist migration from the
+Sharp.Diagnostics.Logging package. New code should use
+<span class="xref">Microsoft.Extensions.Logging.ILogger</span>.</p>
+</div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Sharp_Diagnostics_Logging_Log_ActivityId_" data-uid="Sharp.Diagnostics.Logging.Log.ActivityId*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_ActivityId" data-uid="Sharp.Diagnostics.Logging.Log.ActivityId">ActivityId</h4>
+  <div class="markdown level1 summary"><p>Gets the identifier of the current logical activity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Guid ActivityId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_CloseOnExit_" data-uid="Sharp.Diagnostics.Logging.Log.CloseOnExit*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_CloseOnExit" data-uid="Sharp.Diagnostics.Logging.Log.CloseOnExit">CloseOnExit</h4>
+  <div class="markdown level1 summary"><p>Enables or disables logging of application termination and automatic
+closing of attached listeners.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool CloseOnExit { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_LogAllThrownExceptions_" data-uid="Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_LogAllThrownExceptions" data-uid="Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions">LogAllThrownExceptions</h4>
+  <div class="markdown level1 summary"><p>Enables or disables logging of <strong>ALL</strong> thrown exceptions
+— even caught exceptions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool LogAllThrownExceptions { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Sharp_Diagnostics_Logging_Log_LogAllThrownExceptions_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>⚠ <strong>WARNING:</strong> This results in an extremely noisy log
+and degrades application performance. Setting this property is not a
+thread-safe operation.</p>
+</div>
+  <a id="Sharp_Diagnostics_Logging_Log_Logger_" data-uid="Sharp.Diagnostics.Logging.Log.Logger*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Logger" data-uid="Sharp.Diagnostics.Logging.Log.Logger">Logger</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the <span class="xref">Microsoft.Extensions.Logging.ILogger</span> instance to which the static
+methods of this class foward invocations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ILogger Logger { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>Attempted to set the value of the property to <span class="xref">null</span></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Sharp_Diagnostics_Logging_Log_Close_" data-uid="Sharp.Diagnostics.Logging.Log.Close*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Close" data-uid="Sharp.Diagnostics.Logging.Log.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>Does nothing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Close()</code></pre>
+  </div>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.Exception)">Critical(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.Exception)">Critical(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String)">Critical(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String,System.Object[])">Critical(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.String)">Critical(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Critical_" data-uid="Sharp.Diagnostics.Logging.Log.Critical*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Critical_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Critical(System.String,System.Object[])">Critical(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a critical error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Critical(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Data_" data-uid="Sharp.Diagnostics.Logging.Log.Data*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Int32_System_Object_" data-uid="Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object)">Data(TraceEventType, Int32, Object)</h4>
+  <div class="markdown level1 summary"><p>Writes arbitrary object data to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Data(TraceEventType eventType, int id, object data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of event to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The object data to include in the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Data_" data-uid="Sharp.Diagnostics.Logging.Log.Data*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Int32_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object[])">Data(TraceEventType, Int32, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes arbitrary object data to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Data(TraceEventType eventType, int id, params object[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The object data to include in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Data_" data-uid="Sharp.Diagnostics.Logging.Log.Data*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Object_" data-uid="Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object)">Data(TraceEventType, Object)</h4>
+  <div class="markdown level1 summary"><p>Writes arbitrary object data to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Data(TraceEventType eventType, object data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of event to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The object data to include in the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Data_" data-uid="Sharp.Diagnostics.Logging.Log.Data*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object[])">Data(TraceEventType, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes arbitrary object data to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Data(TraceEventType eventType, params object[] data)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">data</span></td>
+        <td><p>The object data to include in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Do_" data-uid="Sharp.Diagnostics.Logging.Log.Do*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Do_System_String_System_Action_" data-uid="Sharp.Diagnostics.Logging.Log.Do(System.String,System.Action)">Do(String, Action)</h4>
+  <div class="markdown level1 summary"><p>Runs a logical operation, writing start, stop, and error entries to
+the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Do(string name, Action action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> and/or <code data-dev-comment-type="paramref" class="paramref">action</code> is
+<span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Do_" data-uid="Sharp.Diagnostics.Logging.Log.Do*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Do__1_System_String_System_Func___0__" data-uid="Sharp.Diagnostics.Logging.Log.Do``1(System.String,System.Func{``0})">Do&lt;T&gt;(String, Func&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Runs a logical operation, writing start, stop, and error entries to
+the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static T Do&lt;T&gt;(string name, Func&lt;T&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;T&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> and/or <code data-dev-comment-type="paramref" class="paramref">action</code> is
+<span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">action</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_DoAsync_" data-uid="Sharp.Diagnostics.Logging.Log.DoAsync*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_DoAsync_System_String_System_Func_System_Threading_Tasks_Task__" data-uid="Sharp.Diagnostics.Logging.Log.DoAsync(System.String,System.Func{System.Threading.Tasks.Task})">DoAsync(String, Func&lt;Task&gt;)</h4>
+  <div class="markdown level1 summary"><p>Runs a logical operation, writing start, stop, and error entries to
+the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task DoAsync(string name, Func&lt;Task&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> and/or <code data-dev-comment-type="paramref" class="paramref">action</code> is
+<span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_DoAsync_" data-uid="Sharp.Diagnostics.Logging.Log.DoAsync*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_DoAsync__1_System_String_System_Func_System_Threading_Tasks_Task___0___" data-uid="Sharp.Diagnostics.Logging.Log.DoAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})">DoAsync&lt;T&gt;(String, Func&lt;Task&lt;T&gt;&gt;)</h4>
+  <div class="markdown level1 summary"><p>Runs a logical operation, writing start, stop, and error entries to
+the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static Task&lt;T&gt; DoAsync&lt;T&gt;(string name, Func&lt;Task&lt;T&gt;&gt; action)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;<span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;&gt;</td>
+        <td><span class="parametername">action</span></td>
+        <td><p>The operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;T&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> and/or <code data-dev-comment-type="paramref" class="paramref">action</code> is
+<span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">action</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.Exception)">Error(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.Exception)">Error(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String)">Error(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String,System.Object[])">Error(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.String)">Error(String)</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Error_" data-uid="Sharp.Diagnostics.Logging.Log.Error*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Error_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Error(System.String,System.Object[])">Error(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an error entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Error(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Event_" data-uid="Sharp.Diagnostics.Logging.Log.Event*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_" data-uid="Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32)">Event(TraceEventType, Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Event(TraceEventType eventType, int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Event_" data-uid="Sharp.Diagnostics.Logging.Log.Event*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String)">Event(TraceEventType, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Event(TraceEventType eventType, int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Event_" data-uid="Sharp.Diagnostics.Logging.Log.Event*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">Event(TraceEventType, Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Event(TraceEventType eventType, int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Event_" data-uid="Sharp.Diagnostics.Logging.Log.Event*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String)">Event(TraceEventType, String)</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Event(TraceEventType eventType, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Event_" data-uid="Sharp.Diagnostics.Logging.Log.Event*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String,System.Object[])">Event(TraceEventType, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Event(TraceEventType eventType, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">eventType</span></td>
+        <td><p>The type of entry to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Flush_" data-uid="Sharp.Diagnostics.Logging.Log.Flush*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Flush" data-uid="Sharp.Diagnostics.Logging.Log.Flush">Flush()</h4>
+  <div class="markdown level1 summary"><p>Does nothing.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Flush()</code></pre>
+  </div>
+  <a id="Sharp_Diagnostics_Logging_Log_GetOperationStack_" data-uid="Sharp.Diagnostics.Logging.Log.GetOperationStack*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_GetOperationStack" data-uid="Sharp.Diagnostics.Logging.Log.GetOperationStack">GetOperationStack()</h4>
+  <div class="markdown level1 summary"><p>Gets the current stack of logial operations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static object[] GetOperationStack()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><p>A new array containing the objects in the logical operation stack,
+ordered from top to bottom.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.Exception)">Information(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.Exception)">Information(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String)">Information(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String,System.Object[])">Information(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.String)">Information(String)</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Information_" data-uid="Sharp.Diagnostics.Logging.Log.Information*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Information_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Information(System.String,System.Object[])">Information(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes an informational entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Information(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Operation_" data-uid="Sharp.Diagnostics.Logging.Log.Operation*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Operation_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Operation(System.String)">Operation(String)</h4>
+  <div class="markdown level1 summary"><p>Starts a logical operation, writing a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static TraceOperation Operation(string name = null)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">name</span></td>
+        <td><p>The name of the operation.  If omitted, the default is the name of
+the calling member, if supported by the compiler.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Sharp.Diagnostics.Logging.TraceOperation.html">TraceOperation</a></td>
+        <td><p>A <a class="xref" href="Sharp.Diagnostics.Logging.TraceOperation.html">TraceOperation</a> representing the logical operation.
+When disposed, the object writes stop and error entries to the log.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.ArgumentException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.Exception)">Resume(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.Exception)">Resume(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String)">Resume(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String,System.Object[])">Resume(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.String)">Resume(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Resume_" data-uid="Sharp.Diagnostics.Logging.Log.Resume*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Resume_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Resume(System.String,System.Object[])">Resume(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a resume entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Resume(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.Exception)">Start(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.Exception)">Start(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String)">Start(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String,System.Object[])">Start(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.String)">Start(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Start_" data-uid="Sharp.Diagnostics.Logging.Log.Start*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Start_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Start(System.String,System.Object[])">Start(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a start entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Start(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.Exception)">Stop(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.Exception)">Stop(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String)">Stop(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String,System.Object[])">Stop(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.String)">Stop(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Stop_" data-uid="Sharp.Diagnostics.Logging.Log.Stop*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Stop_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Stop(System.String,System.Object[])">Stop(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a stop entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Stop(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.Exception)">Suspend(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.Exception)">Suspend(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String)">Suspend(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String,System.Object[])">Suspend(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.String)">Suspend(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Suspend_" data-uid="Sharp.Diagnostics.Logging.Log.Suspend*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Suspend_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Suspend(System.String,System.Object[])">Suspend(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a suspend entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Suspend(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Transfer_" data-uid="Sharp.Diagnostics.Logging.Log.Transfer*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Transfer_System_Int32_System_String_System_Guid_" data-uid="Sharp.Diagnostics.Logging.Log.Transfer(System.Int32,System.String,System.Guid)">Transfer(Int32, String, Guid)</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log, reporting a new identifier for the
+current logical activity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Transfer(int id, string message, Guid newActivityId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">newActivityId</span></td>
+        <td><p>A new identifier for the current logical activity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Sharp_Diagnostics_Logging_Log_Transfer_System_Int32_System_String_System_Guid__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+  This method is intended for use with the logical activities of a
+<span class="xref">System.Diagnostics.CorrelationManager</span>.
+The <code data-dev-comment-type="paramref" class="paramref">newActivityId</code> parameter relates to the
+<span class="xref">System.Diagnostics.CorrelationManager.ActivityId</span> property.
+</p>
+<p>
+  If a logical operation begins in one activity and transfers to
+  another, the second activity should log the transfer by calling
+  this method.  The call relates the new activity identifier to the
+  previous identifier.  An example consumer of this functionality is
+  a trace viewer that can report logical operations spanning multiple
+  activities.
+</p>
+</div>
+  <a id="Sharp_Diagnostics_Logging_Log_Transfer_" data-uid="Sharp.Diagnostics.Logging.Log.Transfer*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Transfer_System_String_System_Guid_" data-uid="Sharp.Diagnostics.Logging.Log.Transfer(System.String,System.Guid)">Transfer(String, Guid)</h4>
+  <div class="markdown level1 summary"><p>Writes an entry to the log, reporting a new identifier for the
+current logical activity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Transfer(string message, Guid newActivityId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">newActivityId</span></td>
+        <td><p>A new identifier for the current logical activity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Sharp_Diagnostics_Logging_Log_Transfer_System_String_System_Guid__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>
+  This method is intended for use with the logical activities of a
+<span class="xref">System.Diagnostics.CorrelationManager</span>.
+The <code data-dev-comment-type="paramref" class="paramref">newActivityId</code> parameter relates to the
+<span class="xref">System.Diagnostics.CorrelationManager.ActivityId</span> property.
+</p>
+<p>
+  If a logical operation begins in one activity and transfers to
+  another, the second activity should log the transfer by calling
+  this method.  The call relates the new activity identifier to the
+  previous identifier.  An example consumer of this functionality is
+  a trace viewer that can report logical operations spanning multiple
+  activities.
+</p>
+</div>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.Exception)">Verbose(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.Exception)">Verbose(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String)">Verbose(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String,System.Object[])">Verbose(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.String)">Verbose(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Verbose_" data-uid="Sharp.Diagnostics.Logging.Log.Verbose*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Verbose_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Verbose(System.String,System.Object[])">Verbose(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a verbose entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Verbose(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.Exception)">Warning(Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_Exception_" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.Exception)">Warning(Int32, Exception)</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(int id, Exception exception)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>An exception to report in the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String)">Warning(Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String,System.Object[])">Warning(Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(int id, string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_String_" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.String)">Warning(String)</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message for the entry.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Sharp_Diagnostics_Logging_Log_Warning_" data-uid="Sharp.Diagnostics.Logging.Log.Warning*"></a>
+  <h4 id="Sharp_Diagnostics_Logging_Log_Warning_System_String_System_Object___" data-uid="Sharp.Diagnostics.Logging.Log.Warning(System.String,System.Object[])">Warning(String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes a warning entry to the log.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void Warning(string format, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">format</span></td>
+        <td><p>A format string to build a message for the entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The objects to substitute into the format string.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is <span class="xref">null</span>.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.FormatException</span></td>
+        <td><p><code data-dev-comment-type="paramref" class="paramref">format</code> is invalid or
+specifies an argument position not present in <code data-dev-comment-type="paramref" class="paramref">args</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © 2022 Jeffrey Sharp
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

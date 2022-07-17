@@ -1,0 +1,2325 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: Sharp.Diagnostics.Logging
+  name: Sharp.Diagnostics.Logging
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html
+  commentId: N:Sharp.Diagnostics.Logging
+  fullName: Sharp.Diagnostics.Logging
+  nameWithType: Sharp.Diagnostics.Logging
+- uid: Sharp.Diagnostics.Logging.Log
+  name: Log
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html
+  commentId: T:Sharp.Diagnostics.Logging.Log
+  fullName: Sharp.Diagnostics.Logging.Log
+  nameWithType: Log
+- uid: Sharp.Diagnostics.Logging.Log.ActivityId
+  name: ActivityId
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_ActivityId
+  commentId: P:Sharp.Diagnostics.Logging.Log.ActivityId
+  fullName: Sharp.Diagnostics.Logging.Log.ActivityId
+  nameWithType: Log.ActivityId
+- uid: Sharp.Diagnostics.Logging.Log.ActivityId*
+  name: ActivityId
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_ActivityId_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.ActivityId
+  fullName: Sharp.Diagnostics.Logging.Log.ActivityId
+  nameWithType: Log.ActivityId
+- uid: Sharp.Diagnostics.Logging.Log.Close
+  name: Close()
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Close
+  commentId: M:Sharp.Diagnostics.Logging.Log.Close
+  fullName: Sharp.Diagnostics.Logging.Log.Close()
+  nameWithType: Log.Close()
+- uid: Sharp.Diagnostics.Logging.Log.Close*
+  name: Close
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Close_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Close
+  fullName: Sharp.Diagnostics.Logging.Log.Close
+  nameWithType: Log.Close
+- uid: Sharp.Diagnostics.Logging.Log.CloseOnExit
+  name: CloseOnExit
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_CloseOnExit
+  commentId: P:Sharp.Diagnostics.Logging.Log.CloseOnExit
+  fullName: Sharp.Diagnostics.Logging.Log.CloseOnExit
+  nameWithType: Log.CloseOnExit
+- uid: Sharp.Diagnostics.Logging.Log.CloseOnExit*
+  name: CloseOnExit
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_CloseOnExit_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.CloseOnExit
+  fullName: Sharp.Diagnostics.Logging.Log.CloseOnExit
+  nameWithType: Log.CloseOnExit
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.Exception)
+  name: Critical(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.Exception)
+  nameWithType: Log.Critical(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.Exception)
+  name: Critical(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.Int32, System.Exception)
+  nameWithType: Log.Critical(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String)
+  name: Critical(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.Int32, System.String)
+  nameWithType: Log.Critical(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String,System.Object[])
+  name: Critical(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.Int32,System.String,System.Object[])
+  name.vb: Critical(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Critical(System.Int32, System.String, System.Object())
+  nameWithType: Log.Critical(Int32, String, Object[])
+  nameWithType.vb: Log.Critical(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.String)
+  name: Critical(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.String)
+  nameWithType: Log.Critical(String)
+- uid: Sharp.Diagnostics.Logging.Log.Critical(System.String,System.Object[])
+  name: Critical(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Critical(System.String,System.Object[])
+  name.vb: Critical(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Critical(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Critical(System.String, System.Object())
+  nameWithType: Log.Critical(String, Object[])
+  nameWithType.vb: Log.Critical(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Critical*
+  name: Critical
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Critical_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Critical
+  fullName: Sharp.Diagnostics.Logging.Log.Critical
+  nameWithType: Log.Critical
+- uid: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object)
+  name: Data(TraceEventType, Int32, Object)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Int32_System_Object_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object)
+  fullName: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Int32, System.Object)
+  nameWithType: Log.Data(TraceEventType, Int32, Object)
+- uid: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object[])
+  name: Data(TraceEventType, Int32, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Int32_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Int32,System.Object[])
+  name.vb: Data(TraceEventType, Int32, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Int32, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Int32, System.Object())
+  nameWithType: Log.Data(TraceEventType, Int32, Object[])
+  nameWithType.vb: Log.Data(TraceEventType, Int32, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object)
+  name: Data(TraceEventType, Object)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Object_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object)
+  fullName: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Object)
+  nameWithType: Log.Data(TraceEventType, Object)
+- uid: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object[])
+  name: Data(TraceEventType, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Data_System_Diagnostics_TraceEventType_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType,System.Object[])
+  name.vb: Data(TraceEventType, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Data(System.Diagnostics.TraceEventType, System.Object())
+  nameWithType: Log.Data(TraceEventType, Object[])
+  nameWithType.vb: Log.Data(TraceEventType, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Data*
+  name: Data
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Data_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Data
+  fullName: Sharp.Diagnostics.Logging.Log.Data
+  nameWithType: Log.Data
+- uid: Sharp.Diagnostics.Logging.Log.Do(System.String,System.Action)
+  name: Do(String, Action)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Do_System_String_System_Action_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Do(System.String,System.Action)
+  fullName: Sharp.Diagnostics.Logging.Log.Do(System.String, System.Action)
+  nameWithType: Log.Do(String, Action)
+- uid: Sharp.Diagnostics.Logging.Log.Do*
+  name: Do
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Do_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Do
+  fullName: Sharp.Diagnostics.Logging.Log.Do
+  nameWithType: Log.Do
+- uid: Sharp.Diagnostics.Logging.Log.Do``1(System.String,System.Func{``0})
+  name: Do<T>(String, Func<T>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Do__1_System_String_System_Func___0__
+  commentId: M:Sharp.Diagnostics.Logging.Log.Do``1(System.String,System.Func{``0})
+  name.vb: Do(Of T)(String, Func(Of T))
+  fullName: Sharp.Diagnostics.Logging.Log.Do<T>(System.String, System.Func<T>)
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Do(Of T)(System.String, System.Func(Of T))
+  nameWithType: Log.Do<T>(String, Func<T>)
+  nameWithType.vb: Log.Do(Of T)(String, Func(Of T))
+- uid: Sharp.Diagnostics.Logging.Log.DoAsync(System.String,System.Func{System.Threading.Tasks.Task})
+  name: DoAsync(String, Func<Task>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_DoAsync_System_String_System_Func_System_Threading_Tasks_Task__
+  commentId: M:Sharp.Diagnostics.Logging.Log.DoAsync(System.String,System.Func{System.Threading.Tasks.Task})
+  name.vb: DoAsync(String, Func(Of Task))
+  fullName: Sharp.Diagnostics.Logging.Log.DoAsync(System.String, System.Func<System.Threading.Tasks.Task>)
+  fullName.vb: Sharp.Diagnostics.Logging.Log.DoAsync(System.String, System.Func(Of System.Threading.Tasks.Task))
+  nameWithType: Log.DoAsync(String, Func<Task>)
+  nameWithType.vb: Log.DoAsync(String, Func(Of Task))
+- uid: Sharp.Diagnostics.Logging.Log.DoAsync*
+  name: DoAsync
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_DoAsync_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.DoAsync
+  fullName: Sharp.Diagnostics.Logging.Log.DoAsync
+  nameWithType: Log.DoAsync
+- uid: Sharp.Diagnostics.Logging.Log.DoAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name: DoAsync<T>(String, Func<Task<T>>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_DoAsync__1_System_String_System_Func_System_Threading_Tasks_Task___0___
+  commentId: M:Sharp.Diagnostics.Logging.Log.DoAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name.vb: DoAsync(Of T)(String, Func(Of Task(Of T)))
+  fullName: Sharp.Diagnostics.Logging.Log.DoAsync<T>(System.String, System.Func<System.Threading.Tasks.Task<T>>)
+  fullName.vb: Sharp.Diagnostics.Logging.Log.DoAsync(Of T)(System.String, System.Func(Of System.Threading.Tasks.Task(Of T)))
+  nameWithType: Log.DoAsync<T>(String, Func<Task<T>>)
+  nameWithType.vb: Log.DoAsync(Of T)(String, Func(Of Task(Of T)))
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.Exception)
+  name: Error(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.Exception)
+  nameWithType: Log.Error(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.Exception)
+  name: Error(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.Int32, System.Exception)
+  nameWithType: Log.Error(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String)
+  name: Error(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.Int32, System.String)
+  nameWithType: Log.Error(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String,System.Object[])
+  name: Error(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.Int32,System.String,System.Object[])
+  name.vb: Error(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Error(System.Int32, System.String, System.Object())
+  nameWithType: Log.Error(Int32, String, Object[])
+  nameWithType.vb: Log.Error(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.String)
+  name: Error(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.String)
+  nameWithType: Log.Error(String)
+- uid: Sharp.Diagnostics.Logging.Log.Error(System.String,System.Object[])
+  name: Error(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Error(System.String,System.Object[])
+  name.vb: Error(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Error(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Error(System.String, System.Object())
+  nameWithType: Log.Error(String, Object[])
+  nameWithType.vb: Log.Error(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Error*
+  name: Error
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Error_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Error
+  fullName: Sharp.Diagnostics.Logging.Log.Error
+  nameWithType: Log.Error
+- uid: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32)
+  name: Event(TraceEventType, Int32)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32)
+  fullName: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.Int32)
+  nameWithType: Log.Event(TraceEventType, Int32)
+- uid: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String)
+  name: Event(TraceEventType, Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.Int32, System.String)
+  nameWithType: Log.Event(TraceEventType, Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])
+  name: Event(TraceEventType, Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])
+  name.vb: Event(TraceEventType, Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.Int32, System.String, System.Object())
+  nameWithType: Log.Event(TraceEventType, Int32, String, Object[])
+  nameWithType.vb: Log.Event(TraceEventType, Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String)
+  name: Event(TraceEventType, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.String)
+  nameWithType: Log.Event(TraceEventType, String)
+- uid: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String,System.Object[])
+  name: Event(TraceEventType, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_System_Diagnostics_TraceEventType_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType,System.String,System.Object[])
+  name.vb: Event(TraceEventType, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Event(System.Diagnostics.TraceEventType, System.String, System.Object())
+  nameWithType: Log.Event(TraceEventType, String, Object[])
+  nameWithType.vb: Log.Event(TraceEventType, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Event*
+  name: Event
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Event_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Event
+  fullName: Sharp.Diagnostics.Logging.Log.Event
+  nameWithType: Log.Event
+- uid: Sharp.Diagnostics.Logging.Log.Flush
+  name: Flush()
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Flush
+  commentId: M:Sharp.Diagnostics.Logging.Log.Flush
+  fullName: Sharp.Diagnostics.Logging.Log.Flush()
+  nameWithType: Log.Flush()
+- uid: Sharp.Diagnostics.Logging.Log.Flush*
+  name: Flush
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Flush_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Flush
+  fullName: Sharp.Diagnostics.Logging.Log.Flush
+  nameWithType: Log.Flush
+- uid: Sharp.Diagnostics.Logging.Log.GetOperationStack
+  name: GetOperationStack()
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_GetOperationStack
+  commentId: M:Sharp.Diagnostics.Logging.Log.GetOperationStack
+  fullName: Sharp.Diagnostics.Logging.Log.GetOperationStack()
+  nameWithType: Log.GetOperationStack()
+- uid: Sharp.Diagnostics.Logging.Log.GetOperationStack*
+  name: GetOperationStack
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_GetOperationStack_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.GetOperationStack
+  fullName: Sharp.Diagnostics.Logging.Log.GetOperationStack
+  nameWithType: Log.GetOperationStack
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.Exception)
+  name: Information(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.Exception)
+  nameWithType: Log.Information(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.Exception)
+  name: Information(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.Int32, System.Exception)
+  nameWithType: Log.Information(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String)
+  name: Information(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.Int32, System.String)
+  nameWithType: Log.Information(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String,System.Object[])
+  name: Information(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.Int32,System.String,System.Object[])
+  name.vb: Information(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Information(System.Int32, System.String, System.Object())
+  nameWithType: Log.Information(Int32, String, Object[])
+  nameWithType.vb: Log.Information(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.String)
+  name: Information(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.String)
+  nameWithType: Log.Information(String)
+- uid: Sharp.Diagnostics.Logging.Log.Information(System.String,System.Object[])
+  name: Information(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Information(System.String,System.Object[])
+  name.vb: Information(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Information(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Information(System.String, System.Object())
+  nameWithType: Log.Information(String, Object[])
+  nameWithType.vb: Log.Information(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Information*
+  name: Information
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Information_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Information
+  fullName: Sharp.Diagnostics.Logging.Log.Information
+  nameWithType: Log.Information
+- uid: Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions
+  name: LogAllThrownExceptions
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_LogAllThrownExceptions
+  commentId: P:Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions
+  fullName: Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions
+  nameWithType: Log.LogAllThrownExceptions
+- uid: Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions*
+  name: LogAllThrownExceptions
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_LogAllThrownExceptions_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions
+  fullName: Sharp.Diagnostics.Logging.Log.LogAllThrownExceptions
+  nameWithType: Log.LogAllThrownExceptions
+- uid: Sharp.Diagnostics.Logging.Log.Logger
+  name: Logger
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Logger
+  commentId: P:Sharp.Diagnostics.Logging.Log.Logger
+  fullName: Sharp.Diagnostics.Logging.Log.Logger
+  nameWithType: Log.Logger
+- uid: Sharp.Diagnostics.Logging.Log.Logger*
+  name: Logger
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Logger_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Logger
+  fullName: Sharp.Diagnostics.Logging.Log.Logger
+  nameWithType: Log.Logger
+- uid: Sharp.Diagnostics.Logging.Log.Operation(System.String)
+  name: Operation(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Operation_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Operation(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Operation(System.String)
+  nameWithType: Log.Operation(String)
+- uid: Sharp.Diagnostics.Logging.Log.Operation*
+  name: Operation
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Operation_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Operation
+  fullName: Sharp.Diagnostics.Logging.Log.Operation
+  nameWithType: Log.Operation
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.Exception)
+  name: Resume(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.Exception)
+  nameWithType: Log.Resume(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.Exception)
+  name: Resume(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.Int32, System.Exception)
+  nameWithType: Log.Resume(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String)
+  name: Resume(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.Int32, System.String)
+  nameWithType: Log.Resume(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String,System.Object[])
+  name: Resume(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.Int32,System.String,System.Object[])
+  name.vb: Resume(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Resume(System.Int32, System.String, System.Object())
+  nameWithType: Log.Resume(Int32, String, Object[])
+  nameWithType.vb: Log.Resume(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.String)
+  name: Resume(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.String)
+  nameWithType: Log.Resume(String)
+- uid: Sharp.Diagnostics.Logging.Log.Resume(System.String,System.Object[])
+  name: Resume(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Resume(System.String,System.Object[])
+  name.vb: Resume(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Resume(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Resume(System.String, System.Object())
+  nameWithType: Log.Resume(String, Object[])
+  nameWithType.vb: Log.Resume(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Resume*
+  name: Resume
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Resume_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Resume
+  fullName: Sharp.Diagnostics.Logging.Log.Resume
+  nameWithType: Log.Resume
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.Exception)
+  name: Start(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.Exception)
+  nameWithType: Log.Start(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.Exception)
+  name: Start(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.Int32, System.Exception)
+  nameWithType: Log.Start(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String)
+  name: Start(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.Int32, System.String)
+  nameWithType: Log.Start(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String,System.Object[])
+  name: Start(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.Int32,System.String,System.Object[])
+  name.vb: Start(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Start(System.Int32, System.String, System.Object())
+  nameWithType: Log.Start(Int32, String, Object[])
+  nameWithType.vb: Log.Start(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.String)
+  name: Start(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.String)
+  nameWithType: Log.Start(String)
+- uid: Sharp.Diagnostics.Logging.Log.Start(System.String,System.Object[])
+  name: Start(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Start(System.String,System.Object[])
+  name.vb: Start(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Start(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Start(System.String, System.Object())
+  nameWithType: Log.Start(String, Object[])
+  nameWithType.vb: Log.Start(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Start*
+  name: Start
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Start_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Start
+  fullName: Sharp.Diagnostics.Logging.Log.Start
+  nameWithType: Log.Start
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.Exception)
+  name: Stop(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.Exception)
+  nameWithType: Log.Stop(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.Exception)
+  name: Stop(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.Int32, System.Exception)
+  nameWithType: Log.Stop(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String)
+  name: Stop(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.Int32, System.String)
+  nameWithType: Log.Stop(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String,System.Object[])
+  name: Stop(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.Int32,System.String,System.Object[])
+  name.vb: Stop(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Stop(System.Int32, System.String, System.Object())
+  nameWithType: Log.Stop(Int32, String, Object[])
+  nameWithType.vb: Log.Stop(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.String)
+  name: Stop(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.String)
+  nameWithType: Log.Stop(String)
+- uid: Sharp.Diagnostics.Logging.Log.Stop(System.String,System.Object[])
+  name: Stop(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Stop(System.String,System.Object[])
+  name.vb: Stop(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Stop(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Stop(System.String, System.Object())
+  nameWithType: Log.Stop(String, Object[])
+  nameWithType.vb: Log.Stop(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Stop*
+  name: Stop
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Stop_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Stop
+  fullName: Sharp.Diagnostics.Logging.Log.Stop
+  nameWithType: Log.Stop
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.Exception)
+  name: Suspend(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.Exception)
+  nameWithType: Log.Suspend(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.Exception)
+  name: Suspend(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32, System.Exception)
+  nameWithType: Log.Suspend(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String)
+  name: Suspend(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32, System.String)
+  nameWithType: Log.Suspend(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String,System.Object[])
+  name: Suspend(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.Int32,System.String,System.Object[])
+  name.vb: Suspend(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Suspend(System.Int32, System.String, System.Object())
+  nameWithType: Log.Suspend(Int32, String, Object[])
+  nameWithType.vb: Log.Suspend(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.String)
+  name: Suspend(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.String)
+  nameWithType: Log.Suspend(String)
+- uid: Sharp.Diagnostics.Logging.Log.Suspend(System.String,System.Object[])
+  name: Suspend(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Suspend(System.String,System.Object[])
+  name.vb: Suspend(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Suspend(System.String, System.Object())
+  nameWithType: Log.Suspend(String, Object[])
+  nameWithType.vb: Log.Suspend(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Suspend*
+  name: Suspend
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Suspend_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Suspend
+  fullName: Sharp.Diagnostics.Logging.Log.Suspend
+  nameWithType: Log.Suspend
+- uid: Sharp.Diagnostics.Logging.Log.Transfer(System.Int32,System.String,System.Guid)
+  name: Transfer(Int32, String, Guid)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Transfer_System_Int32_System_String_System_Guid_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Transfer(System.Int32,System.String,System.Guid)
+  fullName: Sharp.Diagnostics.Logging.Log.Transfer(System.Int32, System.String, System.Guid)
+  nameWithType: Log.Transfer(Int32, String, Guid)
+- uid: Sharp.Diagnostics.Logging.Log.Transfer(System.String,System.Guid)
+  name: Transfer(String, Guid)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Transfer_System_String_System_Guid_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Transfer(System.String,System.Guid)
+  fullName: Sharp.Diagnostics.Logging.Log.Transfer(System.String, System.Guid)
+  nameWithType: Log.Transfer(String, Guid)
+- uid: Sharp.Diagnostics.Logging.Log.Transfer*
+  name: Transfer
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Transfer_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Transfer
+  fullName: Sharp.Diagnostics.Logging.Log.Transfer
+  nameWithType: Log.Transfer
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.Exception)
+  name: Verbose(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.Exception)
+  nameWithType: Log.Verbose(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.Exception)
+  name: Verbose(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32, System.Exception)
+  nameWithType: Log.Verbose(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String)
+  name: Verbose(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32, System.String)
+  nameWithType: Log.Verbose(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String,System.Object[])
+  name: Verbose(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.Int32,System.String,System.Object[])
+  name.vb: Verbose(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Verbose(System.Int32, System.String, System.Object())
+  nameWithType: Log.Verbose(Int32, String, Object[])
+  nameWithType.vb: Log.Verbose(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.String)
+  name: Verbose(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.String)
+  nameWithType: Log.Verbose(String)
+- uid: Sharp.Diagnostics.Logging.Log.Verbose(System.String,System.Object[])
+  name: Verbose(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Verbose(System.String,System.Object[])
+  name.vb: Verbose(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Verbose(System.String, System.Object())
+  nameWithType: Log.Verbose(String, Object[])
+  nameWithType.vb: Log.Verbose(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Verbose*
+  name: Verbose
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Verbose_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Verbose
+  fullName: Sharp.Diagnostics.Logging.Log.Verbose
+  nameWithType: Log.Verbose
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.Exception)
+  name: Warning(Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.Exception)
+  nameWithType: Log.Warning(Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.Exception)
+  name: Warning(Int32, Exception)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_Exception_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.Exception)
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.Int32, System.Exception)
+  nameWithType: Log.Warning(Int32, Exception)
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String)
+  name: Warning(Int32, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.Int32, System.String)
+  nameWithType: Log.Warning(Int32, String)
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String,System.Object[])
+  name: Warning(Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_Int32_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.Int32,System.String,System.Object[])
+  name.vb: Warning(Int32, String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.Int32, System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Warning(System.Int32, System.String, System.Object())
+  nameWithType: Log.Warning(Int32, String, Object[])
+  nameWithType.vb: Log.Warning(Int32, String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.String)
+  name: Warning(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.String)
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.String)
+  nameWithType: Log.Warning(String)
+- uid: Sharp.Diagnostics.Logging.Log.Warning(System.String,System.Object[])
+  name: Warning(String, Object[])
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_System_String_System_Object___
+  commentId: M:Sharp.Diagnostics.Logging.Log.Warning(System.String,System.Object[])
+  name.vb: Warning(String, Object())
+  fullName: Sharp.Diagnostics.Logging.Log.Warning(System.String, System.Object[])
+  fullName.vb: Sharp.Diagnostics.Logging.Log.Warning(System.String, System.Object())
+  nameWithType: Log.Warning(String, Object[])
+  nameWithType.vb: Log.Warning(String, Object())
+- uid: Sharp.Diagnostics.Logging.Log.Warning*
+  name: Warning
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html#Sharp_Diagnostics_Logging_Log_Warning_
+  commentId: Overload:Sharp.Diagnostics.Logging.Log.Warning
+  fullName: Sharp.Diagnostics.Logging.Log.Warning
+  nameWithType: Log.Warning
+- uid: Sharp.Diagnostics.Logging.TraceOperation
+  name: TraceOperation
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html
+  commentId: T:Sharp.Diagnostics.Logging.TraceOperation
+  fullName: Sharp.Diagnostics.Logging.TraceOperation
+  nameWithType: TraceOperation
+- uid: Sharp.Diagnostics.Logging.TraceOperation.#ctor(System.Diagnostics.TraceSource,System.String)
+  name: TraceOperation(TraceSource, String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation__ctor_System_Diagnostics_TraceSource_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.#ctor(System.Diagnostics.TraceSource,System.String)
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.TraceOperation(System.Diagnostics.TraceSource, System.String)
+  nameWithType: TraceOperation.TraceOperation(TraceSource, String)
+- uid: Sharp.Diagnostics.Logging.TraceOperation.#ctor(System.String)
+  name: TraceOperation(String)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation__ctor_System_String_
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.#ctor(System.String)
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.TraceOperation(System.String)
+  nameWithType: TraceOperation.TraceOperation(String)
+- uid: Sharp.Diagnostics.Logging.TraceOperation.#ctor*
+  name: TraceOperation
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation__ctor_
+  commentId: Overload:Sharp.Diagnostics.Logging.TraceOperation.#ctor
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.TraceOperation
+  nameWithType: TraceOperation.TraceOperation
+- uid: Sharp.Diagnostics.Logging.TraceOperation.Do(System.Diagnostics.TraceSource,System.String,System.Action)
+  name: Do(TraceSource, String, Action)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_Do_System_Diagnostics_TraceSource_System_String_System_Action_
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.Do(System.Diagnostics.TraceSource,System.String,System.Action)
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.Do(System.Diagnostics.TraceSource, System.String, System.Action)
+  nameWithType: TraceOperation.Do(TraceSource, String, Action)
+- uid: Sharp.Diagnostics.Logging.TraceOperation.Do(System.String,System.Action)
+  name: Do(String, Action)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_Do_System_String_System_Action_
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.Do(System.String,System.Action)
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.Do(System.String, System.Action)
+  nameWithType: TraceOperation.Do(String, Action)
+- uid: Sharp.Diagnostics.Logging.TraceOperation.Do*
+  name: Do
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_Do_
+  commentId: Overload:Sharp.Diagnostics.Logging.TraceOperation.Do
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.Do
+  nameWithType: TraceOperation.Do
+- uid: Sharp.Diagnostics.Logging.TraceOperation.Do``1(System.Diagnostics.TraceSource,System.String,System.Func{``0})
+  name: Do<TResult>(TraceSource, String, Func<TResult>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_Do__1_System_Diagnostics_TraceSource_System_String_System_Func___0__
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.Do``1(System.Diagnostics.TraceSource,System.String,System.Func{``0})
+  name.vb: Do(Of TResult)(TraceSource, String, Func(Of TResult))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.Do<TResult>(System.Diagnostics.TraceSource, System.String, System.Func<TResult>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.Do(Of TResult)(System.Diagnostics.TraceSource, System.String, System.Func(Of TResult))
+  nameWithType: TraceOperation.Do<TResult>(TraceSource, String, Func<TResult>)
+  nameWithType.vb: TraceOperation.Do(Of TResult)(TraceSource, String, Func(Of TResult))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.Do``1(System.String,System.Func{``0})
+  name: Do<TResult>(String, Func<TResult>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_Do__1_System_String_System_Func___0__
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.Do``1(System.String,System.Func{``0})
+  name.vb: Do(Of TResult)(String, Func(Of TResult))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.Do<TResult>(System.String, System.Func<TResult>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.Do(Of TResult)(System.String, System.Func(Of TResult))
+  nameWithType: TraceOperation.Do<TResult>(String, Func<TResult>)
+  nameWithType.vb: TraceOperation.Do(Of TResult)(String, Func(Of TResult))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.Diagnostics.TraceSource,System.String,System.Func{System.Threading.Tasks.Task})
+  name: DoAsync(TraceSource, String, Func<Task>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_DoAsync_System_Diagnostics_TraceSource_System_String_System_Func_System_Threading_Tasks_Task__
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.Diagnostics.TraceSource,System.String,System.Func{System.Threading.Tasks.Task})
+  name.vb: DoAsync(TraceSource, String, Func(Of Task))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.Diagnostics.TraceSource, System.String, System.Func<System.Threading.Tasks.Task>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.Diagnostics.TraceSource, System.String, System.Func(Of System.Threading.Tasks.Task))
+  nameWithType: TraceOperation.DoAsync(TraceSource, String, Func<Task>)
+  nameWithType.vb: TraceOperation.DoAsync(TraceSource, String, Func(Of Task))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.String,System.Func{System.Threading.Tasks.Task})
+  name: DoAsync(String, Func<Task>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_DoAsync_System_String_System_Func_System_Threading_Tasks_Task__
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.String,System.Func{System.Threading.Tasks.Task})
+  name.vb: DoAsync(String, Func(Of Task))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.String, System.Func<System.Threading.Tasks.Task>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(System.String, System.Func(Of System.Threading.Tasks.Task))
+  nameWithType: TraceOperation.DoAsync(String, Func<Task>)
+  nameWithType.vb: TraceOperation.DoAsync(String, Func(Of Task))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.DoAsync*
+  name: DoAsync
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_DoAsync_
+  commentId: Overload:Sharp.Diagnostics.Logging.TraceOperation.DoAsync
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.DoAsync
+  nameWithType: TraceOperation.DoAsync
+- uid: Sharp.Diagnostics.Logging.TraceOperation.DoAsync``1(System.Diagnostics.TraceSource,System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name: DoAsync<TResult>(TraceSource, String, Func<Task<TResult>>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_DoAsync__1_System_Diagnostics_TraceSource_System_String_System_Func_System_Threading_Tasks_Task___0___
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.DoAsync``1(System.Diagnostics.TraceSource,System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name.vb: DoAsync(Of TResult)(TraceSource, String, Func(Of Task(Of TResult)))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.DoAsync<TResult>(System.Diagnostics.TraceSource, System.String, System.Func<System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(Of TResult)(System.Diagnostics.TraceSource, System.String, System.Func(Of System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: TraceOperation.DoAsync<TResult>(TraceSource, String, Func<Task<TResult>>)
+  nameWithType.vb: TraceOperation.DoAsync(Of TResult)(TraceSource, String, Func(Of Task(Of TResult)))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.DoAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name: DoAsync<TResult>(String, Func<Task<TResult>>)
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_DoAsync__1_System_String_System_Func_System_Threading_Tasks_Task___0___
+  commentId: M:Sharp.Diagnostics.Logging.TraceOperation.DoAsync``1(System.String,System.Func{System.Threading.Tasks.Task{``0}})
+  name.vb: DoAsync(Of TResult)(String, Func(Of Task(Of TResult)))
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.DoAsync<TResult>(System.String, System.Func<System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Sharp.Diagnostics.Logging.TraceOperation.DoAsync(Of TResult)(System.String, System.Func(Of System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: TraceOperation.DoAsync<TResult>(String, Func<Task<TResult>>)
+  nameWithType.vb: TraceOperation.DoAsync(Of TResult)(String, Func(Of Task(Of TResult)))
+- uid: Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime
+  name: ElapsedTime
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_ElapsedTime
+  commentId: P:Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime
+  nameWithType: TraceOperation.ElapsedTime
+- uid: Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime*
+  name: ElapsedTime
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_ElapsedTime_
+  commentId: Overload:Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.ElapsedTime
+  nameWithType: TraceOperation.ElapsedTime
+- uid: Sharp.Diagnostics.Logging.TraceOperation.StartTime
+  name: StartTime
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_StartTime
+  commentId: P:Sharp.Diagnostics.Logging.TraceOperation.StartTime
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.StartTime
+  nameWithType: TraceOperation.StartTime
+- uid: Sharp.Diagnostics.Logging.TraceOperation.StartTime*
+  name: StartTime
+  href: api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html#Sharp_Diagnostics_Logging_TraceOperation_StartTime_
+  commentId: Overload:Sharp.Diagnostics.Logging.TraceOperation.StartTime
+  fullName: Sharp.Diagnostics.Logging.TraceOperation.StartTime
+  nameWithType: TraceOperation.StartTime
+- uid: Subatomix.Logging
+  name: Subatomix.Logging
+  href: api/Subatomix.Logging/Subatomix.Logging.html
+  commentId: N:Subatomix.Logging
+  fullName: Subatomix.Logging
+  nameWithType: Subatomix.Logging
+- uid: Subatomix.Logging.ActivityScope
+  name: ActivityScope
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html
+  commentId: T:Subatomix.Logging.ActivityScope
+  fullName: Subatomix.Logging.ActivityScope
+  nameWithType: ActivityScope
+- uid: Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  name: ActivityScope(ILogger, LogLevel, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_
+  commentId: M:Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  fullName: Subatomix.Logging.ActivityScope.ActivityScope(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String)
+  nameWithType: ActivityScope.ActivityScope(ILogger, LogLevel, String)
+- uid: Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)
+  name: ActivityScope(ILogger, LogLevel, String, Boolean)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_System_Boolean_
+  commentId: M:Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)
+  fullName: Subatomix.Logging.ActivityScope.ActivityScope(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String, System.Boolean)
+  nameWithType: ActivityScope.ActivityScope(ILogger, LogLevel, String, Boolean)
+- uid: Subatomix.Logging.ActivityScope.#ctor*
+  name: ActivityScope
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope__ctor_
+  commentId: Overload:Subatomix.Logging.ActivityScope.#ctor
+  fullName: Subatomix.Logging.ActivityScope.ActivityScope
+  nameWithType: ActivityScope.ActivityScope
+- uid: Subatomix.Logging.ActivityScope.Activity
+  name: Activity
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Activity
+  commentId: P:Subatomix.Logging.ActivityScope.Activity
+  fullName: Subatomix.Logging.ActivityScope.Activity
+  nameWithType: ActivityScope.Activity
+- uid: Subatomix.Logging.ActivityScope.Activity*
+  name: Activity
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Activity_
+  commentId: Overload:Subatomix.Logging.ActivityScope.Activity
+  fullName: Subatomix.Logging.ActivityScope.Activity
+  nameWithType: ActivityScope.Activity
+- uid: Subatomix.Logging.ActivityScope.Start
+  name: Start()
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Start
+  commentId: M:Subatomix.Logging.ActivityScope.Start
+  fullName: Subatomix.Logging.ActivityScope.Start()
+  nameWithType: ActivityScope.Start()
+- uid: Subatomix.Logging.ActivityScope.Start*
+  name: Start
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Start_
+  commentId: Overload:Subatomix.Logging.ActivityScope.Start
+  fullName: Subatomix.Logging.ActivityScope.Start
+  nameWithType: ActivityScope.Start
+- uid: Subatomix.Logging.ActivityScope.Stop
+  name: Stop()
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Stop
+  commentId: M:Subatomix.Logging.ActivityScope.Stop
+  fullName: Subatomix.Logging.ActivityScope.Stop()
+  nameWithType: ActivityScope.Stop()
+- uid: Subatomix.Logging.ActivityScope.Stop*
+  name: Stop
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html#Subatomix_Logging_ActivityScope_Stop_
+  commentId: Overload:Subatomix.Logging.ActivityScope.Stop
+  fullName: Subatomix.Logging.ActivityScope.Stop
+  nameWithType: ActivityScope.Stop
+- uid: Subatomix.Logging.ActivityScopeInitiator
+  name: ActivityScopeInitiator
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html
+  commentId: T:Subatomix.Logging.ActivityScopeInitiator
+  fullName: Subatomix.Logging.ActivityScopeInitiator
+  nameWithType: ActivityScopeInitiator
+- uid: Subatomix.Logging.ActivityScopeInitiator.Begin
+  name: Begin()
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Begin
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Begin
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Begin()
+  nameWithType: ActivityScopeInitiator.Begin()
+- uid: Subatomix.Logging.ActivityScopeInitiator.Begin*
+  name: Begin
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Begin_
+  commentId: Overload:Subatomix.Logging.ActivityScopeInitiator.Begin
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Begin
+  nameWithType: ActivityScopeInitiator.Begin
+- uid: Subatomix.Logging.ActivityScopeInitiator.Do(System.Action)
+  name: Do(Action)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Do_System_Action_
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Do(System.Action)
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Do(System.Action)
+  nameWithType: ActivityScopeInitiator.Do(Action)
+- uid: Subatomix.Logging.ActivityScopeInitiator.Do*
+  name: Do
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Do_
+  commentId: Overload:Subatomix.Logging.ActivityScopeInitiator.Do
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Do
+  nameWithType: ActivityScopeInitiator.Do
+- uid: Subatomix.Logging.ActivityScopeInitiator.Do``1(``0,System.Action{``0})
+  name: Do<T>(T, Action<T>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Do__1___0_System_Action___0__
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Do``1(``0,System.Action{``0})
+  name.vb: Do(Of T)(T, Action(Of T))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Do<T>(T, System.Action<T>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.Do(Of T)(T, System.Action(Of T))
+  nameWithType: ActivityScopeInitiator.Do<T>(T, Action<T>)
+  nameWithType.vb: ActivityScopeInitiator.Do(Of T)(T, Action(Of T))
+- uid: Subatomix.Logging.ActivityScopeInitiator.Do``1(System.Func{``0})
+  name: Do<TResult>(Func<TResult>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Do__1_System_Func___0__
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Do``1(System.Func{``0})
+  name.vb: Do(Of TResult)(Func(Of TResult))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Do<TResult>(System.Func<TResult>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.Do(Of TResult)(System.Func(Of TResult))
+  nameWithType: ActivityScopeInitiator.Do<TResult>(Func<TResult>)
+  nameWithType.vb: ActivityScopeInitiator.Do(Of TResult)(Func(Of TResult))
+- uid: Subatomix.Logging.ActivityScopeInitiator.Do``2(``0,System.Func{``0,``1})
+  name: Do<T, TResult>(T, Func<T, TResult>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Do__2___0_System_Func___0___1__
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Do``2(``0,System.Func{``0,``1})
+  name.vb: Do(Of T, TResult)(T, Func(Of T, TResult))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Do<T, TResult>(T, System.Func<T, TResult>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.Do(Of T, TResult)(T, System.Func(Of T, TResult))
+  nameWithType: ActivityScopeInitiator.Do<T, TResult>(T, Func<T, TResult>)
+  nameWithType.vb: ActivityScopeInitiator.Do(Of T, TResult)(T, Func(Of T, TResult))
+- uid: Subatomix.Logging.ActivityScopeInitiator.DoAsync(System.Func{System.Threading.Tasks.Task})
+  name: DoAsync(Func<Task>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_DoAsync_System_Func_System_Threading_Tasks_Task__
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.DoAsync(System.Func{System.Threading.Tasks.Task})
+  name.vb: DoAsync(Func(Of Task))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.DoAsync(System.Func<System.Threading.Tasks.Task>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.DoAsync(System.Func(Of System.Threading.Tasks.Task))
+  nameWithType: ActivityScopeInitiator.DoAsync(Func<Task>)
+  nameWithType.vb: ActivityScopeInitiator.DoAsync(Func(Of Task))
+- uid: Subatomix.Logging.ActivityScopeInitiator.DoAsync*
+  name: DoAsync
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_DoAsync_
+  commentId: Overload:Subatomix.Logging.ActivityScopeInitiator.DoAsync
+  fullName: Subatomix.Logging.ActivityScopeInitiator.DoAsync
+  nameWithType: ActivityScopeInitiator.DoAsync
+- uid: Subatomix.Logging.ActivityScopeInitiator.DoAsync``1(``0,System.Func{``0,System.Threading.Tasks.Task})
+  name: DoAsync<T>(T, Func<T, Task>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_DoAsync__1___0_System_Func___0_System_Threading_Tasks_Task__
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.DoAsync``1(``0,System.Func{``0,System.Threading.Tasks.Task})
+  name.vb: DoAsync(Of T)(T, Func(Of T, Task))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.DoAsync<T>(T, System.Func<T, System.Threading.Tasks.Task>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.DoAsync(Of T)(T, System.Func(Of T, System.Threading.Tasks.Task))
+  nameWithType: ActivityScopeInitiator.DoAsync<T>(T, Func<T, Task>)
+  nameWithType.vb: ActivityScopeInitiator.DoAsync(Of T)(T, Func(Of T, Task))
+- uid: Subatomix.Logging.ActivityScopeInitiator.DoAsync``1(System.Func{System.Threading.Tasks.Task{``0}})
+  name: DoAsync<TResult>(Func<Task<TResult>>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_DoAsync__1_System_Func_System_Threading_Tasks_Task___0___
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.DoAsync``1(System.Func{System.Threading.Tasks.Task{``0}})
+  name.vb: DoAsync(Of TResult)(Func(Of Task(Of TResult)))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.DoAsync<TResult>(System.Func<System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.DoAsync(Of TResult)(System.Func(Of System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: ActivityScopeInitiator.DoAsync<TResult>(Func<Task<TResult>>)
+  nameWithType.vb: ActivityScopeInitiator.DoAsync(Of TResult)(Func(Of Task(Of TResult)))
+- uid: Subatomix.Logging.ActivityScopeInitiator.DoAsync``2(``0,System.Func{``0,System.Threading.Tasks.Task{``1}})
+  name: DoAsync<T, TResult>(T, Func<T, Task<TResult>>)
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_DoAsync__2___0_System_Func___0_System_Threading_Tasks_Task___1___
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.DoAsync``2(``0,System.Func{``0,System.Threading.Tasks.Task{``1}})
+  name.vb: DoAsync(Of T, TResult)(T, Func(Of T, Task(Of TResult)))
+  fullName: Subatomix.Logging.ActivityScopeInitiator.DoAsync<T, TResult>(T, System.Func<T, System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Subatomix.Logging.ActivityScopeInitiator.DoAsync(Of T, TResult)(T, System.Func(Of T, System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: ActivityScopeInitiator.DoAsync<T, TResult>(T, Func<T, Task<TResult>>)
+  nameWithType.vb: ActivityScopeInitiator.DoAsync(Of T, TResult)(T, Func(Of T, Task(Of TResult)))
+- uid: Subatomix.Logging.ActivityScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name: IFluent.GetType()
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Subatomix_Logging_IFluent_GetType
+  commentId: M:Subatomix.Logging.ActivityScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name.vb: Subatomix.Logging.IFluent.GetType()
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Subatomix.Logging.IFluent.GetType()
+  nameWithType: ActivityScopeInitiator.IFluent.GetType()
+  nameWithType.vb: ActivityScopeInitiator.Subatomix.Logging.IFluent.GetType()
+- uid: Subatomix.Logging.ActivityScopeInitiator.Subatomix#Logging#IFluent#GetType*
+  name: IFluent.GetType
+  href: api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html#Subatomix_Logging_ActivityScopeInitiator_Subatomix_Logging_IFluent_GetType_
+  commentId: Overload:Subatomix.Logging.ActivityScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name.vb: Subatomix.Logging.IFluent.GetType
+  fullName: Subatomix.Logging.ActivityScopeInitiator.Subatomix.Logging.IFluent.GetType
+  nameWithType: ActivityScopeInitiator.IFluent.GetType
+  nameWithType.vb: ActivityScopeInitiator.Subatomix.Logging.IFluent.GetType
+- uid: Subatomix.Logging.Console
+  name: Subatomix.Logging.Console
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.html
+  commentId: N:Subatomix.Logging.Console
+  fullName: Subatomix.Logging.Console
+  nameWithType: Subatomix.Logging.Console
+- uid: Subatomix.Logging.Console.ConsoleContext
+  name: ConsoleContext
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html
+  commentId: T:Subatomix.Logging.Console.ConsoleContext
+  fullName: Subatomix.Logging.Console.ConsoleContext
+  nameWithType: ConsoleContext
+- uid: Subatomix.Logging.Console.ConsoleContext.#ctor(System.String)
+  name: ConsoleContext(String)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext__ctor_System_String_
+  commentId: M:Subatomix.Logging.Console.ConsoleContext.#ctor(System.String)
+  fullName: Subatomix.Logging.Console.ConsoleContext.ConsoleContext(System.String)
+  nameWithType: ConsoleContext.ConsoleContext(String)
+- uid: Subatomix.Logging.Console.ConsoleContext.#ctor*
+  name: ConsoleContext
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext__ctor_
+  commentId: Overload:Subatomix.Logging.Console.ConsoleContext.#ctor
+  fullName: Subatomix.Logging.Console.ConsoleContext.ConsoleContext
+  nameWithType: ConsoleContext.ConsoleContext
+- uid: Subatomix.Logging.Console.ConsoleContext.DefaultCode
+  name: DefaultCode
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext_DefaultCode
+  commentId: P:Subatomix.Logging.Console.ConsoleContext.DefaultCode
+  fullName: Subatomix.Logging.Console.ConsoleContext.DefaultCode
+  nameWithType: ConsoleContext.DefaultCode
+- uid: Subatomix.Logging.Console.ConsoleContext.DefaultCode*
+  name: DefaultCode
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext_DefaultCode_
+  commentId: Overload:Subatomix.Logging.Console.ConsoleContext.DefaultCode
+  fullName: Subatomix.Logging.Console.ConsoleContext.DefaultCode
+  nameWithType: ConsoleContext.DefaultCode
+- uid: Subatomix.Logging.Console.ConsoleContext.IsColorEnabled
+  name: IsColorEnabled
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext_IsColorEnabled
+  commentId: P:Subatomix.Logging.Console.ConsoleContext.IsColorEnabled
+  fullName: Subatomix.Logging.Console.ConsoleContext.IsColorEnabled
+  nameWithType: ConsoleContext.IsColorEnabled
+- uid: Subatomix.Logging.Console.ConsoleContext.IsColorEnabled*
+  name: IsColorEnabled
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html#Subatomix_Logging_Console_ConsoleContext_IsColorEnabled_
+  commentId: Overload:Subatomix.Logging.Console.ConsoleContext.IsColorEnabled
+  fullName: Subatomix.Logging.Console.ConsoleContext.IsColorEnabled
+  nameWithType: ConsoleContext.IsColorEnabled
+- uid: Subatomix.Logging.Console.IConsoleFormattable
+  name: IConsoleFormattable
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html
+  commentId: T:Subatomix.Logging.Console.IConsoleFormattable
+  fullName: Subatomix.Logging.Console.IConsoleFormattable
+  nameWithType: IConsoleFormattable
+- uid: Subatomix.Logging.Console.IConsoleFormattable.Write(System.IO.TextWriter,Subatomix.Logging.Console.ConsoleContext)
+  name: Write(TextWriter, ConsoleContext)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html#Subatomix_Logging_Console_IConsoleFormattable_Write_System_IO_TextWriter_Subatomix_Logging_Console_ConsoleContext_
+  commentId: M:Subatomix.Logging.Console.IConsoleFormattable.Write(System.IO.TextWriter,Subatomix.Logging.Console.ConsoleContext)
+  fullName: Subatomix.Logging.Console.IConsoleFormattable.Write(System.IO.TextWriter, Subatomix.Logging.Console.ConsoleContext)
+  nameWithType: IConsoleFormattable.Write(TextWriter, ConsoleContext)
+- uid: Subatomix.Logging.Console.IConsoleFormattable.Write*
+  name: Write
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html#Subatomix_Logging_Console_IConsoleFormattable_Write_
+  commentId: Overload:Subatomix.Logging.Console.IConsoleFormattable.Write
+  fullName: Subatomix.Logging.Console.IConsoleFormattable.Write
+  nameWithType: IConsoleFormattable.Write
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter
+  name: PrettyConsoleFormatter
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html
+  commentId: T:Subatomix.Logging.Console.PrettyConsoleFormatter
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter
+  nameWithType: PrettyConsoleFormatter
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name: PrettyConsoleFormatter(IOptionsMonitor<PrettyConsoleFormatterOptions>)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter__ctor_Microsoft_Extensions_Options_IOptionsMonitor_Subatomix_Logging_Console_PrettyConsoleFormatterOptions__
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleFormatter.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name.vb: PrettyConsoleFormatter(IOptionsMonitor(Of PrettyConsoleFormatterOptions))
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.PrettyConsoleFormatter(Microsoft.Extensions.Options.IOptionsMonitor<Subatomix.Logging.Console.PrettyConsoleFormatterOptions>)
+  fullName.vb: Subatomix.Logging.Console.PrettyConsoleFormatter.PrettyConsoleFormatter(Microsoft.Extensions.Options.IOptionsMonitor(Of Subatomix.Logging.Console.PrettyConsoleFormatterOptions))
+  nameWithType: PrettyConsoleFormatter.PrettyConsoleFormatter(IOptionsMonitor<PrettyConsoleFormatterOptions>)
+  nameWithType.vb: PrettyConsoleFormatter.PrettyConsoleFormatter(IOptionsMonitor(Of PrettyConsoleFormatterOptions))
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.#ctor*
+  name: PrettyConsoleFormatter
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter__ctor_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatter.#ctor
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.PrettyConsoleFormatter
+  nameWithType: PrettyConsoleFormatter.PrettyConsoleFormatter
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled
+  name: IsColorEnabled
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_IsColorEnabled
+  commentId: P:Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled
+  nameWithType: PrettyConsoleFormatter.IsColorEnabled
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled*
+  name: IsColorEnabled
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_IsColorEnabled_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.IsColorEnabled
+  nameWithType: PrettyConsoleFormatter.IsColorEnabled
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.Name
+  name: Name
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_Name
+  commentId: F:Subatomix.Logging.Console.PrettyConsoleFormatter.Name
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.Name
+  nameWithType: PrettyConsoleFormatter.Name
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.Options
+  name: Options
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_Options
+  commentId: P:Subatomix.Logging.Console.PrettyConsoleFormatter.Options
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.Options
+  nameWithType: PrettyConsoleFormatter.Options
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.Options*
+  name: Options
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_Options_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatter.Options
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.Options
+  nameWithType: PrettyConsoleFormatter.Options
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.Write*
+  name: Write
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_Write_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatter.Write
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.Write
+  nameWithType: PrettyConsoleFormatter.Write
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatter.Write``1(Microsoft.Extensions.Logging.Abstractions.LogEntry{``0}@,Microsoft.Extensions.Logging.IExternalScopeProvider,System.IO.TextWriter)
+  name: Write<TState>(in LogEntry<TState>, IExternalScopeProvider, TextWriter)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html#Subatomix_Logging_Console_PrettyConsoleFormatter_Write__1_Microsoft_Extensions_Logging_Abstractions_LogEntry___0___Microsoft_Extensions_Logging_IExternalScopeProvider_System_IO_TextWriter_
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleFormatter.Write``1(Microsoft.Extensions.Logging.Abstractions.LogEntry{``0}@,Microsoft.Extensions.Logging.IExternalScopeProvider,System.IO.TextWriter)
+  name.vb: Write(Of TState)(ByRef LogEntry(Of TState), IExternalScopeProvider, TextWriter)
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatter.Write<TState>(in Microsoft.Extensions.Logging.Abstractions.LogEntry<TState>, Microsoft.Extensions.Logging.IExternalScopeProvider, System.IO.TextWriter)
+  fullName.vb: Subatomix.Logging.Console.PrettyConsoleFormatter.Write(Of TState)(ByRef Microsoft.Extensions.Logging.Abstractions.LogEntry(Of TState), Microsoft.Extensions.Logging.IExternalScopeProvider, System.IO.TextWriter)
+  nameWithType: PrettyConsoleFormatter.Write<TState>(in LogEntry<TState>, IExternalScopeProvider, TextWriter)
+  nameWithType.vb: PrettyConsoleFormatter.Write(Of TState)(ByRef LogEntry(Of TState), IExternalScopeProvider, TextWriter)
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatterOptions
+  name: PrettyConsoleFormatterOptions
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html
+  commentId: T:Subatomix.Logging.Console.PrettyConsoleFormatterOptions
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatterOptions
+  nameWithType: PrettyConsoleFormatterOptions
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.#ctor
+  name: PrettyConsoleFormatterOptions()
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html#Subatomix_Logging_Console_PrettyConsoleFormatterOptions__ctor
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleFormatterOptions.#ctor
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.PrettyConsoleFormatterOptions()
+  nameWithType: PrettyConsoleFormatterOptions.PrettyConsoleFormatterOptions()
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.#ctor*
+  name: PrettyConsoleFormatterOptions
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html#Subatomix_Logging_Console_PrettyConsoleFormatterOptions__ctor_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatterOptions.#ctor
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.PrettyConsoleFormatterOptions
+  nameWithType: PrettyConsoleFormatterOptions.PrettyConsoleFormatterOptions
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior
+  name: ColorBehavior
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html#Subatomix_Logging_Console_PrettyConsoleFormatterOptions_ColorBehavior
+  commentId: P:Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior
+  nameWithType: PrettyConsoleFormatterOptions.ColorBehavior
+- uid: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior*
+  name: ColorBehavior
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html#Subatomix_Logging_Console_PrettyConsoleFormatterOptions_ColorBehavior_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior
+  fullName: Subatomix.Logging.Console.PrettyConsoleFormatterOptions.ColorBehavior
+  nameWithType: PrettyConsoleFormatterOptions.ColorBehavior
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions
+  name: PrettyConsoleLoggingBuilderExtensions
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html
+  commentId: T:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions
+  nameWithType: PrettyConsoleLoggingBuilderExtensions
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder)
+  name: AddPrettyConsole(ILoggingBuilder)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsole_Microsoft_Extensions_Logging_ILoggingBuilder_
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder)
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder)
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(ILoggingBuilder)
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder,System.Action{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name: AddPrettyConsole(ILoggingBuilder, Action<PrettyConsoleFormatterOptions>)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsole_Microsoft_Extensions_Logging_ILoggingBuilder_System_Action_Subatomix_Logging_Console_PrettyConsoleFormatterOptions__
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder,System.Action{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name.vb: AddPrettyConsole(ILoggingBuilder, Action(Of PrettyConsoleFormatterOptions))
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder, System.Action<Subatomix.Logging.Console.PrettyConsoleFormatterOptions>)
+  fullName.vb: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(Microsoft.Extensions.Logging.ILoggingBuilder, System.Action(Of Subatomix.Logging.Console.PrettyConsoleFormatterOptions))
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(ILoggingBuilder, Action<PrettyConsoleFormatterOptions>)
+  nameWithType.vb: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole(ILoggingBuilder, Action(Of PrettyConsoleFormatterOptions))
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole*
+  name: AddPrettyConsole
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsole_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsole
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder)
+  name: AddPrettyConsoleFormatter(ILoggingBuilder)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsoleFormatter_Microsoft_Extensions_Logging_ILoggingBuilder_
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder)
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder)
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(ILoggingBuilder)
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder,System.Action{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name: AddPrettyConsoleFormatter(ILoggingBuilder, Action<PrettyConsoleFormatterOptions>)
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsoleFormatter_Microsoft_Extensions_Logging_ILoggingBuilder_System_Action_Subatomix_Logging_Console_PrettyConsoleFormatterOptions__
+  commentId: M:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder,System.Action{Subatomix.Logging.Console.PrettyConsoleFormatterOptions})
+  name.vb: AddPrettyConsoleFormatter(ILoggingBuilder, Action(Of PrettyConsoleFormatterOptions))
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder, System.Action<Subatomix.Logging.Console.PrettyConsoleFormatterOptions>)
+  fullName.vb: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(Microsoft.Extensions.Logging.ILoggingBuilder, System.Action(Of Subatomix.Logging.Console.PrettyConsoleFormatterOptions))
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(ILoggingBuilder, Action<PrettyConsoleFormatterOptions>)
+  nameWithType.vb: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter(ILoggingBuilder, Action(Of PrettyConsoleFormatterOptions))
+- uid: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter*
+  name: AddPrettyConsoleFormatter
+  href: api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html#Subatomix_Logging_Console_PrettyConsoleLoggingBuilderExtensions_AddPrettyConsoleFormatter_
+  commentId: Overload:Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter
+  fullName: Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter
+  nameWithType: PrettyConsoleLoggingBuilderExtensions.AddPrettyConsoleFormatter
+- uid: Subatomix.Logging.Debugger
+  name: Subatomix.Logging.Debugger
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.html
+  commentId: N:Subatomix.Logging.Debugger
+  fullName: Subatomix.Logging.Debugger
+  nameWithType: Subatomix.Logging.Debugger
+- uid: Subatomix.Logging.Debugger.DebuggerLogger
+  name: DebuggerLogger
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html
+  commentId: T:Subatomix.Logging.Debugger.DebuggerLogger
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger
+  nameWithType: DebuggerLogger
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.BeginScope*
+  name: BeginScope
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_BeginScope_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLogger.BeginScope
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.BeginScope
+  nameWithType: DebuggerLogger.BeginScope
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.BeginScope``1(``0)
+  name: BeginScope<TState>(TState)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_BeginScope__1___0_
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLogger.BeginScope``1(``0)
+  name.vb: BeginScope(Of TState)(TState)
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.BeginScope<TState>(TState)
+  fullName.vb: Subatomix.Logging.Debugger.DebuggerLogger.BeginScope(Of TState)(TState)
+  nameWithType: DebuggerLogger.BeginScope<TState>(TState)
+  nameWithType.vb: DebuggerLogger.BeginScope(Of TState)(TState)
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  name: IsEnabled(LogLevel)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  nameWithType: DebuggerLogger.IsEnabled(LogLevel)
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled*
+  name: IsEnabled
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_IsEnabled_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled
+  nameWithType: DebuggerLogger.IsEnabled
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Log*
+  name: Log
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Log_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLogger.Log
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Log
+  nameWithType: DebuggerLogger.Log
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  name: Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  name.vb: Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Log<TState>(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func<TState, System.Exception, System.String>)
+  fullName.vb: Subatomix.Logging.Debugger.DebuggerLogger.Log(Of TState)(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func(Of TState, System.Exception, System.String))
+  nameWithType: DebuggerLogger.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  nameWithType.vb: DebuggerLogger.Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Name
+  name: Name
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Name
+  commentId: P:Subatomix.Logging.Debugger.DebuggerLogger.Name
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Name
+  nameWithType: DebuggerLogger.Name
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Name*
+  name: Name
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Name_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLogger.Name
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Name
+  nameWithType: DebuggerLogger.Name
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Provider
+  name: Provider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Provider
+  commentId: P:Subatomix.Logging.Debugger.DebuggerLogger.Provider
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Provider
+  nameWithType: DebuggerLogger.Provider
+- uid: Subatomix.Logging.Debugger.DebuggerLogger.Provider*
+  name: Provider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html#Subatomix_Logging_Debugger_DebuggerLogger_Provider_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLogger.Provider
+  fullName: Subatomix.Logging.Debugger.DebuggerLogger.Provider
+  nameWithType: DebuggerLogger.Provider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider
+  name: DebuggerLoggerProvider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html
+  commentId: T:Subatomix.Logging.Debugger.DebuggerLoggerProvider
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider
+  nameWithType: DebuggerLoggerProvider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.#ctor
+  name: DebuggerLoggerProvider()
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider__ctor
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLoggerProvider.#ctor
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.DebuggerLoggerProvider()
+  nameWithType: DebuggerLoggerProvider.DebuggerLoggerProvider()
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.#ctor*
+  name: DebuggerLoggerProvider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider__ctor_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLoggerProvider.#ctor
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.DebuggerLoggerProvider
+  nameWithType: DebuggerLoggerProvider.DebuggerLoggerProvider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger(System.String)
+  name: CreateLogger(String)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_CreateLogger_System_String_
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger(System.String)
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger(System.String)
+  nameWithType: DebuggerLoggerProvider.CreateLogger(String)
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger*
+  name: CreateLogger
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_CreateLogger_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.CreateLogger
+  nameWithType: DebuggerLoggerProvider.CreateLogger
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider
+  name: ScopeProvider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_ScopeProvider
+  commentId: P:Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider
+  nameWithType: DebuggerLoggerProvider.ScopeProvider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider*
+  name: ScopeProvider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_ScopeProvider_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.ScopeProvider
+  nameWithType: DebuggerLoggerProvider.ScopeProvider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider(Microsoft.Extensions.Logging.IExternalScopeProvider)
+  name: SetScopeProvider(IExternalScopeProvider)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_SetScopeProvider_Microsoft_Extensions_Logging_IExternalScopeProvider_
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider(Microsoft.Extensions.Logging.IExternalScopeProvider)
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider(Microsoft.Extensions.Logging.IExternalScopeProvider)
+  nameWithType: DebuggerLoggerProvider.SetScopeProvider(IExternalScopeProvider)
+- uid: Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider*
+  name: SetScopeProvider
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html#Subatomix_Logging_Debugger_DebuggerLoggerProvider_SetScopeProvider_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggerProvider.SetScopeProvider
+  nameWithType: DebuggerLoggerProvider.SetScopeProvider
+- uid: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions
+  name: DebuggerLoggingBuilderExtensions
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html
+  commentId: T:Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions
+  nameWithType: DebuggerLoggingBuilderExtensions
+- uid: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger(Microsoft.Extensions.Logging.ILoggingBuilder)
+  name: AddDebugger(ILoggingBuilder)
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html#Subatomix_Logging_Debugger_DebuggerLoggingBuilderExtensions_AddDebugger_Microsoft_Extensions_Logging_ILoggingBuilder_
+  commentId: M:Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger(Microsoft.Extensions.Logging.ILoggingBuilder)
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger(Microsoft.Extensions.Logging.ILoggingBuilder)
+  nameWithType: DebuggerLoggingBuilderExtensions.AddDebugger(ILoggingBuilder)
+- uid: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger*
+  name: AddDebugger
+  href: api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html#Subatomix_Logging_Debugger_DebuggerLoggingBuilderExtensions_AddDebugger_
+  commentId: Overload:Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger
+  fullName: Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.AddDebugger
+  nameWithType: DebuggerLoggingBuilderExtensions.AddDebugger
+- uid: Subatomix.Logging.IFluent
+  name: IFluent
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html
+  commentId: T:Subatomix.Logging.IFluent
+  fullName: Subatomix.Logging.IFluent
+  nameWithType: IFluent
+- uid: Subatomix.Logging.IFluent.Equals(System.Object)
+  name: Equals(Object)
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_Equals_System_Object_
+  commentId: M:Subatomix.Logging.IFluent.Equals(System.Object)
+  fullName: Subatomix.Logging.IFluent.Equals(System.Object)
+  nameWithType: IFluent.Equals(Object)
+- uid: Subatomix.Logging.IFluent.Equals*
+  name: Equals
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_Equals_
+  commentId: Overload:Subatomix.Logging.IFluent.Equals
+  fullName: Subatomix.Logging.IFluent.Equals
+  nameWithType: IFluent.Equals
+- uid: Subatomix.Logging.IFluent.GetHashCode
+  name: GetHashCode()
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_GetHashCode
+  commentId: M:Subatomix.Logging.IFluent.GetHashCode
+  fullName: Subatomix.Logging.IFluent.GetHashCode()
+  nameWithType: IFluent.GetHashCode()
+- uid: Subatomix.Logging.IFluent.GetHashCode*
+  name: GetHashCode
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_GetHashCode_
+  commentId: Overload:Subatomix.Logging.IFluent.GetHashCode
+  fullName: Subatomix.Logging.IFluent.GetHashCode
+  nameWithType: IFluent.GetHashCode
+- uid: Subatomix.Logging.IFluent.GetType
+  name: GetType()
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_GetType
+  commentId: M:Subatomix.Logging.IFluent.GetType
+  fullName: Subatomix.Logging.IFluent.GetType()
+  nameWithType: IFluent.GetType()
+- uid: Subatomix.Logging.IFluent.GetType*
+  name: GetType
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_GetType_
+  commentId: Overload:Subatomix.Logging.IFluent.GetType
+  fullName: Subatomix.Logging.IFluent.GetType
+  nameWithType: IFluent.GetType
+- uid: Subatomix.Logging.IFluent.ToString
+  name: ToString()
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_ToString
+  commentId: M:Subatomix.Logging.IFluent.ToString
+  fullName: Subatomix.Logging.IFluent.ToString()
+  nameWithType: IFluent.ToString()
+- uid: Subatomix.Logging.IFluent.ToString*
+  name: ToString
+  href: api/Subatomix.Logging/Subatomix.Logging.IFluent.html#Subatomix_Logging_IFluent_ToString_
+  commentId: Overload:Subatomix.Logging.IFluent.ToString
+  fullName: Subatomix.Logging.IFluent.ToString
+  nameWithType: IFluent.ToString
+- uid: Subatomix.Logging.Legacy
+  name: Subatomix.Logging.Legacy
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.html
+  commentId: N:Subatomix.Logging.Legacy
+  fullName: Subatomix.Logging.Legacy
+  nameWithType: Subatomix.Logging.Legacy
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener
+  name: CorrelationManagerActivityListener
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html
+  commentId: T:Subatomix.Logging.Legacy.CorrelationManagerActivityListener
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener
+  nameWithType: CorrelationManagerActivityListener
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.#ctor
+  name: CorrelationManagerActivityListener()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener__ctor
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.#ctor
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.CorrelationManagerActivityListener()
+  nameWithType: CorrelationManagerActivityListener.CorrelationManagerActivityListener()
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.#ctor*
+  name: CorrelationManagerActivityListener
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener__ctor_
+  commentId: Overload:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.#ctor
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.CorrelationManagerActivityListener
+  nameWithType: CorrelationManagerActivityListener.CorrelationManagerActivityListener
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose
+  name: Dispose()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_Dispose
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose()
+  nameWithType: CorrelationManagerActivityListener.Dispose()
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_Dispose_System_Boolean_
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose(System.Boolean)
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose(System.Boolean)
+  nameWithType: CorrelationManagerActivityListener.Dispose(Boolean)
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose*
+  name: Dispose
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_Dispose_
+  commentId: Overload:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Dispose
+  nameWithType: CorrelationManagerActivityListener.Dispose
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register
+  name: Register()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_Register
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register()
+  nameWithType: CorrelationManagerActivityListener.Register()
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register*
+  name: Register
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_Register_
+  commentId: Overload:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.Register
+  nameWithType: CorrelationManagerActivityListener.Register
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.Activity)
+  name: ShouldFlow(Activity)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_ShouldFlow_System_Diagnostics_Activity_
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.Activity)
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.Activity)
+  nameWithType: CorrelationManagerActivityListener.ShouldFlow(Activity)
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.ActivitySource)
+  name: ShouldFlow(ActivitySource)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_ShouldFlow_System_Diagnostics_ActivitySource_
+  commentId: M:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.ActivitySource)
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow(System.Diagnostics.ActivitySource)
+  nameWithType: CorrelationManagerActivityListener.ShouldFlow(ActivitySource)
+- uid: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow*
+  name: ShouldFlow
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html#Subatomix_Logging_Legacy_CorrelationManagerActivityListener_ShouldFlow_
+  commentId: Overload:Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow
+  fullName: Subatomix.Logging.Legacy.CorrelationManagerActivityListener.ShouldFlow
+  nameWithType: CorrelationManagerActivityListener.ShouldFlow
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener
+  name: LoggingTraceListener
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html
+  commentId: T:Subatomix.Logging.Legacy.LoggingTraceListener
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener
+  nameWithType: LoggingTraceListener
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.#ctor
+  name: LoggingTraceListener()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener__ctor
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.#ctor
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.LoggingTraceListener()
+  nameWithType: LoggingTraceListener.LoggingTraceListener()
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.#ctor*
+  name: LoggingTraceListener
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener__ctor_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.#ctor
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.LoggingTraceListener
+  nameWithType: LoggingTraceListener.LoggingTraceListener
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Close
+  name: Close()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Close
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Close
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Close()
+  nameWithType: LoggingTraceListener.Close()
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Close*
+  name: Close
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Close_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.Close
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Close
+  nameWithType: LoggingTraceListener.Close
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Dispose_System_Boolean_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Dispose(System.Boolean)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Dispose(System.Boolean)
+  nameWithType: LoggingTraceListener.Dispose(Boolean)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Dispose*
+  name: Dispose
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Dispose_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.Dispose
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Dispose
+  nameWithType: LoggingTraceListener.Dispose
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String)
+  name: Fail(String)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Fail_System_String_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String)
+  nameWithType: LoggingTraceListener.Fail(String)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String,System.String)
+  name: Fail(String, String)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Fail_System_String_System_String_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String,System.String)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String, System.String)
+  nameWithType: LoggingTraceListener.Fail(String, String)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Fail*
+  name: Fail
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Fail_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.Fail
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Fail
+  nameWithType: LoggingTraceListener.Fail
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Flush
+  name: Flush()
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Flush
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Flush
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Flush()
+  nameWithType: LoggingTraceListener.Flush()
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Flush*
+  name: Flush
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Flush_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.Flush
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Flush
+  nameWithType: LoggingTraceListener.Flush
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe
+  name: IsThreadSafe
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_IsThreadSafe
+  commentId: P:Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe
+  nameWithType: LoggingTraceListener.IsThreadSafe
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe*
+  name: IsThreadSafe
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_IsThreadSafe_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe
+  nameWithType: LoggingTraceListener.IsThreadSafe
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory
+  name: LoggerFactory
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_LoggerFactory
+  commentId: P:Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory
+  nameWithType: LoggingTraceListener.LoggerFactory
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory*
+  name: LoggerFactory
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_LoggerFactory_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory
+  nameWithType: LoggingTraceListener.LoggerFactory
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)
+  name: TraceData(TraceEventCache, String, TraceEventType, Int32, Object)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_Object_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.Object)
+  nameWithType: LoggingTraceListener.TraceData(TraceEventCache, String, TraceEventType, Int32, Object)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])
+  name: TraceData(TraceEventCache, String, TraceEventType, Int32, Object[])
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_Object___
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])
+  name.vb: TraceData(TraceEventCache, String, TraceEventType, Int32, Object())
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.Object[])
+  fullName.vb: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.Object())
+  nameWithType: LoggingTraceListener.TraceData(TraceEventCache, String, TraceEventType, Int32, Object[])
+  nameWithType.vb: LoggingTraceListener.TraceData(TraceEventCache, String, TraceEventType, Int32, Object())
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData*
+  name: TraceData
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.TraceData
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceData
+  nameWithType: LoggingTraceListener.TraceData
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32)
+  name: TraceEvent(TraceEventCache, String, TraceEventType, Int32)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32)
+  nameWithType: LoggingTraceListener.TraceEvent(TraceEventCache, String, TraceEventType, Int32)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String)
+  name: TraceEvent(TraceEventCache, String, TraceEventType, Int32, String)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_String_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.String)
+  nameWithType: LoggingTraceListener.TraceEvent(TraceEventCache, String, TraceEventType, Int32, String)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])
+  name: TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object[])
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_String_System_Object___
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])
+  name.vb: TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object())
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.String, System.Object[])
+  fullName.vb: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache, System.String, System.Diagnostics.TraceEventType, System.Int32, System.String, System.Object())
+  nameWithType: LoggingTraceListener.TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object[])
+  nameWithType.vb: LoggingTraceListener.TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object())
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent*
+  name: TraceEvent
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent
+  nameWithType: LoggingTraceListener.TraceEvent
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache,System.String,System.Int32,System.String,System.Guid)
+  name: TraceTransfer(TraceEventCache, String, Int32, String, Guid)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceTransfer_System_Diagnostics_TraceEventCache_System_String_System_Int32_System_String_System_Guid_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache,System.String,System.Int32,System.String,System.Guid)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache, System.String, System.Int32, System.String, System.Guid)
+  nameWithType: LoggingTraceListener.TraceTransfer(TraceEventCache, String, Int32, String, Guid)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer*
+  name: TraceTransfer
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_TraceTransfer_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer
+  nameWithType: LoggingTraceListener.TraceTransfer
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Write(System.String)
+  name: Write(String)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Write_System_String_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.Write(System.String)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Write(System.String)
+  nameWithType: LoggingTraceListener.Write(String)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.Write*
+  name: Write
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_Write_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.Write
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.Write
+  nameWithType: LoggingTraceListener.Write
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine(System.String)
+  name: WriteLine(String)
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_WriteLine_System_String_
+  commentId: M:Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine(System.String)
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine(System.String)
+  nameWithType: LoggingTraceListener.WriteLine(String)
+- uid: Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine*
+  name: WriteLine
+  href: api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html#Subatomix_Logging_Legacy_LoggingTraceListener_WriteLine_
+  commentId: Overload:Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine
+  fullName: Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine
+  nameWithType: LoggingTraceListener.WriteLine
+- uid: Subatomix.Logging.LoggerExtensions
+  name: LoggerExtensions
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html
+  commentId: T:Subatomix.Logging.LoggerExtensions
+  fullName: Subatomix.Logging.LoggerExtensions
+  nameWithType: LoggerExtensions
+- uid: Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  name: Activity(ILogger, LogLevel, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Activity_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_
+  commentId: M:Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  fullName: Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String)
+  nameWithType: LoggerExtensions.Activity(ILogger, LogLevel, String)
+- uid: Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger,System.String)
+  name: Activity(ILogger, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Activity_Microsoft_Extensions_Logging_ILogger_System_String_
+  commentId: M:Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger,System.String)
+  fullName: Subatomix.Logging.LoggerExtensions.Activity(Microsoft.Extensions.Logging.ILogger, System.String)
+  nameWithType: LoggerExtensions.Activity(ILogger, String)
+- uid: Subatomix.Logging.LoggerExtensions.Activity*
+  name: Activity
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Activity_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.Activity
+  fullName: Subatomix.Logging.LoggerExtensions.Activity
+  nameWithType: LoggerExtensions.Activity
+- uid: Subatomix.Logging.LoggerExtensions.Log(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.Exception)
+  name: Log(ILogger, LogLevel, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Log_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.Log(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.Log(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.Exception)
+  nameWithType: LoggerExtensions.Log(ILogger, LogLevel, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.Log*
+  name: Log
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Log_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.Log
+  fullName: Subatomix.Logging.LoggerExtensions.Log
+  nameWithType: LoggerExtensions.Log
+- uid: Subatomix.Logging.LoggerExtensions.LogCritical(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogCritical(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogCritical_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogCritical(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogCritical(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogCritical(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogCritical*
+  name: LogCritical
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogCritical_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogCritical
+  fullName: Subatomix.Logging.LoggerExtensions.LogCritical
+  nameWithType: LoggerExtensions.LogCritical
+- uid: Subatomix.Logging.LoggerExtensions.LogDebug(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogDebug(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogDebug_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogDebug(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogDebug(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogDebug(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogDebug*
+  name: LogDebug
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogDebug_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogDebug
+  fullName: Subatomix.Logging.LoggerExtensions.LogDebug
+  nameWithType: LoggerExtensions.LogDebug
+- uid: Subatomix.Logging.LoggerExtensions.LogError(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogError(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogError_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogError(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogError(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogError(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogError*
+  name: LogError
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogError_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogError
+  fullName: Subatomix.Logging.LoggerExtensions.LogError
+  nameWithType: LoggerExtensions.LogError
+- uid: Subatomix.Logging.LoggerExtensions.LogInformation(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogInformation(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogInformation_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogInformation(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogInformation(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogInformation(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogInformation*
+  name: LogInformation
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogInformation_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogInformation
+  fullName: Subatomix.Logging.LoggerExtensions.LogInformation
+  nameWithType: LoggerExtensions.LogInformation
+- uid: Subatomix.Logging.LoggerExtensions.LogTrace(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogTrace(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogTrace_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogTrace(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogTrace(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogTrace(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogTrace*
+  name: LogTrace
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogTrace_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogTrace
+  fullName: Subatomix.Logging.LoggerExtensions.LogTrace
+  nameWithType: LoggerExtensions.LogTrace
+- uid: Subatomix.Logging.LoggerExtensions.LogWarning(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  name: LogWarning(ILogger, Exception)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogWarning_Microsoft_Extensions_Logging_ILogger_System_Exception_
+  commentId: M:Subatomix.Logging.LoggerExtensions.LogWarning(Microsoft.Extensions.Logging.ILogger,System.Exception)
+  fullName: Subatomix.Logging.LoggerExtensions.LogWarning(Microsoft.Extensions.Logging.ILogger, System.Exception)
+  nameWithType: LoggerExtensions.LogWarning(ILogger, Exception)
+- uid: Subatomix.Logging.LoggerExtensions.LogWarning*
+  name: LogWarning
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_LogWarning_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.LogWarning
+  fullName: Subatomix.Logging.LoggerExtensions.LogWarning
+  nameWithType: LoggerExtensions.LogWarning
+- uid: Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  name: Operation(ILogger, LogLevel, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Operation_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_
+  commentId: M:Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  fullName: Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String)
+  nameWithType: LoggerExtensions.Operation(ILogger, LogLevel, String)
+- uid: Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger,System.String)
+  name: Operation(ILogger, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Operation_Microsoft_Extensions_Logging_ILogger_System_String_
+  commentId: M:Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger,System.String)
+  fullName: Subatomix.Logging.LoggerExtensions.Operation(Microsoft.Extensions.Logging.ILogger, System.String)
+  nameWithType: LoggerExtensions.Operation(ILogger, String)
+- uid: Subatomix.Logging.LoggerExtensions.Operation*
+  name: Operation
+  href: api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html#Subatomix_Logging_LoggerExtensions_Operation_
+  commentId: Overload:Subatomix.Logging.LoggerExtensions.Operation
+  fullName: Subatomix.Logging.LoggerExtensions.Operation
+  nameWithType: LoggerExtensions.Operation
+- uid: Subatomix.Logging.OperationScope
+  name: OperationScope
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html
+  commentId: T:Subatomix.Logging.OperationScope
+  fullName: Subatomix.Logging.OperationScope
+  nameWithType: OperationScope
+- uid: Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  name: OperationScope(ILogger, LogLevel, String)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_
+  commentId: M:Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)
+  fullName: Subatomix.Logging.OperationScope.OperationScope(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String)
+  nameWithType: OperationScope.OperationScope(ILogger, LogLevel, String)
+- uid: Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)
+  name: OperationScope(ILogger, LogLevel, String, Boolean)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_System_Boolean_
+  commentId: M:Subatomix.Logging.OperationScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)
+  fullName: Subatomix.Logging.OperationScope.OperationScope(Microsoft.Extensions.Logging.ILogger, Microsoft.Extensions.Logging.LogLevel, System.String, System.Boolean)
+  nameWithType: OperationScope.OperationScope(ILogger, LogLevel, String, Boolean)
+- uid: Subatomix.Logging.OperationScope.#ctor*
+  name: OperationScope
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope__ctor_
+  commentId: Overload:Subatomix.Logging.OperationScope.#ctor
+  fullName: Subatomix.Logging.OperationScope.OperationScope
+  nameWithType: OperationScope.OperationScope
+- uid: Subatomix.Logging.OperationScope.Duration
+  name: Duration
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Duration
+  commentId: P:Subatomix.Logging.OperationScope.Duration
+  fullName: Subatomix.Logging.OperationScope.Duration
+  nameWithType: OperationScope.Duration
+- uid: Subatomix.Logging.OperationScope.Duration*
+  name: Duration
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Duration_
+  commentId: Overload:Subatomix.Logging.OperationScope.Duration
+  fullName: Subatomix.Logging.OperationScope.Duration
+  nameWithType: OperationScope.Duration
+- uid: Subatomix.Logging.OperationScope.Exception
+  name: Exception
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Exception
+  commentId: P:Subatomix.Logging.OperationScope.Exception
+  fullName: Subatomix.Logging.OperationScope.Exception
+  nameWithType: OperationScope.Exception
+- uid: Subatomix.Logging.OperationScope.Exception*
+  name: Exception
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Exception_
+  commentId: Overload:Subatomix.Logging.OperationScope.Exception
+  fullName: Subatomix.Logging.OperationScope.Exception
+  nameWithType: OperationScope.Exception
+- uid: Subatomix.Logging.OperationScope.ExceptionLogLevel
+  name: ExceptionLogLevel
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_ExceptionLogLevel
+  commentId: P:Subatomix.Logging.OperationScope.ExceptionLogLevel
+  fullName: Subatomix.Logging.OperationScope.ExceptionLogLevel
+  nameWithType: OperationScope.ExceptionLogLevel
+- uid: Subatomix.Logging.OperationScope.ExceptionLogLevel*
+  name: ExceptionLogLevel
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_ExceptionLogLevel_
+  commentId: Overload:Subatomix.Logging.OperationScope.ExceptionLogLevel
+  fullName: Subatomix.Logging.OperationScope.ExceptionLogLevel
+  nameWithType: OperationScope.ExceptionLogLevel
+- uid: Subatomix.Logging.OperationScope.IsCompleted
+  name: IsCompleted
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_IsCompleted
+  commentId: P:Subatomix.Logging.OperationScope.IsCompleted
+  fullName: Subatomix.Logging.OperationScope.IsCompleted
+  nameWithType: OperationScope.IsCompleted
+- uid: Subatomix.Logging.OperationScope.IsCompleted*
+  name: IsCompleted
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_IsCompleted_
+  commentId: Overload:Subatomix.Logging.OperationScope.IsCompleted
+  fullName: Subatomix.Logging.OperationScope.IsCompleted
+  nameWithType: OperationScope.IsCompleted
+- uid: Subatomix.Logging.OperationScope.Logger
+  name: Logger
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Logger
+  commentId: P:Subatomix.Logging.OperationScope.Logger
+  fullName: Subatomix.Logging.OperationScope.Logger
+  nameWithType: OperationScope.Logger
+- uid: Subatomix.Logging.OperationScope.Logger*
+  name: Logger
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Logger_
+  commentId: Overload:Subatomix.Logging.OperationScope.Logger
+  fullName: Subatomix.Logging.OperationScope.Logger
+  nameWithType: OperationScope.Logger
+- uid: Subatomix.Logging.OperationScope.LogLevel
+  name: LogLevel
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_LogLevel
+  commentId: P:Subatomix.Logging.OperationScope.LogLevel
+  fullName: Subatomix.Logging.OperationScope.LogLevel
+  nameWithType: OperationScope.LogLevel
+- uid: Subatomix.Logging.OperationScope.LogLevel*
+  name: LogLevel
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_LogLevel_
+  commentId: Overload:Subatomix.Logging.OperationScope.LogLevel
+  fullName: Subatomix.Logging.OperationScope.LogLevel
+  nameWithType: OperationScope.LogLevel
+- uid: Subatomix.Logging.OperationScope.Name
+  name: Name
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Name
+  commentId: P:Subatomix.Logging.OperationScope.Name
+  fullName: Subatomix.Logging.OperationScope.Name
+  nameWithType: OperationScope.Name
+- uid: Subatomix.Logging.OperationScope.Name*
+  name: Name
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Name_
+  commentId: Overload:Subatomix.Logging.OperationScope.Name
+  fullName: Subatomix.Logging.OperationScope.Name
+  nameWithType: OperationScope.Name
+- uid: Subatomix.Logging.OperationScope.Start
+  name: Start()
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start
+  commentId: M:Subatomix.Logging.OperationScope.Start
+  fullName: Subatomix.Logging.OperationScope.Start()
+  nameWithType: OperationScope.Start()
+- uid: Subatomix.Logging.OperationScope.Start*
+  name: Start
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start_
+  commentId: Overload:Subatomix.Logging.OperationScope.Start
+  fullName: Subatomix.Logging.OperationScope.Start
+  nameWithType: OperationScope.Start
+- uid: Subatomix.Logging.OperationScope.Stop
+  name: Stop()
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Stop
+  commentId: M:Subatomix.Logging.OperationScope.Stop
+  fullName: Subatomix.Logging.OperationScope.Stop()
+  nameWithType: OperationScope.Stop()
+- uid: Subatomix.Logging.OperationScope.Stop*
+  name: Stop
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Stop_
+  commentId: Overload:Subatomix.Logging.OperationScope.Stop
+  fullName: Subatomix.Logging.OperationScope.Stop
+  nameWithType: OperationScope.Stop
+- uid: Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write(System.IO.TextWriter,Subatomix.Logging.Console.ConsoleContext)
+  name: IConsoleFormattable.Write(TextWriter, ConsoleContext)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Subatomix_Logging_Console_IConsoleFormattable_Write_System_IO_TextWriter_Subatomix_Logging_Console_ConsoleContext_
+  commentId: M:Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write(System.IO.TextWriter,Subatomix.Logging.Console.ConsoleContext)
+  name.vb: Subatomix.Logging.Console.IConsoleFormattable.Write(TextWriter, ConsoleContext)
+  fullName: Subatomix.Logging.OperationScope.Subatomix.Logging.Console.IConsoleFormattable.Write(System.IO.TextWriter, Subatomix.Logging.Console.ConsoleContext)
+  nameWithType: OperationScope.IConsoleFormattable.Write(TextWriter, ConsoleContext)
+  nameWithType.vb: OperationScope.Subatomix.Logging.Console.IConsoleFormattable.Write(TextWriter, ConsoleContext)
+- uid: Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write*
+  name: IConsoleFormattable.Write
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Subatomix_Logging_Console_IConsoleFormattable_Write_
+  commentId: Overload:Subatomix.Logging.OperationScope.Subatomix#Logging#Console#IConsoleFormattable#Write
+  name.vb: Subatomix.Logging.Console.IConsoleFormattable.Write
+  fullName: Subatomix.Logging.OperationScope.Subatomix.Logging.Console.IConsoleFormattable.Write
+  nameWithType: OperationScope.IConsoleFormattable.Write
+  nameWithType.vb: OperationScope.Subatomix.Logging.Console.IConsoleFormattable.Write
+- uid: Subatomix.Logging.OperationScopeInitiator
+  name: OperationScopeInitiator
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html
+  commentId: T:Subatomix.Logging.OperationScopeInitiator
+  fullName: Subatomix.Logging.OperationScopeInitiator
+  nameWithType: OperationScopeInitiator
+- uid: Subatomix.Logging.OperationScopeInitiator.Begin
+  name: Begin()
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Begin
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Begin
+  fullName: Subatomix.Logging.OperationScopeInitiator.Begin()
+  nameWithType: OperationScopeInitiator.Begin()
+- uid: Subatomix.Logging.OperationScopeInitiator.Begin*
+  name: Begin
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Begin_
+  commentId: Overload:Subatomix.Logging.OperationScopeInitiator.Begin
+  fullName: Subatomix.Logging.OperationScopeInitiator.Begin
+  nameWithType: OperationScopeInitiator.Begin
+- uid: Subatomix.Logging.OperationScopeInitiator.Do(System.Action)
+  name: Do(Action)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Do_System_Action_
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Do(System.Action)
+  fullName: Subatomix.Logging.OperationScopeInitiator.Do(System.Action)
+  nameWithType: OperationScopeInitiator.Do(Action)
+- uid: Subatomix.Logging.OperationScopeInitiator.Do*
+  name: Do
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Do_
+  commentId: Overload:Subatomix.Logging.OperationScopeInitiator.Do
+  fullName: Subatomix.Logging.OperationScopeInitiator.Do
+  nameWithType: OperationScopeInitiator.Do
+- uid: Subatomix.Logging.OperationScopeInitiator.Do``1(``0,System.Action{``0})
+  name: Do<T>(T, Action<T>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Do__1___0_System_Action___0__
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Do``1(``0,System.Action{``0})
+  name.vb: Do(Of T)(T, Action(Of T))
+  fullName: Subatomix.Logging.OperationScopeInitiator.Do<T>(T, System.Action<T>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.Do(Of T)(T, System.Action(Of T))
+  nameWithType: OperationScopeInitiator.Do<T>(T, Action<T>)
+  nameWithType.vb: OperationScopeInitiator.Do(Of T)(T, Action(Of T))
+- uid: Subatomix.Logging.OperationScopeInitiator.Do``1(System.Func{``0})
+  name: Do<TResult>(Func<TResult>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Do__1_System_Func___0__
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Do``1(System.Func{``0})
+  name.vb: Do(Of TResult)(Func(Of TResult))
+  fullName: Subatomix.Logging.OperationScopeInitiator.Do<TResult>(System.Func<TResult>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.Do(Of TResult)(System.Func(Of TResult))
+  nameWithType: OperationScopeInitiator.Do<TResult>(Func<TResult>)
+  nameWithType.vb: OperationScopeInitiator.Do(Of TResult)(Func(Of TResult))
+- uid: Subatomix.Logging.OperationScopeInitiator.Do``2(``0,System.Func{``0,``1})
+  name: Do<T, TResult>(T, Func<T, TResult>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Do__2___0_System_Func___0___1__
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Do``2(``0,System.Func{``0,``1})
+  name.vb: Do(Of T, TResult)(T, Func(Of T, TResult))
+  fullName: Subatomix.Logging.OperationScopeInitiator.Do<T, TResult>(T, System.Func<T, TResult>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.Do(Of T, TResult)(T, System.Func(Of T, TResult))
+  nameWithType: OperationScopeInitiator.Do<T, TResult>(T, Func<T, TResult>)
+  nameWithType.vb: OperationScopeInitiator.Do(Of T, TResult)(T, Func(Of T, TResult))
+- uid: Subatomix.Logging.OperationScopeInitiator.DoAsync(System.Func{System.Threading.Tasks.Task})
+  name: DoAsync(Func<Task>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_DoAsync_System_Func_System_Threading_Tasks_Task__
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.DoAsync(System.Func{System.Threading.Tasks.Task})
+  name.vb: DoAsync(Func(Of Task))
+  fullName: Subatomix.Logging.OperationScopeInitiator.DoAsync(System.Func<System.Threading.Tasks.Task>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.DoAsync(System.Func(Of System.Threading.Tasks.Task))
+  nameWithType: OperationScopeInitiator.DoAsync(Func<Task>)
+  nameWithType.vb: OperationScopeInitiator.DoAsync(Func(Of Task))
+- uid: Subatomix.Logging.OperationScopeInitiator.DoAsync*
+  name: DoAsync
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_DoAsync_
+  commentId: Overload:Subatomix.Logging.OperationScopeInitiator.DoAsync
+  fullName: Subatomix.Logging.OperationScopeInitiator.DoAsync
+  nameWithType: OperationScopeInitiator.DoAsync
+- uid: Subatomix.Logging.OperationScopeInitiator.DoAsync``1(``0,System.Func{``0,System.Threading.Tasks.Task})
+  name: DoAsync<T>(T, Func<T, Task>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_DoAsync__1___0_System_Func___0_System_Threading_Tasks_Task__
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.DoAsync``1(``0,System.Func{``0,System.Threading.Tasks.Task})
+  name.vb: DoAsync(Of T)(T, Func(Of T, Task))
+  fullName: Subatomix.Logging.OperationScopeInitiator.DoAsync<T>(T, System.Func<T, System.Threading.Tasks.Task>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.DoAsync(Of T)(T, System.Func(Of T, System.Threading.Tasks.Task))
+  nameWithType: OperationScopeInitiator.DoAsync<T>(T, Func<T, Task>)
+  nameWithType.vb: OperationScopeInitiator.DoAsync(Of T)(T, Func(Of T, Task))
+- uid: Subatomix.Logging.OperationScopeInitiator.DoAsync``1(System.Func{System.Threading.Tasks.Task{``0}})
+  name: DoAsync<TResult>(Func<Task<TResult>>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_DoAsync__1_System_Func_System_Threading_Tasks_Task___0___
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.DoAsync``1(System.Func{System.Threading.Tasks.Task{``0}})
+  name.vb: DoAsync(Of TResult)(Func(Of Task(Of TResult)))
+  fullName: Subatomix.Logging.OperationScopeInitiator.DoAsync<TResult>(System.Func<System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.DoAsync(Of TResult)(System.Func(Of System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: OperationScopeInitiator.DoAsync<TResult>(Func<Task<TResult>>)
+  nameWithType.vb: OperationScopeInitiator.DoAsync(Of TResult)(Func(Of Task(Of TResult)))
+- uid: Subatomix.Logging.OperationScopeInitiator.DoAsync``2(``0,System.Func{``0,System.Threading.Tasks.Task{``1}})
+  name: DoAsync<T, TResult>(T, Func<T, Task<TResult>>)
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_DoAsync__2___0_System_Func___0_System_Threading_Tasks_Task___1___
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.DoAsync``2(``0,System.Func{``0,System.Threading.Tasks.Task{``1}})
+  name.vb: DoAsync(Of T, TResult)(T, Func(Of T, Task(Of TResult)))
+  fullName: Subatomix.Logging.OperationScopeInitiator.DoAsync<T, TResult>(T, System.Func<T, System.Threading.Tasks.Task<TResult>>)
+  fullName.vb: Subatomix.Logging.OperationScopeInitiator.DoAsync(Of T, TResult)(T, System.Func(Of T, System.Threading.Tasks.Task(Of TResult)))
+  nameWithType: OperationScopeInitiator.DoAsync<T, TResult>(T, Func<T, Task<TResult>>)
+  nameWithType.vb: OperationScopeInitiator.DoAsync(Of T, TResult)(T, Func(Of T, Task(Of TResult)))
+- uid: Subatomix.Logging.OperationScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name: IFluent.GetType()
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Subatomix_Logging_IFluent_GetType
+  commentId: M:Subatomix.Logging.OperationScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name.vb: Subatomix.Logging.IFluent.GetType()
+  fullName: Subatomix.Logging.OperationScopeInitiator.Subatomix.Logging.IFluent.GetType()
+  nameWithType: OperationScopeInitiator.IFluent.GetType()
+  nameWithType.vb: OperationScopeInitiator.Subatomix.Logging.IFluent.GetType()
+- uid: Subatomix.Logging.OperationScopeInitiator.Subatomix#Logging#IFluent#GetType*
+  name: IFluent.GetType
+  href: api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html#Subatomix_Logging_OperationScopeInitiator_Subatomix_Logging_IFluent_GetType_
+  commentId: Overload:Subatomix.Logging.OperationScopeInitiator.Subatomix#Logging#IFluent#GetType
+  name.vb: Subatomix.Logging.IFluent.GetType
+  fullName: Subatomix.Logging.OperationScopeInitiator.Subatomix.Logging.IFluent.GetType
+  nameWithType: OperationScopeInitiator.IFluent.GetType
+  nameWithType.vb: OperationScopeInitiator.Subatomix.Logging.IFluent.GetType
+- uid: Subatomix.Logging.Sql
+  name: Subatomix.Logging.Sql
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html
+  commentId: N:Subatomix.Logging.Sql
+  fullName: Subatomix.Logging.Sql
+  nameWithType: Subatomix.Logging.Sql
+- uid: Subatomix.Logging.Sql.SqlLogger
+  name: SqlLogger
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html
+  commentId: T:Subatomix.Logging.Sql.SqlLogger
+  fullName: Subatomix.Logging.Sql.SqlLogger
+  nameWithType: SqlLogger
+- uid: Subatomix.Logging.Sql.SqlLogger.BeginScope*
+  name: BeginScope
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_BeginScope_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLogger.BeginScope
+  fullName: Subatomix.Logging.Sql.SqlLogger.BeginScope
+  nameWithType: SqlLogger.BeginScope
+- uid: Subatomix.Logging.Sql.SqlLogger.BeginScope``1(``0)
+  name: BeginScope<TState>(TState)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_BeginScope__1___0_
+  commentId: M:Subatomix.Logging.Sql.SqlLogger.BeginScope``1(``0)
+  name.vb: BeginScope(Of TState)(TState)
+  fullName: Subatomix.Logging.Sql.SqlLogger.BeginScope<TState>(TState)
+  fullName.vb: Subatomix.Logging.Sql.SqlLogger.BeginScope(Of TState)(TState)
+  nameWithType: SqlLogger.BeginScope<TState>(TState)
+  nameWithType.vb: SqlLogger.BeginScope(Of TState)(TState)
+- uid: Subatomix.Logging.Sql.SqlLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  name: IsEnabled(LogLevel)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_
+  commentId: M:Subatomix.Logging.Sql.SqlLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  fullName: Subatomix.Logging.Sql.SqlLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)
+  nameWithType: SqlLogger.IsEnabled(LogLevel)
+- uid: Subatomix.Logging.Sql.SqlLogger.IsEnabled*
+  name: IsEnabled
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_IsEnabled_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLogger.IsEnabled
+  fullName: Subatomix.Logging.Sql.SqlLogger.IsEnabled
+  nameWithType: SqlLogger.IsEnabled
+- uid: Subatomix.Logging.Sql.SqlLogger.Log*
+  name: Log
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_Log_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLogger.Log
+  fullName: Subatomix.Logging.Sql.SqlLogger.Log
+  nameWithType: SqlLogger.Log
+- uid: Subatomix.Logging.Sql.SqlLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  name: Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__
+  commentId: M:Subatomix.Logging.Sql.SqlLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})
+  name.vb: Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+  fullName: Subatomix.Logging.Sql.SqlLogger.Log<TState>(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func<TState, System.Exception, System.String>)
+  fullName.vb: Subatomix.Logging.Sql.SqlLogger.Log(Of TState)(Microsoft.Extensions.Logging.LogLevel, Microsoft.Extensions.Logging.EventId, TState, System.Exception, System.Func(Of TState, System.Exception, System.String))
+  nameWithType: SqlLogger.Log<TState>(LogLevel, EventId, TState, Exception, Func<TState, Exception, String>)
+  nameWithType.vb: SqlLogger.Log(Of TState)(LogLevel, EventId, TState, Exception, Func(Of TState, Exception, String))
+- uid: Subatomix.Logging.Sql.SqlLogger.Name
+  name: Name
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_Name
+  commentId: P:Subatomix.Logging.Sql.SqlLogger.Name
+  fullName: Subatomix.Logging.Sql.SqlLogger.Name
+  nameWithType: SqlLogger.Name
+- uid: Subatomix.Logging.Sql.SqlLogger.Name*
+  name: Name
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html#Subatomix_Logging_Sql_SqlLogger_Name_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLogger.Name
+  fullName: Subatomix.Logging.Sql.SqlLogger.Name
+  nameWithType: SqlLogger.Name
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions
+  name: SqlLoggerOptions
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html
+  commentId: T:Subatomix.Logging.Sql.SqlLoggerOptions
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions
+  nameWithType: SqlLoggerOptions
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.#ctor
+  name: SqlLoggerOptions()
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions__ctor
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerOptions.#ctor
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.SqlLoggerOptions()
+  nameWithType: SqlLoggerOptions.SqlLoggerOptions()
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.#ctor*
+  name: SqlLoggerOptions
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions__ctor_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.#ctor
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.SqlLoggerOptions
+  nameWithType: SqlLoggerOptions.SqlLoggerOptions
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait
+  name: AutoflushWait
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_AutoflushWait
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait
+  nameWithType: SqlLoggerOptions.AutoflushWait
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait*
+  name: AutoflushWait
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_AutoflushWait_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.AutoflushWait
+  nameWithType: SqlLoggerOptions.AutoflushWait
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize
+  name: BatchSize
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_BatchSize
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize
+  nameWithType: SqlLoggerOptions.BatchSize
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize*
+  name: BatchSize
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_BatchSize_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.BatchSize
+  nameWithType: SqlLoggerOptions.BatchSize
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout
+  name: BatchTimeout
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_BatchTimeout
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout
+  nameWithType: SqlLoggerOptions.BatchTimeout
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout*
+  name: BatchTimeout
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_BatchTimeout_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.BatchTimeout
+  nameWithType: SqlLoggerOptions.BatchTimeout
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString
+  name: ConnectionString
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_ConnectionString
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString
+  nameWithType: SqlLoggerOptions.ConnectionString
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString*
+  name: ConnectionString
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_ConnectionString_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.ConnectionString
+  nameWithType: SqlLoggerOptions.ConnectionString
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.LogName
+  name: LogName
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_LogName
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.LogName
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.LogName
+  nameWithType: SqlLoggerOptions.LogName
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.LogName*
+  name: LogName
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_LogName_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.LogName
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.LogName
+  nameWithType: SqlLoggerOptions.LogName
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize
+  name: MaxQueueSize
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_MaxQueueSize
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize
+  nameWithType: SqlLoggerOptions.MaxQueueSize
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize*
+  name: MaxQueueSize
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_MaxQueueSize_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.MaxQueueSize
+  nameWithType: SqlLoggerOptions.MaxQueueSize
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement
+  name: RetryWaitIncrement
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_RetryWaitIncrement
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement
+  nameWithType: SqlLoggerOptions.RetryWaitIncrement
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement*
+  name: RetryWaitIncrement
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_RetryWaitIncrement_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitIncrement
+  nameWithType: SqlLoggerOptions.RetryWaitIncrement
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax
+  name: RetryWaitMax
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_RetryWaitMax
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax
+  nameWithType: SqlLoggerOptions.RetryWaitMax
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax*
+  name: RetryWaitMax
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_RetryWaitMax_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.RetryWaitMax
+  nameWithType: SqlLoggerOptions.RetryWaitMax
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait
+  name: ShutdownWait
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_ShutdownWait
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait
+  nameWithType: SqlLoggerOptions.ShutdownWait
+- uid: Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait*
+  name: ShutdownWait
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html#Subatomix_Logging_Sql_SqlLoggerOptions_ShutdownWait_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait
+  fullName: Subatomix.Logging.Sql.SqlLoggerOptions.ShutdownWait
+  nameWithType: SqlLoggerOptions.ShutdownWait
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider
+  name: SqlLoggerProvider
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html
+  commentId: T:Subatomix.Logging.Sql.SqlLoggerProvider
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider
+  nameWithType: SqlLoggerProvider
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Subatomix.Logging.Sql.SqlLoggerOptions})
+  name: SqlLoggerProvider(IOptionsMonitor<SqlLoggerOptions>)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider__ctor_Microsoft_Extensions_Options_IOptionsMonitor_Subatomix_Logging_Sql_SqlLoggerOptions__
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerProvider.#ctor(Microsoft.Extensions.Options.IOptionsMonitor{Subatomix.Logging.Sql.SqlLoggerOptions})
+  name.vb: SqlLoggerProvider(IOptionsMonitor(Of SqlLoggerOptions))
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.SqlLoggerProvider(Microsoft.Extensions.Options.IOptionsMonitor<Subatomix.Logging.Sql.SqlLoggerOptions>)
+  fullName.vb: Subatomix.Logging.Sql.SqlLoggerProvider.SqlLoggerProvider(Microsoft.Extensions.Options.IOptionsMonitor(Of Subatomix.Logging.Sql.SqlLoggerOptions))
+  nameWithType: SqlLoggerProvider.SqlLoggerProvider(IOptionsMonitor<SqlLoggerOptions>)
+  nameWithType.vb: SqlLoggerProvider.SqlLoggerProvider(IOptionsMonitor(Of SqlLoggerOptions))
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.#ctor*
+  name: SqlLoggerProvider
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider__ctor_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.#ctor
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.SqlLoggerProvider
+  nameWithType: SqlLoggerProvider.SqlLoggerProvider
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger(System.String)
+  name: CreateLogger(String)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_CreateLogger_System_String_
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger(System.String)
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger(System.String)
+  nameWithType: SqlLoggerProvider.CreateLogger(String)
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger*
+  name: CreateLogger
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_CreateLogger_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.CreateLogger
+  nameWithType: SqlLoggerProvider.CreateLogger
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose
+  name: Dispose()
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Dispose
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerProvider.Dispose
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose()
+  nameWithType: SqlLoggerProvider.Dispose()
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose(System.Boolean)
+  name: Dispose(Boolean)
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Dispose_System_Boolean_
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerProvider.Dispose(System.Boolean)
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose(System.Boolean)
+  nameWithType: SqlLoggerProvider.Dispose(Boolean)
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose*
+  name: Dispose
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Dispose_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.Dispose
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Dispose
+  nameWithType: SqlLoggerProvider.Dispose
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Flush
+  name: Flush()
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Flush
+  commentId: M:Subatomix.Logging.Sql.SqlLoggerProvider.Flush
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Flush()
+  nameWithType: SqlLoggerProvider.Flush()
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Flush*
+  name: Flush
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Flush_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.Flush
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Flush
+  nameWithType: SqlLoggerProvider.Flush
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Logger
+  name: Logger
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Logger
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerProvider.Logger
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Logger
+  nameWithType: SqlLoggerProvider.Logger
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Logger*
+  name: Logger
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Logger_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.Logger
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Logger
+  nameWithType: SqlLoggerProvider.Logger
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Options
+  name: Options
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Options
+  commentId: P:Subatomix.Logging.Sql.SqlLoggerProvider.Options
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Options
+  nameWithType: SqlLoggerProvider.Options
+- uid: Subatomix.Logging.Sql.SqlLoggerProvider.Options*
+  name: Options
+  href: api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html#Subatomix_Logging_Sql_SqlLoggerProvider_Options_
+  commentId: Overload:Subatomix.Logging.Sql.SqlLoggerProvider.Options
+  fullName: Subatomix.Logging.Sql.SqlLoggerProvider.Options
+  nameWithType: SqlLoggerProvider.Options

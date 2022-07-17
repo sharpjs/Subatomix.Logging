@@ -1,0 +1,442 @@
+{
+  "homepages": [],
+  "source_base_path": "/home/runner/work/Subatomix.Logging/Subatomix.Logging/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../CHANGES.md",
+      "output": {
+        ".html": {
+          "relative_path": "changes.html",
+          "hash": "EgwqPCUlRURNCaq5spF5+xC4xUoisNxoVGO/5ngFK5M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "../README.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "ShJs2MOALxRDFrPQ/47oORxC3fQ31rr13Lhs0PHV/oE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html",
+          "hash": "SU678YUMRK5Ghts8J94GWVMo7MxIfwRW+N2T9KEGeEE="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html",
+          "hash": "PTyx87Y3n1TyFIxkeZoGCrwWaFY9vmWGUQ1nTTW3vkI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html",
+          "hash": "BsvViv74aKoxVfLZQeDh4F08aDwYUHbhr3a3req3Y/A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html",
+          "hash": "PytM+0Mleq+2P4jaIjihchNqUVkxqPCpdJM+jRTRLjA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html",
+          "hash": "AJK35O39qsdb+C6RpBaQwZcBFfHVTuYwlPj7znGzIks="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.html",
+          "hash": "yAgA0EYkjlZpQJru2UnkbVJaZ0UOtlOGweZj7QKubZI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html",
+          "hash": "mkcpvHAJy65NSZqLJbIFouvh3ZVkU5eiJWKI01CZZaI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html",
+          "hash": "2xOE1ufGugAh3/N8IeaGM1hXO+47izKA7zLCwYY3JfQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html",
+          "hash": "ncjA2oec80SDtzr//9qtsMtwQQTGDuzOZVEvqcEMUrM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html",
+          "hash": "KkLkE4wnuXkVKf6n0Ln7rDlsMbf9ZS9IvaWpI7k9Cps="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html",
+          "hash": "bzDUZlrAu/LPIJ3ILDF0WEm4VQPOeQVnRgMSZQKitNM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html",
+          "hash": "bzpkVHYngO+GJKtN8MsFie+AbilZodsheHH3237gb5A="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html",
+          "hash": "mWIAdQdiBm+GO4SDzty3+qduRgsMCB9O0WtYXOPSUCg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html",
+          "hash": "ytRs5HuLG2VQRToqdgvTnrQgY2McIqh2Y6T2h9Rtr68="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html",
+          "hash": "znwtsI2yLdOVWr2Yl79NAEHGlQNsIhc235M1jLJOGoU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html",
+          "hash": "BjhlK7OWEdgRzsM4Nd6c6eYYS8vllGOd61n7MR7MPh0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html",
+          "hash": "PBFrLdTji/eDf5uWWabG1WVxGAXBxQ4S96yG3td9Rb4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.html",
+          "hash": "NkGvw4+spUa87SYHSqSZvppvY40D0mXLSI4hd2qIfX0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html",
+          "hash": "tEvSzVp0GcX8QonRGG4QsNLQIZi//H8/DMRDVKy0WeM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html",
+          "hash": "Z33JmmAy/9pz62odnlkNz7sZQkCgR+Am4yQEjfZjOLU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html",
+          "hash": "z7YS1uE1vHO0/mTe7bRm0Nw+0NybqEuwRBPNmD2e2qs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.html",
+          "hash": "SdMhdllD3SGzUEI0TDXfGdaE5vX64qzaEuA4ByeiBaI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.IFluent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.IFluent.html",
+          "hash": "KykR9wRf4X53FXKa3jHD5Y/TjK0eKXoaW5fSLT2tmHI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html",
+          "hash": "atnimnKs5ODFMDOqEMcayMwWbQzifawOPAXuPwMSFtQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScope.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScope.html",
+          "hash": "aTDtfKqODhx9d16Jxg2zjiTifU404RDDr90mkXVgg0c="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html",
+          "hash": "f7CD4tddacbgc0I6Sl+M6ZmksFXXVjJh2KytnSdLYH8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/Subatomix.Logging/Subatomix.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Subatomix.Logging/Subatomix.Logging.html",
+          "hash": "G+ZLfofRwCwNYjRW1L42lIRUztMBa4U9exixk8Zx8OU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.svg",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.svg"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
+      },
+      "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 27,
+          "skipped_file_count": 0
+        },
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

@@ -1,0 +1,706 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class LoggingTraceListener
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class LoggingTraceListener
+   ">
+    <meta name="generator" content="docfx 2.59.3.0">
+    
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <meta property="docfx:navrel" content="../../toc">
+    <meta property="docfx:tocrel" content="toc">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../../changes.html" title="Changes">Changes</a>
+                      </li>
+                      <li>
+                          <a href="../../api/index.md" title="API Reference">API Reference</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Sharp.Diagnostics.Logging.html" title="Sharp.Diagnostics.Logging" class="">Sharp.Diagnostics.Logging</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Sharp.Diagnostics.Logging.Log.html" title="Log" class="">Log</a>
+                          </li>
+                          <li class="">
+                            <a href="Sharp.Diagnostics.Logging.TraceOperation.html" title="TraceOperation" class="">TraceOperation</a>
+                          </li>
+                        </ul>  </li>
+                    <li class="">
+                      <span class="expand-stub"></span>
+                      <a href="Subatomix.Logging.Legacy.html" title="Subatomix.Logging.Legacy" class="">Subatomix.Logging.Legacy</a>
+                        
+                        <ul class="nav level2">
+                          <li class="">
+                            <a href="Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html" title="CorrelationManagerActivityListener" class="">CorrelationManagerActivityListener</a>
+                          </li>
+                          <li class="active">
+                            <a href="Subatomix.Logging.Legacy.LoggingTraceListener.html" title="LoggingTraceListener" class="active">LoggingTraceListener</a>
+                          </li>
+                        </ul>  </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener">
+  
+  
+  <h1 id="Subatomix_Logging_Legacy_LoggingTraceListener" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener" class="text-break">Class LoggingTraceListener
+  </h1>
+  <div class="markdown level0 summary"><p>A trace listener that forwards trace events to <span class="xref">Microsoft.Extensions.Logging.ILogger</span>
+loggers.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">LoggingTraceListener</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.Legacy.html">Subatomix.Logging.Legacy</a></h6>
+  <h6><strong>Assembly</strong>: Subatomix.Logging.Legacy.dll</h6>
+  <h5 id="Subatomix_Logging_Legacy_LoggingTraceListener_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class LoggingTraceListener : TraceListener</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener__ctor_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.#ctor*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener__ctor" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.#ctor">LoggingTraceListener()</h4>
+  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Subatomix.Logging.Legacy.LoggingTraceListener.html">LoggingTraceListener</a> instance.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LoggingTraceListener()</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_IsThreadSafe_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_IsThreadSafe" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.IsThreadSafe">IsThreadSafe</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the trace listener is thread safe.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override bool IsThreadSafe { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><span class="xref">true</span> if the trace listener is thread safe; otherwise, <span class="xref">false</span>. The default is <span class="xref">false</span>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_LoggerFactory_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_LoggerFactory" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.LoggerFactory">LoggerFactory</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the provider of loggers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ILoggerFactory LoggerFactory { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.ILoggerFactory</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Close_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Close*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Close" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Close">Close()</h4>
+  <div class="markdown level1 summary"><p>When overridden in a derived class, closes the output stream so it no longer receives tracing or debugging output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Close()</code></pre>
+  </div>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Dispose_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Dispose*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Dispose_System_Boolean_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Releases the unmanaged resources used by the <span class="xref">System.Diagnostics.TraceListener</span> and optionally releases the managed resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override void Dispose(bool managed)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">managed</span></td>
+        <td><p><span class="xref">true</span> to release both managed and unmanaged resources; <span class="xref">false</span> to release only unmanaged resources.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Fail_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Fail*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Fail_System_String_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String)">Fail(String)</h4>
+  <div class="markdown level1 summary"><p>Emits an error message to the listener you create when you implement the <span class="xref">System.Diagnostics.TraceListener</span> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Fail(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message to emit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Fail_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Fail*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Fail_System_String_System_String_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Fail(System.String,System.String)">Fail(String, String)</h4>
+  <div class="markdown level1 summary"><p>Emits an error message and a detailed error message to the listener you create when you implement the <span class="xref">System.Diagnostics.TraceListener</span> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Fail(string message, string detailMessage)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message to emit.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">detailMessage</span></td>
+        <td><p>A detailed message to emit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Flush_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Flush*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Flush" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Flush">Flush()</h4>
+  <div class="markdown level1 summary"><p>When overridden in a derived class, flushes the output buffer.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Flush()</code></pre>
+  </div>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceData*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_Object_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object)">TraceData(TraceEventCache, String, TraceEventType, Int32, Object)</h4>
+  <div class="markdown level1 summary"><p>Writes trace information, a data object and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceData(TraceEventCache context, string source, TraceEventType type, int id, object obj)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>One of the <span class="xref">System.Diagnostics.TraceEventType</span> values specifying the type of event that has caused the trace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">obj</span></td>
+        <td><p>The trace data to emit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceData*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceData_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_Object___" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceData(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.Object[])">TraceData(TraceEventCache, String, TraceEventType, Int32, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes trace information, a data object and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceData(TraceEventCache context, string source, TraceEventType type, int id, params object[] objs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>One of the <span class="xref">System.Diagnostics.TraceEventType</span> values specifying the type of event that has caused the trace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">objs</span></td>
+        <td><p>The trace data to emit.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32)">TraceEvent(TraceEventCache, String, TraceEventType, Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes trace and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceEvent(TraceEventCache context, string source, TraceEventType type, int id)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>One of the <span class="xref">System.Diagnostics.TraceEventType</span> values specifying the type of event that has caused the trace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_String_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String)">TraceEvent(TraceEventCache, String, TraceEventType, Int32, String)</h4>
+  <div class="markdown level1 summary"><p>Writes trace information, a message, and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceEvent(TraceEventCache context, string source, TraceEventType type, int id, string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>One of the <span class="xref">System.Diagnostics.TraceEventType</span> values specifying the type of event that has caused the trace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message to write.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceEvent_System_Diagnostics_TraceEventCache_System_String_System_Diagnostics_TraceEventType_System_Int32_System_String_System_Object___" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceEvent(System.Diagnostics.TraceEventCache,System.String,System.Diagnostics.TraceEventType,System.Int32,System.String,System.Object[])">TraceEvent(TraceEventCache, String, TraceEventType, Int32, String, Object[])</h4>
+  <div class="markdown level1 summary"><p>Writes trace information, a formatted array of objects and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceEvent(TraceEventCache context, string source, TraceEventType type, int id, string template, params object[] args)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventType</span></td>
+        <td><span class="parametername">type</span></td>
+        <td><p>One of the <span class="xref">System.Diagnostics.TraceEventType</span> values specifying the type of event that has caused the trace.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">template</span></td>
+        <td><p>A format string that contains zero or more format items, which correspond to objects in the <code data-dev-comment-type="paramref" class="paramref">args</code> array.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>An <span class="xref">langword_csharp_object</span> array containing zero or more objects to format.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceTransfer_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_TraceTransfer_System_Diagnostics_TraceEventCache_System_String_System_Int32_System_String_System_Guid_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.TraceTransfer(System.Diagnostics.TraceEventCache,System.String,System.Int32,System.String,System.Guid)">TraceTransfer(TraceEventCache, String, Int32, String, Guid)</h4>
+  <div class="markdown level1 summary"><p>Writes trace information, a message, a related activity identity and event information to the listener specific output.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void TraceTransfer(TraceEventCache context, string source, int id, string message, Guid relatedActivityId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Diagnostics.TraceEventCache</span></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>A <span class="xref">System.Diagnostics.TraceEventCache</span> object that contains the current process ID, thread ID, and stack trace information.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">source</span></td>
+        <td><p>A name used to identify the output, typically the name of the application that generated the trace event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">id</span></td>
+        <td><p>A numeric identifier for the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>A message to write.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Guid</span></td>
+        <td><span class="parametername">relatedActivityId</span></td>
+        <td><p>A <span class="xref">System.Guid</span> object identifying a related activity.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_Write_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Write*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_Write_System_String_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.Write(System.String)">Write(String)</h4>
+  <div class="markdown level1 summary"><p>Writes the value of the object&apos;s <span class="xref">System.Object.ToString</span> method to the listener you create when you implement the <span class="xref">System.Diagnostics.TraceListener</span> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Write(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>An <span class="xref">System.Object</span> whose fully qualified class name you want to write.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Legacy_LoggingTraceListener_WriteLine_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine*"></a>
+  <h4 id="Subatomix_Logging_Legacy_LoggingTraceListener_WriteLine_System_String_" data-uid="Subatomix.Logging.Legacy.LoggingTraceListener.WriteLine(System.String)">WriteLine(String)</h4>
+  <div class="markdown level1 summary"><p>Writes the value of the object&apos;s <span class="xref">System.Object.ToString</span> method to the listener you create when you implement the <span class="xref">System.Diagnostics.TraceListener</span> class, followed by a line terminator.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void WriteLine(string message)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">message</span></td>
+        <td><p>An <span class="xref">System.Object</span> whose fully qualified class name you want to write.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            © 2022 Jeffrey Sharp
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>
