@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "changes.html",
-          "hash": "EgwqPCUlRURNCaq5spF5+xC4xUoisNxoVGO/5ngFK5M="
+          "hash": "/h1zNAmnYPJGHQxgbAa33OgoXGPcgsA2e35AZzGJAMM="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "ShJs2MOALxRDFrPQ/47oORxC3fQ31rr13Lhs0PHV/oE="
+          "hash": "p2Xfz0YOxsxUw0haAkFvi6ixX9kbJzP3PikK52h4DhU="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html",
-          "hash": "SU678YUMRK5Ghts8J94GWVMo7MxIfwRW+N2T9KEGeEE="
+          "hash": "0VQWaesCGnuc1H6QWn2vVuDrCgK7rPJQnsgJ4Rng09s="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html",
-          "hash": "PTyx87Y3n1TyFIxkeZoGCrwWaFY9vmWGUQ1nTTW3vkI="
+          "hash": "Fggn/6ezdcfBHPFjrjYA0LhXm4+gAig6vF7jxOYfIsA="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html",
-          "hash": "BsvViv74aKoxVfLZQeDh4F08aDwYUHbhr3a3req3Y/A="
+          "hash": "ToPkmsU1YaYosiFpxGrzXaQf33o+O7n/Vk3p2gQhrUI="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html",
-          "hash": "PytM+0Mleq+2P4jaIjihchNqUVkxqPCpdJM+jRTRLjA="
+          "hash": "1+l8e3TfgzLP5WXZvi8NcYuKzvRi9uO3IGf0vjdC//8="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html",
-          "hash": "AJK35O39qsdb+C6RpBaQwZcBFfHVTuYwlPj7znGzIks="
+          "hash": "mgXsuU0+I7Rk9HKYC8pU4MkxgQg7TqYwkbxW9LECwbE="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.html",
-          "hash": "yAgA0EYkjlZpQJru2UnkbVJaZ0UOtlOGweZj7QKubZI="
+          "hash": "CM20uamlQdxSl/bs5ruCeGx4rQObZSaoSkiBisaOMvk="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html",
-          "hash": "mkcpvHAJy65NSZqLJbIFouvh3ZVkU5eiJWKI01CZZaI="
+          "hash": "Yg72hRH9ChB1dLhy8unlszxoBgJHU1prPDBwXHelj0o="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html",
-          "hash": "2xOE1ufGugAh3/N8IeaGM1hXO+47izKA7zLCwYY3JfQ="
+          "hash": "IQI1AiSIQrj/tHaEFlobElwdnOuPz1NX3iEyLsg7B9I="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html",
-          "hash": "ncjA2oec80SDtzr//9qtsMtwQQTGDuzOZVEvqcEMUrM="
+          "hash": "BjyIhuXLACov6xdW2djlLx7d+ZyyEcG1OVvCKWvP850="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html",
-          "hash": "KkLkE4wnuXkVKf6n0Ln7rDlsMbf9ZS9IvaWpI7k9Cps="
+          "hash": "EAp/inKwyIdk84XfYVA1CygS2CmJncfIJ079TL7P9dk="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html",
-          "hash": "bzDUZlrAu/LPIJ3ILDF0WEm4VQPOeQVnRgMSZQKitNM="
+          "hash": "CLPfwqqAklZxha7TN+JFoEI61KJFLSlYLsV2f1irZIU="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html",
-          "hash": "bzpkVHYngO+GJKtN8MsFie+AbilZodsheHH3237gb5A="
+          "hash": "OT/PrSQiJPMB19o6QiQCzwFjUZPjh//rua76yVzDMF4="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html",
-          "hash": "mWIAdQdiBm+GO4SDzty3+qduRgsMCB9O0WtYXOPSUCg="
+          "hash": "ql23ju+KArI26F/8UnMP9F2fmj3U9k2GLthuPDqIeRE="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html",
-          "hash": "ytRs5HuLG2VQRToqdgvTnrQgY2McIqh2Y6T2h9Rtr68="
+          "hash": "06iU03/lHgH3nuDVO4asZj51vn84obxG70WA0yYz5Mk="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html",
-          "hash": "znwtsI2yLdOVWr2Yl79NAEHGlQNsIhc235M1jLJOGoU="
+          "hash": "0SYXPD5rNtqp+57VvAvX/u+cKh1Q/nmkm3Fz6OUV3Sg="
         }
       },
       "is_incremental": false,
@@ -222,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html",
-          "hash": "BjhlK7OWEdgRzsM4Nd6c6eYYS8vllGOd61n7MR7MPh0="
+          "hash": "U84apjvcukZQGRd51tgywfeDElNduf4QnCCGOQ3Hi2Y="
         }
       },
       "is_incremental": false,
@@ -234,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html",
-          "hash": "PBFrLdTji/eDf5uWWabG1WVxGAXBxQ4S96yG3td9Rb4="
+          "hash": "YdNlXQKQdIyntCitOvxaPUiFsEu5+Y0HS2WIroLnUaw="
         }
       },
       "is_incremental": false,
@@ -246,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.html",
-          "hash": "NkGvw4+spUa87SYHSqSZvppvY40D0mXLSI4hd2qIfX0="
+          "hash": "hXtuSyHvSXQpUw+7IQ8yC1rYafOoj/kaf2rW3rppq54="
         }
       },
       "is_incremental": false,
@@ -258,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html",
-          "hash": "tEvSzVp0GcX8QonRGG4QsNLQIZi//H8/DMRDVKy0WeM="
+          "hash": "pG1auJ5gS1W6ZS6YkAbMbuGbN0dmd/IB1SttL3uTIZ8="
         }
       },
       "is_incremental": false,
@@ -270,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html",
-          "hash": "Z33JmmAy/9pz62odnlkNz7sZQkCgR+Am4yQEjfZjOLU="
+          "hash": "1gbF5quU4dmyriOCd/v57Qh8QBxlSBVHahc3Ek7WONQ="
         }
       },
       "is_incremental": false,
@@ -282,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html",
-          "hash": "z7YS1uE1vHO0/mTe7bRm0Nw+0NybqEuwRBPNmD2e2qs="
+          "hash": "V9e0iotrDq4KKhnETc1xIqoIZXNQ1QmPm1ultymAwYE="
         }
       },
       "is_incremental": false,
@@ -294,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.html",
-          "hash": "SdMhdllD3SGzUEI0TDXfGdaE5vX64qzaEuA4ByeiBaI="
+          "hash": "E7bFTB+NZxqrd2FvEl9Utfppi1d0q11E/OmyyJThzPg="
         }
       },
       "is_incremental": false,
@@ -306,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.IFluent.html",
-          "hash": "KykR9wRf4X53FXKa3jHD5Y/TjK0eKXoaW5fSLT2tmHI="
+          "hash": "Or7aWhclVRWlMaPlGpEYEm+tYnOPGgVgMp9A7PaqcSc="
         }
       },
       "is_incremental": false,
@@ -318,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html",
-          "hash": "atnimnKs5ODFMDOqEMcayMwWbQzifawOPAXuPwMSFtQ="
+          "hash": "SrXwa2sy9phwHES2uqCeLpPbmF1O7vYkB6Lv9tnNQwU="
         }
       },
       "is_incremental": false,
@@ -330,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScope.html",
-          "hash": "aTDtfKqODhx9d16Jxg2zjiTifU404RDDr90mkXVgg0c="
+          "hash": "QzyrEZhS6df85y6S7QcMcAv4pqqPZp01RqNwAIDzPPw="
         }
       },
       "is_incremental": false,
@@ -342,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html",
-          "hash": "f7CD4tddacbgc0I6Sl+M6ZmksFXXVjJh2KytnSdLYH8="
+          "hash": "nRie3+Zq4PxKrSEtqtM/ke+mlt+OyJMM9B2AruGp6Jc="
         }
       },
       "is_incremental": false,
@@ -354,7 +354,19 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.html",
-          "hash": "G+ZLfofRwCwNYjRW1L42lIRUztMBa4U9exixk8Zx8OU="
+          "hash": "EQ9yZJThwH/UgLnbZilysGei99f2vwtpcEHLU/cuKeI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "9VwztFbzELebXsRaaoyaEIPSrE7IRD8/JcGa3gEPl1Y="
         }
       },
       "is_incremental": false,
@@ -397,7 +409,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 2,
+          "total_file_count": 3,
           "skipped_file_count": 0
         },
         "ManagedReferenceDocumentProcessor": {
