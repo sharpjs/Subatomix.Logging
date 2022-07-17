@@ -80,23 +80,60 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="subatomixlogging">Subatomix.Logging</h1>
 
-<p>Additions to <a href="https://www.nuget.org/packages/Microsoft.Extensions.Logging">Microsoft.Extensions.Logging</a>.</p>
-<!--
-TODO: More
-
-- [**Subatomix.Logging.Legacy**](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
-  - `LoggingTraceListener` – A trace listener plugin for the legacy
-    [`TraceSource`](https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource)
-    API.  This listener forwards trace events to
-    [`ILogger`](https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger)
-    loggers.
--->
+<p>Additions to <a href="https://www.nuget.org/packages/Microsoft.Extensions.Logging">Microsoft.Extensions.Logging</a>
+in three NuGet packages:</p>
+<ul>
+<li><a href="https://www.nuget.org/packages/Subatomix.Logging"><strong>Subatomix.Logging</strong></a><ul>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.Console.html"><code>PrettyConsoleFormatter</code></a>
+– A terse, colorful formatter for Microsoft&#39;s
+  <a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging/?view=aspnetcore-6.0#console">console logger</a>.</li>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.Debugger.html"><code>DebuggerLogger</code></a>
+– A logger that sends messages to an attached debugger. In Visual Studio,
+  logged messages will appear in the debug output window.</li>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.OperationScope.html"><code>OperationScope</code></a>
+– A scope representing a logical operation.  Automatically logs the start,
+  end, duration, and (optionally) the exception thrown from an operation.</li>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html"><code>ActivityScope</code></a>
+– An operation scope that also starts and stops an
+  <a href="https://docs.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs"><code>Activity</code></a>.
+  The activity carries tags understood by
+  <a href="https://docs.microsoft.com/en-us/azure/azure-monitor/app/app-insights-overview">Application Insights</a>,
+  which can present the activity as a dependency telemetry item.</li>
+</ul>
+</li>
+<li><a href="https://www.nuget.org/packages/Subatomix.Logging.Legacy"><strong>Subatomix.Logging.Legacy</strong></a><ul>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html"><code>LoggingTraceListener</code></a>
+– A trace listener plugin for the legacy
+  <a href="https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.tracesource"><code>TraceSource</code></a>
+  API.  This listener forwards trace events to
+  <a href="https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.logging.ilogger"><code>ILogger</code></a>
+  loggers.</li>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html"><code>CorrelationManagerActivityListener</code></a>
+– A listener that flows
+  <a href="https://docs.microsoft.com/en-us/dotnet/core/diagnostics/distributed-tracing-instrumentation-walkthroughs"><code>Activity</code></a>
+  start and stop events to the legacy
+  <a href="https://docs.microsoft.com/en-us/dotnet/api/system.diagnostics.correlationmanager"><code>CorrelationManager</code></a>
+  facility.</li>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html">Types to assist migration</a>
+from the <a href="https://github.com/sharpjs/Sharp.Diagnostics.Logging">Sharp.Diagnostics.Logging</a>
+package.</li>
+</ul>
+</li>
+<li><a href="https://www.nuget.org/packages/Subatomix.Logging.Sql"><strong>Subatomix.Logging.Sql</strong></a><ul>
+<li><a href="https://sharpjs.github.io/Subatomix.Logging/api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html"><code>SqlLogger</code></a>
+– A logger that writes to a table in SQL Server or Azure SQL Database.</li>
+</ul>
+</li>
+</ul>
 <h2 id="status">Status</h2>
 <p><a href="https://github.com/sharpjs/Subatomix.Logging/actions"><img src="https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg" alt="Build"></a></p>
 <ul>
-<li>Nearing release.</li>
-<li>100% coverage by automated tests.</li>
+<li><strong>New-ish:</strong>     Nearing release.  Based on code used privately in production for years.</li>
+<li><strong>Tested:</strong>      100% coverage by automated tests.</li>
+<li><strong>Documented:</strong>  IntelliSense on everything, plus <a href="https://sharpjs.github.io/Subatomix.Logging/">external documentation</a>.</li>
 </ul>
+<h2 id="installation">Installation</h2>
+<p>NuGet packages are available.</p>
 <table>
 <thead>
 <tr>
@@ -119,9 +156,31 @@ TODO: More
 </tr>
 </tbody>
 </table>
-<h2 id="usage">Usage</h2>
-<p>WIP</p>
-<!--
+<h2 id="documentation">Documentation</h2>
+<ul>
+<li>IntelliSense on everything.</li>
+<li>Web documentat.</li>
+<li>Basically no tutorial content at the moment.</li>
+</ul>
+<h2 id="building-from-source">Building From Source</h2>
+<p>Requirements:</p>
+<ul>
+<li>Visual Studio 2022 or later (if using Visual Studio).</li>
+<li>Appropriate .NET SDKs — see the target framework(s) specified in each <code>.csproj</code> file.<ul>
+<li>Download <a href="https://dotnet.microsoft.com/download/dotnet">.NET SDKs</a></li>
+<li>Download <a href="https://dotnet.microsoft.com/download/dotnet-framework">.NET Framework Developer Packs</a></li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-powershell"># The default: build and run tests
+.\Make.ps1 [-Test] [-Configuration &lt;String&gt;]
+
+# Just build; don&#39;t run tests
+.\Make.ps1 -Build [-Configuration &lt;String&gt;]
+
+# Build and run tests w/coverage
+.\Make.ps1 -Coverage [-Configuration &lt;String&gt;]
+</code></pre><!--
   Copyright 2022 Jeffrey Sharp
 
   Permission to use, copy, modify, and distribute this software for any
