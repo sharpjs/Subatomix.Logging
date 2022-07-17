@@ -1,3 +1,7 @@
+---
+outputFileName: changes.html
+---
+
 # Changes in Subatomix.Logging
 
 This file documents all notable changes.
