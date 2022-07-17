@@ -35,13 +35,16 @@
     </DefaultItemExcludesInProjectFolder>
     <LogFile>obj\docfx.log</LogFile>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' != 'Release'">
+    <BuildDocFx>false</BuildDocFx>
+  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="docfx.console" Version="2.59.3" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="**" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(MSBuildThisFile)" />
+    <None Include="**"    Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder);$(MSBuildThisFile)" />
     <None Include=".*\**" Exclude=".git\**;.vs\**" />
   </ItemGroup>
 
