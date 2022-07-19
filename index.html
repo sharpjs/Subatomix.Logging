@@ -35,7 +35,7 @@
               </button>
               
               <a class="navbar-brand" href="index.html">
-                <img id="logo" class="svg" src="images/logo.svg" alt="">
+                <img id="logo" class="svg" src="images/logo.svg" alt="Subatomix.Logging">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -46,6 +46,9 @@
               </form>
                 
                 <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="index.html" title="Subatomix.Logging Documentation">Subatomix.Logging Documentation</a>
+                      </li>
                       <li>
                           <a href="changes.html" title="Changes">Changes</a>
                       </li>
@@ -127,8 +130,9 @@ package.</li>
 </ul>
 <h2 id="status">Status</h2>
 <p><a href="https://github.com/sharpjs/Subatomix.Logging/actions"><img src="https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg" alt="Build"></a></p>
+<p>Nearing release.</p>
 <ul>
-<li><strong>New-ish:</strong>     Nearing release.  Based on code used privately in production for years.</li>
+<li><strong>New-ish:</strong>     New implementation, but based on code with extensive private use in production.</li>
 <li><strong>Tested:</strong>      100% coverage by automated tests.</li>
 <li><strong>Documented:</strong>  IntelliSense on everything, plus <a href="https://sharpjs.github.io/Subatomix.Logging/">external documentation</a>.</li>
 </ul>
@@ -156,21 +160,15 @@ package.</li>
 </tr>
 </tbody>
 </table>
-<h2 id="documentation">Documentation</h2>
-<ul>
-<li>IntelliSense on everything.</li>
-<li>Web documentat.</li>
-<li>Basically no tutorial content at the moment.</li>
-</ul>
 <h2 id="building-from-source">Building From Source</h2>
 <p>Requirements:</p>
 <ul>
-<li>Visual Studio 2022 or later (if using Visual Studio).</li>
 <li>Appropriate .NET SDKs — see the target framework(s) specified in each <code>.csproj</code> file.<ul>
 <li>Download <a href="https://dotnet.microsoft.com/download/dotnet">.NET SDKs</a></li>
 <li>Download <a href="https://dotnet.microsoft.com/download/dotnet-framework">.NET Framework Developer Packs</a></li>
 </ul>
 </li>
+<li>Visual Studio 2022 or later (if using Visual Studio).</li>
 </ul>
 <pre><code class="lang-powershell"># The default: build and run tests
 .\Make.ps1 [-Test] [-Configuration &lt;String&gt;]
