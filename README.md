@@ -47,7 +47,9 @@ in three NuGet packages:
 
 [![Build](https://github.com/sharpjs/Subatomix.Logging/workflows/Build/badge.svg)](https://github.com/sharpjs/Subatomix.Logging/actions)
 
-- **New-ish:**     Nearing release.  Based on code used privately in production for years.
+Nearing release.
+
+- **New-ish:**     New implementation, but based on code with extensive private use in production.
 - **Tested:**      100% coverage by automated tests.
 - **Documented:**  IntelliSense on everything, plus [external documentation](https://sharpjs.github.io/Subatomix.Logging/).
 
@@ -61,19 +63,13 @@ Package | Status
 [Subatomix.Logging.Legacy](https://www.nuget.org/packages/Subatomix.Logging.Legacy) | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Legacy.svg)](https://www.nuget.org/packages/Subatomix.Logging.Legacy)
 [Subatomix.Logging.Sql](https://www.nuget.org/packages/Subatomix.Logging.Sql)       | [![NuGet](https://img.shields.io/nuget/v/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql) [![NuGet](https://img.shields.io/nuget/dt/Subatomix.Logging.Sql.svg)](https://www.nuget.org/packages/Subatomix.Logging.Sql)
 
-## Documentation
-
-- IntelliSense on everything.
-- Web documentat.
-- Basically no tutorial content at the moment.
-
 ## Building From Source
 
 Requirements:
-- Visual Studio 2022 or later (if using Visual Studio).
 - Appropriate .NET SDKs — see the target framework(s) specified in each `.csproj` file.
   - Download [.NET SDKs](https://dotnet.microsoft.com/download/dotnet)
   - Download [.NET Framework Developer Packs](https://dotnet.microsoft.com/download/dotnet-framework)
+- Visual Studio 2022 or later (if using Visual Studio).
 
 ```powershell
 # The default: build and run tests

@@ -1,0 +1,4 @@
+.navbar-nav > :first-child {
+    left: -2px;
+    font-size: 120%;
+}
