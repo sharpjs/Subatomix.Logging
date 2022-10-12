@@ -49,9 +49,12 @@ in three NuGet packages:
 
 Nearing release.
 
-- **New-ish:**     New implementation, but based on code with extensive private use in production.
-- **Tested:**      100% coverage by automated tests.
-- **Documented:**  IntelliSense on everything, plus [external documentation](https://sharpjs.github.io/Subatomix.Logging/).
+- **New-ish:** New implementation, but based on code with extensive private use in production.
+- **Tested:**  100% coverage by automated tests.
+- **Documented**<sup>ish</sup>**:**
+  - :white_check_mark: IntelliSense on everything.
+  - :white_check_mark: [External reference documentation](https://sharpjs.github.io/Subatomix.Logging/).
+  - :x:                No tutorial content yet.
 
 ## Installation
 
