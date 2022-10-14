@@ -105,7 +105,7 @@ jobs:
           MSSQL_SA_PASSWORD: ${{ secrets.MSSQL_SA_PASSWORD }}
 
       - name: Prepare Coverage Report
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.9
+        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.10
         #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}/coverage/raw/**/coverage.opencover.xml
