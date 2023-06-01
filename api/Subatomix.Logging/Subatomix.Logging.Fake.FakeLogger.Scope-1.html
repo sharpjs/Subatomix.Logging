@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class DebuggerLogger
+    <title>Class FakeLogger.Scope&lt;TState&gt;
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class DebuggerLogger
+    <meta name="title" content="Class FakeLogger.Scope&lt;TState&gt;
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -144,8 +144,8 @@
                       <a href="Subatomix.Logging.Debugger.html" title="Subatomix.Logging.Debugger" class="">Subatomix.Logging.Debugger</a>
                         
                         <ul class="nav level2">
-                          <li class="active">
-                            <a href="Subatomix.Logging.Debugger.DebuggerLogger.html" title="DebuggerLogger" class="active">DebuggerLogger</a>
+                          <li class="">
+                            <a href="Subatomix.Logging.Debugger.DebuggerLogger.html" title="DebuggerLogger" class="">DebuggerLogger</a>
                           </li>
                           <li class="">
                             <a href="Subatomix.Logging.Debugger.DebuggerLoggerProvider.html" title="DebuggerLoggerProvider" class="">DebuggerLoggerProvider</a>
@@ -165,8 +165,8 @@
                           <li class="">
                             <a href="Subatomix.Logging.Fake.FakeLogger.Scope.html" title="FakeLogger.Scope" class="">FakeLogger.Scope</a>
                           </li>
-                          <li class="">
-                            <a href="Subatomix.Logging.Fake.FakeLogger.Scope-1.html" title="FakeLogger.Scope&lt;TState&gt;" class="">FakeLogger.Scope&lt;TState&gt;</a>
+                          <li class="active">
+                            <a href="Subatomix.Logging.Fake.FakeLogger.Scope-1.html" title="FakeLogger.Scope&lt;TState&gt;" class="active">FakeLogger.Scope&lt;TState&gt;</a>
                           </li>
                         </ul>  </li>
                   </ul>        </div>
@@ -176,40 +176,62 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.Debugger.DebuggerLogger">
+            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.Fake.FakeLogger.Scope`1">
   
   
-  <h1 id="Subatomix_Logging_Debugger_DebuggerLogger" data-uid="Subatomix.Logging.Debugger.DebuggerLogger" class="text-break">Class DebuggerLogger
+  <h1 id="Subatomix_Logging_Fake_FakeLogger_Scope_1" data-uid="Subatomix.Logging.Fake.FakeLogger.Scope`1" class="text-break">Class FakeLogger.Scope&lt;TState&gt;
   </h1>
-  <div class="markdown level0 summary"><p>A logger that sends messages to an attached debugger.  In Visual Studio,
-logged messages will appear in the debug output window.</p>
+  <div class="markdown level0 summary"><p>A logical operation scope created by <a class="xref" href="Subatomix.Logging.Fake.FakeLogger.html#Subatomix_Logging_Fake_FakeLogger_BeginScope__1___0_">BeginScope&lt;TState&gt;(TState)</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">DebuggerLogger</span></div>
+    <div class="level1"><a class="xref" href="Subatomix.Logging.Fake.FakeLogger.Scope.html">FakeLogger.Scope</a></div>
+    <div class="level2"><span class="xref">FakeLogger.Scope&lt;TState&gt;</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><span class="xref">Microsoft.Extensions.Logging.ILogger</span></div>
+    <div><span class="xref">System.IDisposable</span></div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.Debugger.html">Subatomix.Logging.Debugger</a></h6>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="Subatomix.Logging.Fake.FakeLogger.Scope.html#Subatomix_Logging_Fake_FakeLogger_Scope_Dispose">FakeLogger.Scope.Dispose()</a>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.Fake.html">Subatomix.Logging.Fake</a></h6>
   <h6><strong>Assembly</strong>: Subatomix.Logging.dll</h6>
-  <h5 id="Subatomix_Logging_Debugger_DebuggerLogger_syntax">Syntax</h5>
+  <h5 id="Subatomix_Logging_Fake_FakeLogger_Scope_1_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class DebuggerLogger : Object</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class Scope&lt;TState&gt; : FakeLogger.Scope</code></pre>
   </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TState</span></td>
+        <td><p>The type of state associated with the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Subatomix_Logging_Debugger_DebuggerLogger_Name_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Name*"></a>
-  <h4 id="Subatomix_Logging_Debugger_DebuggerLogger_Name" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Name">Name</h4>
-  <div class="markdown level1 summary"><p>Gets the category name.</p>
+  <a id="Subatomix_Logging_Fake_FakeLogger_Scope_1_State_" data-uid="Subatomix.Logging.Fake.FakeLogger.Scope`1.State*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_Scope_1_State" data-uid="Subatomix.Logging.Fake.FakeLogger.Scope`1.State">State</h4>
+  <div class="markdown level1 summary"><p>Gets the state (identifier) associated with the scope.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public TState State { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -221,209 +243,14 @@ logged messages will appear in the debug output window.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Subatomix_Logging_Debugger_DebuggerLogger_Provider_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Provider*"></a>
-  <h4 id="Subatomix_Logging_Debugger_DebuggerLogger_Provider" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Provider">Provider</h4>
-  <div class="markdown level1 summary"><p>Gets the associated provider.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public DebuggerLoggerProvider Provider { get; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="Subatomix.Logging.Debugger.DebuggerLoggerProvider.html">DebuggerLoggerProvider</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
-  </h3>
-  <a id="Subatomix_Logging_Debugger_DebuggerLogger_BeginScope_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.BeginScope*"></a>
-  <h4 id="Subatomix_Logging_Debugger_DebuggerLogger_BeginScope__1___0_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.BeginScope``1(``0)">BeginScope&lt;TState&gt;(TState)</h4>
-  <div class="markdown level1 summary"><p>Begins a logical operation scope.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IDisposable BeginScope&lt;TState&gt;(TState state)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
         <td><span class="xref">TState</span></td>
-        <td><span class="parametername">state</span></td>
-        <td><p>The identifier for the scope.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.IDisposable</span></td>
-        <td><p>An <span class="xref">System.IDisposable</span> that ends the logical operation scope on dispose.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TState</span></td>
-        <td><p>The type of the state to begin scope for.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Subatomix_Logging_Debugger_DebuggerLogger_IsEnabled_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled*"></a>
-  <h4 id="Subatomix_Logging_Debugger_DebuggerLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">IsEnabled(LogLevel)</h4>
-  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">logLevel</code> is enabled.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsEnabled(LogLevel logLevel)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
-        <td><span class="parametername">logLevel</span></td>
-        <td><p>Level to be checked.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><p><code>true</code> if enabled.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Subatomix_Logging_Debugger_DebuggerLogger_Log_" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Log*"></a>
-  <h4 id="Subatomix_Logging_Debugger_DebuggerLogger_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__" data-uid="Subatomix.Logging.Debugger.DebuggerLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">Log&lt;TState&gt;(LogLevel, EventId, TState, Exception, Func&lt;TState, Exception, String&gt;)</h4>
-  <div class="markdown level1 summary"><p>Writes a log entry.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Log&lt;TState&gt;(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func&lt;TState, Exception, string&gt; formatter)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
-        <td><span class="parametername">logLevel</span></td>
-        <td><p>Entry will be written on this level.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.EventId</span></td>
-        <td><span class="parametername">eventId</span></td>
-        <td><p>Id of the event.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">TState</span></td>
-        <td><span class="parametername">state</span></td>
-        <td><p>The entry to be written. Can be also an object.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Exception</span></td>
-        <td><span class="parametername">exception</span></td>
-        <td><p>The exception related to this entry.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Func</span>&lt;TState, <span class="xref">System.Exception</span>, <span class="xref">System.String</span>&gt;</td>
-        <td><span class="parametername">formatter</span></td>
-        <td><p>Function to create a <span class="xref">System.String</span> message of the <code data-dev-comment-type="paramref" class="paramref">state</code> and <code data-dev-comment-type="paramref" class="paramref">exception</code>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="typeParameters">Type Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="parametername">TState</span></td>
-        <td><p>The type of the object to be written.</p>
-</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <span class="xref">Microsoft.Extensions.Logging.ILogger</span>
+      <span class="xref">System.IDisposable</span>
   </div>
 </article>
           </div>

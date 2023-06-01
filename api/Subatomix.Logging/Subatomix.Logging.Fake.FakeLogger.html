@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class ActivityScope
+    <title>Class FakeLogger
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class ActivityScope
+    <meta name="title" content="Class FakeLogger
    ">
     <meta name="generator" content="docfx 2.59.4.0">
     
@@ -99,8 +99,8 @@
                       <a href="Subatomix.Logging.html" title="Subatomix.Logging" class="">Subatomix.Logging</a>
                         
                         <ul class="nav level2">
-                          <li class="active">
-                            <a href="Subatomix.Logging.ActivityScope.html" title="ActivityScope" class="active">ActivityScope</a>
+                          <li class="">
+                            <a href="Subatomix.Logging.ActivityScope.html" title="ActivityScope" class="">ActivityScope</a>
                           </li>
                           <li class="">
                             <a href="Subatomix.Logging.ActivityScopeInitiator.html" title="ActivityScopeInitiator" class="">ActivityScopeInitiator</a>
@@ -159,8 +159,8 @@
                       <a href="Subatomix.Logging.Fake.html" title="Subatomix.Logging.Fake" class="">Subatomix.Logging.Fake</a>
                         
                         <ul class="nav level2">
-                          <li class="">
-                            <a href="Subatomix.Logging.Fake.FakeLogger.html" title="FakeLogger" class="">FakeLogger</a>
+                          <li class="active">
+                            <a href="Subatomix.Logging.Fake.FakeLogger.html" title="FakeLogger" class="active">FakeLogger</a>
                           </li>
                           <li class="">
                             <a href="Subatomix.Logging.Fake.FakeLogger.Scope.html" title="FakeLogger.Scope" class="">FakeLogger.Scope</a>
@@ -176,210 +176,50 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.ActivityScope">
+            <article class="content wrap" id="_content" data-uid="Subatomix.Logging.Fake.FakeLogger">
   
   
-  <h1 id="Subatomix_Logging_ActivityScope" data-uid="Subatomix.Logging.ActivityScope" class="text-break">Class ActivityScope
+  <h1 id="Subatomix_Logging_Fake_FakeLogger" data-uid="Subatomix.Logging.Fake.FakeLogger" class="text-break">Class FakeLogger
   </h1>
-  <div class="markdown level0 summary"><p>A scope representing a logical operation with an associated
-<span class="xref">System.Diagnostics.Activity</span>.  This type is intended for use with the
-<span class="xref">Microsoft.Extensions.Logging.ILogger</span> API.</p>
+  <div class="markdown level0 summary"><p>An <span class="xref">Microsoft.Extensions.Logging.ILogger</span> implementation that captures logged entries into
+a list.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><a class="xref" href="Subatomix.Logging.OperationScope.html">OperationScope</a></div>
-    <div class="level2"><span class="xref">ActivityScope</span></div>
+    <div class="level1"><span class="xref">FakeLogger</span></div>
   </div>
   <div class="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="Subatomix.Logging.Console.IConsoleFormattable.html">IConsoleFormattable</a></div>
-    <div><span class="xref">System.IDisposable</span></div>
+    <div><span class="xref">Microsoft.Extensions.Logging.ILogger</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Subatomix_Logging_Console_IConsoleFormattable_Write_System_IO_TextWriter_Subatomix_Logging_Console_ConsoleContext_">OperationScope.IConsoleFormattable.Write(TextWriter, ConsoleContext)</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Logger">OperationScope.Logger</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_LogLevel">OperationScope.LogLevel</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Name">OperationScope.Name</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_IsCompleted">OperationScope.IsCompleted</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Duration">OperationScope.Duration</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Exception">OperationScope.Exception</a>
-    </div>
-    <div>
-      <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_ExceptionLogLevel">OperationScope.ExceptionLogLevel</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.html">Subatomix.Logging</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Subatomix.Logging.Fake.html">Subatomix.Logging.Fake</a></h6>
   <h6><strong>Assembly</strong>: Subatomix.Logging.dll</h6>
-  <h5 id="Subatomix_Logging_ActivityScope_syntax">Syntax</h5>
+  <h5 id="Subatomix_Logging_Fake_FakeLogger_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class ActivityScope : OperationScope, IConsoleFormattable</code></pre>
+    <pre><code class="lang-csharp hljs">public class FakeLogger : Object</code></pre>
   </div>
-  <h5 id="Subatomix_Logging_ActivityScope_remarks"><strong>Remarks</strong></h5>
-  <div class="markdown level0 remarks"><p>
-  On construction, a scope of this type starts a new named
-<span class="xref">System.Diagnostics.Activity</span> and logs a start message containing the name
-of the activity.  On disposal, the scope stops the activity and logs a
-completion message containing the name and duration of the activity.
-</p>
-<p>
-  Code using this type can arrange for exception reporting by setting the
-<span class="xref">System.Exception</span> propery, typically in a <span class="xref">langword_csharp_catch</span>
-block.  On disposal, if a scope&apos;s <span class="xref">System.Exception</span> propery is
-not <span class="xref">null</span>, the scope logs the exception immediately
-before the completion message and adds an exception indicator to the
-completion message.  The scope also sets the activity&apos;s status if it is
-unset:
-if <span class="xref">System.Exception</span> is <span class="xref">null</span>, the scope sets
-<span class="xref">System.Diagnostics.Activity.Status</span> to <span class="xref">System.Diagnostics.ActivityStatusCode.Ok</span> and
-<span class="xref">System.Diagnostics.Activity.StatusDescription</span> to <span class="xref">null</span>;
-othwerise, the scope sets
-<span class="xref">System.Diagnostics.Activity.Status</span> to <span class="xref">System.Diagnostics.ActivityStatusCode.Error</span> and 
-<span class="xref">System.Diagnostics.Activity.StatusDescription</span> to the exception message.
-</p>
-</div>
   <h3 id="constructors">Constructors
   </h3>
-  <a id="Subatomix_Logging_ActivityScope__ctor_" data-uid="Subatomix.Logging.ActivityScope.#ctor*"></a>
-  <h4 id="Subatomix_Logging_ActivityScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_" data-uid="Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String)">ActivityScope(ILogger, LogLevel, String)</h4>
-  <div class="markdown level1 summary"><p>Initializes and starts a new <a class="xref" href="Subatomix.Logging.ActivityScope.html">ActivityScope</a> instance.</p>
-</div>
+  <a id="Subatomix_Logging_Fake_FakeLogger__ctor_" data-uid="Subatomix.Logging.Fake.FakeLogger.#ctor*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger__ctor" data-uid="Subatomix.Logging.Fake.FakeLogger.#ctor">FakeLogger()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public ActivityScope(ILogger logger, LogLevel logLevel, string name = null)</code></pre>
+    <pre><code class="lang-csharp hljs">public FakeLogger()</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The logger for operation-related messages.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
-        <td><span class="parametername">logLevel</span></td>
-        <td><p>The severity level for operation start and completion messages.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the operation.  If omitted, the default is the name of
-the calling member.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <a id="Subatomix_Logging_ActivityScope__ctor_" data-uid="Subatomix.Logging.ActivityScope.#ctor*"></a>
-  <h4 id="Subatomix_Logging_ActivityScope__ctor_Microsoft_Extensions_Logging_ILogger_Microsoft_Extensions_Logging_LogLevel_System_String_System_Boolean_" data-uid="Subatomix.Logging.ActivityScope.#ctor(Microsoft.Extensions.Logging.ILogger,Microsoft.Extensions.Logging.LogLevel,System.String,System.Boolean)">ActivityScope(ILogger, LogLevel, String, Boolean)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new <a class="xref" href="Subatomix.Logging.ActivityScope.html">ActivityScope</a> instance.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected ActivityScope(ILogger logger, LogLevel logLevel, string name, bool start)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.ILogger</span></td>
-        <td><span class="parametername">logger</span></td>
-        <td><p>The logger for operation-related messages.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
-        <td><span class="parametername">logLevel</span></td>
-        <td><p>The severity level for operation start and completion messages.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the operation.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.Boolean</span></td>
-        <td><span class="parametername">start</span></td>
-        <td><p>
-  Whether to invoke <a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start">Start()</a>.
-</p>
-<p>
-  A constructor of a derived type can pass <span class="xref">false</span> to
-  permit further initialization before the logical operation starts.
-  The derived type constructor must then invoke
-<a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start">Start()</a> before returning.
-</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="exceptions">Exceptions</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Condition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><span class="xref">System.ArgumentNullException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">logger</code> and/or <code data-dev-comment-type="paramref" class="paramref">name</code> is
-<span class="xref">null</span>.</p>
-</td>
-      </tr>
-      <tr>
-        <td><span class="xref">System.ArgumentException</span></td>
-        <td><p><code data-dev-comment-type="paramref" class="paramref">name</code> is empty.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="properties">Properties
   </h3>
-  <a id="Subatomix_Logging_ActivityScope_Activity_" data-uid="Subatomix.Logging.ActivityScope.Activity*"></a>
-  <h4 id="Subatomix_Logging_ActivityScope_Activity" data-uid="Subatomix.Logging.ActivityScope.Activity">Activity</h4>
-  <div class="markdown level1 summary"><p>Gets the activity object associated with the operation.</p>
+  <a id="Subatomix_Logging_Fake_FakeLogger_Entries_" data-uid="Subatomix.Logging.Fake.FakeLogger.Entries*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_Entries" data-uid="Subatomix.Logging.Fake.FakeLogger.Entries">Entries</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of entries written via the logger.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Activity Activity { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IReadOnlyList&lt;(LogLevel, EventId, string, Exception)&gt; Entries { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -391,42 +231,246 @@ the calling member.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Diagnostics.Activity</span></td>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyList</span>&lt;<span class="xref">System.ValueTuple</span>&lt;<span class="xref">Microsoft.Extensions.Logging.LogLevel</span>, <span class="xref">Microsoft.Extensions.Logging.EventId</span>, <span class="xref">System.String</span>, <span class="xref">System.Exception</span>&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_Fake_FakeLogger_Entries_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>ℹ <strong>Note:</strong>
+This collection contains all entries written via the logger,
+regardless of the minimum severity level set by the
+<a class="xref" href="Subatomix.Logging.Fake.FakeLogger.html#Subatomix_Logging_Fake_FakeLogger_MinimumLevel">MinimumLevel</a> property.</p>
+</div>
+  <a id="Subatomix_Logging_Fake_FakeLogger_MinimumLevel_" data-uid="Subatomix.Logging.Fake.FakeLogger.MinimumLevel*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_MinimumLevel" data-uid="Subatomix.Logging.Fake.FakeLogger.MinimumLevel">MinimumLevel</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the minimum severity level for which
+<a class="xref" href="Subatomix.Logging.Fake.FakeLogger.html#Subatomix_Logging_Fake_FakeLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_">IsEnabled(LogLevel)</a> returns <span class="xref">true</span>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public LogLevel MinimumLevel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Subatomix_Logging_Fake_FakeLogger_MinimumLevel_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>ℹ <strong>Note:</strong>
+This property affects the behavior of <a class="xref" href="Subatomix.Logging.Fake.FakeLogger.html#Subatomix_Logging_Fake_FakeLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_">IsEnabled(LogLevel)</a> only.
+The <a class="xref" href="Subatomix.Logging.Fake.FakeLogger.html#Subatomix_Logging_Fake_FakeLogger_Entries">Entries</a> property collects all entries written via
+the logger, regardless of the minimum severity level.</p>
+</div>
+  <a id="Subatomix_Logging_Fake_FakeLogger_Scopes_" data-uid="Subatomix.Logging.Fake.FakeLogger.Scopes*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_Scopes" data-uid="Subatomix.Logging.Fake.FakeLogger.Scopes">Scopes</h4>
+  <div class="markdown level1 summary"><p>Gets the stack of logical operation scopes issued by the logger.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IReadOnlyCollection&lt;FakeLogger.Scope&gt; Scopes { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IReadOnlyCollection</span>&lt;<a class="xref" href="Subatomix.Logging.Fake.FakeLogger.Scope.html">FakeLogger.Scope</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
   <h3 id="methods">Methods
   </h3>
-  <a id="Subatomix_Logging_ActivityScope_Start_" data-uid="Subatomix.Logging.ActivityScope.Start*"></a>
-  <h4 id="Subatomix_Logging_ActivityScope_Start" data-uid="Subatomix.Logging.ActivityScope.Start">Start()</h4>
-  <div class="markdown level1 summary"><p>Starts the logical operation.</p>
+  <a id="Subatomix_Logging_Fake_FakeLogger_BeginScope_" data-uid="Subatomix.Logging.Fake.FakeLogger.BeginScope*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_BeginScope__1___0_" data-uid="Subatomix.Logging.Fake.FakeLogger.BeginScope``1(``0)">BeginScope&lt;TState&gt;(TState)</h4>
+  <div class="markdown level1 summary"><p>Begins a logical operation scope.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Start()</code></pre>
+    <pre><code class="lang-csharp hljs">public IDisposable BeginScope&lt;TState&gt;(TState state)</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Start">OperationScope.Start()</a></div>
-  <a id="Subatomix_Logging_ActivityScope_Stop_" data-uid="Subatomix.Logging.ActivityScope.Stop*"></a>
-  <h4 id="Subatomix_Logging_ActivityScope_Stop" data-uid="Subatomix.Logging.ActivityScope.Stop">Stop()</h4>
-  <div class="markdown level1 summary"><p>Stops the logical operation and disposes managed resources owned by
-the scope.</p>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TState</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The identifier for the scope.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IDisposable</span></td>
+        <td><p>An <span class="xref">System.IDisposable</span> that ends the logical operation scope on dispose.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TState</span></td>
+        <td><p>The type of the state to begin scope for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Fake_FakeLogger_IsEnabled_" data-uid="Subatomix.Logging.Fake.FakeLogger.IsEnabled*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_IsEnabled_Microsoft_Extensions_Logging_LogLevel_" data-uid="Subatomix.Logging.Fake.FakeLogger.IsEnabled(Microsoft.Extensions.Logging.LogLevel)">IsEnabled(LogLevel)</h4>
+  <div class="markdown level1 summary"><p>Checks if the given <code data-dev-comment-type="paramref" class="paramref">logLevel</code> is enabled.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected override void Stop()</code></pre>
+    <pre><code class="lang-csharp hljs">public bool IsEnabled(LogLevel logLevel)</code></pre>
   </div>
-  <h5 class="overrides">Overrides</h5>
-  <div><a class="xref" href="Subatomix.Logging.OperationScope.html#Subatomix_Logging_OperationScope_Stop">OperationScope.Stop()</a></div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>Level to be checked.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if enabled.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <a id="Subatomix_Logging_Fake_FakeLogger_Log_" data-uid="Subatomix.Logging.Fake.FakeLogger.Log*"></a>
+  <h4 id="Subatomix_Logging_Fake_FakeLogger_Log__1_Microsoft_Extensions_Logging_LogLevel_Microsoft_Extensions_Logging_EventId___0_System_Exception_System_Func___0_System_Exception_System_String__" data-uid="Subatomix.Logging.Fake.FakeLogger.Log``1(Microsoft.Extensions.Logging.LogLevel,Microsoft.Extensions.Logging.EventId,``0,System.Exception,System.Func{``0,System.Exception,System.String})">Log&lt;TState&gt;(LogLevel, EventId, TState, Exception, Func&lt;TState, Exception, String&gt;)</h4>
+  <div class="markdown level1 summary"><p>Writes a log entry.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Log&lt;TState&gt;(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func&lt;TState, Exception, string&gt; formatter)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.LogLevel</span></td>
+        <td><span class="parametername">logLevel</span></td>
+        <td><p>Entry will be written on this level.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">Microsoft.Extensions.Logging.EventId</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>Id of the event.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TState</span></td>
+        <td><span class="parametername">state</span></td>
+        <td><p>The entry to be written. Can be also an object.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Exception</span></td>
+        <td><span class="parametername">exception</span></td>
+        <td><p>The exception related to this entry.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TState, <span class="xref">System.Exception</span>, <span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">formatter</span></td>
+        <td><p>Function to create a <span class="xref">System.String</span> message of the <code data-dev-comment-type="paramref" class="paramref">state</code> and <code data-dev-comment-type="paramref" class="paramref">exception</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TState</span></td>
+        <td><p>The type of the object to be written.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="Subatomix.Logging.Console.IConsoleFormattable.html">IConsoleFormattable</a>
-  </div>
-  <div>
-      <span class="xref">System.IDisposable</span>
+      <span class="xref">Microsoft.Extensions.Logging.ILogger</span>
   </div>
 </article>
           </div>
