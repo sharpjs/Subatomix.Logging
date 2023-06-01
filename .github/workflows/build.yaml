@@ -109,13 +109,19 @@ jobs:
           MSSQL_SA_PASSWORD: ${{ secrets.MSSQL_SA_PASSWORD }}
 
       - name: Prepare Coverage Report
-        uses: danielpalme/ReportGenerator-GitHub-Action@5.1.10
+        uses: danielpalme/ReportGenerator-GitHub-Action@5
         #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}/coverage/raw/**/coverage.opencover.xml
           targetdir: ${{ runner.temp }}/coverage
-          reporttypes: Cobertura;JsonSummary;Html_Dark;Badges
+          reporttypes: Html;MarkdownSummaryGithub;Badges
           verbosity: Warning
+
+      - name: Publish Coverage Summary
+        run: >
+          cat "$REPORT_PATH" >> "$GITHUB_STEP_SUMMARY"
+        env:
+          REPORT_PATH: ${{ runner.temp }}/coverage/SummaryGithub.md
 
       - name: Save Coverage Report
         uses: actions/upload-artifact@v3
