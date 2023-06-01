@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -21,7 +21,7 @@
 
 using System.Text;
 using Microsoft.Extensions.Logging.Abstractions;
-using Subatomix.Logging.Testing;
+using Subatomix.Logging.Fake;
 
 namespace Subatomix.Logging.Legacy;
 
@@ -74,8 +74,8 @@ public class LoggingTraceListenerTests
 
         h.TraceSource.TraceEvent(TraceEventType.Error, 42);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "buffered text",  null),
-            (LogLevel.Error, "Message ID: 42", null)
+            (LogLevel.Debug,  0, "buffered text",  null),
+            (LogLevel.Error, 42, "Message ID: 42", null)
         );
     }
 
@@ -107,8 +107,8 @@ public class LoggingTraceListenerTests
 
         h.TraceSource.TraceEvent(TraceEventType.Warning, 42, message);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug,  "buffered text", null),
-            (LogLevel.Warning, expected,       null)
+            (LogLevel.Debug,    0, "buffered text", null),
+            (LogLevel.Warning, 42,  expected,       null)
         );
     }
 
@@ -146,8 +146,8 @@ public class LoggingTraceListenerTests
 
         h.TraceSource.TraceEvent(TraceEventType.Information, 42, template, args);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug,       "buffered text", null),
-            (LogLevel.Information, expected,        null)
+            (LogLevel.Debug,        0, "buffered text", null),
+            (LogLevel.Information, 42, expected,        null)
         );
     }
 
@@ -180,8 +180,8 @@ public class LoggingTraceListenerTests
         h.TraceSource.TraceTransfer(42, message, new Guid(TestActivityId));
 
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug,       "buffered text", null),
-            (LogLevel.Information, expected,        null)
+            (LogLevel.Debug,        0, "buffered text", null),
+            (LogLevel.Information, 42, expected,        null)
         );
     }
 
@@ -218,8 +218,8 @@ public class LoggingTraceListenerTests
 
         h.TraceSource.TraceData(TraceEventType.Verbose, 123, obj);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "buffered text", null),
-            (LogLevel.Debug, expected,        null)
+            (LogLevel.Debug,   0, "buffered text", null),
+            (LogLevel.Debug, 123, expected,        null)
         );
     }
 
@@ -232,7 +232,7 @@ public class LoggingTraceListenerTests
         var e = new InvalidOperationException("error message");
         h.TraceSource.TraceData(TraceEventType.Critical, 123, e);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Critical, "", e)
+            (LogLevel.Critical, 123, "", e)
         );
     }
 
@@ -274,8 +274,8 @@ public class LoggingTraceListenerTests
 
         h.TraceSource.TraceData(TraceEventType.Verbose, 123, array);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "buffered text", null),
-            (LogLevel.Debug, expected,        null)
+            (LogLevel.Debug,   0, "buffered text", null),
+            (LogLevel.Debug, 123, expected,        null)
         );
     }
 
@@ -288,7 +288,7 @@ public class LoggingTraceListenerTests
         var e = new InvalidOperationException("error message");
         h.TraceSource.TraceData(TraceEventType.Error, 123, new object[] { e });
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Error, "", e)
+            (LogLevel.Error, 123, "", e)
         );
     }
 
@@ -355,8 +355,8 @@ public class LoggingTraceListenerTests
 
         h.TraceListener.Fail(message);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "buffered text", null),
-            (LogLevel.Error, expected,        null)
+            (LogLevel.Debug, 0, "buffered text", null),
+            (LogLevel.Error, 0, expected,        null)
         );
     }
 
@@ -381,8 +381,8 @@ public class LoggingTraceListenerTests
 
         h.TraceListener.Fail(message, detail);
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "buffered text", null),
-            (LogLevel.Error, expected,        null)
+            (LogLevel.Debug, 0, "buffered text", null),
+            (LogLevel.Error, 0, expected,        null)
         );
     }
 
@@ -402,7 +402,7 @@ public class LoggingTraceListenerTests
 
         h.TraceListener.Flush();
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, "abc", null)
+            (LogLevel.Debug, 0, "abc", null)
         );
     }
 
@@ -424,7 +424,7 @@ public class LoggingTraceListenerTests
 
         h.TraceListener.Flush();
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Debug, Invariant($"a{nl}{nl}b{nl}{nl}c{nl}"), null)
+            (LogLevel.Debug, 0, Invariant($"a{nl}{nl}b{nl}{nl}c{nl}"), null)
         );
     }
 
@@ -446,12 +446,12 @@ public class LoggingTraceListenerTests
         h.TraceListener.TraceTransfer(Context(), source!,       42, "message", activityId);
 
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Error,       "Message ID: 42",                               null),
-            (LogLevel.Error,       "message",                                      null),
-            (LogLevel.Error,       "arg",                                          null),
-            (LogLevel.Error,       "object",                                       null),
-            (LogLevel.Error,       "objectA, objectB",                             null),
-            (LogLevel.Information, Invariant($"message {{related:{activityId}}}"), null)
+            (LogLevel.Error,       42, "Message ID: 42",                               null),
+            (LogLevel.Error,       42, "message",                                      null),
+            (LogLevel.Error,       42, "arg",                                          null),
+            (LogLevel.Error,       42, "object",                                       null),
+            (LogLevel.Error,       42, "objectA, objectB",                             null),
+            (LogLevel.Information, 42, Invariant($"message {{related:{activityId}}}"), null)
         );
     }
 
@@ -475,12 +475,12 @@ public class LoggingTraceListenerTests
         h.TraceListener.TraceTransfer(Context(), source!,       42, "message", activityId);
 
         h.Logger.Entries.Should().Equal(
-            (LogLevel.Error,       "Message ID: 42",                               null),
-            (LogLevel.Error,       "message",                                      null),
-            (LogLevel.Error,       "arg",                                          null),
-            (LogLevel.Error,       "object",                                       null),
-            (LogLevel.Error,       "objectA, objectB",                             null),
-            (LogLevel.Information, Invariant($"message {{related:{activityId}}}"), null)
+            (LogLevel.Error,       42, "Message ID: 42",                               null),
+            (LogLevel.Error,       42, "message",                                      null),
+            (LogLevel.Error,       42, "arg",                                          null),
+            (LogLevel.Error,       42, "object",                                       null),
+            (LogLevel.Error,       42, "objectA, objectB",                             null),
+            (LogLevel.Information, 42, Invariant($"message {{related:{activityId}}}"), null)
         );
     }
 
@@ -502,7 +502,7 @@ public class LoggingTraceListenerTests
         public TraceEventCache      TraceContext  { get; }
 
         public ILoggerFactory       LoggerFactory { get; }
-        public TestLogger           Logger        { get; }
+        public FakeLogger           Logger        { get; }
 
         public TestHarness()
         {
@@ -511,7 +511,7 @@ public class LoggingTraceListenerTests
             TraceContext  = new TraceEventCache();
 
             LoggerFactory = Mocks.Create<ILoggerFactory>().Object;
-            Logger        = new TestLogger();
+            Logger        = new FakeLogger();
 
             TraceSource.Listeners.Clear();
             TraceSource.Listeners.Add(TraceListener);

@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,6 +14,8 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using Subatomix.Logging.Fake;
+
 namespace Subatomix.Logging.Testing;
 
 using static LogLevel;
@@ -22,39 +24,39 @@ internal class DoAssertions
 {
     public static DoAssertions Instance { get; } = new();
 
-    public virtual void AssertDoNotStarted(TestLogger logger)
+    public virtual void AssertDoNotStarted(FakeLogger logger)
     {
-        logger.Entries2.Should().BeEmpty();
+        logger.Entries.Should().BeEmpty();
     }
 
-    public virtual void AssertDoStarted(TestLogger logger, string name)
+    public virtual void AssertDoStarted(FakeLogger logger, string name)
     {
-        logger.Entries2.Should().HaveCount(1);
+        logger.Entries.Should().HaveCount(1);
 
-        var e0 = logger.Entries2[0];
+        var e0 = logger.Entries[0];
 
         e0.LogLevel .Should().Be(Information);
         e0.Message  .Should().Be($"{name}: Starting");
         e0.Exception.Should().BeNull();
     }
 
-    public virtual void AssertDoCompleted(TestLogger logger, string name)
+    public virtual void AssertDoCompleted(FakeLogger logger, string name)
     {
-        logger.Entries2.Should().HaveCount(2);
+        logger.Entries.Should().HaveCount(2);
  
-        var e1 = logger.Entries2[1];
+        var e1 = logger.Entries[1];
 
         e1.LogLevel .Should().Be(Information);
         e1.Message  .Should().MatchRegex($@"^{name}: Completed \[\d+\.\d\d\ds\]$");
         e1.Exception.Should().BeNull();
     }
 
-    public virtual void AssertDoCompleted(TestLogger logger, string name, Exception exception)
+    public virtual void AssertDoCompleted(FakeLogger logger, string name, Exception exception)
     {
-        logger.Entries2.Should().HaveCount(3);
+        logger.Entries.Should().HaveCount(3);
  
-        var e1 = logger.Entries2[1];
-        var e2 = logger.Entries2[2];
+        var e1 = logger.Entries[1];
+        var e2 = logger.Entries[2];
 
         e1.LogLevel .Should().Be(Error);
         e1.Message  .Should().BeNullOrEmpty();

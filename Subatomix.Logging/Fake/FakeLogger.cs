@@ -1,40 +1,19 @@
-/*
-    Copyright 2022 Jeffrey Sharp
+// Copyright 2023 Subatomix Research Inc.
+// SPDX-License-Identifier: ISC
 
-    Permission to use, copy, modify, and distribute this software for any
-    purpose with or without fee is hereby granted, provided that the above
-    copyright notice and this permission notice appear in all copies.
-
-    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
-    WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
-    MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
-    ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
-    WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
-    ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
-    OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
-*/
-
-#if NET6_0_OR_GREATER
-#pragma warning disable CA1816 // Change ... to call GC.SuppressFinalize(object). This will prevent derived types that introduce a finalizer from needing to re-implement 'IDisposable' to call it.
-#endif
-
-namespace Subatomix.Logging.Testing;
+namespace Subatomix.Logging.Fake;
 
 /// <summary>
-///   An <see cref="ILogger"/> implementation for testing.
+///   An <see cref="ILogger"/> implementation that captures logged entries into
+///   a list.
 /// </summary>
-internal class TestLogger : ILogger
+public class FakeLogger : ILogger
 {
-    /// List of entries written using the logger
-    private readonly List<(LogLevel, string, Exception?)>
+    // List of entries written using the logger
+    private readonly List<(LogLevel, EventId, string, Exception?)>
         _entries = new();
 
-    // TODO: Replace Entries with this
-    /// List of entries written using the logger
-    private readonly List<(LogLevel, EventId, string, Exception?)>
-        _entries2 = new();
-
-    /// Stack of scopes issued by the logger
+    // Stack of scopes issued by the logger
     private readonly Stack<Scope>
         _scopes = new();
 
@@ -47,21 +26,8 @@ internal class TestLogger : ILogger
     ///   regardless of the minimum severity level set by the
     ///   <see cref="MinimumLevel"/> property.
     /// </remarks>
-    public IReadOnlyList<(LogLevel LogLevel, string Message, Exception? Exception)>
-        Entries => _entries;
-
-    // TODO: Replace Entries with this
-    /// <summary>
-    ///   Gets the collection of entries written via the logger.
-    /// </summary>
-    /// <remarks>
-    ///   ℹ <strong>Note:</strong>
-    ///   This collection contains all entries written via the logger,
-    ///   regardless of the minimum severity level set by the
-    ///   <see cref="MinimumLevel"/> property.
-    /// </remarks>
     public IReadOnlyList<(LogLevel LogLevel, EventId Id, string Message, Exception? Exception)>
-        Entries2 => _entries2;
+        Entries => _entries;
 
     /// <summary>
     ///   Gets the stack of logical operation scopes issued by the logger.
@@ -97,8 +63,7 @@ internal class TestLogger : ILogger
         Exception?                       exception,
         Func<TState, Exception?, string> formatter)
     {
-        _entries .Add((logLevel,          formatter(state, exception), exception));
-        _entries2.Add((logLevel, eventId, formatter(state, exception), exception));
+        _entries.Add((logLevel, eventId, formatter(state, exception), exception));
     }
 
     /// <summary>
@@ -108,7 +73,7 @@ internal class TestLogger : ILogger
     {
         private readonly Stack<Scope> _scopes;
 
-        private protected Scope(TestLogger logger)
+        private protected Scope(FakeLogger logger)
         {
             _scopes = logger._scopes;
             _scopes.Push(this);
@@ -117,8 +82,11 @@ internal class TestLogger : ILogger
         /// <inheritdoc/>
         public void Dispose()
         {
-            _scopes.Count.Should().BePositive();
-            _scopes.Peek().Should().BeSameAs(this);
+            if (_scopes.Peek() != this)
+                throw new InvalidOperationException(
+                    "Attempted to dispose a scope other than the innermost scope."
+                );
+
             _scopes.Pop();
         }
 
@@ -138,7 +106,7 @@ internal class TestLogger : ILogger
     /// </typeparam>
     public sealed class Scope<TState> : Scope
     {
-        internal Scope(TestLogger logger, TState state)
+        internal Scope(FakeLogger logger, TState state)
             : base(logger)
         {
             State = state;

@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,11 +14,10 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using Subatomix.Logging.Fake;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging;
-
-using static LogLevel;
 
 [TestFixture]
 public class OperationScopeInitiatorTests
@@ -26,7 +25,7 @@ public class OperationScopeInitiatorTests
     [Test]
     public void Begin()
     {
-        var logger   = new TestLogger();
+        var logger   = new FakeLogger();
         var logLevel = Any.LogLevelExceptNone();
         var name     = Any.GetString();
 

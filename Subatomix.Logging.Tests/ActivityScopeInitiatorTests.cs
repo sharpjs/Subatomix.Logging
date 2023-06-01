@@ -14,6 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
+using Subatomix.Logging.Fake;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging;
@@ -24,7 +25,7 @@ public class ActivityScopeInitiatorTests
     [Test]
     public void Begin()
     {
-        var logger   = new TestLogger();
+        var logger   = new FakeLogger();
         var logLevel = Any.LogLevelExceptNone();
         var name     = Any.GetString();
 

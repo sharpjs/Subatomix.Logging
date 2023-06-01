@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -17,6 +17,7 @@
 using FluentAssertions.Extensions;
 using Microsoft.Extensions.Logging.Abstractions;
 using Subatomix.Logging.Console;
+using Subatomix.Logging.Fake;
 using Subatomix.Logging.Testing;
 
 namespace Subatomix.Logging;
@@ -53,7 +54,7 @@ public class OperationScopeTests
     [Test]
     public void Logger_Get()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         using var s = new OperationScope(logger, LogLevel.Debug, "a");
 
@@ -161,7 +162,7 @@ public class OperationScopeTests
     [Test]
     public void LogScope()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
         var name   = Any.GetString();
 
         using (new OperationScope(logger, LogLevel.Debug, name))
@@ -176,7 +177,7 @@ public class OperationScopeTests
     [Test]
     public async Task Output_Success()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
         var level  = Any.NextEnum<LogLevel>();
         var name   = Any.GetString();
 
@@ -210,7 +211,7 @@ public class OperationScopeTests
     [Test]
     public async Task Output_Exception()
     {
-        var logger    = new TestLogger();
+        var logger    = new FakeLogger();
         var levelA    = Any.NextEnum<LogLevel>();
         var levelB    = Any.NextEnum<LogLevel>();
         var name      = Any.GetString();
@@ -253,7 +254,7 @@ public class OperationScopeTests
     [Test]
     public void Stop_Multiple()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         using (var s = new OperationScope(logger))
         {

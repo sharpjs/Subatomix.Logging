@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,7 +14,7 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using Microsoft.Extensions.Logging.Abstractions;
+using Subatomix.Logging.Fake;
 
 namespace Subatomix.Logging.Testing;
 
@@ -32,7 +32,7 @@ public abstract class DoTests
     [Test]
     public void Do_NullName()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         static void Op()
             => Assert.Fail("This delegate should not be invoked.");
@@ -46,7 +46,7 @@ public abstract class DoTests
     [Test]
     public void Do_EmptyName()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         static void Op()
             => Assert.Fail("This delegate should not be invoked.");
@@ -60,7 +60,7 @@ public abstract class DoTests
     [Test]
     public void Do_NullAction()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         Doing(logger, name: "a", null!)
             .Should().Throw<ArgumentNullException>().WithParameterName("action");
@@ -71,7 +71,7 @@ public abstract class DoTests
     [Test]
     public void Do_Normal()
     {
-        var logger   = new TestLogger();
+        var logger   = new FakeLogger();
         var arg      = new Arg();
         var expected = new Result();
 
@@ -92,7 +92,7 @@ public abstract class DoTests
     [Test]
     public void Do_Exception()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         static void Op()
             => throw new Exception();

@@ -1,5 +1,5 @@
 /*
-    Copyright 2022 Jeffrey Sharp
+    Copyright 2023 Jeffrey Sharp
 
     Permission to use, copy, modify, and distribute this software for any
     purpose with or without fee is hereby granted, provided that the above
@@ -14,10 +14,9 @@
     OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 */
 
-using System.Collections.Concurrent;
-using System.Runtime.ExceptionServices;
 using System.Text;
 using Microsoft.Extensions.Logging.Abstractions;
+using Subatomix.Logging.Fake;
 using Subatomix.Logging.Testing;
 
 namespace Sharp.Diagnostics.Logging;
@@ -41,19 +40,19 @@ public class LogTests
     [SetUp]
     public void SetUp()
     {
-        Log.Logger = new TestLogger();
+        Log.Logger = new FakeLogger();
     }
 
     [Test]
     public void Logger_Get()
     {
-        Log.Logger.Should().BeOfType<TestLogger>();
+        Log.Logger.Should().BeOfType<FakeLogger>();
     }
 
     [Test]
     public void Logger_Set()
     {
-        var logger = new TestLogger();
+        var logger = new FakeLogger();
 
         Log.Logger = logger;
 
@@ -980,5 +979,5 @@ public class LogTests
     #endregion
 
     public IReadOnlyList<(LogLevel LogLevel, EventId Id, string Message, Exception? Exception)>
-        Entries => ((TestLogger) Log.Logger).Entries2;
+        Entries => ((FakeLogger) Log.Logger).Entries;
 }
