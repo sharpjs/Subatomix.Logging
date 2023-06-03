@@ -82,7 +82,7 @@ public class FakeLogger : ILogger
         /// <inheritdoc/>
         public void Dispose()
         {
-            if (_scopes.Peek() != this)
+            if (_scopes.Count == 0 || _scopes.Peek() != this)
                 throw new InvalidOperationException(
                     "Attempted to dispose a scope other than the innermost scope."
                 );
