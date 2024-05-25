@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Subatomix.Testing" Version="2.5.0" />
+    <PackageReference Include="Subatomix.Testing" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
-    <PackageReference Include="IsExternalInit" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="IsExternalInit" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
