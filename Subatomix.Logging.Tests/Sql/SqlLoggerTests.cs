@@ -69,11 +69,11 @@ public class SqlLoggerTests
     }
 
     [Test]
-    [TestCase("Message.",  null, "Message.")]
-    [TestCase(null,       "e",   "System.Exception: e")]
-    [TestCase("",         "e",   "System.Exception: e")]
-    [TestCase("NEF",      "e",   "System.Exception: e")]
-    [TestCase("Message.", "e",   "Message. System.Exception: e")]
+    [TestCase("Message.", null, "Message.")]
+    [TestCase(null,       "e",  "System.Exception: e")]
+    [TestCase("",         "e",  "System.Exception: e")]
+    [TestCase("NEF",      "e",  "System.Exception: e")]
+    [TestCase("Message.", "e",  "Message. System.Exception: e")]
     public void Log_NotEmpty(string? formatted, string? error, string expected)
     {
         using var h = new TestHarness();
@@ -105,11 +105,12 @@ public class SqlLoggerTests
     }
 
     [Test]
-    [TestCase("Message.",  null, "Message.")]
-    [TestCase(null,       "e",   "System.Exception: e")]
-    [TestCase("",         "e",   "System.Exception: e")]
-    [TestCase("NEF",      "e",   "System.Exception: e")]
-    [TestCase("Message.", "e",   "Message. System.Exception: e")]
+    [TestCase("Message.", null, "Message.")]
+    [TestCase(null,       "e",  "System.Exception: e")]
+    [TestCase("",         "e",  "System.Exception: e")]
+    [TestCase("NEF",      "e",  "System.Exception: e")]
+    [TestCase("Message.", "e",  "Message. System.Exception: e")]
+    [NonParallelizable] // becuase it depends on static state
     public void Log_NotEmpty_InActivity_W3C(string? formatted, string? error, string expected)
     {
         using var _ = new ActivityTestScope(ActivityIdFormat.W3C);
@@ -142,11 +143,12 @@ public class SqlLoggerTests
     }
 
     [Test]
-    [TestCase("Message.",  null, "Message.")]
-    [TestCase(null,       "e",   "System.Exception: e")]
-    [TestCase("",         "e",   "System.Exception: e")]
-    [TestCase("NEF",      "e",   "System.Exception: e")]
-    [TestCase("Message.", "e",   "Message. System.Exception: e")]
+    [TestCase("Message.", null, "Message.")]
+    [TestCase(null,       "e",  "System.Exception: e")]
+    [TestCase("",         "e",  "System.Exception: e")]
+    [TestCase("NEF",      "e",  "System.Exception: e")]
+    [TestCase("Message.", "e",  "Message. System.Exception: e")]
+    [NonParallelizable] // becuase it depends on static state
     public void Log_NotEmpty_InActivity_Hierarchical(string? formatted, string? error, string expected)
     {
         using var _ = new ActivityTestScope(ActivityIdFormat.Hierarchical);
