@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "changes.html",
-          "hash": "xKJxJ2hT3x86mWWzUx+qpaukyLirve4HbLDWM56b6Ao="
+          "hash": "z+O2JKUByh+VWqyjnKhTUvHbYKXiZe/C6SXzNk6lPWk="
         }
       },
       "is_incremental": false,
@@ -30,7 +30,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "cMMHfdP9JO1mGgyQ18ZzlkceWuu0sc/eXiF+wEfXdgE="
+          "hash": "y4eultFlspcOHjulPthB+ETjmn+gR/MS4qCv3Bvu7DA="
         }
       },
       "is_incremental": false,
@@ -42,7 +42,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.Log.html",
-          "hash": "ISKNPmsdJkM/VJlDLF7A4qxeVYExX/FlairnrwsH+cg="
+          "hash": "Hijc/+YYt3/SFphdT0jZFZv60OHk/WC5gcDn67MpVhc="
         }
       },
       "is_incremental": false,
@@ -54,7 +54,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.TraceOperation.html",
-          "hash": "bkpcDyAhPr+IPDSEeQyet84/x7XDefKFJw2INtL+7U8="
+          "hash": "+aIGeP3Wc6/uysde0H/+Sx/w+Xo/3eCzLQLR1hQPCrE="
         }
       },
       "is_incremental": false,
@@ -66,7 +66,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Sharp.Diagnostics.Logging.html",
-          "hash": "jMuEeSmeDuV/bhzazzY7ZBbMcAj3HM0nyrPL+nfJowM="
+          "hash": "AxW+gtSay3HUEF2mSwRiKAeWa/il6VPXBP2UJW4O9Jw="
         }
       },
       "is_incremental": false,
@@ -78,7 +78,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.CorrelationManagerActivityListener.html",
-          "hash": "p0+817hEjwbK0paIc/gdMehjdiH1tLMKOLIgyen/h2k="
+          "hash": "F54DOdwiU3U/vJRIeHLQ7aacKQCE3hWou84J0SXGHZU="
         }
       },
       "is_incremental": false,
@@ -90,7 +90,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.LoggingTraceListener.html",
-          "hash": "g5luGBAy3Lwxk7IX79EVEsZtSoz9NSi8Cz7B9UBSXF8="
+          "hash": "YXr4aIAtZTAEDfvPRIjHNcmcWecbRUoGAP2zHXbhRos="
         }
       },
       "is_incremental": false,
@@ -102,7 +102,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Legacy/Subatomix.Logging.Legacy.html",
-          "hash": "mj8rk3tD6IGK32sbnB10RvNWTMbZNn0Mwnj4WYwAfdc="
+          "hash": "RoAbT0HrKsCuc69slEQIP2gD9WUJZbjfds/QHX3hZRY="
         }
       },
       "is_incremental": false,
@@ -114,7 +114,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLogger.html",
-          "hash": "RMJJj1cy2Mvoqet5NWjw0ZGCqoPaFQUzpIwraySwYk8="
+          "hash": "4xNp3mCIJdHxBMvt+j3uY8/iQKbSOcT1k2griM01ft4="
         }
       },
       "is_incremental": false,
@@ -126,7 +126,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerOptions.html",
-          "hash": "tg1GHWJuWpGAeyfZ3Qs221thTNGfVF0k39uRHkIDkj0="
+          "hash": "q9vstKQbKfaM0ddtOTpwAeUPeSqgQTbswdr8ujwJQVA="
         }
       },
       "is_incremental": false,
@@ -138,7 +138,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.SqlLoggerProvider.html",
-          "hash": "5mPQyQeO694H/XNxznqKwe3QhWxfyaLCxu6y91dA28U="
+          "hash": "6GZI3jCFbJ9lZzBCqLLFwKOFCIkdGZIQh66KYpHuaNA="
         }
       },
       "is_incremental": false,
@@ -150,7 +150,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging.Sql/Subatomix.Logging.Sql.html",
-          "hash": "Qyu6jgVVtO5wD4Ro49UHggRiDRMQvH7F2We/MxRJXHs="
+          "hash": "gN/dQzIJJBUPCR27kg6xhRHIxOS3M4ratpJb0hsJ3u0="
         }
       },
       "is_incremental": false,
@@ -162,7 +162,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScope.html",
-          "hash": "Jvgfpk586u6nB323G5ecLbRC6D3H+180EEK+wgtA/SY="
+          "hash": "Q9Xlpt64QUTL2cZ5LzEWOibQ9qHqAQUZnH+O4yXUBmo="
         }
       },
       "is_incremental": false,
@@ -174,7 +174,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.ActivityScopeInitiator.html",
-          "hash": "YJUVVku6stQXKmGmcAzxbKhWEbaojJqCnuLg3/Ff9bo="
+          "hash": "rbaN/TBr8qwLS1vxqvIJzvWUv8OIJjpI06xfgPkmnQk="
         }
       },
       "is_incremental": false,
@@ -186,7 +186,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.ConsoleContext.html",
-          "hash": "OzWBOhFV+ZrDAN2IuMOmwFoXIsoG3c8rLc6gD7s6IUs="
+          "hash": "eSDgGgF2Hi4E2sheZZQKcWyLEp9EIb6roNntzKVUlPg="
         }
       },
       "is_incremental": false,
@@ -198,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.IConsoleFormattable.html",
-          "hash": "zdLsF9+SCBnjHK5Tfh6IcUOgy3CvIdK/SjdHibMby9k="
+          "hash": "Yd6C7mF9gWshmWOE1LtBxXZGgvJ+1S1EbbUYs6cWuog="
         }
       },
       "is_incremental": false,
@@ -210,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatter.html",
-          "hash": "VsaNvCWmu7j2FW4TNg12kipGsRTcSmwoz4fnORejgTU="
+          "hash": "981cVN5v/pCzUJcFb1a7ON+H07qLSE+cMUkgoSzDmJY="
         }
       },
       "is_incremental": false,
@@ -222,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleFormatterOptions.html",
-          "hash": "nZHG+cZzQfUzoZ5+NpZ8YSsXK+W3RfPCeJ97TZCeop4="
+          "hash": "jWVtjcYfW23+xaVOzHy7BbrifFdEKSpdMi3jVngkxEs="
         }
       },
       "is_incremental": false,
@@ -234,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.PrettyConsoleLoggingBuilderExtensions.html",
-          "hash": "5x/S9djPIOOJ/mXFUO0ihrsnikywWExjmiL9Jj0zmO4="
+          "hash": "QRZRCHL0OfyJt1DSJQdTSjksZOD7RHcpWrKxT7jNUTI="
         }
       },
       "is_incremental": false,
@@ -246,7 +246,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Console.html",
-          "hash": "EmP255q6NfnVM/elauhTzaFcFh8UBBjvlCuOAp+atVA="
+          "hash": "pRr99KkmnQzb0InJeic7IjrLnBNkV6828wNvoQQhVCI="
         }
       },
       "is_incremental": false,
@@ -258,7 +258,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLogger.html",
-          "hash": "3IoPNPtFw2o37BsfELXHd1KtuGlID2E74oLmGRz18wQ="
+          "hash": "BNPk8tsmxyzphNaMVXHlhOM7x/kyQLTOz90+39ZoU84="
         }
       },
       "is_incremental": false,
@@ -270,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggerProvider.html",
-          "hash": "ntpGX1u/TZc3CjoL2P2GqoURpGtuFF3h6CV5YaQibX0="
+          "hash": "ZWjcgtMI30PX0IjeK/PS3YZmFRjadOcD+f/Iu76J99k="
         }
       },
       "is_incremental": false,
@@ -282,7 +282,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.DebuggerLoggingBuilderExtensions.html",
-          "hash": "HsBvWuQnOhYu6c8EuJw0ARB1nYJhtRGpnAILESWfFZE="
+          "hash": "dc8WmU+IY4CAMb27zQZzYODSfjK5Dk/rCDX4WCLR+kw="
         }
       },
       "is_incremental": false,
@@ -294,7 +294,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Debugger.html",
-          "hash": "rKOwC+u3Sj9vEunYF/u8UA2Qzrau76h199YO8H1EzYM="
+          "hash": "18q804f7IOnRer5yIPhB8s8fJ3AQVnNkOAgVgqpBNLk="
         }
       },
       "is_incremental": false,
@@ -306,7 +306,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Fake.FakeLogger.Scope-1.html",
-          "hash": "6QIGuRL8x+PjUkHtRAUHOJgyKQ9XzFnc6cSJ6x+Fi2Q="
+          "hash": "lAlSYZM5oaNqwZuF0fIfszuaNGgQsxvCVifbJBXugIY="
         }
       },
       "is_incremental": false,
@@ -318,7 +318,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Fake.FakeLogger.Scope.html",
-          "hash": "lA8SgZl+dGPpzP1G03qVylZnqDUSRa+ZjjryNjGc8ag="
+          "hash": "IeuZ8GlP6V+h8WeBmOHkwRI6uVSqhBnWyhL67epUV3w="
         }
       },
       "is_incremental": false,
@@ -330,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Fake.FakeLogger.html",
-          "hash": "p0jfi438QNUKQz+351fIQZSaP+AlwA1MsP2qNw068BU="
+          "hash": "Y/QrXrAeTVncJ5PbSLwGJCXlZyQZgN3DGXMxTbJjbgw="
         }
       },
       "is_incremental": false,
@@ -342,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.Fake.html",
-          "hash": "Rw4+QzI1s8/G+vAWs9UU1ZA44JqUdFSb9zv0rDWlPHU="
+          "hash": "7e13CYmPsM7zXK5lsJcUPRS+AMxARL/+AE/d0GcUDJE="
         }
       },
       "is_incremental": false,
@@ -354,7 +354,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.IFluent.html",
-          "hash": "Lnj6j9k8/LAzsZWOBtvPRdn3l+cjGRWE8WrxhVwsoUw="
+          "hash": "SZOl0mnGoysSy0o2WruPSu7ejoiQ/yFU5AciCU7W0F0="
         }
       },
       "is_incremental": false,
@@ -366,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.LoggerExtensions.html",
-          "hash": "VuUokS3bqoURck2dpDUqQeaxe0c9mpyF8GcR8VdMaas="
+          "hash": "Gd5soPPh17weEds1QGUwelWvWSxobvt2C+WbiWoIep8="
         }
       },
       "is_incremental": false,
@@ -378,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScope.html",
-          "hash": "GdckxvWIxNaHwfXbeXkAqrfZz3Eq/NOdaktYe7g9UkQ="
+          "hash": "H2J8A532NNrFJnoZogSlfMHwvyOwx74kmh6iAgkMfs4="
         }
       },
       "is_incremental": false,
@@ -390,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.OperationScopeInitiator.html",
-          "hash": "vH4i1M/QAwIg2VIBUCAst/tSEeYiZSyYQ6aQtE9K5vU="
+          "hash": "YO5QoCEZQRoEH70xSdlPtpSGhIdSOD2xHLxzXUaYX5I="
         }
       },
       "is_incremental": false,
@@ -402,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Subatomix.Logging/Subatomix.Logging.html",
-          "hash": "9az0/d+jvrmdMRXW3//K54yqKp8D2StyYLU1MFZdXVE="
+          "hash": "UDg/iQ70KeOKOYXj97JT/VSUMDw9xoozFtwLcDgYALU="
         }
       },
       "is_incremental": false,
@@ -414,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/index.html",
-          "hash": "VJiypfU85MeipJagc6nQ+kZPHBrNsdNjTMbi7pJXgBU="
+          "hash": "DKnZ2Fyfi3+1TDttV9Bn9LAvKmueLgK5ZC/eZq9PWXI="
         }
       },
       "is_incremental": false,
