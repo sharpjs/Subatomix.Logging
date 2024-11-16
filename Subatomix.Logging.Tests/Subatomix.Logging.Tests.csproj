@@ -7,7 +7,7 @@
 
   <PropertyGroup>
     <Description>Tests for Subatomix Logging Libraries</Description>
-    <TargetFrameworks>net481;net6.0</TargetFrameworks>
+    <TargetFrameworks>net481;net8.0</TargetFrameworks>
     <RootNamespace>Subatomix.Logging</RootNamespace>
   </PropertyGroup>
 

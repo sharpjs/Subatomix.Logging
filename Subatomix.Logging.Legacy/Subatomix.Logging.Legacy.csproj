@@ -8,7 +8,7 @@
   <PropertyGroup>
     <Description>Helpers to migrate projects using System.Diagnostics tracing to Microsoft.Extensions.Logging. Contains a TraceListener that forwards to ILogger.</Description>
     <PackageTags>$(PackageTags) legacy diagnostics trace listener TraceListener TraceSource</PackageTags>
-    <TargetFrameworks>net462;netstandard2.0;net6.0</TargetFrameworks>
+    <TargetFrameworks>net462;netstandard2.0;net6.0;net8.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
