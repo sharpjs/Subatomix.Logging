@@ -1,5 +1,5 @@
 # GitHub Actions workflow
-# https://help.github.com/en/actions/reference
+# https://help.github.com/en/actions
 #
 # Copyright Jeffrey Sharp
 # SPDX-License-Identifier: ISC
@@ -33,11 +33,12 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    #url: https://github.com/actions/virtual-environments
+    #ref: https://github.com/actions/virtual-environments
 
     services:
       sql:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        #ref: https://learn.microsoft.com/en-us/sql/linux/quickstart-install-connect-docker
+        image: mcr.microsoft.com/mssql/server:2022-latest
         ports:
           - 1433:1433
         env:
@@ -54,14 +55,16 @@ jobs:
 
     steps:
       - name: Check Out Code
-        uses: actions/checkout@v3
-        #url: https://github.com/actions/checkout
+        uses: actions/checkout@v4
+        #ref: https://github.com/actions/checkout
 
       - name: Configure .NET
-        uses: actions/setup-dotnet@v3
-        #url: https://github.com/actions/setup-dotnet
+        uses: actions/setup-dotnet@v4
+        #ref: https://github.com/actions/setup-dotnet
         with:
-          dotnet-version: 6.0.x
+          dotnet-version: |
+            6.0.x
+            8.0.x
 
       - name: Stamp Version
         id: stamp
@@ -92,7 +95,7 @@ jobs:
 
       - name: Test
         run: >
-          dotnet test --no-build -c Release -f net6.0
+          dotnet test --no-build -c Release -f net8.0
           --settings Coverlet.runsettings
           --results-directory:${{ runner.temp }}/coverage/raw
         env:
@@ -100,7 +103,7 @@ jobs:
 
       - name: Prepare Coverage Report
         uses: danielpalme/ReportGenerator-GitHub-Action@5
-        #url: https://github.com/danielpalme/ReportGenerator-GitHub-Action
+        #ref: https://github.com/danielpalme/ReportGenerator-GitHub-Action
         with:
           reports: ${{ runner.temp }}/coverage/raw/**/coverage.opencover.xml
           targetdir: ${{ runner.temp }}/coverage
@@ -114,16 +117,16 @@ jobs:
           REPORT_PATH: ${{ runner.temp }}/coverage/SummaryGithub.md
 
       - name: Save Coverage Report
-        uses: actions/upload-artifact@v3
-        #url: https://github.com/actions/upload-artifact
+        uses: actions/upload-artifact@v4
+        #ref: https://github.com/actions/upload-artifact
         with:
           name: Coverage Report
           path: ${{ runner.temp }}/coverage
           if-no-files-found: error
 
       - name: Save Packages
-        uses: actions/upload-artifact@v3
-        #url: https://github.com/actions/upload-artifact
+        uses: actions/upload-artifact@v4
+        #ref: https://github.com/actions/upload-artifact
         with:
           name: Packages
           path: ${{ runner.temp }}/dist
@@ -142,7 +145,7 @@ jobs:
 
       - name: Create Release
         uses: ncipollo/release-action@v1
-        #url: https://github.com/ncipollo/release-action
+        #ref: https://github.com/ncipollo/release-action
         if: startsWith(github.ref, 'refs/tags/release/')
         with:
           name: ${{ steps.stamp.outputs.version }}
@@ -154,8 +157,8 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish Documentation
-        uses: peaceiris/actions-gh-pages@v3
-        #url: https://github.com/peaceiris/actions-gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        #ref: https://github.com/peaceiris/actions-gh-pages
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: dist/doc
