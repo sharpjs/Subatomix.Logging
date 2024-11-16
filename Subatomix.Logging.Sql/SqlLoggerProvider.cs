@@ -19,7 +19,7 @@ public class SqlLoggerProvider : ILoggerProvider, ISqlLoggerProvider
     private readonly Thread                    _flushThread;
     private readonly ISqlLogRepository         _repository;
     private readonly IClock                    _clock;
-    private readonly IDisposable               _optionsChangeToken;
+    private readonly IDisposable?              _optionsChangeToken;
     private readonly CancellationTokenSource   _cancellation;
 
     // Used by flush thread
@@ -125,10 +125,10 @@ public class SqlLoggerProvider : ILoggerProvider, ISqlLoggerProvider
         DestroyFlushThread();
 
         // Dispose managed objects
-        _flushEvent        .Dispose();
-        _repository        .Dispose();
-        _optionsChangeToken.Dispose();
-        _cancellation      .Dispose();
+        _flushEvent         .Dispose();
+        _repository         .Dispose();
+        _optionsChangeToken?.Dispose();
+        _cancellation       .Dispose();
     }
 
     private Thread CreateFlushThread()

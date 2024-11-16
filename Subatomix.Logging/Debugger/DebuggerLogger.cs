@@ -50,7 +50,8 @@ public class DebuggerLogger : ILogger
     internal IDebugger Debugger { get; set; }
 
     /// <inheritdoc/>
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable? BeginScope<TState>(TState state)
+        where TState : notnull
     {
         return Provider.ScopeProvider?.Push(state)
             ?? NullScope.Instance;

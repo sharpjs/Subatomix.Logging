@@ -33,7 +33,8 @@ public class SqlLogger : ILogger
         => true;
 
     /// <inheritdoc/>
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable? BeginScope<TState>(TState state)
+        where TState : notnull
         => NullScope.Instance;
 
     /// <inheritdoc/>

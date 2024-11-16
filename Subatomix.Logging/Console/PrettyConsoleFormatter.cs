@@ -37,7 +37,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     private IPrettyConsoleFormatterTheme _theme;
 
     // Opaque token representing subscription to options change notifications
-    private readonly IDisposable _optionsChangeToken;
+    private readonly IDisposable? _optionsChangeToken;
 
     /// <summary>
     ///   Initializes a new <see cref="PrettyConsoleFormatter"/> instance.
@@ -65,7 +65,7 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
     /// <inheritdoc/>
     void IDisposable.Dispose()
     {
-        _optionsChangeToken.Dispose();
+        _optionsChangeToken?.Dispose();
     }
 
     /// <summary>
@@ -106,9 +106,9 @@ public sealed class PrettyConsoleFormatter : ConsoleFormatter, IDisposable
 
     /// <inheritdoc/>>
     public override void Write<TState>(
-        in LogEntry<TState>    entry,
-        IExternalScopeProvider scopes,
-        TextWriter             writer)
+        in LogEntry<TState>     entry,
+        IExternalScopeProvider? scopes,
+        TextWriter              writer)
     {
         // Example:
         // [23:59:59] #4c9b info: This is the message.

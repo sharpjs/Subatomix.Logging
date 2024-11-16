@@ -47,7 +47,9 @@ public class FakeLoggerTests
     {
         var logger = new FakeLogger();
 
-        var scope = logger.BeginScope(this);
+        var scope = logger.BeginScope(this)!;
+
+        scope.Should().BeOfType<FakeLogger.Scope<FakeLoggerTests>>();
 
         scope.Dispose();
 
@@ -61,8 +63,11 @@ public class FakeLoggerTests
     {
         var logger = new FakeLogger();
 
-        using var scope0 = logger.BeginScope(this);
-        using var scope1 = logger.BeginScope(this);
+        using var scope0 = logger.BeginScope(this)!;
+        using var scope1 = logger.BeginScope(this)!;
+
+        scope0.Should().BeOfType<FakeLogger.Scope<FakeLoggerTests>>();
+        scope1.Should().BeOfType<FakeLogger.Scope<FakeLoggerTests>>();
 
         scope0.Invoking(s => s.Dispose())
             .Should().Throw<InvalidOperationException>()

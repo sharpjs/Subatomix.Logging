@@ -54,8 +54,9 @@ internal class TestOptionsMonitor<TOptions> : IOptionsMonitor<TOptions>
     }
 
     /// <inheritdoc/>
-    public TOptions Get(string name)
+    public TOptions Get(string? name)
     {
+        name ??= "";
         return Values.TryGetValue(name, out var value)
             ? value
             : Values[name] = new();

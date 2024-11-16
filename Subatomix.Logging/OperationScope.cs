@@ -84,7 +84,7 @@ public class OperationScope : IConsoleFormattable, IDisposable
     public LogLevel ExceptionLogLevel { get; set; } = LogLevel.Error;
 
     // Opaque scope returned by ILogger.BeginScope().
-    private readonly IDisposable _logScope;
+    private readonly IDisposable? _logScope;
 
     // Measures the elapsed time of the operation.
     private readonly Stopwatch _stopwatch;
@@ -208,7 +208,7 @@ public class OperationScope : IConsoleFormattable, IDisposable
         IsCompleted = true;
         LogCompleted();
 
-        _logScope.Dispose();
+        _logScope?.Dispose();
     }
 
     private void LogStarting()

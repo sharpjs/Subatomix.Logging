@@ -52,7 +52,8 @@ public class FakeLogger : ILogger
         => logLevel >= MinimumLevel;
 
     /// <inheritdoc/>
-    public IDisposable BeginScope<TState>(TState state)
+    public IDisposable? BeginScope<TState>(TState state)
+        where TState : notnull
         => new Scope<TState>(this, state);
 
     /// <inheritdoc/>
